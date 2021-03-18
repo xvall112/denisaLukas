@@ -1,6 +1,19 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+
 import DarkModeToggler from "../../../../components/atoms/DarkModeToggler/DarkModeToggler"
+
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import IconButton from "@material-ui/core/IconButton"
+import Typography from "@material-ui/core/Typography"
+import InputBase from "@material-ui/core/InputBase"
+import Grid from "@material-ui/core/Grid"
+import { createStyles, fade, Theme, makeStyles } from "@material-ui/core/styles"
+import MenuIcon from "@material-ui/icons/Menu"
+import SearchIcon from "@material-ui/icons/Search"
+import InstagramIcon from "@material-ui/icons/Instagram"
 
 interface Props {
   siteTitle: string
@@ -8,34 +21,160 @@ interface Props {
   themeToggler: Function
 }
 
-const TopBar = ({ siteTitle, themeMode, themeToggler }: Props): JSX.Element => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-      <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()} />
-    </div>
-  </header>
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginLeft: theme.spacing(2),
+    },
+    titleDenisa: {
+      flexGrow: 1,
+      display: "none",
+      textAlign: "right",
+      [theme.breakpoints.up("sm")]: {
+        display: "block",
+      },
+    },
+    titleLukas: {
+      flexGrow: 1,
+      display: "none",
+      textAlign: "left",
+      [theme.breakpoints.up("sm")]: {
+        display: "block",
+      },
+    },
+    search: {
+      position: "relative",
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: fade(theme.palette.common.white, 0.15),
+      "&:hover": {
+        backgroundColor: fade(theme.palette.common.white, 0.25),
+      },
+      marginLeft: 0,
+      width: "100%",
+      [theme.breakpoints.up("sm")]: {
+        marginLeft: theme.spacing(1),
+        width: "auto",
+      },
+    },
+    searchIcon: {
+      padding: theme.spacing(0, 2),
+      height: "100%",
+      position: "absolute",
+      pointerEvents: "none",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    inputRoot: {
+      color: "inherit",
+    },
+    inputInput: {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+      transition: theme.transitions.create("width"),
+      width: "100%",
+      [theme.breakpoints.up("sm")]: {
+        width: "12ch",
+        "&:focus": {
+          width: "20ch",
+        },
+      },
+    },
+  })
 )
+
+const TopBar = ({ siteTitle, themeMode, themeToggler }: Props): JSX.Element => {
+  const classes = useStyles()
+  return (
+    <header>
+      <div className={classes.root}>
+        <AppBar position="fixed" color="transparent">
+          <Toolbar>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid
+                item
+                xs
+                container
+                direction="row"
+                justify="flex-start"
+                alignItems="center"
+              >
+                <IconButton
+                  edge="start"
+                  className={classes.menuButton}
+                  color="inherit"
+                  aria-label="open drawer"
+                >
+                  <InstagramIcon />
+                </IconButton>
+
+                <div className={classes.search}>
+                  <div className={classes.searchIcon}>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{ "aria-label": "search" }}
+                  />
+                </div>
+              </Grid>
+              <Grid
+                item
+                xs
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+              >
+                <Typography className={classes.titleDenisa}>Denisa</Typography>
+                <StaticImage
+                  src="../../../../images/logo2x.png"
+                  width={50}
+                  quality={95}
+                  alt="A Gatsby astronaut"
+                />
+                <Typography className={classes.titleLukas}>Lukáš</Typography>
+              </Grid>
+              <Grid
+                item
+                xs
+                container
+                direction="row"
+                justify="flex-end"
+                alignItems="center"
+              >
+                <DarkModeToggler
+                  themeMode={themeMode}
+                  onClick={() => themeToggler()}
+                />
+                <IconButton
+                  edge="start"
+                  className={classes.menuButton}
+                  color="inherit"
+                  aria-label="open drawer"
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Grid>
+            </Grid>
+          </Toolbar>
+        </AppBar>
+      </div>
+    </header>
+  )
+}
 
 export default TopBar

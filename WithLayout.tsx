@@ -5,6 +5,8 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "./src/theme/index"
 
 import AOS from "aos"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 export const useDarkMode = () => {
   const [themeMode, setTheme] = useState("light")
