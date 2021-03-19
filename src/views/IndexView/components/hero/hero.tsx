@@ -2,15 +2,15 @@ import React, { Component } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import clsx from "clsx"
-
-import { makeStyles } from "@material-ui/core/styles"
-import Button from "@material-ui/core/Button"
-import Grid from "@material-ui/core/Grid"
-import Box from "@material-ui/core/Box"
-import Typography from "@material-ui/core/Typography"
-
 import Slider from "react-slick"
+
+//material UI
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { Button, useMediaQuery, Grid, Box, Typography } from "@material-ui/core"
 import { FastRewindTwoTone } from "@material-ui/icons"
+
+//components
+import HeroCardPlace from "./heroCardPlace"
 
 const query = graphql`
   {
@@ -23,6 +23,9 @@ const query = graphql`
           gatsbyImageData(layout: FULL_WIDTH)
           description
         }
+        place {
+          name
+        }
       }
     }
   }
@@ -32,7 +35,7 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", right: 10 }}
+      style={{ ...style, display: "block", right: 20 }}
       onClick={onClick}
     />
   )
@@ -43,7 +46,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", left: 10 }}
+      style={{ ...style, display: "block", left: 20, zIndex: 10000 }}
       onClick={onClick}
     />
   )
@@ -56,17 +59,22 @@ const useStyles = makeStyles(theme => ({
 const Hero = () => {
   const data = useStaticQuery(query)
   const classes = useStyles()
+  const theme = useTheme()
+  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
+    defaultMatches: true,
+  })
+
   const settings = {
     dots: true,
     infinite: true,
-    speed: 3000,
+    speed: isMd ? 3000 : 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 7000,
+    autoplaySpeed: 8000,
     pauseOnHover: false,
-    nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
   }
   return (
     <div className={classes.root}>
@@ -108,7 +116,10 @@ const Hero = () => {
                         EXPLORE
                       </Box>
 
-                      <Box fontSize={130} fontWeight="fontWeightBold">
+                      <Box
+                        fontSize={isMd ? 130 : 70}
+                        fontWeight="fontWeightBold"
+                      >
                         {item.title}
                       </Box>
 
@@ -116,12 +127,31 @@ const Hero = () => {
                         {item.description}
                       </Box>
                     </Typography>
-                    <Box mt={2}>
+                    <Box mt={2} textAlign="center">
                       <Button variant="contained" color="primary" size="large">
                         cestovat
                       </Button>
                     </Box>
                   </Grid>
+
+                  <Box position="absolute" bottom="20px">
+                    <Grid
+                      container
+                      direction="row"
+                      justify="center"
+                      alignItems="center"
+                      spacing={2}
+                    >
+                      {item.place &&
+                        item.place.map((place, index) => {
+                          return (
+                            <Grid item key={index}>
+                              <HeroCardPlace name={place.name} />
+                            </Grid>
+                          )
+                        })}
+                    </Grid>
+                  </Box>
                 </div>
               </div>
             </div>

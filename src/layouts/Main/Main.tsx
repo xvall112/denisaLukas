@@ -44,11 +44,7 @@ const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
       })}
     >
       {/* <Topbar onSidebarOpen={handleSidebarOpen} themeMode={themeMode} themeToggler={themeToggler} /> */}
-      <Topbar
-        siteTitle={"Lukas Gatsby"}
-        themeMode={themeMode}
-        themeToggler={themeToggler}
-      />
+      <Topbar themeMode={themeMode} themeToggler={themeToggler} />
       {/*  <Sidebar
         onClose={handleSidebarClose}
         open={open}

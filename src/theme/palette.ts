@@ -7,6 +7,10 @@ export const light = {
     dark: "#e8eaf6",
   },
   cardShadow: "rgba(23, 70, 161, .11)",
+  common: {
+    black: "#000",
+    white: "#fff",
+  },
   type: "light" as PaletteType,
   primary: {
     main: "#3f51b5",
