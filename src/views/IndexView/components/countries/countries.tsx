@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme =>
     name: {
       color: theme.palette.text.primary,
     },
+    flag: { borderRadius: "5px" },
   })
 )
 
@@ -41,7 +42,7 @@ const Countries = () => {
   return (
     <div className={classes.root}>
       <h1>Countries</h1>
-      <Grid container direction="row" spacing={2}>
+      <Grid container direction="row" alignItems="center" spacing={2}>
         {data.allContentfulCountry.nodes.map((country, index) => {
           return (
             <Grid item xs={6} md={3} key={index}>
@@ -54,11 +55,16 @@ const Countries = () => {
                 >
                   <img
                     src={country.flagLink}
-                    height="80"
-                    width="110"
+                    width="90"
                     alt={country.name}
+                    className={classes.flag}
                   />
-                  <Box className={classes.name} ml={1} fontWeight="bold">
+                  <Box
+                    className={classes.name}
+                    ml={1}
+                    fontWeight="bold"
+                    fontSize={16}
+                  >
                     {country.name}
                   </Box>
                 </Grid>

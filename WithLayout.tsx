@@ -7,6 +7,13 @@ import getTheme from "./src/theme/index"
 import AOS from "aos"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import { mergeClasses } from "@material-ui/styles"
+
+import { makeStyles } from "@material-ui/core/styles"
+
+const useStyles = makeStyles(theme => ({
+  root: {},
+}))
 
 export const useDarkMode = () => {
   const [themeMode, setTheme] = useState("light")
@@ -66,13 +73,17 @@ export default function WithLayout({
   useEffect(() => {
     AOS.refresh()
   }, [mountedComponent])
-
+  const classes = useStyles()
   return (
     <ThemeProvider theme={getTheme(themeMode)}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
       <Paper elevation={0}>
-        <Layout themeMode={themeMode} themeToggler={themeToggler}>
+        <Layout
+          themeMode={themeMode}
+          themeToggler={themeToggler}
+          className={classes.root}
+        >
           <Component themeMode={themeMode} {...rest} />
         </Layout>
       </Paper>

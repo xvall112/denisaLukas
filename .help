@@ -1,5 +1,5 @@
 
-import { makeStyles, useTheme } from "@material-ui/core/styles"
+import { makeStyles, useTheme,createStyles } from "@material-ui/core/styles"
 
 import { useMediaQuery } from "@material-ui/core"
 
@@ -28,3 +28,16 @@ import { useMediaQuery } from "@material-ui/core"
     },
   })
 )
+
+
+const useStyles = makeStyles(theme => ({
+ 
+  root: {
+    paddingTop: 0,
+  },
+
+}));
+
+
+
+data-aos="fade-up"
