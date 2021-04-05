@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
+//components
+import FlagChip from "../../../../components/own/flagChip"
 //materiaUI
 import { Grid, Box } from "@material-ui/core"
-import { string } from "prop-types"
-import { makeStyles, createStyles } from "@material-ui/core/styles"
-import Tooltip from "@material-ui/core/Tooltip"
+import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   link: {
@@ -40,7 +40,7 @@ interface props {
 const Card = ({ item }: props): JSX.Element => {
   const classes = useStyles()
   return (
-    <Link to={item.slug} className={classes.link}>
+    <Link to={`places/${item.slug}`} className={classes.link}>
       <div className={classes.root}>
         <GatsbyImage
           image={item.titleImage.gatsbyImageData}
@@ -57,14 +57,12 @@ const Card = ({ item }: props): JSX.Element => {
           <Box mt={1} className={classes.name}>
             {item.name}
           </Box>
-          <Tooltip title={item.country.name} aria-label="add">
-            <img
-              src={item.country.flagLink}
-              width="30"
-              alt={item.country.name}
-              className={classes.imageFlag}
-            />
-          </Tooltip>
+
+          <FlagChip
+            name={item.country.name}
+            flagLink={item.country.flagLink}
+            className={classes.imageFlag}
+          />
         </Grid>
       </div>
     </Link>

@@ -3,7 +3,7 @@ import IndexView from "../views/IndexView/IndexView"
 import Main from "../layouts/Main/Main"
 import WithLayout from "../../WithLayout"
 
-import SEO from "../components/seo"
+import SEO from "../components/own/seo"
 
 const IndexPage = (): JSX.Element => {
   return (

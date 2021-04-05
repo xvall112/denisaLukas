@@ -2,7 +2,7 @@
 import * as React from "react"
 import { PageProps, Link, graphql } from "gatsby"
 
-import SEO from "../components/seo"
+import SEO from "../components/own/seo"
 
 type DataProps = {
   site: {

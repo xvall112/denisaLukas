@@ -1,13 +1,16 @@
 import React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 
-import { Grid, Box, useMediaQuery } from "@material-ui/core"
-
+//components
+import Title from "../../../../components/own/titleSection"
+//material UI
+import { Grid, Box } from "@material-ui/core"
 import { makeStyles, createStyles, useTheme } from "@material-ui/core/styles"
 
 export const query = graphql`
   {
     allContentfulCountry(
+      limit: 8
       filter: { node_locale: { eq: "cs" } }
       sort: { fields: name }
     ) {
@@ -41,7 +44,7 @@ const Countries = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <h1>Countries</h1>
+      <Title title={"Státy"} link={"countries"} />
       <Grid container direction="row" alignItems="center" spacing={2}>
         {data.allContentfulCountry.nodes.map((country, index) => {
           return (
@@ -53,20 +56,24 @@ const Countries = () => {
                   justify="flex-start"
                   alignItems="center"
                 >
-                  <img
-                    src={country.flagLink}
-                    width="90"
-                    alt={country.name}
-                    className={classes.flag}
-                  />
-                  <Box
-                    className={classes.name}
-                    ml={1}
-                    fontWeight="bold"
-                    fontSize={16}
-                  >
-                    {country.name}
-                  </Box>
+                  <Grid item xs={6} md={4}>
+                    <img
+                      src={country.flagLink}
+                      width="100%"
+                      alt={country.name}
+                      className={classes.flag}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Box
+                      className={classes.name}
+                      ml={1}
+                      fontWeight="bold"
+                      fontSize={{ xs: 14, md: 18 }}
+                    >
+                      {country.name}
+                    </Box>
+                  </Grid>
                 </Grid>
               </Link>
             </Grid>

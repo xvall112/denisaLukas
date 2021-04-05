@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 //components
 import Card from "./card"
+import Title from "../../../../components/own/titleSection"
 
 //materiaUI
 import { Grid, Box } from "@material-ui/core"
@@ -28,9 +29,7 @@ const Places = () => {
   const data = useStaticQuery(query)
   return (
     <div>
-      <Box fontSize={32} mb={2}>
-        Places
-      </Box>
+      <Title title={"Místa"} link={"places"} />
       <Grid container direction="row" spacing={3}>
         {data.allContentfulPlaces.nodes.map((place, index) => {
           return (

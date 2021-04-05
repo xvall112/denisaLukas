@@ -103,7 +103,7 @@ const TopBar = ({ themeMode, themeToggler }: Props): JSX.Element => {
                     Denisa
                   </Typography>
                   <StaticImage
-                    src="../../../../images/logo2x.png"
+                    src="../../../../images/logoWhite.png"
                     width={50}
                     quality={95}
                     alt="logo Denisa Lukas"

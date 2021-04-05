@@ -12,14 +12,14 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    "gatsby-plugin-resolve-src",
+    `gatsby-plugin-resolve-src`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `xm8ql6j0af6m`,
         // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        accessToken: /* process.env.CONTENTFUL_ACCESS_TOKEN */ `dlpru3IeGEdhtxS6sYA12CJpxx5Ff0lQIIjKQskyrxM`,
       },
     },
     {
