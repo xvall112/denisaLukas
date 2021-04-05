@@ -21,10 +21,10 @@ const IndexPage = () => {
   return (
     <div>
       <Hero />
-      <Section>
+      <Section fullWidth>
         <Countries />
       </Section>
-      <Section className={classes.sectionNoPaddingTop}>
+      <Section fullWidth className={classes.sectionNoPaddingTop}>
         <Places />
       </Section>
     </div>
