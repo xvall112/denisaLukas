@@ -6,15 +6,12 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useMediaQuery, Divider } from "@material-ui/core"
 
 //components
-import Topbar from "./components/TopBar/TopBar"
-import Footer from "./components/Footer/Footer"
-import SideBar from "./components/SideBar/SideBar"
+import TopBar from "./components/TopBar"
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100%",
     maxWidth: "100vw",
-    color: "white",
   },
 }))
 
@@ -24,7 +21,7 @@ interface Props {
   themeMode: string
 }
 
-const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
+const Place = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
   const classes = useStyles()
 
   const theme = useTheme()
@@ -42,29 +39,18 @@ const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
     setOpenSidebar(false)
   }
 
+  const open = isMd ? false : openSidebar
+
   return (
     <div
       className={clsx({
         [classes.root]: true,
       })}
     >
-      <Topbar
-        themeMode={themeMode}
-        themeToggler={themeToggler}
-        onSidebarOpen={handleSidebarOpen}
-      />
-      <SideBar
-        onClose={handleSidebarClose}
-        open={openSidebar}
-        variant="temporary"
-      />
-      <main>
-        {/*  <Divider /> */}
-        {children}
-      </main>
-      <Footer />
+      <TopBar themeMode={themeMode} themeToggler={themeToggler} />
+      <main>{children}</main>
     </div>
   )
 }
 
-export default Main
+export default Place

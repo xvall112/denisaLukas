@@ -1,9 +1,9 @@
 import React from "react"
 
 import { Button, Grid, Box, Typography, colors } from "@material-ui/core"
-import CardBase from "../../../../components/organisms/CardBase/CardBase"
+import CardBase from "../../../../../components/organisms/CardBase/CardBase"
 import { makeStyles, createStyles } from "@material-ui/core/styles"
-import IconText from "../../../../components/atoms/IconText/IconText"
+import IconText from "../../../../../components/atoms/IconText/IconText"
 import LocationOnIcon from "@material-ui/icons/LocationOn"
 
 const useStyles = makeStyles(theme =>
@@ -12,8 +12,9 @@ const useStyles = makeStyles(theme =>
       minWidth: "100%",
       backgroundColor: "rgba(255,255,255,0.3)",
       WebkitBackdropFilter: "blur(2px)  brightness(15%) opacity(28%)",
-      borderRadius: "25px",
+      borderRadius: "5px",
       cursor: "pointer",
+      color: "white",
     },
   })
 )
@@ -25,12 +26,11 @@ const HeroCardPlace = ({ name }: Props): JSX.Element => {
   const classes = useStyles()
   return (
     <Box
-      marginBottom={2}
       display="flex"
       justifyContent="space-evenly"
       alignItems="center"
       border="1px solid #ccc"
-      borderRadius="25px"
+      borderRadius="5px"
       width="100%"
     >
       <CardBase variant="outlined" className={classes.root}>

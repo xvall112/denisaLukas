@@ -10,7 +10,7 @@ import { Button, useMediaQuery, Grid, Box, Typography } from "@material-ui/core"
 import { FastRewindTwoTone } from "@material-ui/icons"
 
 //components
-import HeroCardPlace from "./heroCardPlace"
+import HeroCardPlace from "./components/heroCardPlace"
 
 const query = graphql`
   {
@@ -53,7 +53,9 @@ function SamplePrevArrow(props) {
 }
 
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: {
+    color: "white",
+  },
 }))
 
 const Hero = () => {
@@ -134,7 +136,7 @@ const Hero = () => {
                     </Box>
                   </Grid>
 
-                  <Box position="absolute" bottom="20px">
+                  <Box position="absolute" bottom="50px" width="100%">
                     <Grid
                       container
                       direction="row"
@@ -145,7 +147,7 @@ const Hero = () => {
                       {item.place &&
                         item.place.map((place, index) => {
                           return (
-                            <Grid item key={index}>
+                            <Grid item xs={10} md={5} lg={2} key={index}>
                               <HeroCardPlace name={place.name} />
                             </Grid>
                           )

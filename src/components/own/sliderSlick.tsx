@@ -26,9 +26,17 @@ function SamplePrevArrow(props) {
 
 interface props {
   img?: any
+  heightImg?: string
+  widthImg?: string
+  card?: any
 }
 
-const SliderSlick = ({ img }: props): JSX.Element => {
+const SliderSlick = ({
+  img,
+  heightImg,
+  widthImg,
+  card,
+}: props): JSX.Element => {
   const settings = {
     dots: true,
     infinite: true,
@@ -42,18 +50,20 @@ const SliderSlick = ({ img }: props): JSX.Element => {
   return (
     <div>
       <Slider {...settings}>
-        {img.map((item, index) => {
-          return (
-            <div key={index}>
-              <GatsbyImage
-                image={item.gatsbyImageData}
-                alt={item.title}
-                style={{ height: "50vh", width: "100vw" }}
-                formats={["auto", "webp", "avif"]}
-              />
-            </div>
-          )
-        })}
+        {/*  slider pro obrazky */}
+        {img &&
+          img.map((item, index) => {
+            return (
+              <div key={index}>
+                <GatsbyImage
+                  image={item.gatsbyImageData}
+                  alt={item.title}
+                  style={{ height: heightImg, width: widthImg }}
+                  formats={["auto", "webp", "avif"]}
+                />
+              </div>
+            )
+          })}
       </Slider>
     </div>
   )

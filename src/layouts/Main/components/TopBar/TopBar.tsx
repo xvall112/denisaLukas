@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 //components
@@ -7,9 +6,15 @@ import DarkModeToggler from "../../../../components/atoms/DarkModeToggler/DarkMo
 import Search from "./Search"
 
 //material UI
-import { useMediaQuery, AppBar, Toolbar, Grid, Box } from "@material-ui/core"
-import IconButton from "@material-ui/core/IconButton"
-import Typography from "@material-ui/core/Typography"
+import {
+  useMediaQuery,
+  AppBar,
+  Toolbar,
+  Grid,
+  Box,
+  IconButton,
+  Typography,
+} from "@material-ui/core"
 import {
   createStyles,
   useTheme,
@@ -22,6 +27,7 @@ import InstagramIcon from "@material-ui/icons/Instagram"
 interface Props {
   themeMode: string
   themeToggler: Function
+  onSidebarOpen: Function
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -40,16 +46,18 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     titleLukas: {
       flexGrow: 1,
-      display: "none",
       textAlign: "left",
-      [theme.breakpoints.up("sm")]: {
-        display: "block",
-      },
+      fontWeight: "bold",
+      marginLeft: theme.spacing(1),
     },
   })
 )
 
-const TopBar = ({ themeMode, themeToggler }: Props): JSX.Element => {
+const TopBar = ({
+  themeMode,
+  themeToggler,
+  onSidebarOpen,
+}: Props): JSX.Element => {
   const classes = useStyles()
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
@@ -78,38 +86,28 @@ const TopBar = ({ themeMode, themeToggler }: Props): JSX.Element => {
                   xs
                   container
                   direction="row"
-                  justify="flex-start"
-                  alignItems="center"
-                >
-                  <IconButton
-                    edge="start"
-                    color="inherit"
-                    aria-label="open drawer"
-                  >
-                    <InstagramIcon />
-                  </IconButton>
-
-                  {isMd && <Search />}
-                </Grid>
-                <Grid
-                  item
-                  xs
-                  container
-                  direction="row"
                   justify="center"
                   alignItems="center"
                 >
-                  <Typography className={classes.titleDenisa}>
-                    Denisa
-                  </Typography>
-                  <StaticImage
-                    src="../../../../images/logoWhite.png"
-                    width={50}
-                    quality={95}
-                    alt="logo Denisa Lukas"
-                  />
-                  <Typography className={classes.titleLukas}>Lukáš</Typography>
+                  <Grid
+                    item
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                  >
+                    <StaticImage
+                      src="../../../../images/logoWhite.png"
+                      width={40}
+                      quality={95}
+                      alt="logo Denisa Lukas"
+                    />
+                    <Typography className={classes.titleLukas}>
+                      FAITH TRAVEL
+                    </Typography>
+                  </Grid>
                 </Grid>
+                {isMd && <Search />}
                 <Grid
                   item
                   xs
@@ -124,12 +122,22 @@ const TopBar = ({ themeMode, themeToggler }: Props): JSX.Element => {
                       onClick={() => themeToggler()}
                     />
                   </Box>
+                  {isMd && (
+                    <IconButton
+                      edge="start"
+                      color="inherit"
+                      aria-label="open drawer"
+                    >
+                      <InstagramIcon />
+                    </IconButton>
+                  )}
                   <IconButton
                     edge="start"
                     color="inherit"
                     aria-label="open drawer"
+                    onClick={() => onSidebarOpen()}
                   >
-                    <MenuIcon />
+                    <MenuIcon fontSize="large" />
                   </IconButton>
                 </Grid>
               </Grid>

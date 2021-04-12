@@ -13,14 +13,14 @@ const useStyles = makeStyles(theme => ({
       height: "100%",
       opacity: 1,
       textAlign: "right",
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("lg")]: {
         opacity: 0,
       },
     },
     "& span": {
       height: "100%",
       display: "none",
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("lg")]: {
         display: "inline",
         opacity: 0,
         fontSize: 18,
@@ -49,7 +49,7 @@ interface props {
 const TitleSection = ({ title, link }: props): JSX.Element => {
   const classes = useStyles()
   const theme = useTheme()
-  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
+  const isLg = useMediaQuery(theme.breakpoints.up("lg"), {
     defaultMatches: true,
   })
   return (
@@ -59,7 +59,7 @@ const TitleSection = ({ title, link }: props): JSX.Element => {
           <Grid
             container
             direction="row"
-            justify={isMd ? "flex-start" : "space-between"}
+            justify={isLg ? "flex-start" : "space-between"}
             alignItems="center"
           >
             {title}

@@ -48,22 +48,23 @@ const Card = ({ item }: props): JSX.Element => {
           formats={["auto", "webp", "avif"]}
           className={classes.image}
         />
-        <Grid
-          container
-          direction="row"
-          justify="space-between"
-          alignItems="center"
-        >
-          <Box mt={1} className={classes.name}>
-            {item.name}
-          </Box>
+        <Box mt={1}>
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            <Box className={classes.name}>{item.name}</Box>
 
-          <FlagChip
-            name={item.country.name}
-            flagLink={item.country.flagLink}
-            className={classes.imageFlag}
-          />
-        </Grid>
+            <FlagChip
+              width={30}
+              name={item.country.name}
+              flagLink={item.country.flagLink}
+              className={classes.imageFlag}
+            />
+          </Grid>
+        </Box>
       </div>
     </Link>
   )

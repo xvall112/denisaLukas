@@ -1,4 +1,4 @@
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from "@material-ui/core"
 import { light, dark } from "./palette"
 
 const getTheme = mode =>
@@ -6,11 +6,17 @@ const getTheme = mode =>
     createMuiTheme({
       palette: mode === "light" ? light : dark,
       overrides: {
+       
         MuiButton: {
           root: {
-            borderRadius: "25px",
+            borderRadius: '5px',
           },
         },
+        MuiChip:{
+          root:{
+            borderRadius: '5px',
+          }
+        }
       },
       layout: {
         contentWidth: 1236,

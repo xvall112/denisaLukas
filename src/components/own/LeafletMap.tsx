@@ -1,0 +1,113 @@
+import React from "react"
+import clsx from "clsx"
+import PropTypes from "prop-types"
+import { makeStyles } from "@material-ui/core/styles"
+import { TileLayer, Marker, Tooltip, Popup } from "react-leaflet"
+import L from "leaflet"
+import { MapContainer } from "react-leaflet"
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    position: "relative",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    zIndex: 1,
+    /*  [theme.breakpoints.up("md")]: {
+      width: "100%",
+      height: "100%",
+    }, */
+  },
+}))
+
+/**
+ * Component to display the map
+ *
+ * @param {Object} props
+ */
+const LeafletMap = props => {
+  const { zoom, center, pins, className, popup } = props
+
+  const classes = useStyles()
+  if (typeof window === "undefined") {
+    return null
+  }
+  /* const markerIconHouse = new L.icon({
+    iconUrl: require('assets/images/leaflet-assets/house2.png'),
+    iconSize: [25, 40],
+    iconAnchor: [10, 40],
+    tooltipAnchor: [15, -20],
+    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
+  });
+  const markerIconShopping = new L.icon({
+    iconUrl: require('assets/images/leaflet-assets/shopping.png'),
+    iconSize: [25, 40],
+    iconAnchor: [10, 40],
+    tooltipAnchor: [15, -20],
+    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
+  });
+  const markerIconHospital = new L.icon({
+    iconUrl: require('assets/images/leaflet-assets/hospital.png'),
+    iconSize: [25, 40],
+    iconAnchor: [10, 40],
+    tooltipAnchor: [15, -20],
+    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
+  });
+  const markerIconBus = new L.icon({
+    iconUrl: require('assets/images/leaflet-assets/bus.png'),
+    iconSize: [25, 40],
+    iconAnchor: [10, 40],
+    tooltipAnchor: [15, -20],
+    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
+  });
+  const markerIconCar = new L.icon({
+    iconUrl: require('assets/images/leaflet-assets/car.png'),
+    iconSize: [25, 40],
+    iconAnchor: [10, 40],
+    tooltipAnchor: [15, -20],
+    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
+  }); */
+
+  return (
+    <MapContainer
+      zoom={zoom}
+      center={center}
+      className={clsx("map", classes.root, className)}
+    >
+      <TileLayer
+        className="map__tile-layer"
+        detectRetina={true}
+        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {/* {pins &&
+        pins.length &&
+        pins.map((item, i) => (
+          <Marker
+             icon={
+              item.icon === 'hospital'
+                ? markerIconHospital
+                : item.icon === 'house'
+                ? markerIconHouse
+                : item.icon === 'shopping'
+                ? markerIconShopping
+                : item.icon === 'car'
+                ? markerIconCar
+                : markerIconBus
+            }
+            className="map__marker" 
+            position={[item.location.lat, item.location.x]}
+            key={i}
+          >
+            <Tooltip>{item.popup}</Tooltip>
+          </Marker>
+        ))} */}
+      <Marker position={center}>
+        <Popup>{popup}</Popup>
+      </Marker>
+    </MapContainer>
+  )
+}
+
+export default LeafletMap
