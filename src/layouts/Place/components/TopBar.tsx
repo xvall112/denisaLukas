@@ -1,4 +1,5 @@
 import React from "react"
+import { navigate } from "gatsby"
 
 //components
 import DarkModeToggler from "../../../components/atoms/DarkModeToggler/DarkModeToggler"
@@ -50,6 +51,7 @@ const TopBar = ({ themeMode, themeToggler }: Props): JSX.Element => {
                   edge="start"
                   color="inherit"
                   aria-label="open drawer"
+                  onClick={() => navigate(-1)}
                 >
                   <ArrowBackIosIcon />
                 </IconButton>
