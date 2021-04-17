@@ -141,11 +141,11 @@ const TopBar = ({
                   </IconButton>
                 </Grid>
               </Grid>
-              {!isMd && (
+              {/* {!isMd && (
                 <Grid container>
                   <Search />
                 </Grid>
-              )}
+              )} */}
             </Grid>
           </Toolbar>
         </AppBar>

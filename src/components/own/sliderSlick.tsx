@@ -2,6 +2,11 @@ import React from "react"
 import Slider from "react-slick"
 import { GatsbyImage } from "gatsby-plugin-image"
 
+//materialUI
+import { useTheme, makeStyles } from "@material-ui/core/styles"
+import { useMediaQuery } from "@material-ui/core"
+import { ClassOutlined } from "@material-ui/icons"
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props
   return (
@@ -24,6 +29,14 @@ function SamplePrevArrow(props) {
   )
 }
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    "& .slick-dots": {
+      bottom: "15px",
+      color: "white",
+    },
+  },
+}))
 interface props {
   img?: any
   heightImg?: string
@@ -31,18 +44,24 @@ interface props {
 }
 
 const SliderSlick = ({ img, heightImg, widthImg }: props): JSX.Element => {
+  const classes = useStyles()
+  const theme = useTheme()
+  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
+    defaultMatches: true,
+  })
   const settings = {
     dots: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnHover: false,
+    arrows: isMd ? true : false,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
   }
 
   return (
-    <div>
+    <div className={classes.root}>
       <Slider {...settings}>
         {/*  slider pro obrazky */}
         {img &&

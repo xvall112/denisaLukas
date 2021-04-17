@@ -75,6 +75,7 @@ const Hero = () => {
     autoplay: false,
     autoplaySpeed: 8000,
     pauseOnHover: false,
+    arrows: isMd ? true : false,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
   }
@@ -90,7 +91,7 @@ const Hero = () => {
                     // By using the same grid area for both, they are stacked on top of each other
                     gridArea: "1/1",
                     position: "relative",
-                    height: "100vh",
+                    height: "80vh",
                     zIndex: 100,
                     // This centers the other elements inside the hero component
                     placeItems: "center",
@@ -136,14 +137,14 @@ const Hero = () => {
                       alignItems="center"
                       spacing={2}
                     >
-                      {item.place &&
+                      {/* {item.place &&
                         item.place.map((place, index) => {
                           return (
                             <Grid item xs={10} md={5} lg={2} key={index}>
                               <HeroCardPlace name={place.name} />
                             </Grid>
                           )
-                        })}
+                        })} */}
                     </Grid>
                   </Box>
                 </div>
@@ -151,7 +152,7 @@ const Hero = () => {
                   image={item.image.gatsbyImageData}
                   style={{
                     gridArea: "1/1",
-                    height: "100vh",
+                    height: "80vh",
                     zIndex: 1,
                     // You can set a maximum height for the image, if you wish.
                     // maxHeight: 600,
