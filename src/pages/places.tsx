@@ -1,11 +1,15 @@
 import React from "react"
-import { Link } from "gatsby"
-
+import Main from "../layouts/Main/Main"
+import WithLayout from "../../WithLayout"
+import SEO from "../components/own/seo"
+import IndexPlaces from "../views/Places/IndexPlaces"
+import LayoutPlaces from "../layouts/Place/Place"
 const Places = () => {
   return (
-    <div>
-      <Link to="/places/norsko">Norsko</Link>
-    </div>
+    <>
+      <SEO title="Places" />
+      <WithLayout component={IndexPlaces} layout={LayoutPlaces} />
+    </>
   )
 }
 

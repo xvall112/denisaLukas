@@ -18,7 +18,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", left: 20, zIndex: 10000 }}
+      style={{ ...style, display: "block", left: 20, zIndex: 10 }}
       onClick={onClick}
     />
   )
@@ -28,15 +28,9 @@ interface props {
   img?: any
   heightImg?: string
   widthImg?: string
-  card?: any
 }
 
-const SliderSlick = ({
-  img,
-  heightImg,
-  widthImg,
-  card,
-}: props): JSX.Element => {
+const SliderSlick = ({ img, heightImg, widthImg }: props): JSX.Element => {
   const settings = {
     dots: true,
     infinite: true,

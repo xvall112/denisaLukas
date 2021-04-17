@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 //components
 import FlagChip from "../../../components/own/flagChip"
@@ -13,7 +13,10 @@ import {
   Box,
   Button,
   ButtonGroup,
+  IconButton,
+  Snackbar,
 } from "@material-ui/core"
+import CloseIcon from "@material-ui/icons/Close"
 
 const useStyles = makeStyles(theme => ({
   flag: {
@@ -45,13 +48,42 @@ const PlaceHeader = ({
   changeMap,
 }: Props): JSX.Element => {
   const classes = useStyles()
-
+  const [snackbar, setSnackbar] = useState(false)
   const copyLocationToClipboard = location => {
     navigator.clipboard.writeText(`${location.lat} ${location.lon}`)
+    setSnackbar(true)
+  }
+
+  const handleCloseToast = () => {
+    setSnackbar(false)
   }
 
   return (
     <div>
+      {/* Snacbar */}
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        open={snackbar}
+        autoHideDuration={5000}
+        onClose={handleCloseToast}
+        message="Zkopírováno do schránky"
+        action={
+          <React.Fragment>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={() => handleCloseToast()}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
+      {/*  komponenta */}
       <Box my={2}>
         <Grid
           container
@@ -60,7 +92,12 @@ const PlaceHeader = ({
           justify="space-between"
         >
           <Grid item>
-            <Grid container>
+            <Grid
+              container
+              direction="row"
+              justify="flex-start"
+              alignItems="center"
+            >
               <Chip label={kindPlace} />
               <FlagChip
                 name={country.name}

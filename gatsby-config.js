@@ -12,7 +12,23 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-react-leaflet`,
+    {
+      resolve: "gatsby-plugin-react-leaflet",
+      options: {
+        linkStyles: true, // (default: true) Enable/disable loading stylesheets via CDN
+      },
+    },
+    {
+      resolve: "gatsby-plugin-material-ui",
+      // If you want to use styled components you should change the injection order.
+      options: {
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
+        disableAutoprefixing: true,
+        disableMinification: true,
+      },
+    },
     `gatsby-plugin-resolve-src`,
     `gatsby-plugin-image`,
     {

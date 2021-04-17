@@ -18,7 +18,12 @@ const FlagChip = ({ className, name, flagLink, width }: Props): JSX.Element => {
   return (
     <>
       <Tooltip title={name} aria-label="add">
-        <img src={flagLink} width={width} alt={name} className={className} />
+        <img
+          src={flagLink}
+          style={{ width: width, height: "auto" }}
+          alt={name}
+          className={className}
+        />
       </Tooltip>
     </>
   )

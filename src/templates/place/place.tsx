@@ -117,11 +117,7 @@ const Place = props => {
             <div className={classes.slider}>
               {/* komponenta mapa a slider prepinani button v pleaceHeader */}
               {map ? (
-                <LeafletMap
-                  zoom={13}
-                  center={[location.lat, location.lon]}
-                  popup={name}
-                />
+                <LeafletMap zoom={13} center={[location.lat, location.lon]} />
               ) : (
                 <Slider
                   img={images}

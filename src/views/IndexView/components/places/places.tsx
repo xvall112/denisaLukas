@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 
 const query = graphql`
   {
-    allContentfulPlaces(filter: { node_locale: { eq: "cs" } }) {
+    allContentfulPlaces(filter: { node_locale: { eq: "cs" } }, limit: 4) {
       nodes {
         slug
         name
