@@ -72,7 +72,7 @@ const Hero = () => {
     speed: isMd ? 3000 : 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 8000,
     pauseOnHover: false,
     prevArrow: <SamplePrevArrow />,
@@ -85,22 +85,13 @@ const Hero = () => {
           return (
             <div key={index}>
               <div style={{ display: "grid" }}>
-                <GatsbyImage
-                  image={item.image.gatsbyImageData}
-                  style={{
-                    gridArea: "1/1",
-                    height: "100vh",
-                    // You can set a maximum height for the image, if you wish.
-                    // maxHeight: 600,
-                  }}
-                  alt={item.image.description}
-                  formats={["auto", "webp", "avif"]}
-                />
                 <div
                   style={{
                     // By using the same grid area for both, they are stacked on top of each other
                     gridArea: "1/1",
                     position: "relative",
+                    height: "100vh",
+                    zIndex: 100,
                     // This centers the other elements inside the hero component
                     placeItems: "center",
                     display: "grid",
@@ -112,6 +103,7 @@ const Hero = () => {
                     direction="column"
                     justify="center"
                     alignItems="center"
+                    data-aos="fade-up"
                   >
                     <Typography component="span">
                       <Box letterSpacing={16} textAlign="center">
@@ -155,6 +147,18 @@ const Hero = () => {
                     </Grid>
                   </Box>
                 </div>
+                <GatsbyImage
+                  image={item.image.gatsbyImageData}
+                  style={{
+                    gridArea: "1/1",
+                    height: "100vh",
+                    zIndex: 1,
+                    // You can set a maximum height for the image, if you wish.
+                    // maxHeight: 600,
+                  }}
+                  alt={item.image.description}
+                  formats={["auto", "webp", "avif"]}
+                />
               </div>
             </div>
           )
