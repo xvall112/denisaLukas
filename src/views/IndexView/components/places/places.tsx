@@ -43,6 +43,7 @@ const Places = () => {
   const data = useStaticQuery(query)
 
   const settings = {
+    speed: 100,
     arrows: false,
     dots: false,
     infinite: false,

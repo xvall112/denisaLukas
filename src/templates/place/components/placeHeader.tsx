@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 //components
 import FlagChip from "../../../components/own/flagChip"
@@ -58,6 +59,10 @@ const PlaceHeader = ({
     setSnackbar(false)
   }
 
+  const changeMapPhoto = () => {
+    scrollTo("#topBar")
+    changeMap()
+  }
   return (
     <div>
       {/* Snacbar */}
@@ -135,7 +140,9 @@ const PlaceHeader = ({
           color="primary"
           aria-label="outlined primary button group"
         >
-          <Button onClick={() => changeMap()}>{map ? "FOTKY" : "MAPA"}</Button>
+          <Button onClick={() => changeMapPhoto()}>
+            {map ? "FOTKY" : "MAPA"}
+          </Button>
           <Button onClick={() => copyLocationToClipboard(location)}>
             KOPIROVAT GPS
           </Button>

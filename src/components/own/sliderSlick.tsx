@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 //materialUI
 import { useTheme, makeStyles } from "@material-ui/core/styles"
 import { useMediaQuery } from "@material-ui/core"
-import { ClassOutlined } from "@material-ui/icons"
+import { ClassOutlined, Speed } from "@material-ui/icons"
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props
@@ -41,9 +41,15 @@ interface props {
   img?: any
   heightImg?: string
   widthImg?: string
+  speed?: number
 }
 
-const SliderSlick = ({ img, heightImg, widthImg }: props): JSX.Element => {
+const SliderSlick = ({
+  img,
+  heightImg,
+  widthImg,
+  speed,
+}: props): JSX.Element => {
   const classes = useStyles()
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
@@ -51,6 +57,7 @@ const SliderSlick = ({ img, heightImg, widthImg }: props): JSX.Element => {
   })
   const settings = {
     dots: true,
+    speed: 300 || speed,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,

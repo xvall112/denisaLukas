@@ -72,7 +72,7 @@ const Hero = () => {
     speed: isMd ? 3000 : 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 8000,
     pauseOnHover: false,
     arrows: isMd ? true : false,
@@ -85,59 +85,64 @@ const Hero = () => {
         {data.allContentfulLandingPage.nodes.map((item, index) => {
           return (
             <div key={index}>
-              <div style={{ display: "grid" }}>
-                <div
-                  style={{
-                    // By using the same grid area for both, they are stacked on top of each other
-                    gridArea: "1/1",
-                    position: "relative",
-                    height: "80vh",
-                    zIndex: 100,
-                    // This centers the other elements inside the hero component
-                    placeItems: "center",
-                    display: "grid",
-                    backgroundColor: "rgba(0, 0, 0, 0.4)",
-                  }}
-                >
-                  <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                    data-aos="fade-up"
+              <div>
+                <div style={{ display: "grid" }}>
+                  <div
+                    style={{
+                      // By using the same grid area for both, they are stacked on top of each other
+                      gridArea: "1/1",
+                      position: "relative",
+                      height: "80vh",
+                      zIndex: 100,
+                      // This centers the other elements inside the hero component
+                      placeItems: "center",
+                      display: "grid",
+                      backgroundColor: "rgba(0, 0, 0, 0.4)",
+                    }}
                   >
-                    <Typography component="span">
-                      <Box letterSpacing={16} textAlign="center">
-                        EXPLORE
-                      </Box>
-
-                      <Box
-                        fontSize={isMd ? 130 : 70}
-                        fontWeight="fontWeightBold"
-                      >
-                        {item.title}
-                      </Box>
-
-                      <Box fontSize={20} textAlign="center">
-                        {item.description}
-                      </Box>
-                    </Typography>
-                    <Box mt={2} textAlign="center">
-                      <Button variant="contained" color="primary" size="large">
-                        cestovat
-                      </Button>
-                    </Box>
-                  </Grid>
-
-                  <Box position="absolute" bottom="50px" width="100%">
                     <Grid
                       container
-                      direction="row"
+                      direction="column"
                       justify="center"
                       alignItems="center"
-                      spacing={2}
+                      data-aos="fade-up"
                     >
-                      {/* {item.place &&
+                      <Typography component="span">
+                        <Box letterSpacing={16} textAlign="center">
+                          EXPLORE
+                        </Box>
+
+                        <Box
+                          fontSize={isMd ? 130 : 70}
+                          fontWeight="fontWeightBold"
+                        >
+                          {item.title}
+                        </Box>
+
+                        <Box fontSize={20} textAlign="center">
+                          {item.description}
+                        </Box>
+                      </Typography>
+                      <Box mt={2} textAlign="center">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          size="large"
+                        >
+                          cestovat
+                        </Button>
+                      </Box>
+                    </Grid>
+
+                    <Box position="absolute" bottom="50px" width="100%">
+                      <Grid
+                        container
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                        spacing={2}
+                      >
+                        {/* {item.place &&
                         item.place.map((place, index) => {
                           return (
                             <Grid item xs={10} md={5} lg={2} key={index}>
@@ -145,21 +150,22 @@ const Hero = () => {
                             </Grid>
                           )
                         })} */}
-                    </Grid>
-                  </Box>
+                      </Grid>
+                    </Box>
+                  </div>
+                  <GatsbyImage
+                    image={item.image.gatsbyImageData}
+                    style={{
+                      gridArea: "1/1",
+                      height: "80vh",
+                      zIndex: 1,
+                      // You can set a maximum height for the image, if you wish.
+                      // maxHeight: 600,
+                    }}
+                    alt={item.image.description}
+                    formats={["auto", "webp", "avif"]}
+                  />
                 </div>
-                <GatsbyImage
-                  image={item.image.gatsbyImageData}
-                  style={{
-                    gridArea: "1/1",
-                    height: "80vh",
-                    zIndex: 1,
-                    // You can set a maximum height for the image, if you wish.
-                    // maxHeight: 600,
-                  }}
-                  alt={item.image.description}
-                  formats={["auto", "webp", "avif"]}
-                />
               </div>
             </div>
           )

@@ -6,7 +6,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useMediaQuery, Divider } from "@material-ui/core"
 
 //components
-import TopBar from "./components/TopBar"
+import TopBar2 from "./components/TopBar2"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -47,7 +47,7 @@ const Place = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
         [classes.root]: true,
       })}
     >
-      <TopBar themeMode={themeMode} themeToggler={themeToggler} />
+      <TopBar2 themeMode={themeMode} themeToggler={themeToggler} />
       <main>{children}</main>
     </div>
   )

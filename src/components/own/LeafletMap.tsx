@@ -35,7 +35,8 @@ const query = graphql`
 `
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  root: {},
+  popup: {
     "& .leaflet-popup-content-wrapper": {
       padding: "0px",
       "& .leaflet-popup-content": {
@@ -135,7 +136,7 @@ const LeafletMap = ({
               position={[item.location.lat, item.location.lon]}
               key={i}
             >
-              <Popup>
+              <Popup className={classes.popup}>
                 <PopupCard item={item} />
               </Popup>
             </Marker>

@@ -22,7 +22,7 @@ interface Props {
 }
 const TopBar = ({ themeMode, themeToggler }: Props): JSX.Element => {
   return (
-    <div>
+    <div id="topBar">
       {" "}
       <AppBar position="fixed" color="transparent">
         <Toolbar>
