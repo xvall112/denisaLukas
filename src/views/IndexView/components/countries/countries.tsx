@@ -49,7 +49,7 @@ const Countries = () => {
         {data.allContentfulCountry.nodes.map((country, index) => {
           return (
             <Grid item xs={6} md={3} key={index}>
-              <Link to={country.slug} className={classes.link}>
+              <Link to={`/country/${country.slug}`} className={classes.link}>
                 <Grid
                   container
                   direction="row"

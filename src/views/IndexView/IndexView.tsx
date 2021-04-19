@@ -1,8 +1,6 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 
-import { makeStyles, Divider } from "@material-ui/core"
+import { makeStyles, Box } from "@material-ui/core"
 
 const useStyles = makeStyles(() => ({
   sectionNoPaddingTop: {
@@ -21,7 +19,8 @@ const IndexPage = () => {
   return (
     <div>
       <Hero />
-      <Section fullWidth>
+
+      <Section fullWidth className={classes.sectionNoPaddingTop}>
         <Countries />
       </Section>
       <Section fullWidth className={classes.sectionNoPaddingTop}>

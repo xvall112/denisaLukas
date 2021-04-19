@@ -8,6 +8,15 @@ import { Grid, Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
+  img: {
+    borderRadius: "5px",
+    WebkitBorderRadius: "5px",
+    overflow: "hidden",
+    "& img": {
+      borderRadius: "5px",
+      WebkitBorderRadius: "5px",
+    },
+  },
   link: {
     textDecoration: "none",
     "& :hover": {
@@ -19,7 +28,11 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     fontSize: "18px",
   },
-  root: {},
+  root: {
+    borderRadius: theme.spacing(0.5),
+    WebkitBorderRadius: theme.spacing(0.5),
+    overflow: "hidden",
+  },
   imageFlag: {
     borderRadius: theme.spacing(0.5),
   },
@@ -40,14 +53,15 @@ interface props {
 const Card = ({ item }: props): JSX.Element => {
   const classes = useStyles()
   return (
-    <Link to={`places/${item.slug}`} className={classes.link}>
-      <div className={classes.root}>
-        <GatsbyImage
-          image={item.titleImage.gatsbyImageData}
-          alt={item.titleImage.description}
-          formats={["auto", "webp", "avif"]}
-          className={classes.image}
-        />
+    <div className={classes.root}>
+      <Link to={`places/${item.slug}`} className={classes.link}>
+        <Box className={classes.img}>
+          <GatsbyImage
+            image={item.titleImage.gatsbyImageData}
+            alt={item.titleImage.description}
+            formats={["auto", "webp", "avif"]}
+          />
+        </Box>
         <Box mt={1}>
           <Grid
             container
@@ -65,8 +79,8 @@ const Card = ({ item }: props): JSX.Element => {
             />
           </Grid>
         </Box>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
 

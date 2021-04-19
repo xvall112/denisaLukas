@@ -13,6 +13,7 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   backButton: {
+    left: "20px",
     top: "10px",
     position: "fixed",
     zIndex: 10000,
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     zIndex: 10000,
     backgroundColor: "white",
     color: "black",
-    right: "10px",
+    right: "20px",
   },
 }))
 
@@ -38,17 +39,16 @@ const TopBar2 = ({ themeMode, themeToggler }: Props): JSX.Element => {
 
   return (
     <div id="topBar">
-      <Container maxWidth="xl">
-        <Button
-          variant="contained"
-          color="primary"
-          aria-label="open drawer"
-          onClick={() => navigate(-1)}
-          className={classes.backButton}
-        >
-          <NavigateBeforeIcon />
-        </Button>
-        {/* <Box position="absolute" right="10px" top="10px" zIndex={1000}>
+      <Button
+        variant="contained"
+        color="primary"
+        aria-label="open drawer"
+        onClick={() => navigate(-1)}
+        className={classes.backButton}
+      >
+        <NavigateBeforeIcon />
+      </Button>
+      {/* <Box position="absolute" right="10px" top="10px" zIndex={1000}>
           <Grid
             container
             direction="row"
@@ -60,17 +60,16 @@ const TopBar2 = ({ themeMode, themeToggler }: Props): JSX.Element => {
                 onClick={() => themeToggler()}
               />
             </Box>  */}
-        <Button
-          variant="contained"
-          color="primary"
-          aria-label="open drawer"
-          className={classes.menuButton}
-        >
-          <MenuIcon />
-        </Button>
-        {/* </Grid> 
+      <Button
+        variant="contained"
+        color="primary"
+        aria-label="open drawer"
+        className={classes.menuButton}
+      >
+        <MenuIcon />
+      </Button>
+      {/* </Grid> 
         </Box> */}
-      </Container>
     </div>
   )
 }

@@ -5,6 +5,20 @@ import { Typography, Box } from "@material-ui/core"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
+import { makeStyles } from "@material-ui/core/styles"
+
+const useStyles = makeStyles(theme => ({
+  img: {
+    borderRadius: "5px",
+    WebkitBorderRadius: "5px",
+    overflow: "hidden",
+    "& img": {
+      borderRadius: "5px",
+      WebkitBorderRadius: "5px",
+    },
+  },
+}))
+
 const options = {
   renderMark: {
     [MARKS.BOLD]: text => <b>{text}</b>,
@@ -38,18 +52,21 @@ const options = {
     ),
     [BLOCKS.EMBEDDED_ASSET]: node => {
       const asset = useContentfulImage(node.data.target.sys.id)
+      const classes = useStyles()
+
       if (asset) {
         return (
           <>
-            <Box my={2}>
+            <Box my={2} className={classes.img}>
               <GatsbyImage
                 image={asset.node.gatsbyImageData}
                 alt={asset.node.title}
                 formats={["auto", "webp", "avif"]}
                 style={{
-                  maxWidth: "90%",
-                  margin: "0 auto",
-                  borderRadius: "5px",
+                  width: "100%",
+                  height: "100%",
+                  /*      borderRadius: "5px",
+                  WebkitBorderRadius: "5px", */
                 }}
               />
               <Box textAlign="center">

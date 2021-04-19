@@ -33,7 +33,17 @@ const useStyles = makeStyles(theme => ({
   root: {
     "& .slick-dots": {
       bottom: "15px",
-      color: "white",
+      "& li": { margin: "0px" },
+      "& button:before": { color: "white !important", fontSize: "10px" },
+    },
+  },
+  img: {
+    borderRadius: "5px 5px 0px 0px",
+    WebkitBorderRadius: "5px 5px 0px 0px",
+    overflow: "hidden",
+    "& img": {
+      borderRadius: "5px 5px 0px 0px",
+      WebkitBorderRadius: "5px 5px 0px 0px",
     },
   },
 }))
@@ -74,11 +84,14 @@ const SliderSlick = ({
         {img &&
           img.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={index} className={classes.img}>
                 <GatsbyImage
                   image={item.gatsbyImageData}
                   alt={item.title}
-                  style={{ height: heightImg, width: widthImg }}
+                  style={{
+                    height: heightImg,
+                    width: widthImg,
+                  }}
                   formats={["auto", "webp", "avif"]}
                 />
               </div>

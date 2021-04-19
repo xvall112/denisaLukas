@@ -31,4 +31,27 @@ module.exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  //create page for Countries
+  const countryTemplate = path.resolve(
+    "./src/templates/countries/countries.tsx"
+  )
+  const resCountry = await graphql(`
+    query MyQuery {
+      allContentfulCountry {
+        nodes {
+          slug
+        }
+      }
+    }
+  `)
+  resCountry.data.allContentfulCountry.nodes.forEach(node => {
+    createPage({
+      component: countryTemplate,
+      path: `/country/${node.slug}`,
+      context: {
+        slug: node.slug,
+      },
+    })
+  })
 }

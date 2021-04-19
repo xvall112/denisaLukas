@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import WithLayout from "../../../WithLayout"
 
 //components
+import WithLayout from "../../../WithLayout"
 import Slider from "../../components/own/sliderSlick"
 import ContentfulBody from "../components/contentfulBody"
 import Places from "../../layouts/Place/Place"

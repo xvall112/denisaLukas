@@ -56,6 +56,15 @@ const useStyles = makeStyles(theme => ({
   root: {
     color: "white",
   },
+  img: {
+    borderRadius: "5px",
+    WebkitBorderRadius: "5px",
+    overflow: "hidden",
+    "& img": {
+      borderRadius: "5px",
+      WebkitBorderRadius: "5px",
+    },
+  },
 }))
 
 const Hero = () => {
@@ -86,7 +95,7 @@ const Hero = () => {
           return (
             <div key={index}>
               <div>
-                <div style={{ display: "grid" }}>
+                <div style={{ display: "grid" }} /* className={classes.img} */>
                   <div
                     style={{
                       // By using the same grid area for both, they are stacked on top of each other
@@ -162,7 +171,7 @@ const Hero = () => {
                       // You can set a maximum height for the image, if you wish.
                       // maxHeight: 600,
                     }}
-                    alt={item.image.description}
+                    alt={item.image.title}
                     formats={["auto", "webp", "avif"]}
                   />
                 </div>
