@@ -66,11 +66,19 @@ const TopBar = ({
   return (
     <header>
       <div className={classes.root}>
-        <AppBar position="fixed" color="transparent">
-          <Toolbar>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Grid
+            item
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
             <Grid
+              item
+              xs
               container
-              direction="column"
+              direction="row"
               justify="center"
               alignItems="center"
             >
@@ -78,77 +86,60 @@ const TopBar = ({
                 item
                 container
                 direction="row"
-                justify="space-between"
+                justify="center"
                 alignItems="center"
               >
-                <Grid
-                  item
-                  xs
-                  container
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                >
-                  <Grid
-                    item
-                    container
-                    direction="row"
-                    justify="center"
-                    alignItems="center"
-                  >
-                    <StaticImage
-                      src="../../../../images/logoWhite.png"
-                      width={40}
-                      quality={95}
-                      alt="logo Denisa Lukas"
-                    />
-                    <Typography className={classes.titleLukas}>
-                      FAITH TRAVEL
-                    </Typography>
-                  </Grid>
-                </Grid>
-                {isMd && <Search />}
-                <Grid
-                  item
-                  xs
-                  container
-                  direction="row"
-                  justify="flex-end"
-                  alignItems="center"
-                >
-                  <Box mr={2}>
-                    <DarkModeToggler
-                      themeMode={themeMode}
-                      onClick={() => themeToggler()}
-                    />
-                  </Box>
-                  {isMd && (
-                    <IconButton
-                      edge="start"
-                      color="inherit"
-                      aria-label="open drawer"
-                    >
-                      <InstagramIcon />
-                    </IconButton>
-                  )}
-                  <IconButton
-                    edge="start"
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={() => onSidebarOpen()}
-                  >
-                    <MenuIcon fontSize="large" />
-                  </IconButton>
-                </Grid>
+                <StaticImage
+                  src="../../../../images/logoWhite.png"
+                  width={40}
+                  quality={95}
+                  alt="logo Denisa Lukas"
+                />
+                <Typography className={classes.titleLukas}>
+                  FAITH TRAVEL
+                </Typography>
               </Grid>
-              {/* {!isMd && (
+            </Grid>
+            {isMd && <Search />}
+            <Grid
+              item
+              xs
+              container
+              direction="row"
+              justify="flex-end"
+              alignItems="center"
+            >
+              <Box mr={2}>
+                <DarkModeToggler
+                  themeMode={themeMode}
+                  onClick={() => themeToggler()}
+                />
+              </Box>
+              {isMd && (
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                >
+                  <InstagramIcon />
+                </IconButton>
+              )}
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => onSidebarOpen()}
+              >
+                <MenuIcon fontSize="large" />
+              </IconButton>
+            </Grid>
+          </Grid>
+          {/* {!isMd && (
                 <Grid container>
                   <Search />
                 </Grid>
               )} */}
-            </Grid>
-          </Toolbar>
-        </AppBar>
+        </Grid>
       </div>
     </header>
   )

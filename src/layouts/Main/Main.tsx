@@ -9,12 +9,17 @@ import { useMediaQuery, Divider } from "@material-ui/core"
 import Topbar from "./components/TopBar/TopBar"
 import Footer from "./components/Footer/Footer"
 import SideBar from "./components/SideBar/SideBar"
+import Section from "../../components/organisms/Section/Section"
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100%",
     maxWidth: "100vw",
-    color: "white",
+    color: theme.palette.text.primary,
+  },
+  sectionNoPadding: {
+    paddingTop: 0,
+    paddingBottom: 0,
   },
 }))
 
@@ -48,11 +53,13 @@ const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
         [classes.root]: true,
       })}
     >
-      <Topbar
-        themeMode={themeMode}
-        themeToggler={themeToggler}
-        onSidebarOpen={handleSidebarOpen}
-      />
+      <Section fullWidth className={classes.sectionNoPadding}>
+        <Topbar
+          themeMode={themeMode}
+          themeToggler={themeToggler}
+          onSidebarOpen={handleSidebarOpen}
+        />
+      </Section>
       <SideBar
         onClose={handleSidebarClose}
         open={openSidebar}

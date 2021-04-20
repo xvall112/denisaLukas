@@ -12,6 +12,7 @@ import { CardBase } from "components/organisms"
 const useStyles = makeStyles(theme =>
   createStyles({
     root: {},
+    card: { padding: "0px !important" },
     link: {
       textDecoration: "none",
       "& :hover": {
@@ -22,6 +23,8 @@ const useStyles = makeStyles(theme =>
     name: {
       color: theme.palette.text.primary,
       fontSize: "20px",
+      position: "relative",
+      bottom: "0px",
     },
     flag: { borderRadius: "5px" },
   })
@@ -36,38 +39,24 @@ const Card = ({ data }) => {
         label={`více než ${data.allContentfulCountry.nodes.length}`}
         title={<>zemí které jsme navštívili</>}
       />
-      <Grid container direction="row" spacing={2}>
+      <Grid container direction="row" spacing={5}>
         {data.allContentfulCountry.nodes.map((item, index) => {
           return (
             <>
               <Grid item xs={12} md={4} lg={3} key={index}>
                 <Link to={`/country/${item.slug}`} className={classes.link}>
-                  <CardBase variant="outlined">
-                    <Grid
-                      container
-                      direction="column"
-                      justify="flex-start"
-                      alignItems="center"
-                    >
-                      <Grid item xs={6} md={4}>
-                        <img
-                          src={item.flagLink}
-                          width="100%"
-                          alt={item.name}
-                          className={classes.flag}
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Box
-                          className={classes.name}
-                          mt={1}
-                          fontWeight="bold"
-                          fontSize={{ xs: 14, md: 18 }}
-                        >
-                          {item.name}
-                        </Box>
-                      </Grid>
-                    </Grid>
+                  <CardBase variant="outlined" liftUp className={classes.card}>
+                    <>
+                      <img
+                        src={item.flagLink}
+                        width="100%"
+                        alt={item.name}
+                        className={classes.flag}
+                      />
+                      <Box mt={2} className={classes.name}>
+                        {item.name}
+                      </Box>
+                    </>
                   </CardBase>
                 </Link>
               </Grid>

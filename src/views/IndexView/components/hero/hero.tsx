@@ -78,7 +78,7 @@ const Hero = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: isMd ? 3000 : 1000,
+    speed: isMd ? 1000 : 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -87,6 +87,8 @@ const Hero = () => {
     arrows: isMd ? true : false,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
+    fade: true,
+    cssEase: "linear",
   }
   return (
     <div className={classes.root}>
@@ -94,7 +96,7 @@ const Hero = () => {
         {data.allContentfulLandingPage.nodes.map((item, index) => {
           return (
             <div key={index}>
-              <div>
+              <div className={classes.img}>
                 <div style={{ display: "grid" }} /* className={classes.img} */>
                   <div
                     style={{
@@ -124,6 +126,7 @@ const Hero = () => {
                         <Box
                           fontSize={isMd ? 130 : 70}
                           fontWeight="fontWeightBold"
+                          textAlign="center"
                         >
                           {item.title}
                         </Box>
