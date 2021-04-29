@@ -36,10 +36,6 @@ const useStyles = makeStyles(theme => ({
   imageFlag: {
     borderRadius: theme.spacing(0.5),
   },
-  image: {
-    borderRadius: theme.spacing(0.5),
-    height: "300px",
-  },
 }))
 
 interface props {
@@ -60,6 +56,7 @@ const Card = ({ item }: props): JSX.Element => {
             image={item.titleImage.gatsbyImageData}
             alt={item.titleImage.description}
             formats={["auto", "webp", "avif"]}
+            style={{ height: "350px" }}
           />
         </Box>
         <Box mt={1}>

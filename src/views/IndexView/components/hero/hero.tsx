@@ -103,7 +103,7 @@ const Hero = () => {
                       // By using the same grid area for both, they are stacked on top of each other
                       gridArea: "1/1",
                       position: "relative",
-                      height: "80vh",
+                      height: "70vh",
                       zIndex: 100,
                       // This centers the other elements inside the hero component
                       placeItems: "center",
@@ -169,7 +169,7 @@ const Hero = () => {
                     image={item.image.gatsbyImageData}
                     style={{
                       gridArea: "1/1",
-                      height: "80vh",
+                      height: "70vh",
                       zIndex: 1,
                       // You can set a maximum height for the image, if you wish.
                       // maxHeight: 600,

@@ -1,7 +1,6 @@
 import React from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
 
 //components
 import FlagChip from "../../../components/own/flagChip"
@@ -9,10 +8,13 @@ import SliderSlick from "../../../components/own/sliderSlick"
 
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
-import { Typography, Grid } from "@material-ui/core"
+import { Typography, Grid, Chip } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   root: {},
+  flag: {
+    borderRadius: theme.spacing(0.5),
+  },
   link: {
     textDecoration: "none",
     "& :hover": {
@@ -43,6 +45,7 @@ const useStyles = makeStyles(theme => ({
   },
   folioTitle: {
     fontWeight: "bold",
+    paddingTop: theme.spacing(1),
   },
   folioSubtitle: {
     textTransform: "capitalize",
@@ -85,7 +88,7 @@ const Main = ({
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid container direction="row" spacing={2}>
         {data.map((item: any, index: number) => (
-          <Grid item xs={12} md={4} lg={4} xl={3} key={index}>
+          <Grid item xs={12} md={6} lg={4} xl={3} key={index}>
             <Link to={`/places/${item.slug}`} className={classes.link}>
               <div className={classes.folioItem} data-aos="fade-up">
                 {/*  <GatsbyImage
@@ -105,25 +108,33 @@ const Main = ({
                   )}
                 >
                   <div>
-                    <FlagChip
-                      name={item.country.name}
-                      flagLink={item.country.flagLink}
-                      width={20}
-                    />
+                    <Grid
+                      container
+                      direction="row"
+                      justify="flex-start"
+                      alignItems="center"
+                      spacing={1}
+                    >
+                      <Grid item>
+                        <Grid container alignItems="center">
+                          <FlagChip
+                            name={item.country.name}
+                            flagLink={item.country.flagLink}
+                            className={classes.flag}
+                            width={40}
+                          />
+                        </Grid>
+                      </Grid>
+                      <Grid item>
+                        <Chip label={item.kindPlace} />
+                      </Grid>
+                    </Grid>
                     <Typography
-                      variant="h5"
+                      variant="h4"
                       className={classes.folioTitle}
                       color="textPrimary"
                     >
                       {item.name}
-                    </Typography>
-
-                    <Typography
-                      variant="body1"
-                      className={classes.folioSubtitle}
-                      color="textSecondary"
-                    >
-                      {item.kindPlace}
                     </Typography>
                   </div>
                 </div>

@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 
 const IndexPlaces = () => {
   const theme = useTheme()
-  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
+  const isLg = useMediaQuery(theme.breakpoints.up("lg"), {
     defaultMatches: true,
   })
 
@@ -59,7 +59,7 @@ const IndexPlaces = () => {
 
   return (
     <>
-      <Grid container direction={isMd ? "row" : "column-reverse"}>
+      <Grid container direction={isLg ? "row" : "column-reverse"}>
         <Grid item xs={12} lg={6}>
           <Container maxWidth="xl">
             <Box

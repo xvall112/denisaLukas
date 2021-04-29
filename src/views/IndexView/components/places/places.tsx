@@ -1,21 +1,30 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Slider from "react-slick"
+import { Link } from "gatsby"
 //components
 import Card from "./card"
 import Title from "../../../../components/own/titleSection"
-import SliderSlick from "../../../../components/own/sliderSlick"
 
 //materiaUI
-import { Grid, Box } from "@material-ui/core"
+import { Grid, Box, Typography } from "@material-ui/core"
 import { mergeClasses } from "@material-ui/styles"
 import { makeStyles } from "@material-ui/core/styles"
+import { styles } from "@material-ui/pickers/views/Calendar/Calendar"
 
 const useStyles = makeStyles(theme => ({
   root: {
     "& .slick-track": {
       margin: 0,
     },
+  },
+  nextPlace: {
+    border: "1px solid",
+    borderColor: theme.palette.text.primary,
+    height: "350px",
+    borderRadius: theme.spacing(1),
+    textDecoration: "none",
+    width: "95%",
   },
 }))
 
@@ -43,7 +52,7 @@ const Places = () => {
   const data = useStaticQuery(query)
 
   const settings = {
-    speed: 100,
+    speed: 200,
     arrows: false,
     dots: false,
     infinite: false,
@@ -71,12 +80,24 @@ const Places = () => {
           {data.allContentfulPlaces.nodes.map((place, index) => {
             return (
               <div key={index}>
-                <Box mr={2}>
+                <Box pr={2}>
                   <Card item={place} />
                 </Box>
               </div>
             )
           })}
+          <Link to="/places">
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+              className={classes.nextPlace}
+            >
+              <Typography color="textPrimary" variant="h4">
+                Prozkoumat vše
+              </Typography>
+            </Grid>
+          </Link>
         </Slider>
       </Grid>
     </div>
