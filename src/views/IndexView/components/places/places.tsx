@@ -5,12 +5,11 @@ import { Link } from "gatsby"
 //components
 import Card from "./card"
 import Title from "../../../../components/own/titleSection"
+import { LearnMoreLink } from "components/atoms"
 
 //materiaUI
-import { Grid, Box, Typography } from "@material-ui/core"
-import { mergeClasses } from "@material-ui/styles"
-import { makeStyles } from "@material-ui/core/styles"
-import { styles } from "@material-ui/pickers/views/Calendar/Calendar"
+import { Grid, Box } from "@material-ui/core"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,6 +49,7 @@ const query = graphql`
 const Places = () => {
   const classes = useStyles()
   const data = useStaticQuery(query)
+  const theme = useTheme()
 
   const settings = {
     speed: 200,
@@ -93,9 +93,7 @@ const Places = () => {
               alignItems="center"
               className={classes.nextPlace}
             >
-              <Typography color="textPrimary" variant="h4">
-                Prozkoumat vše
-              </Typography>
+              <LearnMoreLink title="Prozkoumat vše" color="textPrimary" />
             </Grid>
           </Link>
         </Slider>
