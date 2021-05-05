@@ -57,6 +57,7 @@ const Sidebar = ({
   ...rest
 }: Props): JSX.Element => {
   const data = useStaticQuery(query)
+  const { themeMode, themeToggler } = useContext(MenuContext)
   const classes = useStyles()
   const { handleSidebarClose, openSidebar } = useContext(MenuContext)
   return (
@@ -76,7 +77,10 @@ const Sidebar = ({
             alignItems="center"
           >
             <Grid item>
-              <DarkModeToggler />
+              <DarkModeToggler
+                themeMode={themeMode}
+                onClick={() => themeToggler()}
+              />
             </Grid>
             <Grid item>
               <IconButton
@@ -89,7 +93,7 @@ const Sidebar = ({
             </Grid>
           </Grid>
         </Box>
-        <Box my={4} ml={2}>
+        <Box my={4} ml={2} onClick={() => handleSidebarClose()}>
           <Link to="/">
             <Typography variant="h4" color="textPrimary">
               Home

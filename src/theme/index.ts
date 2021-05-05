@@ -1,5 +1,6 @@
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from "@material-ui/core"
 import { light, dark } from "./palette"
+import "@fontsource/roboto"
 
 const getTheme = mode =>
   responsiveFontSizes(
@@ -22,7 +23,7 @@ const getTheme = mode =>
         contentWidth: 1236,
       },
       typography: {
-        fontFamily: "Lato",
+        fontFamily: "Lato, Roboto, Arial",
       },
 
       zIndex: {

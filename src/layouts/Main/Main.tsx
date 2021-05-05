@@ -11,9 +11,6 @@ import Footer from "./components/Footer/Footer"
 import SideBar from "./components/SideBar/SideBar"
 import Section from "../../components/organisms/Section/Section"
 
-//context
-import { MenuContext } from "../../providers/menu/menu.providers"
-
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100%",
@@ -28,18 +25,15 @@ const useStyles = makeStyles(theme => ({
 
 interface Props {
   children: React.ReactNode
-  themeToggler: Function
-  themeMode: string
 }
 
-const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
+const Main = ({ children }: Props): JSX.Element => {
   const classes = useStyles()
 
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   })
-  const { handleSidebarOpen } = useContext(MenuContext)
 
   return (
     <div
@@ -48,11 +42,7 @@ const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
       })}
     >
       <Section fullWidth className={classes.sectionNoPadding}>
-        <Topbar
-          themeMode={themeMode}
-          themeToggler={themeToggler}
-          onSidebarOpen={handleSidebarOpen}
-        />
+        <Topbar />
       </Section>
       <SideBar variant="temporary" />
       <main>

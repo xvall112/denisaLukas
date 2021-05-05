@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { ThemeProvider } from "@material-ui/core/styles"
 import { Paper } from "@material-ui/core"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "./src/theme/index"
-
-import MenuProvider from "./src/providers/menu/menu.providers"
-
+import { MenuContext } from "./src/providers/menu/menu.providers"
 import AOS from "aos"
 
 import { makeStyles } from "@material-ui/core/styles"
@@ -14,8 +12,8 @@ const useStyles = makeStyles(theme => ({
   root: {},
 }))
 
-export const useDarkMode = () => {
-  const [themeMode, setTheme] = useState("light")
+/* export const useDarkMode = () => {
+  const [themeMode, setTheme] = useState("dark")
   const [mountedComponent, setMountedComponent] = useState(false)
 
   const setMode = mode => {
@@ -39,7 +37,7 @@ export const useDarkMode = () => {
   }, [themeMode])
 
   return [themeMode, themeToggler, mountedComponent]
-}
+} */
 
 interface Props {
   layout: any
@@ -68,26 +66,20 @@ export default function WithLayout({
     })
   }, [])
 
-  const [themeMode, themeToggler, mountedComponent] = useDarkMode()
+  const { themeMode, mountedComponent } = useContext(MenuContext)
   useEffect(() => {
     AOS.refresh()
   }, [mountedComponent])
   const classes = useStyles()
   return (
-    <MenuProvider>
-      <ThemeProvider theme={getTheme(themeMode)}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Paper elevation={0}>
-          <Layout
-            themeMode={themeMode}
-            themeToggler={themeToggler}
-            className={classes.root}
-          >
-            <Component themeMode={themeMode} {...rest} />
-          </Layout>
-        </Paper>
-      </ThemeProvider>
-    </MenuProvider>
+    <ThemeProvider theme={getTheme(themeMode)}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <Paper elevation={0}>
+        <Layout className={classes.root}>
+          <Component themeMode={themeMode} {...rest} />
+        </Layout>
+      </Paper>
+    </ThemeProvider>
   )
 }

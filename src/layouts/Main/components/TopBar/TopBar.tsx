@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
 //components
 import DarkModeToggler from "../../../../components/atoms/DarkModeToggler/DarkModeToggler"
 import Search from "./Search"
 import { CardBase } from "components/organisms"
-
+//context
+import { MenuContext } from "../../../../providers/menu/menu.providers"
 //material UI
 import {
   useMediaQuery,
@@ -23,11 +24,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu"
 import InstagramIcon from "@material-ui/icons/Instagram"
 
-interface Props {
-  themeMode: string
-  themeToggler: Function
-  onSidebarOpen: Function
-}
+interface Props {}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,11 +42,8 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const TopBar = ({
-  themeMode,
-  themeToggler,
-  onSidebarOpen,
-}: Props): JSX.Element => {
+const TopBar = ({}: Props): JSX.Element => {
+  const { themeMode, themeToggler, handleSidebarOpen } = useContext(MenuContext)
   const classes = useStyles()
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
@@ -125,7 +119,7 @@ const TopBar = ({
                   edge="start"
                   color="inherit"
                   aria-label="open drawer"
-                  onClick={() => onSidebarOpen()}
+                  onClick={() => handleSidebarOpen()}
                 >
                   <MenuIcon />
                 </IconButton>
