@@ -7,6 +7,7 @@ import { useMediaQuery, Divider } from "@material-ui/core"
 
 //components
 import TopBar2 from "./components/TopBar2"
+import SideBar from "../Main/components/SideBar/SideBar"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,18 +30,6 @@ const Place = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
     defaultMatches: true,
   })
 
-  const [openSidebar, setOpenSidebar] = useState<boolean>(false)
-
-  const handleSidebarOpen = (): void => {
-    setOpenSidebar(true)
-  }
-
-  const handleSidebarClose = (): void => {
-    setOpenSidebar(false)
-  }
-
-  const open = isMd ? false : openSidebar
-
   return (
     <div
       className={clsx({
@@ -48,6 +37,7 @@ const Place = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
       })}
     >
       <TopBar2 themeMode={themeMode} themeToggler={themeToggler} />
+      <SideBar variant="temporary" />
       <main>{children}</main>
     </div>
   )

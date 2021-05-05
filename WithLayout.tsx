@@ -4,10 +4,9 @@ import { Paper } from "@material-ui/core"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "./src/theme/index"
 
+import MenuProvider from "./src/providers/menu/menu.providers"
+
 import AOS from "aos"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import { mergeClasses } from "@material-ui/styles"
 
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -30,7 +29,7 @@ export const useDarkMode = () => {
 
   useEffect(() => {
     const localTheme = window.localStorage.getItem("themeMode")
-    localTheme ? setTheme(localTheme) : setMode("light")
+    localTheme ? setTheme(localTheme) : setMode("dark")
     setMountedComponent(true)
     AOS.refresh()
   }, [])
@@ -75,18 +74,20 @@ export default function WithLayout({
   }, [mountedComponent])
   const classes = useStyles()
   return (
-    <ThemeProvider theme={getTheme(themeMode)}>
-      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-      <CssBaseline />
-      <Paper elevation={0}>
-        <Layout
-          themeMode={themeMode}
-          themeToggler={themeToggler}
-          className={classes.root}
-        >
-          <Component themeMode={themeMode} {...rest} />
-        </Layout>
-      </Paper>
-    </ThemeProvider>
+    <MenuProvider>
+      <ThemeProvider theme={getTheme(themeMode)}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <Paper elevation={0}>
+          <Layout
+            themeMode={themeMode}
+            themeToggler={themeToggler}
+            className={classes.root}
+          >
+            <Component themeMode={themeMode} {...rest} />
+          </Layout>
+        </Paper>
+      </ThemeProvider>
+    </MenuProvider>
   )
 }

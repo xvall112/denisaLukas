@@ -1,12 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import clsx from "clsx"
 import { makeStyles } from "@material-ui/core/styles"
 import { Drawer } from "@material-ui/core"
+
+//context
+import { MenuContext } from "../../../../providers/menu/menu.providers"
 
 const useStyles = makeStyles(theme => ({
   drawer: {
     width: "100%",
     maxWidth: 325,
+    zIndex: 10000,
   },
   root: {
     height: "100%",
@@ -19,26 +23,24 @@ const useStyles = makeStyles(theme => ({
 
 interface Props {
   className?: string
-  onClose: Function
-  open: boolean
+
   variant: "permanent" | "persistent" | "temporary" | undefined
 }
 
 const Sidebar = ({
-  open,
   variant,
-  onClose,
+
   className,
   ...rest
 }: Props): JSX.Element => {
   const classes = useStyles()
-
+  const { handleSidebarClose, openSidebar } = useContext(MenuContext)
   return (
     <Drawer
       anchor="right"
       classes={{ paper: classes.drawer }}
-      onClose={() => onClose()}
-      open={open}
+      onClose={() => handleSidebarClose()}
+      open={openSidebar}
       variant={variant}
     >
       <div {...rest} className={clsx(classes.root, className)}>

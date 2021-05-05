@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { navigate } from "gatsby"
 
 //components
@@ -11,19 +11,21 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
 import MenuIcon from "@material-ui/icons/Menu"
 import { makeStyles } from "@material-ui/core/styles"
 
+//context
+import { MenuContext } from "../../../providers/menu/menu.providers"
 const useStyles = makeStyles(theme => ({
   backButton: {
     left: "20px",
     top: "10px",
     position: "fixed",
-    zIndex: 10000,
+    zIndex: 100,
     backgroundColor: "white",
     color: "black",
   },
   menuButton: {
     top: "10px",
     position: "fixed",
-    zIndex: 10000,
+    zIndex: 100,
     backgroundColor: "white",
     color: "black",
     right: "20px",
@@ -36,7 +38,7 @@ interface Props {
 }
 const TopBar2 = ({ themeMode, themeToggler }: Props): JSX.Element => {
   const classes = useStyles()
-
+  const { handleSidebarOpen } = useContext(MenuContext)
   return (
     <div id="topBar">
       <Button
@@ -65,6 +67,7 @@ const TopBar2 = ({ themeMode, themeToggler }: Props): JSX.Element => {
         color="primary"
         aria-label="open drawer"
         className={classes.menuButton}
+        onClick={() => handleSidebarOpen()}
       >
         <MenuIcon />
       </Button>

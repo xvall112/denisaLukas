@@ -4,9 +4,9 @@ import { light, dark } from "./palette"
 const getTheme = mode =>
   responsiveFontSizes(
     createMuiTheme({
+      
       palette: mode === "light" ? light : dark,
       overrides: {
-       
         MuiButton: {
           root: {
             borderRadius: '5px',

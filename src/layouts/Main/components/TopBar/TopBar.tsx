@@ -1,15 +1,14 @@
-import * as React from "react"
+import React, { useContext, useState } from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
 //components
 import DarkModeToggler from "../../../../components/atoms/DarkModeToggler/DarkModeToggler"
 import Search from "./Search"
+import { CardBase } from "components/organisms"
 
 //material UI
 import {
   useMediaQuery,
-  AppBar,
-  Toolbar,
   Grid,
   Box,
   IconButton,
@@ -35,20 +34,13 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
-
-    titleDenisa: {
-      flexGrow: 1,
-      display: "none",
-      textAlign: "right",
-      [theme.breakpoints.up("sm")]: {
-        display: "block",
+    logoCard: {
+      backgroundColor: "black",
+      /*  borderRadius: theme.shape.borderRadius, */
+      "& .MuiCardContent-root": {
+        padding: theme.spacing(1),
       },
-    },
-    titleLukas: {
-      flexGrow: 1,
-      textAlign: "left",
-      fontWeight: "bold",
-      marginLeft: theme.spacing(1),
+      margin: "10px 0px",
     },
   })
 )
@@ -76,28 +68,29 @@ const TopBar = ({
           >
             <Grid
               item
-              xs
+              xs={8}
+              md
               container
               direction="row"
               justify="center"
               alignItems="center"
             >
-              <Grid
-                item
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-              >
-                <StaticImage
-                  src="../../../../images/logoWhite.png"
-                  width={40}
-                  quality={95}
-                  alt="logo Denisa Lukas"
-                />
-                <Typography className={classes.titleLukas}>
-                  FAITH TRAVEL
-                </Typography>
+              <Grid item container direction="row" alignItems="center">
+                <Grid item>
+                  <CardBase noBorder noShadow className={classes.logoCard}>
+                    <StaticImage
+                      src="../../../../images/logoWhite.png"
+                      width={40}
+                      quality={95}
+                      alt="logo Denisa Lukas"
+                    />
+                  </CardBase>
+                </Grid>
+                <Grid item>
+                  <Box ml={1}>
+                    <Typography variant="subtitle2">FAITH IN TRAVEL</Typography>
+                  </Box>
+                </Grid>
               </Grid>
             </Grid>
             {isMd && <Search />}
@@ -108,21 +101,24 @@ const TopBar = ({
               direction="row"
               justify="flex-end"
               alignItems="center"
+              spacing={1}
             >
-              <Box mr={2}>
+              <Grid item xs>
                 <DarkModeToggler
                   themeMode={themeMode}
                   onClick={() => themeToggler()}
                 />
-              </Box>
+              </Grid>
               {isMd && (
-                <IconButton
-                  edge="start"
-                  color="inherit"
-                  aria-label="open drawer"
-                >
-                  <InstagramIcon />
-                </IconButton>
+                <Grid item xs>
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    aria-label="open drawer"
+                  >
+                    <InstagramIcon />
+                  </IconButton>
+                </Grid>
               )}
               <IconButton
                 edge="start"

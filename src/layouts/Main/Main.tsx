@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import clsx from "clsx"
 
 //materialUI
@@ -10,6 +10,9 @@ import Topbar from "./components/TopBar/TopBar"
 import Footer from "./components/Footer/Footer"
 import SideBar from "./components/SideBar/SideBar"
 import Section from "../../components/organisms/Section/Section"
+
+//context
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,16 +39,7 @@ const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   })
-
-  const [openSidebar, setOpenSidebar] = useState<boolean>(false)
-
-  const handleSidebarOpen = (): void => {
-    setOpenSidebar(true)
-  }
-
-  const handleSidebarClose = (): void => {
-    setOpenSidebar(false)
-  }
+  const { handleSidebarOpen } = useContext(MenuContext)
 
   return (
     <div
@@ -60,11 +54,7 @@ const Main = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
           onSidebarOpen={handleSidebarOpen}
         />
       </Section>
-      <SideBar
-        onClose={handleSidebarClose}
-        open={openSidebar}
-        variant="temporary"
-      />
+      <SideBar variant="temporary" />
       <main>
         {/*  <Divider /> */}
         {children}
