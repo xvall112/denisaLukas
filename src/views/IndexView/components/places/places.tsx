@@ -8,7 +8,7 @@ import Title from "../../../../components/own/titleSection"
 import { LearnMoreLink } from "components/atoms"
 
 //materiaUI
-import { Grid, Box } from "@material-ui/core"
+import { Grid, Box, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +35,7 @@ const query = graphql`
         name
         titleImage {
           gatsbyImageData(layout: FULL_WIDTH)
-          description
+          title
         }
         country {
           name
@@ -93,7 +93,9 @@ const Places = () => {
               alignItems="center"
               className={classes.nextPlace}
             >
-              <LearnMoreLink title="Prozkoumat vše" color="textPrimary" />
+              <Typography variant="subtitle1" color="textPrimary">
+                Prozkoumat vše
+              </Typography>
             </Grid>
           </Link>
         </Slider>

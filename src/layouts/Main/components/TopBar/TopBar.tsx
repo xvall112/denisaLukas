@@ -82,7 +82,7 @@ const TopBar = ({
                       src="../../../../images/logoWhite.png"
                       width={40}
                       quality={95}
-                      alt="logo Denisa Lukas"
+                      alt="logo Faith in Travel"
                     />
                   </CardBase>
                 </Grid>
@@ -101,16 +101,16 @@ const TopBar = ({
               direction="row"
               justify="flex-end"
               alignItems="center"
-              spacing={1}
+              spacing={2}
             >
-              <Grid item xs>
+              <Grid item>
                 <DarkModeToggler
                   themeMode={themeMode}
                   onClick={() => themeToggler()}
                 />
               </Grid>
               {isMd && (
-                <Grid item xs>
+                <Grid item>
                   <IconButton
                     edge="start"
                     color="inherit"
@@ -120,14 +120,16 @@ const TopBar = ({
                   </IconButton>
                 </Grid>
               )}
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="open drawer"
-                onClick={() => onSidebarOpen()}
-              >
-                <MenuIcon fontSize="large" />
-              </IconButton>
+              <Grid item>
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={() => onSidebarOpen()}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Grid>
             </Grid>
           </Grid>
           {/* {!isMd && (

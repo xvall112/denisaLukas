@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 
 interface props {
   item: {
-    titleImage: { description: string; gatsbyImageData: any }
+    titleImage: { title: string; gatsbyImageData: any }
     name: string
     country: { flagLink: string; name: string }
     slug: string
@@ -54,7 +54,7 @@ const Card = ({ item }: props): JSX.Element => {
         <Box className={classes.img}>
           <GatsbyImage
             image={item.titleImage.gatsbyImageData}
-            alt={item.titleImage.description}
+            alt={item.titleImage.title}
             formats={["auto", "webp", "avif"]}
             style={{ height: "350px" }}
           />

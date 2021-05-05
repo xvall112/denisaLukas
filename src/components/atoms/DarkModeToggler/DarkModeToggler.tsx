@@ -7,15 +7,15 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
   },
   border: {
-    width: theme.spacing(5),
+    width: theme.spacing(4),
     height: theme.spacing(2),
     borderRadius: theme.spacing(3),
-    border: "3px solid",
+    border: "2px solid",
     borderColor: colors.grey[900],
     backgroundColor: "transparent",
     [theme.breakpoints.up("md")]: {
-      width: theme.spacing(6),
-      height: theme.spacing(3),
+      width: theme.spacing(4),
+      height: theme.spacing(2),
     },
   },
   borderDark: {
@@ -23,8 +23,8 @@ const useStyles = makeStyles(theme => ({
   },
   modeToggler: {
     position: "absolute",
-    top: `-${theme.spacing(1 / 2)}px`,
-    left: `-${theme.spacing(1 / 2)}px`,
+    top: `-5px`,
+    left: `-5px`,
     width: theme.spacing(3),
     height: theme.spacing(3),
     borderRadius: "50%",
@@ -32,8 +32,8 @@ const useStyles = makeStyles(theme => ({
     transition: `transform .3s cubic-bezier(.4,.03,0,1)`,
     cursor: "pointer",
     [theme.breakpoints.up("md")]: {
-      width: theme.spacing(4),
-      height: theme.spacing(4),
+      width: theme.spacing(3),
+      height: theme.spacing(3),
     },
   },
   modeTogglerDark: {
@@ -45,8 +45,8 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1 / 2),
     marginLeft: theme.spacing(1 / 2),
     [theme.breakpoints.up("md")]: {
-      marginTop: theme.spacing(1),
-      marginLeft: theme.spacing(1),
+      marginTop: theme.spacing(1 / 2),
+      marginLeft: theme.spacing(1 / 2),
     },
   },
 }))
