@@ -54,4 +54,27 @@ module.exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  //create page for viaFerrata
+  const viaFerrataTemplate = path.resolve(
+    "./src/templates/viaFerrata/viaFerrata.tsx"
+  )
+  const resViaFerrata = await graphql(`
+    query MyQuery {
+      allContentfulViaFerrata {
+        nodes {
+          slug
+        }
+      }
+    }
+  `)
+  resViaFerrata.data.allContentfulViaFerrata.nodes.forEach(node => {
+    createPage({
+      component: viaFerrataTemplate,
+      path: `/viaFerrata/${node.slug}`,
+      context: {
+        slug: node.slug,
+      },
+    })
+  })
 }

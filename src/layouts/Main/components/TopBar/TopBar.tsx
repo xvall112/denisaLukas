@@ -95,13 +95,15 @@ const TopBar = ({}: Props): JSX.Element => {
               direction="row"
               justify="flex-end"
               alignItems="center"
-              spacing={2}
+              spacing={1}
             >
               <Grid item>
-                <DarkModeToggler
-                  themeMode={themeMode}
-                  onClick={() => themeToggler()}
-                />
+                <Box mr={2}>
+                  <DarkModeToggler
+                    themeMode={themeMode}
+                    onClick={() => themeToggler()}
+                  />
+                </Box>
               </Grid>
               {isMd && (
                 <Grid item>

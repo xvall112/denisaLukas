@@ -7,7 +7,7 @@ import { useMediaQuery, Divider } from "@material-ui/core"
 
 //components
 import TopBar2 from "./components/TopBar2"
-import SideBar from "../Main/components/SideBar/SideBar"
+import SideBar from "../SideBar/SideBar"
 
 const useStyles = makeStyles(theme => ({
   root: {

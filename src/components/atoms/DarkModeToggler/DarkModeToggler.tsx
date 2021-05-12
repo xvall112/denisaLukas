@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     width: theme.spacing(3),
     height: theme.spacing(3),
     borderRadius: "50%",
+    border: `1px solid ${theme.palette.secondary.main}`,
     backgroundColor: theme.palette.common.white,
     transition: `transform .3s cubic-bezier(.4,.03,0,1)`,
     cursor: "pointer",

@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import scrollTo from "gatsby-plugin-smoothscroll"
 
 //components
-import FlagChip from "../../../components/own/flagChip"
+import FlagChip from "../../components/own/flagChip"
 import { SectionHeader } from "components/molecules"
 //material Ui
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
@@ -18,6 +18,9 @@ import {
   Snackbar,
 } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
+
+//context
+import { MapContext } from "../../providers/map/map.providers"
 
 const useStyles = makeStyles(theme => ({
   flag: {
@@ -35,8 +38,6 @@ interface Props {
   adress: string
   name: string
   location: { lat: number; lon: number }
-  map: boolean
-  changeMap: () => void
 }
 
 const PlaceHeader = ({
@@ -45,49 +46,16 @@ const PlaceHeader = ({
   name,
   adress,
   location,
-  map,
-  changeMap,
 }: Props): JSX.Element => {
+  const { changeMap, map, copyLocationToClipboard } = useContext(MapContext)
   const classes = useStyles()
-  const [snackbar, setSnackbar] = useState(false)
-  const copyLocationToClipboard = location => {
-    navigator.clipboard.writeText(`${location.lat} ${location.lon}`)
-    setSnackbar(true)
-  }
-
-  const handleCloseToast = () => {
-    setSnackbar(false)
-  }
 
   const changeMapPhoto = () => {
     scrollTo("#topBar")
     changeMap()
   }
   return (
-    <div>
-      {/* Snacbar */}
-      <Snackbar
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        open={snackbar}
-        autoHideDuration={5000}
-        onClose={handleCloseToast}
-        message="Zkopírováno do schránky"
-        action={
-          <React.Fragment>
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={() => handleCloseToast()}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
-      />
+    <>
       {/*  komponenta */}
       <Box my={2}>
         <Grid
@@ -148,7 +116,10 @@ const PlaceHeader = ({
           </Button>
         </ButtonGroup>
       </Box>
-    </div>
+      <Box mb={3}>
+        <hr></hr>
+      </Box>
+    </>
   )
 }
 

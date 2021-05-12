@@ -1,10 +1,11 @@
 import React, { useContext } from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import clsx from "clsx"
+import { StaticImage } from "gatsby-plugin-image"
 
 //components
-import DarkModeToggler from "../../../../components/atoms/DarkModeToggler/DarkModeToggler"
-
+import DarkModeToggler from "../../components/atoms/DarkModeToggler/DarkModeToggler"
+import { CardBase } from "components/organisms"
 //materialUI
 import InstagramIcon from "@material-ui/icons/Instagram"
 import { makeStyles } from "@material-ui/core/styles"
@@ -12,7 +13,7 @@ import { Drawer, Typography, Box, IconButton, Grid } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 
 //context
-import { MenuContext } from "../../../../providers/menu/menu.providers"
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 const query = graphql`
   {
@@ -27,7 +28,7 @@ const query = graphql`
 const useStyles = makeStyles(theme => ({
   drawer: {
     width: "100%",
-    maxWidth: 325,
+    maxWidth: 400,
     zIndex: 10000,
   },
   root: {
@@ -37,6 +38,13 @@ const useStyles = makeStyles(theme => ({
     "& a:hover": {
       textDecoration: "underline",
       color: theme.palette.text.primary,
+    },
+  },
+  logoCard: {
+    backgroundColor: "black",
+    /*  borderRadius: theme.shape.borderRadius, */
+    "& .MuiCardContent-root": {
+      padding: theme.spacing(1),
     },
   },
   nav: {
@@ -83,6 +91,16 @@ const Sidebar = ({
               />
             </Grid>
             <Grid item>
+              <CardBase noBorder noShadow className={classes.logoCard}>
+                <StaticImage
+                  src="../../images/logoWhite.png"
+                  width={40}
+                  quality={95}
+                  alt="logo Faith in Travel"
+                />
+              </CardBase>
+            </Grid>
+            <Grid item>
               <IconButton
                 edge="start"
                 color="inherit"
@@ -93,29 +111,33 @@ const Sidebar = ({
             </Grid>
           </Grid>
         </Box>
+        <hr></hr>
         <Box my={4} ml={2} onClick={() => handleSidebarClose()}>
           <Link to="/">
-            <Typography variant="h4" color="textPrimary">
+            <Typography variant="h3" color="textPrimary">
               Home
             </Typography>
           </Link>
           {data.allContentfulTypeOfActivities.nodes.map((item, index) => {
             return (
-              <div key={index}>
+              <Box pt={3} key={index}>
                 <Link to={`/${item.slug}`}>
-                  <Typography variant="h4" color="textPrimary">
+                  <Typography variant="h3" color="textPrimary">
                     {item.name}
                   </Typography>
                 </Link>
-              </div>
+              </Box>
             )
           })}
           <Link to="/about">
-            <Typography variant="h4" color="textPrimary">
-              O nás
-            </Typography>
+            <Box pt={3}>
+              <Typography variant="h3" color="textPrimary">
+                O nás
+              </Typography>
+            </Box>
           </Link>
         </Box>
+        <hr></hr>
         <Box ml={2}>
           <IconButton edge="start" color="inherit">
             <InstagramIcon fontSize="large" />

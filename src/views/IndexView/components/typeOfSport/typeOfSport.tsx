@@ -37,6 +37,19 @@ const useStyles = makeStyles(theme => ({
       padding: "0px",
     },
   },
+  img: {
+    borderTopLeftRadius: theme.shape.borderRadius,
+    webkitBorderTopLeftRadius: theme.shape.borderRadius,
+    borderBottomLeftRadius: theme.shape.borderRadius,
+    webkitBorderBottomLeftRadius: theme.shape.borderRadius,
+    overflow: "hidden",
+    "& img": {
+      borderTopLeftRadius: theme.shape.borderRadius,
+      webkitBorderTopLeftRadius: theme.shape.borderRadius,
+      borderBottomLeftRadius: theme.shape.borderRadius,
+      webkitBorderBottomLeftRadius: theme.shape.borderRadius,
+    },
+  },
   card: {
     backgroundColor: theme.palette.background.default,
   },
@@ -56,12 +69,17 @@ const TypeOfSport = () => {
                   <CardBase className={classes.card}>
                     <Grid container>
                       <Grid item xs={4}>
-                        <GatsbyImage
-                          image={item.icon.gatsbyImageData}
-                          alt={item.icon.title}
-                          formats={["auto", "webp", "avif"]}
-                          style={{ maxHeight: "70px", maxWidth: "70px" }}
-                        />
+                        <Box className={classes.img}>
+                          <GatsbyImage
+                            image={item.icon.gatsbyImageData}
+                            alt={item.icon.title}
+                            formats={["auto", "webp", "avif"]}
+                            style={{
+                              maxHeight: "70px",
+                              maxWidth: "70px",
+                            }}
+                          />
+                        </Box>
                       </Grid>
                       <Grid
                         item

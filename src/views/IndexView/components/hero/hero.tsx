@@ -109,6 +109,7 @@ const Hero = () => {
                       placeItems: "center",
                       display: "grid",
                       backgroundColor: "rgba(0, 0, 0, 0.4)",
+                      borderRadius: "5px",
                     }}
                   >
                     <Grid
