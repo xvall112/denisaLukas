@@ -105,24 +105,27 @@ const TopBar = ({}: Props): JSX.Element => {
               alignItems="center"
               spacing={1}
             >
-              <Grid item>
-                <Box mr={2}>
-                  <DarkModeToggler
-                    themeMode={themeMode}
-                    onClick={() => themeToggler()}
-                  />
-                </Box>
-              </Grid>
               {isMd && (
-                <Grid item>
-                  <IconButton
-                    edge="start"
-                    color="inherit"
-                    aria-label="open drawer"
-                  >
-                    <InstagramIcon />
-                  </IconButton>
-                </Grid>
+                <>
+                  <Grid item>
+                    <Box mr={2}>
+                      <DarkModeToggler
+                        themeMode={themeMode}
+                        onClick={() => themeToggler()}
+                      />
+                    </Box>
+                  </Grid>
+
+                  <Grid item>
+                    <IconButton
+                      edge="start"
+                      color="inherit"
+                      aria-label="open drawer"
+                    >
+                      <InstagramIcon />
+                    </IconButton>
+                  </Grid>
+                </>
               )}
               <Grid item>
                 <Box className={classes.menu}>
