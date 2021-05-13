@@ -1,15 +1,16 @@
 import React from "react"
 import WithLayout from "../../WithLayout"
 import SEO from "../components/own/seo"
-import IndexPlaces from "../views/Places/IndexPlaces"
+import IndexViaFerrata from "../views/viaFerrata/IndexViaFerrata"
 import LayoutPlaces from "../layouts/Place/Place"
-const Places = () => {
+
+const ViaFerrata = () => {
   return (
     <>
       <SEO title="Places" />
-      <WithLayout component={IndexPlaces} layout={LayoutPlaces} />
+      <WithLayout component={IndexViaFerrata} layout={LayoutPlaces} />
     </>
   )
 }
 
-export default Places
+export default ViaFerrata

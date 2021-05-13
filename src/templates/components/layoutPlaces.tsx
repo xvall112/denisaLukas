@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react"
-import { graphql } from "gatsby"
+import React, { useContext } from "react"
 
 //components
 import WithLayout from "../../../WithLayout"
@@ -54,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   slider: {
     width: "100vw",
     height: "50vh",
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
       width: "100%",
       height: "100vh",
       position: "sticky",
@@ -64,6 +63,7 @@ const useStyles = makeStyles(theme => ({
 }))
 interface Props {
   children: any
+  slug: string
   data: {
     name: string
     location: { lat: number; lon: number }
@@ -73,11 +73,14 @@ interface Props {
     country: { name: string; flagLink: string }
   }
 }
-const LayoutPlaces = ({ children, data }: Props): JSX.Element => {
+const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
   const { map } = useContext(MapContext)
   const classes = useStyles()
   const theme = useTheme()
   const isLg = useMediaQuery(theme.breakpoints.up("lg"), {
+    defaultMatches: true,
+  })
+  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   })
 
@@ -97,18 +100,20 @@ const LayoutPlaces = ({ children, data }: Props): JSX.Element => {
         </Typography>
 
         <Grid container>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} md={6}>
             <div className={classes.slider}>
               {/* komponenta mapa a slider prepinani button v pleaceHeader */}
               {map ? (
                 <LeafletMap
                   zoom={13}
                   center={[data.location.lat, data.location.lon]}
+                  marker={[data]}
+                  slug={slug}
                 />
               ) : (
                 <Slider
                   img={data.images}
-                  heightImg={isLg ? "100vh" : "50vh"}
+                  heightImg={isMd ? "100vh" : "50vh"}
                   widthImg={"100%"}
                 />
               )}
@@ -118,7 +123,7 @@ const LayoutPlaces = ({ children, data }: Props): JSX.Element => {
               </Box>
             </div>
           </Grid>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} md={6}>
             <Box mt={{ xs: 0, lg: 10 }} mb={5} zIndex={100}>
               <Container maxWidth="xl">
                 {/* komponenta header */}

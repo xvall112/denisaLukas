@@ -4,7 +4,7 @@ import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLay
 
 const query = graphql`
   {
-    allContentfulPlaces(filter: { node_locale: { eq: "cs" } }) {
+    allContentfulViaFerrata(filter: { node_locale: { eq: "cs" } }) {
       nodes {
         slug
         name
@@ -30,14 +30,17 @@ const query = graphql`
   }
 `
 
-const IndexPlaces = () => {
+const IndexViaFerrata = () => {
   const data = useStaticQuery(query)
 
   return (
     <>
-      <PlacesPageLayout data={data.allContentfulPlaces.nodes} slug="places" />
+      <PlacesPageLayout
+        data={data.allContentfulViaFerrata.nodes}
+        slug="viaFerrata"
+      />
     </>
   )
 }
 
-export default IndexPlaces
+export default IndexViaFerrata

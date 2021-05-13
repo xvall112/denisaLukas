@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import React from "react"
+
 import clsx from "clsx"
-import { TileLayer, Marker, Tooltip, Popup } from "react-leaflet"
+import { TileLayer, Marker, Popup } from "react-leaflet"
 import { MapContainer, ZoomControl } from "react-leaflet"
 import L from "leaflet"
 //materialUI
@@ -9,30 +9,6 @@ import { makeStyles } from "@material-ui/core/styles"
 
 //components
 import PopupCard from "./PopupCard"
-
-const query = graphql`
-  {
-    allContentfulPlaces(filter: { node_locale: { eq: "cs" } }) {
-      nodes {
-        slug
-        name
-        kindPlace
-        titleImage {
-          gatsbyImageData(layout: FULL_WIDTH)
-          title
-        }
-        country {
-          name
-          flagLink
-        }
-        location {
-          lat
-          lon
-        }
-      }
-    }
-  }
-`
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -54,52 +30,19 @@ interface LeafletMap {
   center: [number, number]
   className?: any
   rest?: any
+  marker: any
+  slug: string
 }
 const LeafletMap = ({
+  marker,
   zoom,
   center,
+  slug,
   className,
   ...rest
 }: LeafletMap): JSX.Element => {
-  const data = useStaticQuery(query)
-
   const classes = useStyles()
 
-  /* const markerIconHouse = new L.icon({
-    iconUrl: require('assets/images/leaflet-assets/house2.png'),
-    iconSize: [25, 40],
-    iconAnchor: [10, 40],
-    tooltipAnchor: [15, -20],
-    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
-  });
-  const markerIconShopping = new L.icon({
-    iconUrl: require('assets/images/leaflet-assets/shopping.png'),
-    iconSize: [25, 40],
-    iconAnchor: [10, 40],
-    tooltipAnchor: [15, -20],
-    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
-  });
-  const markerIconHospital = new L.icon({
-    iconUrl: require('assets/images/leaflet-assets/hospital.png'),
-    iconSize: [25, 40],
-    iconAnchor: [10, 40],
-    tooltipAnchor: [15, -20],
-    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
-  });
-  const markerIconBus = new L.icon({
-    iconUrl: require('assets/images/leaflet-assets/bus.png'),
-    iconSize: [25, 40],
-    iconAnchor: [10, 40],
-    tooltipAnchor: [15, -20],
-    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
-  });
-  const markerIconCar = new L.icon({
-    iconUrl: require('assets/images/leaflet-assets/car.png'),
-    iconSize: [25, 40],
-    iconAnchor: [10, 40],
-    tooltipAnchor: [15, -20],
-    shadowUrl: require('assets/images/leaflet-assets/marker-shadow.png'),
-  }); */
   if (typeof window !== "undefined") {
     return (
       <MapContainer
@@ -117,27 +60,12 @@ const LeafletMap = ({
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {data.allContentfulPlaces.nodes &&
-          data.allContentfulPlaces.nodes.length &&
-          data.allContentfulPlaces.nodes.map((item, i) => (
-            <Marker
-              /* icon={
-              item.icon === 'hospital'
-                ? markerIconHospital
-                : item.icon === 'house'
-                ? markerIconHouse
-                : item.icon === 'shopping'
-                ? markerIconShopping
-                : item.icon === 'car'
-                ? markerIconCar
-                : markerIconBus
-            } */
-              /* className="map__marker"  */
-              position={[item.location.lat, item.location.lon]}
-              key={i}
-            >
+        {marker &&
+          marker.length &&
+          marker.map((item, i) => (
+            <Marker position={[item.location.lat, item.location.lon]} key={i}>
               <Popup className={classes.popup}>
-                <PopupCard item={item} />
+                <PopupCard item={item} slug={slug} />
               </Popup>
             </Marker>
           ))}

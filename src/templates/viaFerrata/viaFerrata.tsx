@@ -32,6 +32,7 @@ export const query = graphql`
       heightOfMountain
       images {
         gatsbyImageData
+        title
       }
       kindPlace
       level
@@ -52,6 +53,7 @@ export const query = graphql`
       slug
       titleImage {
         gatsbyImageData
+        title
       }
       backWayDescription {
         backWayDescription
@@ -82,7 +84,7 @@ const ViaFerrata = props => {
   } = props.data.contentfulViaFerrata
 
   return (
-    <LayoutPlaces data={props.data.contentfulViaFerrata}>
+    <LayoutPlaces data={props.data.contentfulViaFerrata} slug="viaFerrata">
       <Grid container direction="row" spacing={1}>
         <Grid item xs={4}>
           <CardPromo

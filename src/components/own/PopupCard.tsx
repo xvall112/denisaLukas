@@ -68,7 +68,13 @@ const useStyles = makeStyles(theme => ({
 
 interface ViewComponentProps {
   className?: string
-  item: any
+  item: {
+    titleImage: { gatsbyImageData: any; title: string }
+    slug: string
+    name: string
+    kindPlace: string
+  }
+  slug: string
   themeMode?: string
   // All other props
   [x: string]: any
@@ -77,13 +83,14 @@ interface ViewComponentProps {
 const PopupCard = ({
   item,
   className,
+  slug,
   ...rest
 }: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
-      <Link to={`/places/${item.slug}`} className={classes.link}>
+      <Link to={`/${slug}/${item.slug}`} className={classes.link}>
         <div className={classes.folioItem}>
           <GatsbyImage
             image={item.titleImage.gatsbyImageData}

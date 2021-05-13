@@ -7,6 +7,7 @@ import Hero from "./components/hero/hero"
 import Countries from "./components/countries/countries"
 import Places from "./components/places/places"
 import TypeOfSport from "./components/typeOfSport/typeOfSport"
+import ViaFerrata from "./components/viaFerrata/viaFerrata"
 
 const useStyles = makeStyles(() => ({
   sectionNoPaddingTop: {
@@ -20,10 +21,16 @@ const useStyles = makeStyles(() => ({
 const IndexPage = () => {
   const classes = useStyles()
   return (
-    <div>
+    <>
       <Section fullWidth className={classes.sectionNoPaddingTop}>
-        <Hero />
+        <>
+          <Hero />
+          <Box mt={2}>
+            <TypeOfSport />
+          </Box>
+        </>
       </Section>
+
       <Section fullWidth className={classes.sectionNoPaddingTop}>
         <Countries />
       </Section>
@@ -31,9 +38,9 @@ const IndexPage = () => {
         <Places />
       </Section>
       <Section fullWidth className={classes.sectionNoPaddingTop}>
-        <TypeOfSport />
+        <ViaFerrata />
       </Section>
-    </div>
+    </>
   )
 }
 

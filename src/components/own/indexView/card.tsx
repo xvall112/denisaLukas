@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 //components
-import FlagChip from "../../../../components/own/flagChip"
+import FlagChip from "../flagChip"
 //materiaUI
 import { Grid, Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface props {
+  slug: string
   item: {
     titleImage: { title: string; gatsbyImageData: any }
     name: string
@@ -46,11 +47,11 @@ interface props {
     slug: string
   }
 }
-const Card = ({ item }: props): JSX.Element => {
+const Card = ({ item, slug }: props): JSX.Element => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <Link to={`places/${item.slug}`} className={classes.link}>
+      <Link to={`${slug}/${item.slug}`} className={classes.link}>
         <Box className={classes.img}>
           <GatsbyImage
             image={item.titleImage.gatsbyImageData}

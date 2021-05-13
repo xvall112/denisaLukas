@@ -3,8 +3,8 @@ import clsx from "clsx"
 import { Link } from "gatsby"
 
 //components
-import FlagChip from "../../../components/own/flagChip"
-import SliderSlick from "../../../components/own/sliderSlick"
+import FlagChip from "../flagChip"
+import SliderSlick from "../sliderSlick"
 
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
@@ -71,7 +71,8 @@ const useStyles = makeStyles(theme => ({
 
 interface ViewComponentProps {
   className?: string
-  data?: any
+  slug: string
+  data: any
   themeMode?: string
   // All other props
   [x: string]: any
@@ -80,6 +81,7 @@ interface ViewComponentProps {
 const Main = ({
   data,
   className,
+  slug,
   ...rest
 }: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
@@ -88,8 +90,8 @@ const Main = ({
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid container direction="row" spacing={2}>
         {data.map((item: any, index: number) => (
-          <Grid item xs={12} md={6} lg={4} xl={3} key={index}>
-            <Link to={`/places/${item.slug}`} className={classes.link}>
+          <Grid item xs={12} md={6} lg={6} xl={3} key={index}>
+            <Link to={`/${slug}/${item.slug}`} className={classes.link}>
               <div className={classes.folioItem} data-aos="fade-up">
                 {/*  <GatsbyImage
                   image={item.titleImage.gatsbyImageData}

@@ -6,7 +6,7 @@ import PlacesLayout from "../../../../components/own/indexView/PlacesLayout"
 
 const query = graphql`
   {
-    allContentfulPlaces(filter: { node_locale: { eq: "cs" } }, limit: 4) {
+    allContentfulViaFerrata(filter: { node_locale: { eq: "cs" } }, limit: 4) {
       nodes {
         slug
         name
@@ -23,18 +23,18 @@ const query = graphql`
   }
 `
 
-const Places = () => {
+const ViaFerrata = () => {
   const data = useStaticQuery(query)
 
   return (
     <>
       <PlacesLayout
-        data={data.allContentfulPlaces.nodes}
-        slug="/places"
-        title="Místa"
+        data={data.allContentfulViaFerrata.nodes}
+        slug="/viaFerrata"
+        title="via Ferrata"
       />
     </>
   )
 }
 
-export default Places
+export default ViaFerrata

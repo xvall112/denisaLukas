@@ -21,7 +21,7 @@ const query = graphql`
         title
         image {
           gatsbyImageData(layout: FULL_WIDTH)
-          description
+          title
         }
         place {
           name
@@ -54,6 +54,11 @@ function SamplePrevArrow(props) {
 
 const useStyles = makeStyles(theme => ({
   root: {
+    "& .slick-dots": {
+      bottom: "15px",
+      "& li": { margin: "0px" },
+      "& button:before": { color: "white !important", fontSize: "10px" },
+    },
     color: "white",
   },
   img: {
@@ -82,7 +87,7 @@ const Hero = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 8000,
+    autoplaySpeed: 5000,
     pauseOnHover: false,
     arrows: isMd ? true : false,
     prevArrow: <SamplePrevArrow />,

@@ -14,6 +14,7 @@ import {
   Box,
   IconButton,
   Typography,
+  colors,
 } from "@material-ui/core"
 import {
   createStyles,
@@ -31,13 +32,20 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
+    menu: {
+      backgroundColor: "black",
+      borderRadius: theme.shape.borderRadius,
+    },
+    menuIcon: {
+      color: "white",
+    },
     logoCard: {
       backgroundColor: "black",
       /*  borderRadius: theme.shape.borderRadius, */
       "& .MuiCardContent-root": {
         padding: theme.spacing(1),
       },
-      margin: "10px 0px",
+      margin: theme.spacing(1, 0),
     },
   })
 )
@@ -117,14 +125,14 @@ const TopBar = ({}: Props): JSX.Element => {
                 </Grid>
               )}
               <Grid item>
-                <IconButton
-                  edge="start"
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={() => handleSidebarOpen()}
-                >
-                  <MenuIcon />
-                </IconButton>
+                <Box className={classes.menu}>
+                  <IconButton
+                    aria-label="open drawer"
+                    onClick={() => handleSidebarOpen()}
+                  >
+                    <MenuIcon fontSize="large" className={classes.menuIcon} />
+                  </IconButton>
+                </Box>
               </Grid>
             </Grid>
           </Grid>

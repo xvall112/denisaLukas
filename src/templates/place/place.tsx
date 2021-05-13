@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 
 //components
@@ -11,6 +11,7 @@ export const query = graphql`
   query($slug: String!) {
     contentfulPlaces(slug: { eq: $slug }) {
       adress
+      slug
       country {
         flagLink
         name
@@ -21,6 +22,10 @@ export const query = graphql`
         lon
       }
       name
+      titleImage {
+        gatsbyImageData(layout: FULL_WIDTH)
+        title
+      }
       images {
         gatsbyImageData(layout: FULL_WIDTH)
         title
@@ -32,14 +37,10 @@ export const query = graphql`
   }
 `
 
-const useStyles = makeStyles(theme => ({
-  root: {},
-}))
-
 const Place = props => {
   return (
     <>
-      <LayoutPlaces data={props.data.contentfulPlaces}>
+      <LayoutPlaces data={props.data.contentfulPlaces} slug="places">
         <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
       </LayoutPlaces>
     </>
