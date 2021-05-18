@@ -53,7 +53,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
               <SectionHeader
                 align="left"
                 label={`více než ${data.length}`}
-                title={<>místa která jsme navštívili</>}
+                title={<>míst které jsme navštívili</>}
               />
             </Box>
             <Filter />

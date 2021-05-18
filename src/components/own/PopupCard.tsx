@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   folioItem: {
+    maxWidth: "200px",
     position: "relative",
     overflow: "hidden",
     margin: theme.spacing(0),
@@ -32,10 +33,10 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 0,
       },
     },
-  },
-  image: {
-    objectFit: "cover",
-    height: 450,
+    "& img": {
+      height: "100px",
+      borderRadiusTop: theme.shape.borderRadius,
+    },
   },
   folioInfoWrapper: {
     padding: theme.spacing(1, 2),
@@ -96,6 +97,7 @@ const PopupCard = ({
             image={item.titleImage.gatsbyImageData}
             alt={item.titleImage.title}
             formats={["auto", "webp", "avif"]}
+            style={{ height: "100px" }}
           />
           <div
             className={clsx("folio__info-wrapper", classes.folioInfoWrapper)}

@@ -4,8 +4,7 @@ import { graphql } from "gatsby"
 //components
 import LayoutPlaces from "../components/layoutPlaces"
 import ContentfulBody from "../components/contentfulBody"
-//material Ui
-import { makeStyles } from "@material-ui/core/styles"
+import LayoutDescribePlace from "./components/describePlace"
 
 export const query = graphql`
   query($slug: String!) {
@@ -33,6 +32,16 @@ export const query = graphql`
       describePlace {
         raw
       }
+      moreInfo {
+        raw
+      }
+      parking {
+        raw
+      }
+      parkingGps {
+        lat
+        lon
+      }
     }
   }
 `
@@ -41,7 +50,25 @@ const Place = props => {
   return (
     <>
       <LayoutPlaces data={props.data.contentfulPlaces} slug="places">
-        <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
+        <>
+          <LayoutDescribePlace title="Popis">
+            <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
+          </LayoutDescribePlace>
+          {props.data.contentfulPlaces.parking && (
+            <LayoutDescribePlace
+              title="Parkoviště"
+              parkingGps={props.data.contentfulPlaces.parkingGps}
+            >
+              <ContentfulBody body={props.data.contentfulPlaces.parking} />
+            </LayoutDescribePlace>
+          )}
+
+          {props.data.contentfulPlaces.moreInfo && (
+            <LayoutDescribePlace title="Zajímavosti">
+              <ContentfulBody body={props.data.contentfulPlaces.moreInfo} />
+            </LayoutDescribePlace>
+          )}
+        </>
       </LayoutPlaces>
     </>
   )
