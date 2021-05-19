@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 
 //components
-import { CardBase } from "components/organisms"
 import { IconAlternate } from "components/molecules"
 
 //material Ui
@@ -22,27 +21,45 @@ interface Props {
   title: string
   time?: number
   parkingGps?: { lat: number; lon: number }
+  icon: string
 }
 const DescribeSection = ({
   children,
   title,
   time,
   parkingGps,
+  icon,
 }: Props): JSX.Element => {
   const { copyLocationToClipboard } = useContext(MapContext)
   const classes = useStyles()
   return (
     <>
-      <Grid item xs={12}>
-        <CardBase withShadow variant="outlined" align="left">
+      <Box mb={4}>
+        <Grid item xs={12}>
           <>
             <Grid container direction="row" alignItems="center">
-              <Grid item xs={12} md={4}>
-                <Typography variant="h5">
-                  <Box fontWeight="600" mb={{ xs: 2, md: 0 }}>
-                    {title}
-                  </Box>
-                </Typography>
+              <Grid
+                item
+                container
+                direction="row"
+                alignItems="center"
+                xs={12}
+                md={4}
+              >
+                <Grid item>
+                  <IconAlternate
+                    fontIconClass={icon}
+                    size="small"
+                    color={colors.pink}
+                  />
+                </Grid>
+                <Grid item>
+                  <Typography variant="h5">
+                    <Box fontWeight="600" mb={{ xs: 2, md: 0 }} ml={1}>
+                      {title}
+                    </Box>
+                  </Typography>
+                </Grid>
               </Grid>
               {time && (
                 <Grid
@@ -76,12 +93,12 @@ const DescribeSection = ({
                     direction="row"
                     alignItems="center"
                     spacing={1}
-                    onClick={() => copyLocationToClipboard(location)}
+                    onClick={() => copyLocationToClipboard(parkingGps)}
                     className={classes.location}
                   >
                     <Grid item>
                       <IconAlternate
-                        fontIconClass="fas fa-parking"
+                        fontIconClass="fas fa-compass"
                         size="small"
                         color={colors.pink}
                       />
@@ -99,9 +116,10 @@ const DescribeSection = ({
               )}
             </Grid>
             <Box mt={2}>{children}</Box>
+            <hr></hr>
           </>
-        </CardBase>
-      </Grid>
+        </Grid>
+      </Box>
     </>
   )
 }

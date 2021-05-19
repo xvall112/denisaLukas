@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   folioItem: {
-    maxWidth: "200px",
+    borderRadiusTop: theme.shape.borderRadius,
+    width: "200px",
     position: "relative",
     overflow: "hidden",
     margin: theme.spacing(0),
@@ -34,6 +35,7 @@ const useStyles = makeStyles(theme => ({
       },
     },
     "& img": {
+      width: "200px",
       height: "100px",
       borderRadiusTop: theme.shape.borderRadius,
     },

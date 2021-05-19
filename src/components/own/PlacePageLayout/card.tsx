@@ -90,7 +90,7 @@ const Main = ({
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid container direction="row" spacing={2}>
         {data.map((item: any, index: number) => (
-          <Grid item xs={12} md={6} lg={6} xl={3} key={index}>
+          <Grid item xs={12} md={6} lg={6} xl={4} key={index}>
             <Link to={`/${slug}/${item.slug}`} className={classes.link}>
               <div className={classes.folioItem} data-aos="fade-up">
                 {/*  <GatsbyImage
