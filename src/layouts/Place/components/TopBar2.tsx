@@ -18,25 +18,21 @@ const useStyles = makeStyles(theme => ({
     left: "20px",
     top: "10px",
     position: "fixed",
-    zIndex: 100,
+    zIndex: 1000,
     backgroundColor: "white",
     color: "black",
   },
   menuButton: {
     top: "10px",
     position: "fixed",
-    zIndex: 100,
+    zIndex: 1000,
     backgroundColor: "white",
     color: "black",
     right: "20px",
   },
 }))
 
-interface Props {
-  themeMode: string
-  themeToggler: Function
-}
-const TopBar2 = ({ themeMode, themeToggler }: Props): JSX.Element => {
+const TopBar2 = (): JSX.Element => {
   const classes = useStyles()
   const { handleSidebarOpen } = useContext(MenuContext)
   return (

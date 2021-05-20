@@ -43,7 +43,7 @@ const DescribeSection = ({
                 container
                 direction="row"
                 alignItems="center"
-                xs={12}
+                xs={6}
                 md={4}
               >
                 <Grid item>
@@ -55,7 +55,7 @@ const DescribeSection = ({
                 </Grid>
                 <Grid item>
                   <Typography variant="h5">
-                    <Box fontWeight="600" mb={{ xs: 2, md: 0 }} ml={1}>
+                    <Box fontWeight="600" ml={1}>
                       {title}
                     </Box>
                   </Typography>
