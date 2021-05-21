@@ -43,7 +43,7 @@ const DescribeSection = ({
                 container
                 direction="row"
                 alignItems="center"
-                xs={6}
+                xs={7}
                 md={4}
               >
                 <Grid item>
@@ -65,7 +65,7 @@ const DescribeSection = ({
                 <Grid
                   item
                   md={4}
-                  xs={6}
+                  xs={5}
                   container
                   direction="row"
                   alignItems="center"
@@ -88,7 +88,7 @@ const DescribeSection = ({
                   <Grid
                     item
                     md={4}
-                    xs={6}
+                    xs={5}
                     container
                     direction="row"
                     alignItems="center"

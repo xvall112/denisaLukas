@@ -22,11 +22,12 @@ export const query = graphql`
       }
       name
       titleImage {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
         title
       }
+
       images {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
         title
       }
       describePlace {
