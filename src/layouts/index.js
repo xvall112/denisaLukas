@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css"
 
 import MenuProvider from "../providers/menu/menu.providers"
 import MapProvider from "../providers/map/map.providers"
+import UserProvider from "../providers/user/user.provider"
 
 import Snackbar from "../components/own/Snackbar"
 
@@ -17,15 +18,16 @@ const TopLayout = ({ children }) => {
           crossOrigin="anonymous"
         ></script>
       </Helmet>
-
-      <MapProvider>
-        <MenuProvider>
-          <>
-            <Snackbar />
-            {children}
-          </>
-        </MenuProvider>
-      </MapProvider>
+      <UserProvider>
+        <MapProvider>
+          <MenuProvider>
+            <>
+              <Snackbar />
+              {children}
+            </>
+          </MenuProvider>
+        </MapProvider>
+      </UserProvider>
     </>
   )
 }

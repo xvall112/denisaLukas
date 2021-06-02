@@ -2,6 +2,8 @@ import React, { useContext } from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import clsx from "clsx"
 import { StaticImage } from "gatsby-plugin-image"
+import { useAuthState } from "react-firebase-hooks/auth"
+import firebase from "gatsby-plugin-firebase"
 
 //components
 import DarkModeToggler from "../../components/atoms/DarkModeToggler/DarkModeToggler"
@@ -9,11 +11,19 @@ import { CardBase } from "components/organisms"
 //materialUI
 import InstagramIcon from "@material-ui/icons/Instagram"
 import { makeStyles } from "@material-ui/core/styles"
-import { Drawer, Typography, Box, IconButton, Grid } from "@material-ui/core"
+import {
+  Drawer,
+  Typography,
+  Box,
+  IconButton,
+  Grid,
+  Button,
+} from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
+import { UserContext } from "../../providers/user/user.provider"
 
 const query = graphql`
   {
@@ -64,10 +74,13 @@ const Sidebar = ({
   className,
   ...rest
 }: Props): JSX.Element => {
+  const [user] = useAuthState(firebase.auth())
   const data = useStaticQuery(query)
   const { themeMode, themeToggler } = useContext(MenuContext)
   const classes = useStyles()
   const { handleSidebarClose, openSidebar } = useContext(MenuContext)
+  const { logout } = useContext(UserContext)
+
   return (
     <Drawer
       anchor="right"
@@ -136,12 +149,57 @@ const Sidebar = ({
               </Typography>
             </Box>
           </Link>
-        </Box>
-        <hr></hr>
-        <Box ml={2}>
-          <IconButton edge="start" color="inherit">
-            <InstagramIcon fontSize="large" />
-          </IconButton>
+
+          <hr></hr>
+          <Grid container direction="column" spacing={2}>
+            {user ? (
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  size="large"
+                  onClick={logout}
+                >
+                  Odhlásit se
+                </Button>
+              </Grid>
+            ) : (
+              <>
+                <Grid item>
+                  <Link to="/signup">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                      size="large"
+                    >
+                      Registrovat se
+                    </Button>
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link to="/signin">
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      fullWidth
+                      size="large"
+                    >
+                      Přihlásit se
+                    </Button>
+                  </Link>
+                </Grid>
+              </>
+            )}
+          </Grid>
+
+          <hr></hr>
+          <Box ml={2}>
+            <IconButton edge="start" color="inherit">
+              <InstagramIcon fontSize="large" />
+            </IconButton>
+          </Box>
         </Box>
       </div>
     </Drawer>
