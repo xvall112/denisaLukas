@@ -7,10 +7,15 @@ import MenuProvider from "../providers/menu/menu.providers"
 import MapProvider from "../providers/map/map.providers"
 import UserProvider from "../providers/user/user.provider"
 import FavouriteProvider from "../providers/favourite/favourite.provider"
-
-import Snackbar from "../components/own/Snackbar"
+import { UserContext } from "../providers/user/user.provider"
 
 const TopLayout = ({ children }) => {
+  const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
+  useEffect(() => {
+    fetchFavouriteItems()
+    isUserAuth()
+    return () => {}
+  }, [])
   return (
     <>
       <Helmet>
@@ -23,10 +28,7 @@ const TopLayout = ({ children }) => {
         <UserProvider>
           <MapProvider>
             <MenuProvider>
-              <>
-                <Snackbar />
-                {children}
-              </>
+              <>{children}</>
             </MenuProvider>
           </MapProvider>
         </UserProvider>

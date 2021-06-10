@@ -32,6 +32,8 @@ export const UserContext = createContext({
   currentUser: null,
   loading: false,
   error: null,
+  isUserSnackbarOpen: false,
+  snackbarMessage: "",
   signUp: (email, password, name) => {},
   logout: () => {},
   resetPassword: email => {},
@@ -40,14 +42,20 @@ export const UserContext = createContext({
   addFavouriteItem: itemId => {},
   removeFavouriteItem: itemId => {},
   isUserAuth: () => {},
+  closeUserSnackbar: () => {},
 })
 
 const UserProvider = ({ children }) => {
+  const [snackbarMessage, setSnackbarMessage] = useState("initialState")
+  const [isUserSnackbarOpen, setIsUserSnackbarOpen] = useState(false)
   const [favouriteItems, setFavouriteItems] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState()
   const [currentUser, setCurrentUser] = useState(null)
 
+  const closeUserSnackbar = () => {
+    setIsUserSnackbarOpen(false)
+  }
   /*  firebase.auth().onAuthStateChanged(user => {
     if (user) {
       setCurrentUser(user)
@@ -99,11 +107,14 @@ const UserProvider = ({ children }) => {
         }
       }
     }
+    await console.log("fetch finish")
   }
 
   const addFavouriteItem = async itemId => {
+    await setLoading(true)
     if (!currentUser) {
       console.log("prihlaste se")
+      await setLoading(false)
     } else {
       const favouriteItemsRef = await firebase
         .firestore()
@@ -121,7 +132,7 @@ const UserProvider = ({ children }) => {
       } else {
         try {
           await console.log("write database")
-          await favouriteItemsRef.update({
+          favouriteItemsRef.update({
             favouriteItems: firebase.firestore.FieldValue.arrayUnion(itemId),
           })
           await console.log("done database")
@@ -129,13 +140,16 @@ const UserProvider = ({ children }) => {
           setError(error)
         }
       }
+      await setLoading(false)
       await fetchFavouriteItems()
     }
   }
 
   const removeFavouriteItem = async itemId => {
+    await setLoading(true)
     if (!currentUser) {
       console.log("prihlaste se")
+      await setLoading(false)
     } else {
       const favouriteItemsRef = await firebase
         .firestore()
@@ -149,6 +163,7 @@ const UserProvider = ({ children }) => {
         setError(error)
       }
     }
+    await setLoading(false)
   }
 
   const signUp = async (email, password, name) => {
@@ -169,6 +184,8 @@ const UserProvider = ({ children }) => {
           setError(error)
         })
       await setCurrentUser(user)
+      setSnackbarMessage("Jste přihlášen")
+      setIsUserSnackbarOpen(true)
       await setLoading(false)
     } catch (error) {
       setError(error)
@@ -186,6 +203,8 @@ const UserProvider = ({ children }) => {
         // Signed in
         const user = userCredential.user
         setCurrentUser(user)
+        setSnackbarMessage("Jste přihlášen")
+        setIsUserSnackbarOpen(true)
       })
       .catch(error => {
         setError(error)
@@ -197,6 +216,8 @@ const UserProvider = ({ children }) => {
     await firebase.auth().signOut()
     await setCurrentUser(null)
     await setFavouriteItems([])
+    setSnackbarMessage("Jste odhlášen")
+    setIsUserSnackbarOpen(true)
   }
 
   const resetPassword = async email => {
@@ -214,10 +235,12 @@ const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
+        snackbarMessage,
         favouriteItems,
         currentUser,
         loading,
         error,
+        isUserSnackbarOpen,
         signUp,
         logout,
         resetPassword,
@@ -226,6 +249,7 @@ const UserProvider = ({ children }) => {
         addFavouriteItem,
         removeFavouriteItem,
         isUserAuth,
+        closeUserSnackbar,
       }}
     >
       {children}

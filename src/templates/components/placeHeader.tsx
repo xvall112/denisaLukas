@@ -52,12 +52,9 @@ const PlaceHeader = ({
 }: Props): JSX.Element => {
   const { changeMap, map, copyLocationToClipboard } = useContext(MapContext)
 
-  const {
-    currentUser,
-    addFavouriteItem,
-    favouriteItems,
-    removeFavouriteItem,
-  } = useContext(UserContext)
+  const { addFavouriteItem, favouriteItems, removeFavouriteItem } = useContext(
+    UserContext
+  )
 
   const classes = useStyles()
   console.log(favouriteItems)
@@ -98,8 +95,8 @@ const PlaceHeader = ({
             <IconButton
               onClick={
                 !isFavourite
-                  ? () => addFavouriteItem(/* currentUser, */ id)
-                  : () => removeFavouriteItem(/* currentUser, */ id)
+                  ? () => addFavouriteItem(id)
+                  : () => removeFavouriteItem(id)
               }
             >
               {isFavourite ? (

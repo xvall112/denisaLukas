@@ -4,9 +4,9 @@ import { Paper } from "@material-ui/core"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "./src/theme/index"
 import { MenuContext } from "./src/providers/menu/menu.providers"
-
+import { SnackbarMap, SnackbarUser } from "./src/components/own/Snackbar"
 import AOS from "aos"
-import { UserContext } from "./src/providers/user/user.provider"
+
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -72,12 +72,13 @@ export default function WithLayout({
     AOS.refresh()
   }, [mountedComponent])
 
+  /* 
   const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
   useEffect(() => {
     fetchFavouriteItems()
     isUserAuth()
     return () => {}
-  }, [])
+  }, []) */
   const classes = useStyles()
   return (
     <ThemeProvider theme={getTheme(themeMode)}>
@@ -85,6 +86,8 @@ export default function WithLayout({
       <CssBaseline />
       <Paper elevation={0}>
         <Layout className={classes.root}>
+          <SnackbarMap />
+          <SnackbarUser />
           <Component themeMode={themeMode} {...rest} />
         </Layout>
       </Paper>
