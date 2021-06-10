@@ -9,6 +9,7 @@ import LayoutDescribePlace from "./components/describePlace"
 export const query = graphql`
   query($slug: String!) {
     contentfulPlaces(slug: { eq: $slug }) {
+      id
       adress
       slug
       country {

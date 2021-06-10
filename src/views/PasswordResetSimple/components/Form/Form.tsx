@@ -13,11 +13,9 @@ import {
 } from "@material-ui/core"
 import { LearnMoreLink } from "components/atoms"
 import Alert from "@material-ui/lab/Alert"
-
 //context
 import { UserContext } from "../../../../providers/user/user.provider"
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: "100%",
   },
@@ -28,28 +26,21 @@ const validationSchema = yup.object({
     .string()
     .email("špatný tvar emailu")
     .required("Email není vyplňen"),
-  password: yup.string().required("Heslo není vyplňeno"),
 })
 
 const Form = (): JSX.Element => {
   const classes = useStyles()
-  const { loading, error, signIn, fetchFavouriteItems } = useContext(
-    UserContext
-  )
-
+  const { resetPassword, loading, error } = useContext(UserContext)
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
     validationSchema: validationSchema,
     onSubmit: async values => {
-      await signIn(values.email, values.password)
-      await fetchFavouriteItems()
-      await await formik.resetForm({})
+      await resetPassword(values.email)
+      await formik.resetForm({})
     },
   })
-
   return (
     <div className={classes.root}>
       <form onSubmit={formik.handleSubmit}>
@@ -57,7 +48,7 @@ const Form = (): JSX.Element => {
           {error && (
             <Grid item xs={12}>
               <Alert variant="filled" severity="error">
-                {error.message}
+                {error}
               </Alert>
             </Grid>
           )}
@@ -77,29 +68,7 @@ const Form = (): JSX.Element => {
               type="email"
             />
           </Grid>
-          <Grid item xs={12}>
-            <TextField
-              placeholder="Heslo"
-              label="Heslo *"
-              variant="outlined"
-              size="medium"
-              name="password"
-              fullWidth
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-              type="password"
-            />
-          </Grid>
-          {/*  <Grid item xs={12}>
-            <i>
-              <Typography variant="subtitle2">
-                Pole s * jsou povinné.
-              </Typography>
-            </i>
-          </Grid> */}
+
           <Grid item xs={12}>
             <Button
               size="large"
@@ -109,7 +78,7 @@ const Form = (): JSX.Element => {
               fullWidth
               disabled={!formik.isValid || loading}
             >
-              {loading ? <CircularProgress /> : "Přihlásit se"}
+              {loading ? <CircularProgress /> : " Resetovat heslo "}
             </Button>
           </Grid>
           <Grid item xs={12}>
@@ -118,8 +87,8 @@ const Form = (): JSX.Element => {
               color="textSecondary"
               align="center"
             >
-              Zapomněli jste heslo?{" "}
-              <LearnMoreLink title="Resetovat heslo" href="/password-reset" />
+              Vzpomněli jste si na heslo?{" "}
+              <LearnMoreLink title="Přihlásit se" href="/signin" />
             </Typography>
           </Grid>
         </Grid>

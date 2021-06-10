@@ -1,7 +1,5 @@
 import React from "react"
-import { useAuthState } from "react-firebase-hooks/auth"
-import firebase from "gatsby-plugin-firebase"
-import { navigate } from "gatsby"
+
 //components
 import { Form } from "./components"
 import { LearnMoreLink } from "components/atoms"
@@ -33,8 +31,7 @@ const useStyles = makeStyles(theme => {
 
 const SigninSimple = (): JSX.Element => {
   const classes = useStyles()
-  const [user] = useAuthState(firebase.auth())
-  if (user) navigate(`/`)
+
   return (
     <div>
       <Section className={classes.section}>

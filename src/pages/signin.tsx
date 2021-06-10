@@ -3,12 +3,18 @@
  *
  * You may delete this file and its occurrences from the project filesystem if you are using react-scripts
  */
-import React from "react"
+import React, { useContext } from "react"
+import { navigate } from "gatsby"
 import SigninSimple from "views/SigninSimple"
 import LayoutPlaces from "../layouts/Place/Place"
 import WithLayout from "../../WithLayout"
 
+//context
+import { UserContext } from "../providers/user/user.provider"
+
 const SignIn = (): JSX.Element => {
+  const { currentUser } = useContext(UserContext)
+  if (currentUser) navigate(`/`)
   return <WithLayout component={SigninSimple} layout={LayoutPlaces} />
 }
 

@@ -1,11 +1,8 @@
 import React from "react"
-
-//materialUI
 import { makeStyles } from "@material-ui/core/styles"
-//components
+import { Form } from "./components"
 import { SectionHeader } from "components/molecules"
 import { Section } from "components/organisms"
-import { Form } from "./components"
 
 const useStyles = makeStyles(theme => {
   const toolbar = theme.mixins.toolbar as any
@@ -28,7 +25,7 @@ const useStyles = makeStyles(theme => {
   }
 })
 
-const SignupSimple = (): JSX.Element => {
+const PasswordResetSimple = (): JSX.Element => {
   const classes = useStyles()
 
   return (
@@ -36,8 +33,8 @@ const SignupSimple = (): JSX.Element => {
       <Section className={classes.section}>
         <div className={classes.formContainer}>
           <SectionHeader
-            title="Registrovat se"
-            subtitle="Faith in travel"
+            title="Resetování hesla"
+            subtitle="Zadejte email pro reset hesla."
             titleProps={{
               variant: "h3",
             }}
@@ -49,4 +46,4 @@ const SignupSimple = (): JSX.Element => {
   )
 }
 
-export default SignupSimple
+export default PasswordResetSimple

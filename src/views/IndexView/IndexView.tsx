@@ -1,13 +1,15 @@
-import * as React from "react"
+import React, { useEffect, useContext } from "react"
 //materialUI
 import { makeStyles, Box } from "@material-ui/core"
 //components
-import { Section, SectionAlternate } from "../../components/organisms"
+import { Section } from "../../components/organisms"
 import Hero from "./components/hero/hero"
 import Countries from "./components/countries/countries"
 import Places from "./components/places/places"
 import TypeOfSport from "./components/typeOfSport/typeOfSport"
 import ViaFerrata from "./components/viaFerrata/viaFerrata"
+//context
+import { FavouriteContext } from "../../providers/favourite/favourite.provider"
 
 const useStyles = makeStyles(() => ({
   sectionNoPaddingTop: {
@@ -19,6 +21,8 @@ const useStyles = makeStyles(() => ({
 }))
 
 const IndexPage = () => {
+  const { fetchFavouriteItems } = useContext(FavouriteContext)
+
   const classes = useStyles()
   return (
     <>

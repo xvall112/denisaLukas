@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import scrollTo from "gatsby-plugin-smoothscroll"
 
 //components
@@ -6,6 +6,7 @@ import FlagChip from "../../components/own/flagChip"
 import { SectionHeader } from "components/molecules"
 //material Ui
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
+import FavoriteIcon from "@material-ui/icons/Favorite"
 import { makeStyles } from "@material-ui/core/styles"
 import {
   Grid,
@@ -17,10 +18,10 @@ import {
   IconButton,
   Snackbar,
 } from "@material-ui/core"
-import CloseIcon from "@material-ui/icons/Close"
 
 //context
 import { MapContext } from "../../providers/map/map.providers"
+import { UserContext } from "../../providers/user/user.provider"
 
 const useStyles = makeStyles(theme => ({
   flag: {
@@ -38,6 +39,7 @@ interface Props {
   adress: string
   name: string
   location: { lat: number; lon: number }
+  id: string
 }
 
 const PlaceHeader = ({
@@ -46,9 +48,21 @@ const PlaceHeader = ({
   name,
   adress,
   location,
+  id,
 }: Props): JSX.Element => {
   const { changeMap, map, copyLocationToClipboard } = useContext(MapContext)
+
+  const {
+    currentUser,
+    addFavouriteItem,
+    favouriteItems,
+    removeFavouriteItem,
+  } = useContext(UserContext)
+
   const classes = useStyles()
+  console.log(favouriteItems)
+
+  const isFavourite = favouriteItems.includes(id)
 
   const changeMapPhoto = () => {
     scrollTo("#topBar")
@@ -81,7 +95,19 @@ const PlaceHeader = ({
             </Grid>
           </Grid>
           <Grid item>
-            <FavoriteBorderIcon fontSize="large" />
+            <IconButton
+              onClick={
+                !isFavourite
+                  ? () => addFavouriteItem(/* currentUser, */ id)
+                  : () => removeFavouriteItem(/* currentUser, */ id)
+              }
+            >
+              {isFavourite ? (
+                <FavoriteIcon fontSize="large" />
+              ) : (
+                <FavoriteBorderIcon fontSize="large" />
+              )}
+            </IconButton>
           </Grid>
         </Grid>
       </Box>

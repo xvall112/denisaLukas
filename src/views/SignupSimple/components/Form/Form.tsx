@@ -1,8 +1,6 @@
 import React, { useContext } from "react"
 import { useFormik } from "formik"
 import * as yup from "yup"
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
-import firebase from "gatsby-plugin-firebase"
 //context
 import { UserContext } from "../../../../providers/user/user.provider"
 //materialUI
@@ -41,14 +39,7 @@ const validationSchema = yup.object({
 
 const Form = (): JSX.Element => {
   const classes = useStyles()
-  const { signUp } = useContext(UserContext)
-
-  const [
-    createUserWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useCreateUserWithEmailAndPassword(firebase.auth())
+  const { signUp, loading, error } = useContext(UserContext)
 
   const formik = useFormik({
     initialValues: {
@@ -58,9 +49,9 @@ const Form = (): JSX.Element => {
       passwordConfirmation: "",
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      createUserWithEmailAndPassword(values.email, values.password)
-      formik.resetForm({})
+    onSubmit: async values => {
+      await signUp(values.email, values.password, values.name)
+      await formik.resetForm({})
     },
   })
 
@@ -146,13 +137,13 @@ const Form = (): JSX.Element => {
               }
             />
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <i>
               <Typography variant="subtitle2">
                 Pole s * jsou vyžadovány.
               </Typography>
             </i>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <Button
               size="large"

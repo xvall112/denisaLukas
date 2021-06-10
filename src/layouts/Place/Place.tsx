@@ -36,7 +36,7 @@ const Place = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
         [classes.root]: true,
       })}
     >
-      <TopBar2 themeMode={themeMode} themeToggler={themeToggler} />
+      <TopBar2 />
       <SideBar variant="temporary" />
       <main>{children}</main>
     </div>

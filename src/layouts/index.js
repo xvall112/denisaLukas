@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import { Helmet } from "react-helmet"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css"
 import MenuProvider from "../providers/menu/menu.providers"
 import MapProvider from "../providers/map/map.providers"
 import UserProvider from "../providers/user/user.provider"
+import FavouriteProvider from "../providers/favourite/favourite.provider"
 
 import Snackbar from "../components/own/Snackbar"
 
@@ -18,16 +19,18 @@ const TopLayout = ({ children }) => {
           crossOrigin="anonymous"
         ></script>
       </Helmet>
-      <UserProvider>
-        <MapProvider>
-          <MenuProvider>
-            <>
-              <Snackbar />
-              {children}
-            </>
-          </MenuProvider>
-        </MapProvider>
-      </UserProvider>
+      <FavouriteProvider>
+        <UserProvider>
+          <MapProvider>
+            <MenuProvider>
+              <>
+                <Snackbar />
+                {children}
+              </>
+            </MenuProvider>
+          </MapProvider>
+        </UserProvider>
+      </FavouriteProvider>
     </>
   )
 }

@@ -8,7 +8,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import { MapContext } from "../../providers/map/map.providers"
 
 const SnackbarToast = () => {
-  const { handleCloseToast, snackbar } = useContext(MapContext)
+  const { handleCloseToast, snackbar, snackbarMessage } = useContext(MapContext)
 
   return (
     <div style={{ zIndex: 100000 }}>
@@ -20,7 +20,7 @@ const SnackbarToast = () => {
         open={snackbar}
         autoHideDuration={5000}
         onClose={handleCloseToast}
-        message="Zkopírováno do schránky"
+        message={snackbarMessage}
         action={
           <React.Fragment>
             <IconButton

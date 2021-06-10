@@ -54,13 +54,13 @@ module.exports = {
       resolve: "gatsby-plugin-firebase",
       options: {
         credentials: {
-          apiKey: "AIzaSyDCRtawLGT427TJytQ_M4L4kv8IgSnh82M",
+          apiKey: process.env.FIREBASE_API_KEY,
           authDomain: "faithintravel-34053.firebaseapp.com",
           projectId: "faithintravel-34053",
           storageBucket: "faithintravel-34053.appspot.com",
-          messagingSenderId: "510131263245",
-          appId: "1:510131263245:web:d7b6d6378e865ab14d0244",
-          measurementId: "G-HV8ZCZL3H0",
+          messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+          appId: process.env.FIREBASE_APP_ID,
+          measurementId: process.env.FIREBASE_MEASUREMENT_ID,
         },
       },
     },

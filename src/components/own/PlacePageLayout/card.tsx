@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
 
@@ -8,8 +8,12 @@ import SliderSlick from "../sliderSlick"
 
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
-import { Typography, Grid, Chip } from "@material-ui/core"
+import { Typography, Grid, Chip, Box, IconButton } from "@material-ui/core"
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
+import FavoriteIcon from "@material-ui/icons/Favorite"
 
+//context
+import { UserContext } from "../../../providers/user/user.provider"
 const useStyles = makeStyles(theme => ({
   root: {},
   flag: {
@@ -85,32 +89,48 @@ const Main = ({
   ...rest
 }: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
+  const {
+    currentUser,
+    addFavouriteItem,
+    favouriteItems,
+    removeFavouriteItem,
+  } = useContext(UserContext)
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Grid container direction="row" spacing={2}>
         {data.map((item: any, index: number) => (
           <Grid item xs={12} md={6} lg={6} xl={4} key={index}>
-            <Link to={`/${slug}/${item.slug}`} className={classes.link}>
-              <div className={classes.folioItem} data-aos="fade-up">
-                {/*  <GatsbyImage
+            <div className={classes.folioItem} data-aos="fade-up">
+              {/*  <GatsbyImage
                   image={item.titleImage.gatsbyImageData}
                   alt={item.titleImage.title}
                   formats={["auto", "webp", "avif"]}
                 /> */}
+              <Link to={`/${slug}/${item.slug}`} className={classes.link}>
                 <SliderSlick
                   img={item.images}
                   heightImg={"200px"}
                   widthImg={"100%"}
                 />
-                <div
-                  className={clsx(
-                    "folio__info-wrapper",
-                    classes.folioInfoWrapper
-                  )}
-                >
-                  <div>
+              </Link>
+              <div
+                className={clsx(
+                  "folio__info-wrapper",
+                  classes.folioInfoWrapper
+                )}
+              >
+                <div>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="center"
+                    spacing={1}
+                  >
                     <Grid
+                      item
+                      xs={8}
                       container
                       direction="row"
                       justify="flex-start"
@@ -131,6 +151,30 @@ const Main = ({
                         <Chip label={item.kindPlace} />
                       </Grid>
                     </Grid>
+                    <Grid item>
+                      <Box zIndex={100}>
+                        <IconButton
+                          aria-label="add to favourite"
+                          onClick={
+                            !favouriteItems.includes(item.id)
+                              ? () =>
+                                  addFavouriteItem(/* currentUser, */ item.id)
+                              : () =>
+                                  removeFavouriteItem(
+                                    /* currentUser, */ item.id
+                                  )
+                          }
+                        >
+                          {favouriteItems.includes(item.id) ? (
+                            <FavoriteIcon fontSize="large" />
+                          ) : (
+                            <FavoriteBorderIcon fontSize="large" />
+                          )}
+                        </IconButton>
+                      </Box>
+                    </Grid>
+                  </Grid>
+                  <Link to={`/${slug}/${item.slug}`} className={classes.link}>
                     <Typography
                       variant="h4"
                       className={classes.folioTitle}
@@ -138,10 +182,10 @@ const Main = ({
                     >
                       {item.name}
                     </Typography>
-                  </div>
+                  </Link>
                 </div>
               </div>
-            </Link>
+            </div>
           </Grid>
         ))}
       </Grid>

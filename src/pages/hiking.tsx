@@ -3,7 +3,8 @@ import WithLayout from "../../WithLayout"
 import SEO from "../components/own/seo"
 import IndexHiking from "../views/Hiking/IndexHiking"
 import LayoutPlaces from "../layouts/Place/Place"
-const Places = () => {
+
+const Hiking = () => {
   return (
     <>
       <SEO title="Places" />
@@ -12,4 +13,4 @@ const Places = () => {
   )
 }
 
-export default Places
+export default Hiking

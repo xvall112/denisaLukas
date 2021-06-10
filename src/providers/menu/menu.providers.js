@@ -14,6 +14,7 @@ const MenuProvider = ({ children }) => {
   const [themeMode, setTheme] = useState("dark")
   const [mountedComponent, setMountedComponent] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(false)
+
   const handleSidebarOpen = () => setOpenSidebar(true)
   const handleSidebarClose = () => setOpenSidebar(false)
 

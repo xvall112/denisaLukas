@@ -1,8 +1,7 @@
 import React, { useContext } from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, useStaticQuery, Link, navigate } from "gatsby"
 import clsx from "clsx"
 import { StaticImage } from "gatsby-plugin-image"
-import { useAuthState } from "react-firebase-hooks/auth"
 import firebase from "gatsby-plugin-firebase"
 
 //components
@@ -74,12 +73,15 @@ const Sidebar = ({
   className,
   ...rest
 }: Props): JSX.Element => {
-  const [user] = useAuthState(firebase.auth())
   const data = useStaticQuery(query)
-  const { themeMode, themeToggler } = useContext(MenuContext)
+  const {
+    themeMode,
+    themeToggler,
+    handleSidebarClose,
+    openSidebar,
+  } = useContext(MenuContext)
   const classes = useStyles()
-  const { handleSidebarClose, openSidebar } = useContext(MenuContext)
-  const { logout } = useContext(UserContext)
+  const { logout, currentUser } = useContext(UserContext)
 
   return (
     <Drawer
@@ -152,7 +154,7 @@ const Sidebar = ({
 
           <hr></hr>
           <Grid container direction="column" spacing={2}>
-            {user ? (
+            {currentUser ? (
               <Grid item>
                 <Button
                   variant="contained"
@@ -167,28 +169,26 @@ const Sidebar = ({
             ) : (
               <>
                 <Grid item>
-                  <Link to="/signup">
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                      size="large"
-                    >
-                      Registrovat se
-                    </Button>
-                  </Link>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    size="large"
+                    onClick={() => navigate(`/signup`)}
+                  >
+                    Registrovat se
+                  </Button>
                 </Grid>
                 <Grid item>
-                  <Link to="/signin">
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      fullWidth
-                      size="large"
-                    >
-                      Přihlásit se
-                    </Button>
-                  </Link>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    size="large"
+                    onClick={() => navigate(`/signin`)}
+                  >
+                    Přihlásit se
+                  </Button>
                 </Grid>
               </>
             )}

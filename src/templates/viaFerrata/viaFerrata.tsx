@@ -15,6 +15,7 @@ import { Grid, colors } from "@material-ui/core"
 export const query = graphql`
   query($slug: String!) {
     contentfulViaFerrata(slug: { eq: $slug }) {
+      id
       adress
       backWayTime
       country {

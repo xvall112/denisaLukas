@@ -71,6 +71,7 @@ interface Props {
     kindPlace: string
     adress: string
     country: { name: string; flagLink: string }
+    id: string
   }
 }
 const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
@@ -133,6 +134,7 @@ const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
                   name={data.name}
                   adress={data.adress}
                   location={data.location}
+                  id={data.id}
                 />
 
                 {/* komponenta body */}

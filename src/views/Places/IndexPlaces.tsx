@@ -6,6 +6,7 @@ const query = graphql`
   {
     allContentfulPlaces(filter: { node_locale: { eq: "cs" } }) {
       nodes {
+        id
         slug
         name
         kindPlace
