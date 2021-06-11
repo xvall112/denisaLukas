@@ -42,7 +42,7 @@ const SigninSimple = (): JSX.Element => {
               <span>
                 Nejste registrováni?{" "}
                 <LearnMoreLink
-                  title="Registrovat se."
+                  title="Registrovat se"
                   href="/signup"
                   typographyProps={{ variant: "h6" }}
                 />

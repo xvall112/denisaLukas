@@ -56,34 +56,40 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
     ],
   }
 
+  console.log(data)
   return (
     <div className={classes.root}>
       <Title title={title} link={slug} />
-      <Grid item xs={12}>
-        <Slider {...settings}>
-          {data.map((place, index) => {
-            return (
-              <div key={index}>
-                <Box pr={2}>
-                  <Card item={place} slug={slug} />
-                </Box>
-              </div>
-            )
-          })}
-          <Link to={slug}>
-            <Grid
-              container
-              justify="center"
-              alignItems="center"
-              className={classes.nextPlace}
-            >
-              <Typography variant="subtitle1" color="textPrimary">
-                Prozkoumat vše
-              </Typography>
-            </Grid>
-          </Link>
-        </Slider>
-      </Grid>
+
+      {data.length === 0 ? (
+        <p>Nemáte žadné oblíbené položky</p>
+      ) : (
+        <Grid item xs={12}>
+          <Slider {...settings}>
+            {data.map((place, index) => {
+              return (
+                <div key={index}>
+                  <Box pr={2}>
+                    <Card item={place} slug={slug} />
+                  </Box>
+                </div>
+              )
+            })}
+            <Link to={slug}>
+              <Grid
+                container
+                justify="center"
+                alignItems="center"
+                className={classes.nextPlace}
+              >
+                <Typography variant="subtitle1" color="textPrimary">
+                  Prozkoumat vše
+                </Typography>
+              </Grid>
+            </Link>
+          </Slider>
+        </Grid>
+      )}
     </div>
   )
 }

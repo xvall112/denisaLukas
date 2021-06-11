@@ -16,7 +16,7 @@ import {
   Button,
   ButtonGroup,
   IconButton,
-  Snackbar,
+  Tooltip,
 } from "@material-ui/core"
 
 //context
@@ -92,19 +92,31 @@ const PlaceHeader = ({
             </Grid>
           </Grid>
           <Grid item>
-            <IconButton
-              onClick={
-                !isFavourite
-                  ? () => addFavouriteItem(id)
-                  : () => removeFavouriteItem(id)
-              }
-            >
-              {isFavourite ? (
-                <FavoriteIcon fontSize="large" />
-              ) : (
-                <FavoriteBorderIcon fontSize="large" />
-              )}
-            </IconButton>
+            {favouriteItems.includes(id) ? (
+              <Tooltip
+                title="Odebrat z oblíbených"
+                aria-label="Odebrat z oblíbených"
+              >
+                <IconButton
+                  aria-label="remove from favourite"
+                  onClick={() => removeFavouriteItem(id)}
+                >
+                  <FavoriteIcon fontSize="large" />
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <Tooltip
+                title="Přidat do oblíbených"
+                aria-label="Přidat do oblíbených"
+              >
+                <IconButton
+                  aria-label="add to favourite"
+                  onClick={() => addFavouriteItem(id)}
+                >
+                  <FavoriteBorderIcon fontSize="large" />
+                </IconButton>
+              </Tooltip>
+            )}
           </Grid>
         </Grid>
       </Box>

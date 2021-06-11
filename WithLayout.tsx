@@ -4,7 +4,7 @@ import { Paper } from "@material-ui/core"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "./src/theme/index"
 import { MenuContext } from "./src/providers/menu/menu.providers"
-import { SnackbarMap, SnackbarUser } from "./src/components/own/Snackbar"
+import { SnackbarMap, SnackbarUser, Modal } from "./src/components/own/Snackbar"
 import AOS from "aos"
 
 import { makeStyles } from "@material-ui/core/styles"
@@ -88,6 +88,7 @@ export default function WithLayout({
         <Layout className={classes.root}>
           <SnackbarMap />
           <SnackbarUser />
+          <Modal />
           <Component themeMode={themeMode} {...rest} />
         </Layout>
       </Paper>

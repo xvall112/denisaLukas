@@ -8,7 +8,14 @@ import SliderSlick from "../sliderSlick"
 
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
-import { Typography, Grid, Chip, Box, IconButton } from "@material-ui/core"
+import {
+  Typography,
+  Grid,
+  Chip,
+  Box,
+  IconButton,
+  Tooltip,
+} from "@material-ui/core"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 
@@ -89,13 +96,9 @@ const Main = ({
   ...rest
 }: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
-  const {
-    currentUser,
-    addFavouriteItem,
-    favouriteItems,
-    removeFavouriteItem,
-    loading,
-  } = useContext(UserContext)
+  const { addFavouriteItem, favouriteItems, removeFavouriteItem } = useContext(
+    UserContext
+  )
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -157,19 +160,29 @@ const Main = ({
                       <Grid item>
                         <Box zIndex={100}>
                           {favouriteItems.includes(id) ? (
-                            <IconButton
-                              aria-label="remove from favourite"
-                              onClick={() => removeFavouriteItem(id)}
+                            <Tooltip
+                              title="Odebrat z oblíbených"
+                              aria-label="Odebrat z oblíbených"
                             >
-                              <FavoriteIcon fontSize="large" />
-                            </IconButton>
+                              <IconButton
+                                aria-label="remove from favourite"
+                                onClick={() => removeFavouriteItem(id)}
+                              >
+                                <FavoriteIcon fontSize="large" />
+                              </IconButton>
+                            </Tooltip>
                           ) : (
-                            <IconButton
-                              aria-label="add to favourite"
-                              onClick={() => addFavouriteItem(id)}
+                            <Tooltip
+                              title="Přidat do oblíbených"
+                              aria-label="Přidat do oblíbených"
                             >
-                              <FavoriteBorderIcon fontSize="large" />
-                            </IconButton>
+                              <IconButton
+                                aria-label="add to favourite"
+                                onClick={() => addFavouriteItem(id)}
+                              >
+                                <FavoriteBorderIcon fontSize="large" />
+                              </IconButton>
+                            </Tooltip>
                           )}
                         </Box>
                       </Grid>

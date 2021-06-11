@@ -8,8 +8,9 @@ import Countries from "./components/countries/countries"
 import Places from "./components/places/places"
 import TypeOfSport from "./components/typeOfSport/typeOfSport"
 import ViaFerrata from "./components/viaFerrata/viaFerrata"
+import FavouriteItems from "./components/favouriteItems/favouriteItems"
 //context
-import { FavouriteContext } from "../../providers/favourite/favourite.provider"
+import { UserContext } from "../../providers/user/user.provider"
 
 const useStyles = makeStyles(() => ({
   sectionNoPaddingTop: {
@@ -21,9 +22,8 @@ const useStyles = makeStyles(() => ({
 }))
 
 const IndexPage = () => {
-  const { fetchFavouriteItems } = useContext(FavouriteContext)
-
   const classes = useStyles()
+  const { currentUser } = useContext(UserContext)
   return (
     <>
       <Section fullWidth className={classes.sectionNoPaddingTop}>
@@ -35,6 +35,11 @@ const IndexPage = () => {
         </>
       </Section>
 
+      {currentUser && (
+        <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <FavouriteItems />
+        </Section>
+      )}
       <Section fullWidth className={classes.sectionNoPaddingTop}>
         <Countries />
       </Section>

@@ -155,18 +155,6 @@ const Sidebar = ({
           <hr></hr>
           <Grid container direction="column" spacing={2}>
             {currentUser ? (
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  size="large"
-                  onClick={logout}
-                >
-                  Odhlásit se
-                </Button>
-              </Grid>
-            ) : (
               <>
                 <Grid item>
                   <Button
@@ -174,11 +162,25 @@ const Sidebar = ({
                     color="primary"
                     fullWidth
                     size="large"
-                    onClick={() => navigate(`/signup`)}
+                    onClick={() => navigate(`/account`)}
                   >
-                    Registrovat se
+                    Moje Oblíbené
                   </Button>
                 </Grid>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    size="large"
+                    onClick={logout}
+                  >
+                    Odhlásit se
+                  </Button>
+                </Grid>
+              </>
+            ) : (
+              <>
                 <Grid item>
                   <Button
                     variant="outlined"
@@ -188,6 +190,17 @@ const Sidebar = ({
                     onClick={() => navigate(`/signin`)}
                   >
                     Přihlásit se
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    size="large"
+                    onClick={() => navigate(`/signup`)}
+                  >
+                    Registrovat se
                   </Button>
                 </Grid>
               </>

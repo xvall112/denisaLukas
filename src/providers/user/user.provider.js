@@ -34,6 +34,7 @@ export const UserContext = createContext({
   error: null,
   isUserSnackbarOpen: false,
   snackbarMessage: "",
+  isModalOpen: false,
   signUp: (email, password, name) => {},
   logout: () => {},
   resetPassword: email => {},
@@ -43,6 +44,7 @@ export const UserContext = createContext({
   removeFavouriteItem: itemId => {},
   isUserAuth: () => {},
   closeUserSnackbar: () => {},
+  closeModal: () => {},
 })
 
 const UserProvider = ({ children }) => {
@@ -52,9 +54,13 @@ const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState()
   const [currentUser, setCurrentUser] = useState(null)
+  const [isModalOpen, setisModalOpen] = useState(false)
 
   const closeUserSnackbar = () => {
     setIsUserSnackbarOpen(false)
+  }
+  const closeModal = () => {
+    setisModalOpen(false)
   }
   /*  firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -114,6 +120,7 @@ const UserProvider = ({ children }) => {
     await setLoading(true)
     if (!currentUser) {
       console.log("prihlaste se")
+      await setisModalOpen(true)
       await setLoading(false)
     } else {
       const favouriteItemsRef = await firebase
@@ -235,6 +242,7 @@ const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
+        isModalOpen,
         snackbarMessage,
         favouriteItems,
         currentUser,
@@ -250,6 +258,7 @@ const UserProvider = ({ children }) => {
         removeFavouriteItem,
         isUserAuth,
         closeUserSnackbar,
+        closeModal,
       }}
     >
       {children}
