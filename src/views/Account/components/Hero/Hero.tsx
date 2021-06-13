@@ -29,7 +29,7 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
       <Section>
         <SectionHeader
           title={currentUser ? currentUser.displayName : "Ucet"}
-          subtitle="Change account information and settings"
+          subtitle={currentUser ? currentUser.email : "Ucet"}
           align="left"
           disableGutter
           titleProps={{

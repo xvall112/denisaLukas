@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 //components
-import PlacesPageLayout from "../../../../../components/own/PlacePageLayout/PlacesPageLayout"
+import Card from "../../../../../components/own/PlacePageLayout/card"
 //context
 import { UserContext } from "../../../../../providers/user/user.provider"
 
@@ -46,7 +46,7 @@ const PlacesFavourite = () => {
   )
   return (
     <>
-      <PlacesPageLayout data={favourite} slug="places" />
+      <Card data={favourite} slug="places" />
     </>
   )
 }
