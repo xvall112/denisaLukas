@@ -45,8 +45,8 @@ const Form = (): JSX.Element => {
     validationSchema: validationSchema,
     onSubmit: async values => {
       await signIn(values.email, values.password)
-      await fetchFavouriteItems()
-      await await formik.resetForm({})
+      /*       await fetchFavouriteItems() */
+      await formik.resetForm({})
     },
   })
 

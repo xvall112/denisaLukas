@@ -12,9 +12,7 @@ import { UserContext } from "../providers/user/user.provider"
 
 const AccountPage = (): JSX.Element => {
   const { currentUser } = useContext(UserContext)
-  if (!currentUser)
-    // If we’re not logged in, redirect to the home page.
-    navigate(`/signin`)
+  if (!currentUser) navigate(`/signin`)
 
   return <WithLayout component={Account} layout={Main} />
 }
