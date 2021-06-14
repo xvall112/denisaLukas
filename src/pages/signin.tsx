@@ -14,10 +14,8 @@ import { UserContext } from "../providers/user/user.provider"
 
 const SignIn = (): JSX.Element => {
   const { currentUser } = useContext(UserContext)
-  if (currentUser) {
-    navigate(-1)
-    return null
-  }
+  if (currentUser) navigate(-1)
+
   return <WithLayout component={SigninSimple} layout={LayoutPlaces} />
 }
 
