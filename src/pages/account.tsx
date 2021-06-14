@@ -3,12 +3,21 @@
  *
  * You may delete this file and its occurrences from the project filesystem if you are using react-scripts
  */
-import React from "react"
+import React, { useContext } from "react"
+import { navigate } from "gatsby"
 import Account from "views/Account"
 import Main from "../layouts/Main/Main"
 import WithLayout from "../../WithLayout"
+import { UserContext } from "../providers/user/user.provider"
 
 const AccountPage = (): JSX.Element => {
+  const { currentUser } = useContext(UserContext)
+  if (!currentUser && location.pathname !== `/signin`) {
+    // If we’re not logged in, redirect to the home page.
+    navigate(`/signin`, { replace: true })
+    return null
+  }
+
   return <WithLayout component={Account} layout={Main} />
 }
 

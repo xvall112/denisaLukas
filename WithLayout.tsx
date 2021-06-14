@@ -6,6 +6,7 @@ import getTheme from "./src/theme/index"
 import { MenuContext } from "./src/providers/menu/menu.providers"
 import { SnackbarMap, SnackbarUser, Modal } from "./src/components/own/Snackbar"
 import AOS from "aos"
+import { UserContext } from "./src/providers/user/user.provider"
 
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -72,13 +73,18 @@ export default function WithLayout({
     AOS.refresh()
   }, [mountedComponent])
 
-  /* 
-  const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
+  const { fetchFavouriteItems, isUserAuth, currentUser } = useContext(
+    UserContext
+  )
   useEffect(() => {
-    fetchFavouriteItems()
     isUserAuth()
-    return () => {}
-  }, []) */
+    fetchFavouriteItems()
+
+    console.log("componennt mounth")
+    return () => {
+      console.log("componennt unMounth")
+    }
+  }, [currentUser])
   const classes = useStyles()
   return (
     <ThemeProvider theme={getTheme(themeMode)}>

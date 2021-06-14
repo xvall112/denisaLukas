@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import IndexView from "../views/IndexView/IndexView"
 import Main from "../layouts/Main/Main"
 import WithLayout from "../../WithLayout"

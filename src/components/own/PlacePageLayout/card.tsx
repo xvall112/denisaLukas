@@ -18,6 +18,7 @@ import {
 } from "@material-ui/core"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
+import Grow from "@material-ui/core/Grow"
 
 //context
 import { UserContext } from "../../../providers/user/user.provider"
@@ -52,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   folioInfoWrapper: {
     marginTop: "-10px",
     padding: theme.spacing(3, 2),
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.level2,
   },
   folioTitle: {
     fontWeight: "bold",
@@ -81,6 +82,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface ViewComponentProps {
+  four?: boolean
   className?: string
   slug: string
   data: any
@@ -93,6 +95,7 @@ const Main = ({
   data,
   className,
   slug,
+  four,
   ...rest
 }: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
@@ -106,100 +109,112 @@ const Main = ({
         {data.map((item: any, index: number) => {
           const { id } = item
           return (
-            <Grid item xs={12} md={6} lg={6} xl={4} key={index}>
-              <div className={classes.folioItem} data-aos="fade-up">
-                {/*  <GatsbyImage
+            <Grow in={true}>
+              <Grid
+                item
+                xs={12}
+                md={four ? 3 : 6}
+                lg={four ? 3 : 6}
+                xl={3}
+                key={index}
+              >
+                <div className={classes.folioItem} data-aos="fade-up">
+                  {/*  <GatsbyImage
                   image={item.titleImage.gatsbyImageData}
                   alt={item.titleImage.title}
                   formats={["auto", "webp", "avif"]}
                 /> */}
-                <Link to={`/${slug}/${item.slug}`} className={classes.link}>
-                  <SliderSlick
-                    img={item.images}
-                    heightImg={"200px"}
-                    widthImg={"100%"}
-                  />
-                </Link>
-                <div
-                  className={clsx(
-                    "folio__info-wrapper",
-                    classes.folioInfoWrapper
-                  )}
-                >
-                  <div>
-                    <Grid
-                      container
-                      direction="row"
-                      justify="space-between"
-                      alignItems="center"
-                      spacing={1}
-                    >
+                  <Link to={`/${slug}/${item.slug}`} className={classes.link}>
+                    <SliderSlick
+                      img={item.images}
+                      heightImg={"200px"}
+                      widthImg={"100%"}
+                    />
+                  </Link>
+                  <div
+                    className={clsx(
+                      "folio__info-wrapper",
+                      classes.folioInfoWrapper
+                    )}
+                  >
+                    <div>
                       <Grid
-                        item
-                        xs={8}
                         container
                         direction="row"
-                        justify="flex-start"
+                        justify="space-between"
                         alignItems="center"
                         spacing={1}
                       >
-                        <Grid item>
-                          <Grid container alignItems="center">
-                            <FlagChip
-                              name={item.country.name}
-                              flagLink={item.country.flagLink}
-                              className={classes.flag}
-                              width={40}
-                            />
+                        <Grid
+                          item
+                          xs={8}
+                          container
+                          direction="row"
+                          justify="flex-start"
+                          alignItems="center"
+                          spacing={1}
+                        >
+                          <Grid item>
+                            <Grid container alignItems="center">
+                              <FlagChip
+                                name={item.country.name}
+                                flagLink={item.country.flagLink}
+                                className={classes.flag}
+                                width={40}
+                              />
+                            </Grid>
+                          </Grid>
+                          <Grid item>
+                            <Chip label={item.kindPlace} />
                           </Grid>
                         </Grid>
                         <Grid item>
-                          <Chip label={item.kindPlace} />
+                          <Box zIndex={100}>
+                            {favouriteItems.includes(id) ? (
+                              <Tooltip
+                                title="Odebrat z oblíbených"
+                                aria-label="Odebrat z oblíbených"
+                              >
+                                <IconButton
+                                  aria-label="remove from favourite"
+                                  onClick={() => removeFavouriteItem(id)}
+                                >
+                                  <FavoriteIcon fontSize="large" />
+                                </IconButton>
+                              </Tooltip>
+                            ) : (
+                              <Tooltip
+                                title="Přidat do oblíbených"
+                                aria-label="Přidat do oblíbených"
+                              >
+                                <IconButton
+                                  aria-label="add to favourite"
+                                  onClick={() => addFavouriteItem(id)}
+                                >
+                                  <FavoriteBorderIcon fontSize="large" />
+                                </IconButton>
+                              </Tooltip>
+                            )}
+                          </Box>
                         </Grid>
                       </Grid>
-                      <Grid item>
-                        <Box zIndex={100}>
-                          {favouriteItems.includes(id) ? (
-                            <Tooltip
-                              title="Odebrat z oblíbených"
-                              aria-label="Odebrat z oblíbených"
-                            >
-                              <IconButton
-                                aria-label="remove from favourite"
-                                onClick={() => removeFavouriteItem(id)}
-                              >
-                                <FavoriteIcon fontSize="large" />
-                              </IconButton>
-                            </Tooltip>
-                          ) : (
-                            <Tooltip
-                              title="Přidat do oblíbených"
-                              aria-label="Přidat do oblíbených"
-                            >
-                              <IconButton
-                                aria-label="add to favourite"
-                                onClick={() => addFavouriteItem(id)}
-                              >
-                                <FavoriteBorderIcon fontSize="large" />
-                              </IconButton>
-                            </Tooltip>
-                          )}
-                        </Box>
-                      </Grid>
-                    </Grid>
-                    <Link to={`/${slug}/${item.slug}`} className={classes.link}>
-                      <Typography
-                        variant="h4"
-                        className={classes.folioTitle}
-                        color="textPrimary"
+                      <Link
+                        to={`/${slug}/${item.slug}`}
+                        className={classes.link}
                       >
-                        {item.name}
-                      </Typography>
-                    </Link>
+                        <Typography
+                          variant="h4"
+                          className={classes.folioTitle}
+                          color="textPrimary"
+                        >
+                          {item.name}
+                        </Typography>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Grid>
+              </Grid>
+            </Grow>
           )
         })}
       </Grid>

@@ -56,7 +56,6 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
     ],
   }
 
-  console.log(data)
   return (
     <div className={classes.root}>
       <Title title={title} link={slug} />

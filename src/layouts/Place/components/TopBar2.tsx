@@ -5,8 +5,8 @@ import { navigate } from "gatsby"
 import DarkModeToggler from "../../../components/atoms/DarkModeToggler/DarkModeToggler"
 
 //materialUI
-import { Container, Box, IconButton, Grid, Button } from "@material-ui/core"
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
+import { Button } from "@material-ui/core"
+
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
 import MenuIcon from "@material-ui/icons/Menu"
 import { makeStyles } from "@material-ui/core/styles"

@@ -5,6 +5,7 @@ import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Typography from "@material-ui/core/Typography"
 import Box from "@material-ui/core/Box"
+import Container from '@material-ui/core/Container';
 //components
 import PlacesFavourite from "./components/PlacesFavourite"
 interface TabPanelProps {
@@ -26,7 +27,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -58,7 +59,9 @@ export default function TabPane() {
 
   return (
     <div className={classes.root}>
+    
       <AppBar position="static" color="default">
+     <Container maxWidth='xl'>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -74,7 +77,9 @@ export default function TabPane() {
           <Tab label="Cyklo" {...a11yProps(3)} />
           <Tab label="ucet" {...a11yProps(4)} />
         </Tabs>
+        </Container>
       </AppBar>
+     
       <TabPanel value={value} index={0}>
         <PlacesFavourite />
       </TabPanel>

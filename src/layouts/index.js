@@ -10,12 +10,6 @@ import FavouriteProvider from "../providers/favourite/favourite.provider"
 import { UserContext } from "../providers/user/user.provider"
 
 const TopLayout = ({ children }) => {
-  const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
-  useEffect(() => {
-    fetchFavouriteItems()
-    isUserAuth()
-    return () => {}
-  }, [])
   return (
     <>
       <Helmet>

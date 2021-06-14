@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react"
 import firebase from "gatsby-plugin-firebase"
 
-export const createUserProfileDocument = async (userAuth, name) => {
+export const createUserProfileDocument = async userAuth => {
   if (!userAuth) return
 
   const userRef = await firebase.firestore().doc(`users/${userAuth.uid}`)
@@ -15,10 +15,11 @@ export const createUserProfileDocument = async (userAuth, name) => {
     try {
       await userRef.set({
         id: uid,
-        displayName: name || displayName,
+        displayName,
         email,
         createAt,
         photoURL,
+        favouriteItems: [],
       })
     } catch (error) {
       console.log("error creating user", error.message)
@@ -148,7 +149,6 @@ const UserProvider = ({ children }) => {
         }
       }
       await setLoading(false)
-      await fetchFavouriteItems()
     }
   }
 
@@ -191,6 +191,7 @@ const UserProvider = ({ children }) => {
           setError(error)
         })
       await setCurrentUser(user)
+      await createUserProfileDocument(user)
       setSnackbarMessage("Jste přihlášen")
       setIsUserSnackbarOpen(true)
       await setLoading(false)
@@ -219,12 +220,19 @@ const UserProvider = ({ children }) => {
     await setLoading(false)
   }
 
-  const logout = async () => {
-    await firebase.auth().signOut()
-    await setCurrentUser(null)
-    await setFavouriteItems([])
-    setSnackbarMessage("Jste odhlášen")
-    setIsUserSnackbarOpen(true)
+  const logout = () => {
+    return new Promise(resolve => {
+      firebase
+        .auth()
+        .signOut()
+        .then(function () {
+          setCurrentUser(null)
+          setFavouriteItems([])
+          setSnackbarMessage("Jste odhlášen")
+          setIsUserSnackbarOpen(true)
+          resolve()
+        })
+    })
   }
 
   const resetPassword = async email => {

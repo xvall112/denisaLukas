@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   card: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.level2,
   },
 }))
 

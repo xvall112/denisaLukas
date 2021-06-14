@@ -7,6 +7,7 @@ import { SectionHeader } from "components/molecules"
 import { Section } from "components/organisms"
 //materialUi
 import { makeStyles } from "@material-ui/core/styles"
+import Slide from "@material-ui/core/Slide"
 
 const useStyles = makeStyles(theme => {
   const toolbar = theme.mixins.toolbar as any
@@ -33,29 +34,31 @@ const SigninSimple = (): JSX.Element => {
   const classes = useStyles()
 
   return (
-    <div>
-      <Section className={classes.section}>
-        <div className={classes.formContainer}>
-          <SectionHeader
-            title="Přihlásit se"
-            subtitle={
-              <span>
-                Nejste registrováni?{" "}
-                <LearnMoreLink
-                  title="Registrovat se"
-                  href="/signup"
-                  typographyProps={{ variant: "h6" }}
-                />
-              </span>
-            }
-            titleProps={{
-              variant: "h3",
-            }}
-          />
-          <Form />
-        </div>
-      </Section>
-    </div>
+    <Slide direction="right" in={true}>
+      <div>
+        <Section className={classes.section}>
+          <div className={classes.formContainer}>
+            <SectionHeader
+              title="Přihlásit se"
+              subtitle={
+                <span>
+                  Nejste registrováni?{" "}
+                  <LearnMoreLink
+                    title="Registrovat se"
+                    href="/signup"
+                    typographyProps={{ variant: "h6" }}
+                  />
+                </span>
+              }
+              titleProps={{
+                variant: "h3",
+              }}
+            />
+            <Form />
+          </div>
+        </Section>
+      </div>
+    </Slide>
   )
 }
 
