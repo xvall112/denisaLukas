@@ -12,7 +12,6 @@ import { UserContext } from "../providers/user/user.provider"
 
 const AccountPage = (): JSX.Element => {
   const { currentUser } = useContext(UserContext)
-  if (!currentUser) navigate(`/signin`)
 
   return <WithLayout component={Account} layout={Main} />
 }

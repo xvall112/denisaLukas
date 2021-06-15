@@ -36,9 +36,12 @@ const query = graphql`
 `
 const useStyles = makeStyles(theme => ({
   drawer: {
-    width: "100%",
-    maxWidth: 400,
+    width: "100vw",
+
     zIndex: 10000,
+    [theme.breakpoints.up("md")]: {
+      width: 400,
+    },
   },
   root: {
     height: "100%",

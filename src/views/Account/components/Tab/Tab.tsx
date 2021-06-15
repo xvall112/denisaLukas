@@ -5,9 +5,10 @@ import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Typography from "@material-ui/core/Typography"
 import Box from "@material-ui/core/Box"
-import Container from '@material-ui/core/Container';
+import Container from "@material-ui/core/Container"
 //components
 import PlacesFavourite from "./components/PlacesFavourite"
+import FerrataFavourite from "./components/FerrataFavourite"
 interface TabPanelProps {
   children?: React.ReactNode
   index: any
@@ -59,32 +60,31 @@ export default function TabPane() {
 
   return (
     <div className={classes.root}>
-    
       <AppBar position="static" color="default">
-     <Container maxWidth='xl'>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs example"
-        >
-          <Tab label="Místa" {...a11yProps(0)} />
-          <Tab label="via Ferrata" {...a11yProps(1)} />
-          <Tab label="Hiking" {...a11yProps(2)} />
-          <Tab label="Cyklo" {...a11yProps(3)} />
-          <Tab label="ucet" {...a11yProps(4)} />
-        </Tabs>
+        <Container maxWidth="xl">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="scrollable"
+            scrollButtons="auto"
+            aria-label="scrollable auto tabs example"
+          >
+            <Tab label="Místa" {...a11yProps(0)} />
+            <Tab label="via Ferrata" {...a11yProps(1)} />
+            <Tab label="Hiking" {...a11yProps(2)} />
+            <Tab label="Cyklo" {...a11yProps(3)} />
+            <Tab label="ucet" {...a11yProps(4)} />
+          </Tabs>
         </Container>
       </AppBar>
-     
+
       <TabPanel value={value} index={0}>
         <PlacesFavourite />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <FerrataFavourite />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

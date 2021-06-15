@@ -8,7 +8,7 @@ import { UserContext } from "../../../../../providers/user/user.provider"
 
 const query = graphql`
   {
-    allContentfulPlaces(filter: { node_locale: { eq: "cs" } }) {
+    allContentfulViaFerrata(filter: { node_locale: { eq: "cs" } }) {
       nodes {
         id
         slug
@@ -39,10 +39,10 @@ const query = graphql`
   }
 `
 
-const PlacesFavourite = () => {
+const FerrataFavourite = () => {
   const data = useStaticQuery(query)
   const { favouriteItems } = useContext(UserContext)
-  const favourite = data.allContentfulPlaces.nodes.filter(item =>
+  const favourite = data.allContentfulViaFerrata.nodes.filter(item =>
     favouriteItems.includes(item.id)
   )
   console.log(favourite)
@@ -50,15 +50,15 @@ const PlacesFavourite = () => {
     <>
       {favourite.length === 0 ? (
         <NoFavourite
-          title="Nemáte žádná oblíbená místa"
-          button="Objevuj nová místa"
-          slug="/places"
+          title="Nemáte žádné oblíbené ferraty"
+          button="Objevuj nové ferraty"
+          slug="/viaFerrata"
         />
       ) : (
-        <Card data={favourite} four slug="places" />
+        <Card data={favourite} four slug="viaFerrata" />
       )}
     </>
   )
 }
 
-export default PlacesFavourite
+export default FerrataFavourite

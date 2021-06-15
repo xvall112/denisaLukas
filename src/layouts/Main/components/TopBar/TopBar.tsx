@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 //components
@@ -79,14 +80,16 @@ const TopBar = ({}: Props): JSX.Element => {
             >
               <Grid item container direction="row" alignItems="center">
                 <Grid item>
-                  <CardBase noBorder noShadow className={classes.logoCard}>
-                    <StaticImage
-                      src="../../../../images/logoWhite.png"
-                      width={40}
-                      quality={95}
-                      alt="logo Faith in Travel"
-                    />
-                  </CardBase>
+                  <Link to="/">
+                    <CardBase noBorder noShadow className={classes.logoCard}>
+                      <StaticImage
+                        src="../../../../images/logoWhite.png"
+                        width={40}
+                        quality={95}
+                        alt="logo Faith in Travel"
+                      />
+                    </CardBase>
+                  </Link>
                 </Grid>
                 <Grid item>
                   <Box ml={1}>

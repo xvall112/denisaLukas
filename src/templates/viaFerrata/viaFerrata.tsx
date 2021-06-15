@@ -43,7 +43,7 @@ export const query = graphql`
       }
       long
       name
-      parkingLocation {
+      parkingGps {
         lat
         lon
       }
@@ -77,7 +77,7 @@ const ViaFerrata = props => {
     backWayTime,
     parkingToStartTime,
     parkingToStartDescription,
-    parkingLocation,
+    parkingGps,
     endLocation,
     describeFerrata,
     backWayDescription,
@@ -121,7 +121,7 @@ const ViaFerrata = props => {
           />
         </Grid>
         <DescriptionSection
-          location={parkingLocation}
+          location={parkingGps}
           description={parkingToStartDescription.parkingToStartDescription}
           time={parkingToStartTime}
           iconLocation="fas fa-parking"

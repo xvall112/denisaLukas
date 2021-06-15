@@ -4,20 +4,32 @@ import { navigate } from "gatsby"
 //materialUI
 import { Button, Typography, Grid } from "@material-ui/core"
 
-const noFavourite = () => {
+interface Props {
+  title: string
+  button: string
+  slug: string
+}
+const noFavourite = ({ title, button, slug }: Props): JSX.Element => {
   return (
     <div>
-      <Grid direction="row" spacing={2}>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        spacing={3}
+      >
         <Grid item>
-          <Typography>"Nemáte žádná oblíbená místa" </Typography>
+          <Typography variant="h6">{title}</Typography>
         </Grid>
         <Grid item>
           <Button
+            size="large"
             variant="outlined"
             color="primary"
-            onClick={() => navigate(`/places`)}
+            onClick={() => navigate(`${slug}`)}
           >
-            Objev místa
+            {button}
           </Button>
         </Grid>
       </Grid>

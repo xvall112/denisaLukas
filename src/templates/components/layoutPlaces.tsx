@@ -67,6 +67,9 @@ interface Props {
   data: {
     name: string
     location: { lat: number; lon: number }
+    parkingGps?: { lat: number; lon: number }
+    parkingLocation?: { lat: number; lon: number }
+    endLocation?: { lat: number; lon: number }
     images: any
     kindPlace: string
     adress: string
@@ -109,6 +112,16 @@ const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
                   zoom={13}
                   center={[data.location.lat, data.location.lon]}
                   marker={[data]}
+                  parking={
+                    data.parkingGps
+                      ? [data.parkingGps.lat, data.parkingGps.lon]
+                      : null
+                  }
+                  endFerrataLocation={
+                    data.endLocation
+                      ? [data.endLocation.lat, data.endLocation.lon]
+                      : null
+                  }
                   slug={slug}
                 />
               ) : (

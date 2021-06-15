@@ -32,6 +32,8 @@ interface LeafletMap {
   rest?: any
   marker: any
   slug: string
+  parking?: [number, number]
+  endFerrataLocation?: [number, number]
 }
 const LeafletMap = ({
   marker,
@@ -39,6 +41,8 @@ const LeafletMap = ({
   center,
   slug,
   className,
+  parking,
+  endFerrataLocation,
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
@@ -60,6 +64,16 @@ const LeafletMap = ({
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {endFerrataLocation && (
+          <Marker position={endFerrataLocation}>
+            <Popup>Vrchol</Popup>
+          </Marker>
+        )}
+        {parking && (
+          <Marker position={parking}>
+            <Popup>Parkovište</Popup>
+          </Marker>
+        )}
         {marker &&
           marker.length &&
           marker.map((item, i) => (
