@@ -9,6 +9,8 @@ import {
   TileLayer,
   Marker,
   Popup,
+  useMapEvents,
+  useMap,
 } from "react-leaflet"
 import L from "leaflet"
 //materialUI
@@ -32,6 +34,15 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const LeafletComponent = () => {
+  const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
+  const map = useMap()
+  map.flyTo(
+    [filterCountryLocation[0], filterCountryLocation[1]],
+    filterCountryZoom
+  )
+  return <></>
+}
 interface LeafletMap {
   zoom: number
   center: any
@@ -53,13 +64,13 @@ const LeafletMap = ({
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
-
+  const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
   if (typeof window !== "undefined") {
     return (
       <MapContainer
         zoomControl={false}
-        zoom={zoom}
-        center={center}
+        zoom={filterCountryZoom}
+        center={[filterCountryLocation[0], filterCountryLocation[1]]}
         className={clsx("map", classes.root, className)}
         style={{ height: "100%", width: "100%" }}
         {...rest}
@@ -90,6 +101,7 @@ const LeafletMap = ({
               </Popup>
             </Marker>
           ))}
+        <LeafletComponent />
       </MapContainer>
     )
   }

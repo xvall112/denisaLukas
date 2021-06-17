@@ -6,8 +6,8 @@ export const MenuContext = createContext({
   themeMode: "dark",
   filterCountry: "",
   filterCountryZoom: 2,
-  filterCountryLocation: [36, -5],
-  setFilterCountry: (valueFilter, zoom) => {},
+  filterCountryLocation: [0, 0],
+  setFilterCountry: (name, lat, lon, zoom) => {},
   handleSidebarOpen: () => {},
   handleSidebarClose: () => {},
   setMode: () => {},
@@ -17,7 +17,7 @@ export const MenuContext = createContext({
 const MenuProvider = ({ children }) => {
   const [filterCountry, setFilterCountryState] = useState("")
   const [filterCountryZoom, setFilterCountryZoom] = useState(2)
-  const [filterCountryLocation, setFilterCountryLocation] = useState([36, -5])
+  const [filterCountryLocation, setFilterCountryLocation] = useState([0, 0])
   const [themeMode, setTheme] = useState("dark")
   const [mountedComponent, setMountedComponent] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(false)
@@ -34,18 +34,15 @@ const MenuProvider = ({ children }) => {
     themeMode === "light" ? setMode("dark") : setMode("light")
   }
 
-  const setFilterCountry = (valueFilter, number) => {
-    if (valueFilter === "") {
+  const setFilterCountry = (name, lat, lon, zoom) => {
+    if (name === "") {
       setFilterCountryState("")
-      setFilterCountryLocation([36, -5])
+      setFilterCountryLocation([0, 0])
       setFilterCountryZoom(2)
     } else {
-      setFilterCountryState(valueFilter.name)
-      setFilterCountryLocation([
-        valueFilter.countryCenterLocation.lat,
-        valueFilter.countryCenterLocation.lon,
-      ])
-      setFilterCountryZoom(number)
+      setFilterCountryState(name)
+      setFilterCountryLocation([lat, lon])
+      setFilterCountryZoom(zoom)
     }
   }
 
