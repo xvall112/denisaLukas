@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLayout"
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 const query = graphql`
   {
@@ -19,7 +20,11 @@ const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(layout: FULL_WIDTH, quality: 50)
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            height: 1500
+          )
           title
         }
         location {
@@ -32,11 +37,21 @@ const query = graphql`
 `
 
 const IndexPlaces = () => {
+  const { filterCountry } = useContext(MenuContext)
   const data = useStaticQuery(query)
+
+  const dataFilter = data.allContentfulPlaces.nodes.filter(
+    item => item.country.name === filterCountry
+  )
 
   return (
     <>
-      <PlacesPageLayout data={data.allContentfulPlaces.nodes} slug="places" />
+      <PlacesPageLayout
+        data={
+          filterCountry === "" ? data.allContentfulPlaces.nodes : dataFilter
+        }
+        slug="places"
+      />
     </>
   )
 }

@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useContext } from "react"
+import { MenuContext } from "../../../providers/menu/menu.providers"
 
 //materialUI
 import { Grid, Box, Container, useMediaQuery } from "@material-ui/core"
@@ -29,6 +30,7 @@ interface Props {
   slug: string
 }
 const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
+  const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
   const theme = useTheme()
   const isLg = useMediaQuery(theme.breakpoints.up("lg"), {
     defaultMatches: true,
@@ -36,9 +38,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   })
-
   const classes = useStyles()
-
   return (
     <>
       <Grid container direction={isMd ? "row" : "column-reverse"}>
@@ -53,7 +53,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
               <SectionHeader
                 align="left"
                 label={`více než ${data.length}`}
-                title={<>míst které jsme navštívili</>}
+                title={<>míst které můžete objevovat</>}
               />
             </Box>
             <Filter />
@@ -62,7 +62,12 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
         </Grid>
         <Grid item xs={12} md={6}>
           <div className={classes.map}>
-            <LeafletMap zoom={2} center={[36, -5]} marker={data} slug={slug} />
+            <LeafletMap
+              zoom={filterCountryZoom}
+              center={filterCountryLocation}
+              marker={data}
+              slug={slug}
+            />
           </div>
         </Grid>
       </Grid>

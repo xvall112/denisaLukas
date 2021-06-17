@@ -50,30 +50,28 @@ export const query = graphql`
 
 const Place = props => {
   return (
-    <>
-      <LayoutPlaces data={props.data.contentfulPlaces} slug="places">
-        <>
-          <LayoutDescribePlace title="Popis" icon="fas fa-info">
-            <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
+    <LayoutPlaces data={props.data.contentfulPlaces} slug="places">
+      <>
+        <LayoutDescribePlace title="Popis" icon="fas fa-info">
+          <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
+        </LayoutDescribePlace>
+        {props.data.contentfulPlaces.parking && (
+          <LayoutDescribePlace
+            icon="fas fa-parking"
+            title="Parkoviště"
+            parkingGps={props.data.contentfulPlaces.parkingGps}
+          >
+            <ContentfulBody body={props.data.contentfulPlaces.parking} />
           </LayoutDescribePlace>
-          {props.data.contentfulPlaces.parking && (
-            <LayoutDescribePlace
-              icon="fas fa-parking"
-              title="Parkoviště"
-              parkingGps={props.data.contentfulPlaces.parkingGps}
-            >
-              <ContentfulBody body={props.data.contentfulPlaces.parking} />
-            </LayoutDescribePlace>
-          )}
+        )}
 
-          {props.data.contentfulPlaces.moreInfo && (
-            <LayoutDescribePlace title="Zajímavosti" icon="fas fa-comment">
-              <ContentfulBody body={props.data.contentfulPlaces.moreInfo} />
-            </LayoutDescribePlace>
-          )}
-        </>
-      </LayoutPlaces>
-    </>
+        {props.data.contentfulPlaces.moreInfo && (
+          <LayoutDescribePlace title="Zajímavosti" icon="fas fa-comment">
+            <ContentfulBody body={props.data.contentfulPlaces.moreInfo} />
+          </LayoutDescribePlace>
+        )}
+      </>
+    </LayoutPlaces>
   )
 }
 

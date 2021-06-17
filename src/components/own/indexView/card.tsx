@@ -57,7 +57,7 @@ const Card = ({ item, slug }: props): JSX.Element => {
             image={item.titleImage.gatsbyImageData}
             alt={item.titleImage.title}
             formats={["auto", "webp", "avif"]}
-            style={{ height: "350px" }}
+            style={{ height: "300px" }}
           />
         </Box>
         <Box mt={1}>

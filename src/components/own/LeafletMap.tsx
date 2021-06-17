@@ -1,8 +1,15 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 import clsx from "clsx"
-import { TileLayer, Marker, Popup } from "react-leaflet"
-import { MapContainer, ZoomControl } from "react-leaflet"
+
+import {
+  MapContainer,
+  ZoomControl,
+  TileLayer,
+  Marker,
+  Popup,
+} from "react-leaflet"
 import L from "leaflet"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
@@ -27,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 interface LeafletMap {
   zoom: number
-  center: [number, number]
+  center: any
   className?: any
   rest?: any
   marker: any

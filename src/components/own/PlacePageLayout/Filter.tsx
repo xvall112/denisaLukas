@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-
+import { MenuContext } from "../../../providers/menu/menu.providers"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 import {
@@ -20,6 +20,10 @@ const query = graphql`
     ) {
       nodes {
         name
+        countryCenterLocation {
+          lat
+          lon
+        }
       }
     }
   }
@@ -40,13 +44,20 @@ const useStyles = makeStyles(theme => ({
 
 const Filter = () => {
   const data = useStaticQuery(query)
-  const [country, setCountry] = useState("")
+  const { filterCountry, setFilterCountry } = useContext(MenuContext)
   const classes = useStyles()
 
-  const handleChange = event => {
-    setCountry(event.target.value)
-  }
+  const filter = event => {
+    if (event.target.value !== "") {
+      const country = data.allContentfulCountry.nodes.find(
+        item => item.name === event.target.value
+      )
 
+      setFilterCountry(country, 7)
+    } else {
+      setFilterCountry("")
+    }
+  }
   return (
     <div className={classes.root}>
       <Grid container direction="row" spacing={1}>
@@ -56,12 +67,12 @@ const Filter = () => {
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
-              value={country}
-              onChange={handleChange}
+              value={filterCountry}
+              onChange={filter}
               label="country"
             >
               <MenuItem value="">
-                <em>None</em>
+                <em>Vše</em>
               </MenuItem>
               {data.allContentfulCountry.nodes.map((item, index) => {
                 return (
@@ -73,7 +84,7 @@ const Filter = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item>
+        {/*   <Grid item>
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">
               Místo
@@ -81,7 +92,7 @@ const Filter = () => {
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
-              value={country}
+              value={filterCountry}
               onChange={handleChange}
               label="country"
             >
@@ -97,7 +108,7 @@ const Filter = () => {
               })}
             </Select>
           </FormControl>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   )

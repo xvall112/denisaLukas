@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   nextPlace: {
     border: "1px solid",
     borderColor: theme.palette.text.primary,
-    height: "350px",
+    height: "300px",
     borderRadius: theme.spacing(1),
     textDecoration: "none",
     width: "95%",

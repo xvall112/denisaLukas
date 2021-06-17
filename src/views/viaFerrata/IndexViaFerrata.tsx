@@ -19,7 +19,11 @@ const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(layout: FULL_WIDTH)
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            height: 1500
+          )
           title
         }
         location {
