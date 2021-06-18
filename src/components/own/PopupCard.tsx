@@ -93,7 +93,7 @@ const PopupCard = ({
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
-      <Link to={`/${slug}/${item.slug}`} className={classes.link}>
+      <Link to={`/${item.slug}`} className={classes.link}>
         <div className={classes.folioItem}>
           <GatsbyImage
             image={item.titleImage.gatsbyImageData}

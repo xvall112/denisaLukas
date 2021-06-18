@@ -100,7 +100,6 @@ const LeafletMap = ({
               </Popup>
             </Marker>
           ))}
-        <LeafletComponent />
       </MapContainer>
     )
   }
