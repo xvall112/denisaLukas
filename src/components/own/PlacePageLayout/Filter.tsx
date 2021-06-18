@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { MenuContext } from "../../../providers/menu/menu.providers"
+import { MapContext } from "../../../providers/map/map.providers"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 import {
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 const Filter = () => {
   const data = useStaticQuery(query)
-  const { filterCountry, setFilterCountry } = useContext(MenuContext)
+  const { filterCountry, setFilterCountry } = useContext(MapContext)
   const classes = useStyles()
 
   const filter = event => {
@@ -52,8 +52,12 @@ const Filter = () => {
       const country = data.allContentfulCountry.nodes.find(
         item => item.name === event.target.value
       )
-
-      setFilterCountry(country, 7)
+      setFilterCountry(
+        country.name,
+        country.countryCenterLocation.lat,
+        country.countryCenterLocation.lon,
+        7
+      )
     } else {
       setFilterCountry("")
     }

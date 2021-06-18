@@ -25,7 +25,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   res.data.allContentfulPlaces.nodes.forEach(node => {
     createPage({
       component: placeTemplate,
-      path: `/places/${node.slug}`,
+      path: `${node.slug}`,
       context: {
         slug: node.slug,
       },
@@ -71,7 +71,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   resViaFerrata.data.allContentfulViaFerrata.nodes.forEach(node => {
     createPage({
       component: viaFerrataTemplate,
-      path: `/viaFerrata/${node.slug}`,
+      path: `${node.slug}`,
       context: {
         slug: node.slug,
       },

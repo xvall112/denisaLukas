@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { MenuContext } from "../../providers/menu/menu.providers"
+import { MapContext } from "../../providers/map/map.providers"
 
 import clsx from "clsx"
 
@@ -9,6 +9,7 @@ import {
   TileLayer,
   Marker,
   Popup,
+  useMap,
 } from "react-leaflet"
 import L from "leaflet"
 //materialUI
@@ -31,7 +32,15 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }))
-
+const LeafletComponent = () => {
+  const { filterCountryLocation, filterCountryZoom } = useContext(MapContext)
+  const map = useMap()
+  map.flyTo(
+    [filterCountryLocation[0], filterCountryLocation[1]],
+    filterCountryZoom
+  )
+  return <></>
+}
 interface LeafletMap {
   zoom: number
   center: any
@@ -64,6 +73,7 @@ const LeafletMap = ({
         style={{ height: "100%", width: "100%" }}
         {...rest}
       >
+        <LeafletComponent />
         <ZoomControl position="bottomright" />
         <TileLayer
           className="map__tile-layer"

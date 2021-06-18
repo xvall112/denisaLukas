@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { MenuContext } from "../../../providers/menu/menu.providers"
+import { MapContext } from "../../../providers/map/map.providers"
 
 //materialUI
 import { Grid, Box, Container, useMediaQuery } from "@material-ui/core"
@@ -30,7 +30,7 @@ interface Props {
   slug: string
 }
 const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
-  const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
+  const { filterCountryLocation, filterCountryZoom } = useContext(MapContext)
   const theme = useTheme()
   const isLg = useMediaQuery(theme.breakpoints.up("lg"), {
     defaultMatches: true,

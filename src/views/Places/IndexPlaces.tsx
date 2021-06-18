@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLayout"
-import { MenuContext } from "../../providers/menu/menu.providers"
+import { MapContext } from "../../providers/map/map.providers"
 
 const query = graphql`
   {
@@ -37,7 +37,7 @@ const query = graphql`
 `
 
 const IndexPlaces = () => {
-  const { filterCountry } = useContext(MenuContext)
+  const { filterCountry } = useContext(MapContext)
   const data = useStaticQuery(query)
 
   const dataFilter = data.allContentfulPlaces.nodes.filter(

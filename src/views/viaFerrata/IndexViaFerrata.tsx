@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLayout"
+import { MapContext } from "../../providers/map/map.providers"
 
 const query = graphql`
   {
@@ -36,12 +37,18 @@ const query = graphql`
 `
 
 const IndexViaFerrata = () => {
+  const { filterCountry } = useContext(MapContext)
   const data = useStaticQuery(query)
 
+  const dataFilter = data.allContentfulViaFerrata.nodes.filter(
+    item => item.country.name === filterCountry
+  )
   return (
     <>
       <PlacesPageLayout
-        data={data.allContentfulViaFerrata.nodes}
+        data={
+          filterCountry === "" ? data.allContentfulViaFerrata.nodes : dataFilter
+        }
         slug="viaFerrata"
       />
     </>

@@ -14,8 +14,8 @@ const query = graphql`
           gatsbyImageData(
             layout: FULL_WIDTH
             placeholder: BLURRED
-            quality: 10
-            height: 3000
+            quality: 50
+            height: 1500
           )
           title
         }
