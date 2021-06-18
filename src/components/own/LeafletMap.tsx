@@ -62,13 +62,13 @@ const LeafletMap = ({
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
-  const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
+
   if (typeof window !== "undefined") {
     return (
       <MapContainer
         zoomControl={false}
-        zoom={filterCountryZoom}
-        center={[filterCountryLocation[0], filterCountryLocation[1]]}
+        zoom={zoom}
+        center={center}
         className={clsx("map", classes.root, className)}
         style={{ height: "100%", width: "100%" }}
         {...rest}
