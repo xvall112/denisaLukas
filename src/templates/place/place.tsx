@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 //components
 import LayoutPlaces from "../components/layoutPlaces"
-/* import ContentfulBody from "../components/contentfulBody" */
+import ContentfulBody from "../components/contentfulBody"
 import LayoutDescribePlace from "./components/describePlace"
 
 export const query = graphql`
@@ -53,7 +53,7 @@ const Place = props => {
     <LayoutPlaces data={props.data.contentfulPlaces} slug="places">
       <>
         <LayoutDescribePlace title="Popis" icon="fas fa-info">
-          {/*  <ContentfulBody body={props.data.contentfulPlaces.describePlace} /> */}
+          <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
         </LayoutDescribePlace>
         {props.data.contentfulPlaces.parking && (
           <LayoutDescribePlace
@@ -61,13 +61,13 @@ const Place = props => {
             title="Parkoviště"
             parkingGps={props.data.contentfulPlaces.parkingGps}
           >
-            {/*   <ContentfulBody body={props.data.contentfulPlaces.parking} /> */}
+            <ContentfulBody body={props.data.contentfulPlaces.parking} />
           </LayoutDescribePlace>
         )}
 
         {props.data.contentfulPlaces.moreInfo && (
           <LayoutDescribePlace title="Zajímavosti" icon="fas fa-comment">
-            {/* <ContentfulBody body={props.data.contentfulPlaces.moreInfo} /> */}
+            <ContentfulBody body={props.data.contentfulPlaces.moreInfo} />
           </LayoutDescribePlace>
         )}
       </>

@@ -1,4 +1,4 @@
-/* import React from "react"
+import React from "react"
 //hooks
 import { useContentfulImage } from "../../hooks/useContentfulImage"
 import { Typography, Box } from "@material-ui/core"
@@ -65,7 +65,6 @@ const options = {
                 style={{
                   width: "100%",
                   height: "100%",
-                 
                 }}
               />
               <Box textAlign="center">
@@ -84,4 +83,3 @@ const ContentfulBody = ({ body }) => {
 }
 
 export default ContentfulBody
- */
