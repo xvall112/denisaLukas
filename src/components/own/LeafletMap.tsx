@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { Component, useContext, useEffect } from "react"
 import { MapContext } from "../../providers/map/map.providers"
 
 import clsx from "clsx"
@@ -9,9 +9,9 @@ import {
   TileLayer,
   Marker,
   Popup,
-  /*  useMap, */
+  /* useMap, */
 } from "react-leaflet"
-import L from "leaflet"
+
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -63,17 +63,20 @@ const LeafletMap = ({
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
 
-  if (typeof window !== "undefined") {
-    return (
-      <MapContainer
-        zoomControl={false}
-        zoom={zoom}
-        center={center}
-        className={clsx("map", classes.root, className)}
-        style={{ height: "100%", width: "100%" }}
-        {...rest}
-      >
-        {/*    <LeafletComponent /> */}
+  if (typeof window === "undefined") {
+    return null
+  }
+  return (
+    <MapContainer
+      zoomControl={false}
+      zoom={zoom}
+      center={center}
+      className={clsx("map", classes.root, className)}
+      style={{ height: "100%", width: "100%" }}
+      {...rest}
+    >
+      <>
+        {/* <LeafletComponent /> */}
         <ZoomControl position="bottomright" />
         <TileLayer
           className="map__tile-layer"
@@ -81,12 +84,12 @@ const LeafletMap = ({
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {endFerrataLocation && (
+        {endFerrataLocation && endFerrataLocation.length && (
           <Marker position={endFerrataLocation}>
             <Popup>Vrchol</Popup>
           </Marker>
         )}
-        {parking && (
+        {parking && parking.length && (
           <Marker position={parking}>
             <Popup>Parkovište</Popup>
           </Marker>
@@ -100,10 +103,9 @@ const LeafletMap = ({
               </Popup>
             </Marker>
           ))}
-      </MapContainer>
-    )
-  }
-  return null
+      </>
+    </MapContainer>
+  )
 }
 
 export default LeafletMap

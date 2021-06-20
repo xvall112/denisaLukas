@@ -62,12 +62,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
         </Grid>
         <Grid item xs={12} md={6}>
           <div className={classes.map}>
-            <LeafletMap
-              zoom={filterCountryZoom}
-              center={filterCountryLocation}
-              marker={data}
-              slug={slug}
-            />
+            <LeafletMap zoom={2} center={[0, 0]} marker={data} slug={slug} />
           </div>
         </Grid>
       </Grid>

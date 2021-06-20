@@ -1,6 +1,7 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+
 module.exports = {
   siteMetadata: {
     title: `Denisa&Lukas`,
@@ -10,14 +11,11 @@ module.exports = {
       twitter: `Lukas`,
     },
   },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: "gatsby-plugin-react-leaflet",
-      options: {
-        linkStyles: true, // (default: true) Enable/disable loading stylesheets via CDN
-      },
-    },
+    `gatsby-plugin-react-leaflet`,
+
     {
       resolve: "gatsby-plugin-material-ui",
       // If you want to use styled components you should change the injection order.
