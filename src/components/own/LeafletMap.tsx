@@ -69,7 +69,7 @@ const LeafletMap = ({
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v11",
-      center: center,
+      center: [lng, lat],
       zoom: zoomm,
     })
     map.current.addControl(new mapboxgl.NavigationControl(), "bottom-right")
