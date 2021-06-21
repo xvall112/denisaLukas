@@ -13,10 +13,6 @@ const TopLayout = ({ children }) => {
   return (
     <>
       <Helmet>
-        <link
-          href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
-          rel="stylesheet"
-        />
         <script
           src="https://kit.fontawesome.com/4c273e6d43.js"
           crossOrigin="anonymous"
