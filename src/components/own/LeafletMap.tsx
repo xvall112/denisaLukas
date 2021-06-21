@@ -1,25 +1,19 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import { MapContext } from "../../providers/map/map.providers"
-
+import mapboxgl from "mapbox-gl"
 import clsx from "clsx"
 
-import {
-  MapContainer,
-  ZoomControl,
-  TileLayer,
-  Marker,
-  Popup,
-  /*  useMap, */
-} from "react-leaflet"
-import L from "leaflet"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
 //components
 import PopupCard from "./PopupCard"
 
+mapboxgl.accessToken = process.env.MAP_BOX_TOKEN
+
 const useStyles = makeStyles(theme => ({
   root: {},
+  mapContainer: { height: "100vh", width: "100%" },
   popup: {
     "& .leaflet-popup-content-wrapper": {
       padding: "0px",
@@ -62,10 +56,42 @@ const LeafletMap = ({
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
+  console.log(marker)
+  const mapContainer = useRef(null)
+  const map = useRef(null)
+  const [lng, setLng] = useState(0)
+  const [lat, setLat] = useState(0)
+  const [zoomm, setZoomm] = useState(1)
 
-  if (typeof window !== "undefined") {
-    return (
-      <MapContainer
+  useEffect(() => {
+    if (map.current) return // initialize map only once
+
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: center,
+      zoom: zoomm,
+    })
+    map.current.addControl(new mapboxgl.NavigationControl(), "bottom-right")
+    map.current.addControl(new mapboxgl.FullscreenControl())
+    const markerr = (lat, lon) =>
+      new mapboxgl.Marker({
+        color: "#FFFFFF",
+      })
+        .setLngLat([lon, lat])
+        .addTo(map.current)
+    {
+      marker &&
+        marker.length &&
+        marker.map((item, i) => markerr(item.location.lat, item.location.lon))
+    }
+  })
+
+  return (
+    <div>
+      <div ref={mapContainer} className={classes.mapContainer} />
+    </div>
+    /*  <MapContainer
         zoomControl={false}
         zoom={zoom}
         center={center}
@@ -73,8 +99,8 @@ const LeafletMap = ({
         style={{ height: "100%", width: "100%" }}
         {...rest}
       >
-        {/*    <LeafletComponent /> */}
-        <ZoomControl position="bottomright" />
+      
+
         <TileLayer
           className="map__tile-layer"
           detectRetina={true}
@@ -100,10 +126,8 @@ const LeafletMap = ({
               </Popup>
             </Marker>
           ))}
-      </MapContainer>
-    )
-  }
-  return null
+      </MapContainer> */
+  )
 }
 
 export default LeafletMap
