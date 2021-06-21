@@ -14,10 +14,6 @@ module.exports = {
 
   plugins: [
     `gatsby-plugin-react-helmet`,
-<<<<<<< HEAD
-    `gatsby-plugin-react-leaflet`,
-=======
->>>>>>> 2db01d6
 
     {
       resolve: "gatsby-plugin-material-ui",
