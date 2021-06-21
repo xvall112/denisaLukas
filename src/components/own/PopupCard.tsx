@@ -93,37 +93,33 @@ const PopupCard = ({
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
-      <Link to={`/${item.slug}`} className={classes.link}>
-        <div className={classes.folioItem}>
-          <GatsbyImage
-            image={item.titleImage.gatsbyImageData}
-            alt={item.titleImage.title}
-            formats={["auto", "webp", "avif"]}
-            style={{ height: "100px" }}
-          />
-          <div
-            className={clsx("folio__info-wrapper", classes.folioInfoWrapper)}
-          >
-            <div>
-              <Typography
-                variant="h5"
-                className={classes.folioTitle}
-                color="textPrimary"
-              >
-                {item.name}
-              </Typography>
+      <div className={classes.folioItem}>
+        <GatsbyImage
+          image={item.titleImage.gatsbyImageData}
+          alt={item.titleImage.title}
+          formats={["auto", "webp", "avif"]}
+          style={{ height: "100px" }}
+        />
+        <div className={clsx("folio__info-wrapper", classes.folioInfoWrapper)}>
+          <div>
+            <Typography
+              variant="h5"
+              className={classes.folioTitle}
+              color="textPrimary"
+            >
+              {item.name}
+            </Typography>
 
-              <Typography
-                variant="body1"
-                className={classes.folioSubtitle}
-                color="textSecondary"
-              >
-                {item.kindPlace}
-              </Typography>
-            </div>
+            <Typography
+              variant="body1"
+              className={classes.folioSubtitle}
+              color="textSecondary"
+            >
+              {item.kindPlace}
+            </Typography>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   )
 }

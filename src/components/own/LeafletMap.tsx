@@ -2,7 +2,13 @@ import React, { useContext, useEffect, useRef, useState } from "react"
 import { MapContext } from "../../providers/map/map.providers"
 import mapboxgl from "mapbox-gl"
 import clsx from "clsx"
-
+import ReactMapGL, {
+  Marker,
+  FullscreenControl,
+  NavigationControl,
+  Popup,
+} from "react-map-gl"
+import Pins from "./pins"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -56,14 +62,19 @@ const LeafletMap = ({
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
-  console.log(marker)
   const mapContainer = useRef(null)
   const map = useRef(null)
   const [lng, setLng] = useState(0)
   const [lat, setLat] = useState(0)
   const [zoomm, setZoomm] = useState(1)
 
-  useEffect(() => {
+  const [viewport, setViewport] = React.useState({
+    longitude: 0,
+    latitude: 0,
+    zoom: 2,
+  })
+
+  /* useEffect(() => {
     if (map.current) return // initialize map only once
 
     map.current = new mapboxgl.Map({
@@ -85,13 +96,33 @@ const LeafletMap = ({
         marker.length &&
         marker.map((item, i) => markerr(item.location.lat, item.location.lon))
     }
-  })
-
+  }) */
+  const fullscreenControlStyle = {
+    bottom: 150,
+    right: 10,
+  }
+  const navControlStyle = {
+    right: 10,
+    bottom: 40,
+  }
+  const [popupInfo, setPopupInfo] = useState(null)
+  console.log(popupInfo)
   return (
-    <div>
-      <div ref={mapContainer} className={classes.mapContainer} />
-    </div>
-    /*  <MapContainer
+    <ReactMapGL
+      {...viewport}
+      width="100%"
+      height="100vh"
+      mapStyle="mapbox://styles/mapbox/streets-v11"
+      onViewportChange={setViewport}
+      mapboxApiAccessToken={process.env.MAP_BOX_TOKEN}
+    >
+      <FullscreenControl style={fullscreenControlStyle} />
+      <NavigationControl style={navControlStyle} />
+      <Pins data={marker} onClick={setPopupInfo} />
+    </ReactMapGL>
+    /*  
+    REACT LEAFLET
+    <MapContainer
         zoomControl={false}
         zoom={zoom}
         center={center}
