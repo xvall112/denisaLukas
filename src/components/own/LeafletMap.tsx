@@ -58,44 +58,49 @@ const LeafletMap = ({
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
-  if (typeof window === "undefined") return null
-  return (
-    <p>Mapa</p>
-    /*  <MapContainer
-      zoomControl={false}
-      zoom={2}
-      center={[0, 0]}
-      className={clsx("map", classes.root, className)}
-      style={{ height: "100%", width: "100%" }}
-      {...rest}
-    >
-      <TileLayer
-        className="map__tile-layer"
-        detectRetina={true}
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {endFerrataLocation && endFerrataLocation.length && (
-        <Marker position={endFerrataLocation}>
-          <Popup>Vrchol</Popup>
-        </Marker>
-      )}
-      {parking && parking.length && (
-        <Marker position={parking}>
-          <Popup>Parkovište</Popup>
-        </Marker>
-      )}
-      {marker &&
-        marker.length &&
-        marker.map((item, i) => (
-          <Marker position={[item.location.lat, item.location.lon]} key={i}>
-            <Popup className={classes.popup}>
-              <PopupCard item={item} slug={slug} />
-            </Popup>
+  if (
+    typeof window !== "undefined" &&
+    !!window.document &&
+    !!window.document.createElement
+  ) {
+    return (
+      <MapContainer
+        zoomControl={false}
+        zoom={2}
+        center={[0, 0]}
+        className={clsx("map", classes.root, className)}
+        style={{ height: "100%", width: "100%" }}
+        {...rest}
+      >
+        <TileLayer
+          className="map__tile-layer"
+          detectRetina={true}
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {endFerrataLocation && endFerrataLocation.length && (
+          <Marker position={endFerrataLocation}>
+            <Popup>Vrchol</Popup>
           </Marker>
-        ))}
-    </MapContainer> */
-  )
+        )}
+        {parking && parking.length && (
+          <Marker position={parking}>
+            <Popup>Parkovište</Popup>
+          </Marker>
+        )}
+        {marker &&
+          marker.length &&
+          marker.map((item, i) => (
+            <Marker position={[item.location.lat, item.location.lon]} key={i}>
+              <Popup className={classes.popup}>
+                <PopupCard item={item} slug={slug} />
+              </Popup>
+            </Marker>
+          ))}
+      </MapContainer>
+    )
+  }
+  return null
 }
 
 export default LeafletMap
