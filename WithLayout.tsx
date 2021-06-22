@@ -73,18 +73,12 @@ export default function WithLayout({
     AOS.refresh()
   }, [mountedComponent])
 
-  const { fetchFavouriteItems, isUserAuth, currentUser } = useContext(
-    UserContext
-  )
+  const { fetchFavouriteItems, isUserAuth, currentUser } =
+    useContext(UserContext)
   useEffect(() => {
     isUserAuth()
     fetchFavouriteItems()
-
-    console.log("componennt mounth")
-    return () => {
-      console.log("componennt unMounth")
-    }
-  }, [currentUser])
+  })
   const classes = useStyles()
   return (
     <ThemeProvider theme={getTheme(themeMode)}>

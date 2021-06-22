@@ -1,34 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
 import { MapContext } from "../../providers/map/map.providers"
-import mapboxgl from "mapbox-gl"
 import clsx from "clsx"
-import ReactMapGL, {
-  Marker,
-  FullscreenControl,
-  NavigationControl,
-  Popup,
-} from "react-map-gl"
-import Pins from "./pins"
+import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet"
+
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
 //components
 import PopupCard from "./PopupCard"
-
-const { site } = useStaticQuery(
-  graphql`
-    query {
-      site {
-        siteMetadata {
-          mapbox
-        }
-      }
-    }
-  `
-)
-
-const mapbox = site.siteMetadata.mapbox
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -75,82 +54,20 @@ const LeafletMap = ({
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
-  const mapContainer = useRef(null)
-  const map = useRef(null)
-  const [lng, setLng] = useState(0)
-  const [lat, setLat] = useState(0)
-  const [zoomm, setZoomm] = useState(1)
-
-  const [viewport, setViewport] = React.useState({
-    longitude: 0,
-    latitude: 0,
-    zoom: 2,
-  })
-
-  /* useEffect(() => {
-    if (map.current) return // initialize map only once
-
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [lng, lat],
-      zoom: zoomm,
-    })
-    map.current.addControl(new mapboxgl.NavigationControl(), "bottom-right")
-    map.current.addControl(new mapboxgl.FullscreenControl())
-    const markerr = (lat, lon) =>
-      new mapboxgl.Marker({
-        color: "#FFFFFF",
-      })
-        .setLngLat([lon, lat])
-        .addTo(map.current)
-    {
-      marker &&
-        marker.length &&
-        marker.map((item, i) => markerr(item.location.lat, item.location.lon))
-    }
-  }) */
-  const fullscreenControlStyle = {
-    bottom: 150,
-    right: 10,
-  }
-  const navControlStyle = {
-    right: 10,
-    bottom: 40,
-  }
-  const [popupInfo, setPopupInfo] = useState(null)
-  console.log(popupInfo)
-  return (
-    <ReactMapGL
-      {...viewport}
-      width="100%"
-      height="100vh"
-      mapStyle="mapbox://styles/mapbox/streets-v11"
-      onViewportChange={setViewport}
-      mapboxApiAccessToken={mapbox}
-    >
-      <FullscreenControl style={fullscreenControlStyle} />
-      <NavigationControl style={navControlStyle} />
-      <Pins data={marker} onClick={setPopupInfo} />
-    </ReactMapGL>
-    /*  
-    REACT LEAFLET
-    <MapContainer
+  if (
+    typeof window !== "undefined" &&
+    !!window.document &&
+    !!window.document.createElement
+  ) {
+    return (
+      <MapContainer
         zoomControl={false}
-        zoom={zoom}
-        center={center}
+        zoom={2}
+        center={[0, 0]}
         className={clsx("map", classes.root, className)}
         style={{ height: "100%", width: "100%" }}
         {...rest}
       >
-      
-
-        <TileLayer
-          className="map__tile-layer"
-          detectRetina={true}
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
         {endFerrataLocation && endFerrataLocation.length && (
           <Marker position={endFerrataLocation}>
             <Popup>Vrchol</Popup>
@@ -170,8 +87,10 @@ const LeafletMap = ({
               </Popup>
             </Marker>
           ))}
-      </MapContainer> */
-  )
+      </MapContainer>
+    )
+  }
+  return null
 }
 
 export default LeafletMap

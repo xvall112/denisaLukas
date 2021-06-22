@@ -7,4 +7,3 @@
 // You can delete this file if you're not using it
 import "firebase/auth"
 import "firebase/firestore"
-import "mapbox-gl/dist/mapbox-gl.css"
