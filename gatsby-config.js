@@ -10,6 +10,7 @@ module.exports = {
     social: {
       twitter: `Lukas`,
     },
+    mapbox: process.env.MAP_BOX_TOKEN,
   },
 
   plugins: [

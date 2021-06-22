@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import { MapContext } from "../../providers/map/map.providers"
 import mapboxgl from "mapbox-gl"
 import clsx from "clsx"
@@ -15,7 +16,19 @@ import { makeStyles } from "@material-ui/core/styles"
 //components
 import PopupCard from "./PopupCard"
 
-mapboxgl.accessToken = process.env.MAP_BOX_TOKEN
+const { site } = useStaticQuery(
+  graphql`
+    query {
+      site {
+        siteMetadata {
+          mapbox
+        }
+      }
+    }
+  `
+)
+
+const mapbox = site.siteMetadata.mapbox
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -114,7 +127,7 @@ const LeafletMap = ({
       height="100vh"
       mapStyle="mapbox://styles/mapbox/streets-v11"
       onViewportChange={setViewport}
-      mapboxApiAccessToken={process.env.MAP_BOX_TOKEN}
+      mapboxApiAccessToken={mapbox}
     >
       <FullscreenControl style={fullscreenControlStyle} />
       <NavigationControl style={navControlStyle} />
