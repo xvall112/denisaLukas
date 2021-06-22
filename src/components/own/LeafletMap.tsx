@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
 import { MapContext } from "../../providers/map/map.providers"
 import clsx from "clsx"
-import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet"
+import { Map, TileLayer, Popup, Marker } from "react-leaflet"
 
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
@@ -60,7 +60,7 @@ const LeafletMap = ({
     !!window.document.createElement
   ) {
     return (
-      <MapContainer
+      <Map
         zoomControl={false}
         zoom={2}
         center={[0, 0]}
@@ -68,6 +68,12 @@ const LeafletMap = ({
         style={{ height: "100%", width: "100%" }}
         {...rest}
       >
+        <TileLayer
+          className="map__tile-layer"
+          detectRetina={true}
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
         {endFerrataLocation && endFerrataLocation.length && (
           <Marker position={endFerrataLocation}>
             <Popup>Vrchol</Popup>
@@ -87,7 +93,7 @@ const LeafletMap = ({
               </Popup>
             </Marker>
           ))}
-      </MapContainer>
+      </Map>
     )
   }
   return null
