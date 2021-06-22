@@ -14,7 +14,7 @@ module.exports = {
 
   plugins: [
     `gatsby-plugin-react-helmet`,
-
+    "gatsby-plugin-react-leaflet",
     {
       resolve: "gatsby-plugin-material-ui",
       // If you want to use styled components you should change the injection order.
