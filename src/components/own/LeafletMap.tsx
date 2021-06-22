@@ -60,7 +60,8 @@ const LeafletMap = ({
   const classes = useStyles()
   if (typeof window === "undefined") return null
   return (
-    <MapContainer
+    <p>Mapa</p>
+    /*  <MapContainer
       zoomControl={false}
       zoom={2}
       center={[0, 0]}
@@ -93,7 +94,7 @@ const LeafletMap = ({
             </Popup>
           </Marker>
         ))}
-    </MapContainer>
+    </MapContainer> */
   )
 }
 
