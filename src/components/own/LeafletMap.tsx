@@ -3,13 +3,7 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 
 import clsx from "clsx"
 
-import {
-  MapContainer,
-  ZoomControl,
-  TileLayer,
-  Marker,
-  Popup,
-} from "react-leaflet"
+import { Map, ZoomControl, TileLayer, Marker, Popup } from "react-leaflet"
 import L from "leaflet"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
@@ -56,7 +50,7 @@ const LeafletMap = ({
 
   if (typeof window !== "undefined") {
     return (
-      <MapContainer
+      <Map
         zoomControl={false}
         zoom={zoom}
         center={center}
@@ -90,7 +84,7 @@ const LeafletMap = ({
               </Popup>
             </Marker>
           ))}
-      </MapContainer>
+      </Map>
     )
   }
   return null
