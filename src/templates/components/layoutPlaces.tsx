@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 
 //components
 import WithLayout from "../../../WithLayout"
@@ -21,7 +21,7 @@ import {
 
 //context
 import { MapContext } from "../../providers/map/map.providers"
-import { boolean } from "yup/lib/locale"
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -81,6 +81,7 @@ interface Props {
 }
 const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
   const { map } = useContext(MapContext)
+  const { setFilterLocation } = useContext(MenuContext)
   const classes = useStyles()
   const theme = useTheme()
   const isLg = useMediaQuery(theme.breakpoints.up("lg"), {

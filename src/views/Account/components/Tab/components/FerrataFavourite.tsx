@@ -1,8 +1,11 @@
 import React, { useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
+
 //components
 import Card from "../../../../../components/own/PlacePageLayout/card"
 import NoFavourite from "./noFavourite"
+import FullScreenMap from "../../../../../components/own/fullScreenMap"
+
 //context
 import { UserContext } from "../../../../../providers/user/user.provider"
 
@@ -42,20 +45,22 @@ const query = graphql`
 const FerrataFavourite = () => {
   const data = useStaticQuery(query)
   const { favouriteItems } = useContext(UserContext)
-  const favourite = data.allContentfulViaFerrata.nodes.filter(item =>
+  const favouriteFerrata = data.allContentfulViaFerrata.nodes.filter(item =>
     favouriteItems.includes(item.id)
   )
-  console.log(favourite)
   return (
     <>
-      {favourite.length === 0 ? (
+      {favouriteFerrata.length === 0 ? (
         <NoFavourite
           title="Nemáte žádné oblíbené ferraty"
           button="Objevuj nové ferraty"
           slug="/viaFerrata"
         />
       ) : (
-        <Card data={favourite} four slug="viaFerrata" />
+        <>
+          <FullScreenMap markers={favouriteFerrata} />
+          <Card data={favouriteFerrata} four slug="viaFerrata" />
+        </>
       )}
     </>
   )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { MenuContext } from "../../providers/menu/menu.providers"
 
 import clsx from "clsx"
@@ -32,7 +32,7 @@ interface LeafletMap {
   className?: any
   rest?: any
   marker: any
-  slug: string
+  slug?: string
   parking?: [number, number]
   endFerrataLocation?: [number, number]
 }
@@ -47,10 +47,20 @@ const LeafletMap = ({
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
+  const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
+  const mapRef = useRef()
+
+  /*  useEffect(() => {
+    const { current } = mapRef
+    const { leafletElement: map } = current
+    map.flyTo(filterCountryLocation, filterCountryZoom)
+    return () => {}
+  }, [filterCountryLocation]) */
 
   if (typeof window !== "undefined") {
     return (
       <Map
+        ref={mapRef}
         zoomControl={false}
         zoom={zoom}
         center={center}

@@ -1,10 +1,7 @@
 import React from "react"
-import { navigate } from "gatsby"
-import clsx from "clsx"
-import { parse } from "query-string"
+
 import { makeStyles } from "@material-ui/core/styles"
-import { Box, List, ListItem, Grid, Typography } from "@material-ui/core"
-import { SectionAlternate, CardBase } from "components/organisms"
+import { Box } from "@material-ui/core"
 import { Hero } from "./components"
 import TabPane from "./components/Tab/Tab"
 
@@ -13,6 +10,7 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     width: "100%",
   },
+
   section: {
     "& .section-alternate__content": {
       paddingTop: 0,

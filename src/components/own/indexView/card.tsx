@@ -51,7 +51,7 @@ const Card = ({ item, slug }: props): JSX.Element => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <Link to={`${slug}/${item.slug}`} className={classes.link}>
+      <Link to={`/${item.slug}`} className={classes.link}>
         <Box className={classes.img}>
           <GatsbyImage
             image={item.titleImage.gatsbyImageData}

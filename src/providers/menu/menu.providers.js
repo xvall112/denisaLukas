@@ -6,18 +6,19 @@ export const MenuContext = createContext({
   themeMode: "dark",
   filterCountry: "",
   filterCountryZoom: 2,
-  filterCountryLocation: [36, -5],
+  filterCountryLocation: [0, 0],
   setFilterCountry: (valueFilter, zoom) => {},
   handleSidebarOpen: () => {},
   handleSidebarClose: () => {},
   setMode: () => {},
   themeToggler: () => {},
+  setFilterLocation: (lat, lon) => {},
 })
 
 const MenuProvider = ({ children }) => {
   const [filterCountry, setFilterCountryState] = useState("")
   const [filterCountryZoom, setFilterCountryZoom] = useState(2)
-  const [filterCountryLocation, setFilterCountryLocation] = useState([36, -5])
+  const [filterCountryLocation, setFilterCountryLocation] = useState([0, 0])
   const [themeMode, setTheme] = useState("dark")
   const [mountedComponent, setMountedComponent] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(false)
@@ -34,10 +35,13 @@ const MenuProvider = ({ children }) => {
     themeMode === "light" ? setMode("dark") : setMode("light")
   }
 
+  const setFilterLocation = (lat, lon) => {
+    setFilterCountryLocation([lat, lon])
+  }
   const setFilterCountry = (valueFilter, number) => {
     if (valueFilter === "") {
       setFilterCountryState("")
-      setFilterCountryLocation([36, -5])
+      setFilterCountryLocation([0, 0])
       setFilterCountryZoom(2)
     } else {
       setFilterCountryState(valueFilter.name)
@@ -63,6 +67,7 @@ const MenuProvider = ({ children }) => {
         setMode,
         themeToggler,
         setFilterCountry,
+        setFilterLocation,
       }}
     >
       {children}

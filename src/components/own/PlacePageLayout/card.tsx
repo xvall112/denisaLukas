@@ -123,7 +123,7 @@ const Main = ({
                   alt={item.titleImage.title}
                   formats={["auto", "webp", "avif"]}
                 /> */}
-                <Link to={`/${slug}/${item.slug}`} className={classes.link}>
+                <Link to={`/${item.slug}`} className={classes.link}>
                   <SliderSlick
                     img={item.images}
                     heightImg={"200px"}
@@ -197,7 +197,7 @@ const Main = ({
                         </Box>
                       </Grid>
                     </Grid>
-                    <Link to={`/${slug}/${item.slug}`} className={classes.link}>
+                    <Link to={`/${item.slug}`} className={classes.link}>
                       <Typography
                         variant="h4"
                         className={classes.folioTitle}

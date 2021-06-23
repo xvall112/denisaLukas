@@ -52,7 +52,6 @@ const Filter = () => {
       const country = data.allContentfulCountry.nodes.find(
         item => item.name === event.target.value
       )
-
       setFilterCountry(country, 7)
     } else {
       setFilterCountry("")
