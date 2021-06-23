@@ -3,6 +3,8 @@ import { MapContext } from "../../providers/map/map.providers"
 import clsx from "clsx"
 import { Map, TileLayer, Popup, Marker } from "react-leaflet"
 
+import { Map, ZoomControl, TileLayer, Marker, Popup } from "react-leaflet"
+import L from "leaflet"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
