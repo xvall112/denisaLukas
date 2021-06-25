@@ -41,6 +41,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       allContentfulCountry {
         nodes {
           slug
+          name
         }
       }
     }
@@ -51,6 +52,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       path: `/${node.slug}`,
       context: {
         slug: node.slug,
+        country: node.name,
       },
     })
   })

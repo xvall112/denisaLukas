@@ -4,7 +4,7 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 import clsx from "clsx"
 
 import { Map, ZoomControl, TileLayer, Marker, Popup } from "react-leaflet"
-import L from "leaflet"
+import GPX from "leaflet-plugins/layer/vector/GPX"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -50,12 +50,12 @@ const LeafletMap = ({
   const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
   const mapRef = useRef()
 
-  /*  useEffect(() => {
+  useEffect(() => {
     const { current } = mapRef
     const { leafletElement: map } = current
-    map.flyTo(filterCountryLocation, filterCountryZoom)
+
     return () => {}
-  }, [filterCountryLocation]) */
+  }, [])
 
   if (typeof window !== "undefined") {
     return (

@@ -44,7 +44,7 @@ const Card = ({ data }) => {
           return (
             <>
               <Grid item xs={12} md={4} lg={3} key={index}>
-                <Link to={`/country/${item.slug}`} className={classes.link}>
+                <Link to={`/${item.slug}`} className={classes.link}>
                   <CardBase variant="outlined" liftUp className={classes.card}>
                     <>
                       <img

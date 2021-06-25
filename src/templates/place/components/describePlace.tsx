@@ -115,7 +115,7 @@ const DescribeSection = ({
                 </Tooltip>
               )}
             </Grid>
-            <Box mt={2}>{children}</Box>
+            <Box my={2}>{children}</Box>
             <hr></hr>
           </>
         </Grid>

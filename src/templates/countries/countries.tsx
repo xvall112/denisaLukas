@@ -5,19 +5,61 @@ import { graphql } from "gatsby"
 import WithLayout from "../../../WithLayout"
 import SEO from "../../components/own/seo"
 import Places from "../../layouts/Place/Place"
+import Hero from "../components/Hero"
+import Tab from "../components/Tab/Tab"
 
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String!, $country: String!) {
     contentfulCountry(slug: { eq: $slug }) {
       name
+      heroImage {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 40)
+      }
+    }
+
+    allContentfulPlaces(
+      filter: { country: { name: { eq: $country } }, node_locale: { eq: "cs" } }
+    ) {
+      nodes {
+        id
+        slug
+        name
+        kindPlace
+        titleImage {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          title
+        }
+        country {
+          name
+          flagLink
+        }
+        images {
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            height: 1500
+          )
+          title
+        }
+        location {
+          lat
+          lon
+        }
+      }
     }
   }
 `
 
 const Countries = props => {
-  const { name } = props.data.contentfulCountry
+  const { name, heroImage } = props.data.contentfulCountry
+  const countryPlaces = props.data.allContentfulPlaces
   const Nevim = () => {
-    return <div>{name}</div>
+    return (
+      <div>
+        <Hero title={name} heroImage={heroImage} />
+        <Tab places={countryPlaces} />
+      </div>
+    )
   }
 
   return (

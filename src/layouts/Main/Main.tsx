@@ -1,15 +1,15 @@
-import React, { useState, useContext } from "react"
+import React from "react"
 import clsx from "clsx"
 
 //materialUI
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useMediaQuery, Divider } from "@material-ui/core"
+import { useMediaQuery } from "@material-ui/core"
 
 //components
 import Topbar from "./components/TopBar/TopBar"
-import Footer from "./components/Footer/Footer"
 import SideBar from "../SideBar/SideBar"
 import Section from "../../components/organisms/Section/Section"
+import Footer from "./components/Footer/Footer"
 
 const useStyles = makeStyles(theme => ({
   root: {
