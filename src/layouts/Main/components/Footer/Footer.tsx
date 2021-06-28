@@ -133,7 +133,7 @@ const Footer = ({ className, ...rest }: Props): JSX.Element => {
       </ListItem>
       {item.map((page, i) => (
         <ListItem disableGutters key={i} className={classes.menuGroupItem}>
-          <Link to={page.slug}>
+          <Link to={`/${page.slug}`}>
             <Typography
               variant="body2"
               className={clsx(classes.navLink, "submenu-item")}

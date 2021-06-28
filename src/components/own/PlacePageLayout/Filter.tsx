@@ -24,6 +24,7 @@ const query = graphql`
           lat
           lon
         }
+        mapZoom
       }
     }
   }
@@ -52,7 +53,7 @@ const Filter = () => {
       const country = data.allContentfulCountry.nodes.find(
         item => item.name === event.target.value
       )
-      setFilterCountry(country, 7)
+      setFilterCountry(country)
     } else {
       setFilterCountry("")
     }

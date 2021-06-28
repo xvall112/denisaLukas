@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, navigate, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import clsx from "clsx"
 import Slider from "react-slick"
@@ -20,11 +20,8 @@ const query = graphql`
         slug
         title
         image {
-          gatsbyImageData(layout: FULL_WIDTH)
+          gatsbyImageData(width: 2000)
           title
-        }
-        place {
-          name
         }
       }
     }
@@ -133,6 +130,7 @@ const Hero = () => {
                           fontSize={isMd ? 130 : 70}
                           fontWeight="fontWeightBold"
                           textAlign="center"
+                          letterSpacing={5}
                         >
                           {item.title}
                         </Box>
@@ -146,6 +144,7 @@ const Hero = () => {
                           variant="contained"
                           color="primary"
                           size="large"
+                          onClick={() => navigate(`/${item.slug}`)}
                         >
                           cestovat
                         </Button>

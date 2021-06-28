@@ -5,7 +5,6 @@ import { GatsbyImage } from "gatsby-plugin-image"
 //materialUI
 import { useTheme, makeStyles } from "@material-ui/core/styles"
 import { useMediaQuery } from "@material-ui/core"
-import { ClassOutlined, Speed } from "@material-ui/icons"
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props

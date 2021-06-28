@@ -7,7 +7,7 @@ export const MenuContext = createContext({
   filterCountry: "",
   filterCountryZoom: 2,
   filterCountryLocation: [0, 0],
-  setFilterCountry: (valueFilter, zoom) => {},
+  setFilterCountry: valueFilter => {},
   handleSidebarOpen: () => {},
   handleSidebarClose: () => {},
   setMode: () => {},
@@ -38,7 +38,7 @@ const MenuProvider = ({ children }) => {
   const setFilterLocation = (lat, lon) => {
     setFilterCountryLocation([lat, lon])
   }
-  const setFilterCountry = (valueFilter, number) => {
+  const setFilterCountry = valueFilter => {
     if (valueFilter === "") {
       setFilterCountryState("")
       setFilterCountryLocation([0, 0])
@@ -49,7 +49,7 @@ const MenuProvider = ({ children }) => {
         valueFilter.countryCenterLocation.lat,
         valueFilter.countryCenterLocation.lon,
       ])
-      setFilterCountryZoom(number)
+      setFilterCountryZoom(valueFilter.mapZoom)
     }
   }
 

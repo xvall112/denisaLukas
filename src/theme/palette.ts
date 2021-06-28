@@ -54,6 +54,7 @@ export const dark = {
     light: "rgb(166, 212, 250)",
     dark: "rgb(100, 141, 174)",
     contrastText: "rgba(0, 0, 0, 0.87)",
+    heart: "#fff",
   },
   secondary: {
     light: "#ffb74d",

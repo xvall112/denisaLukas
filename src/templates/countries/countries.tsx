@@ -25,6 +25,33 @@ export const query = graphql`
         slug
         name
         kindPlace
+        country {
+          name
+          flagLink
+        }
+        images {
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            height: 1500
+          )
+          title
+        }
+        location {
+          lat
+          lon
+        }
+      }
+    }
+
+    allContentfulViaFerrata(
+      filter: { country: { name: { eq: $country } }, node_locale: { eq: "cs" } }
+    ) {
+      nodes {
+        id
+        slug
+        name
+        kindPlace
         titleImage {
           gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           title
@@ -53,11 +80,12 @@ export const query = graphql`
 const Countries = props => {
   const { name, heroImage } = props.data.contentfulCountry
   const countryPlaces = props.data.allContentfulPlaces
+  const countryFerrata = props.data.allContentfulViaFerrata
   const Nevim = () => {
     return (
       <div>
         <Hero title={name} heroImage={heroImage} />
-        <Tab places={countryPlaces} />
+        <Tab places={countryPlaces} ferrata={countryFerrata} />
       </div>
     )
   }

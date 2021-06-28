@@ -17,20 +17,12 @@ const query = graphql`
         slug
         name
         kindPlace
-        titleImage {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-          title
-        }
         country {
           name
           flagLink
         }
         images {
-          gatsbyImageData(
-            layout: FULL_WIDTH
-            placeholder: BLURRED
-            height: 1500
-          )
+          gatsbyImageData(placeholder: BLURRED, width: 500)
           title
         }
         location {

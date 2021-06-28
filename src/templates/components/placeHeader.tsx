@@ -100,6 +100,7 @@ const PlaceHeader = ({
                 <IconButton
                   aria-label="remove from favourite"
                   onClick={() => removeFavouriteItem(id)}
+                  color="primary"
                 >
                   <FavoriteIcon fontSize="large" />
                 </IconButton>

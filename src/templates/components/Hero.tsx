@@ -14,9 +14,10 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     overflow: "hidden",
     [theme.breakpoints.up("md")]: {
-      height: "80vh",
+      height: "70vh",
     },
   },
+
   image: {
     minHeight: "100%",
 
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   section: {
     position: "absolute",
     bottom: "0%",
-
+    backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0) 4%, #000000)",
     paddingTop: 0,
     paddingBottom: 0,
   },

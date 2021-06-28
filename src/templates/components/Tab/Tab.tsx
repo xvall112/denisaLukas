@@ -3,12 +3,11 @@ import { makeStyles, Theme } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
-import Typography from "@material-ui/core/Typography"
 import Box from "@material-ui/core/Box"
 import Container from "@material-ui/core/Container"
 //components
-import PlacesFavourite from "./components/PlacesFavourite"
-import FerrataFavourite from "./components/FerrataFavourite"
+import PlacesCountry from "./components/PlacesCountry"
+import FerrataCountry from "./components/FerrataCountry"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -51,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export default function TabPane({ places }) {
+export default function TabPane({ places, ferrata }) {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
@@ -81,19 +80,16 @@ export default function TabPane({ places }) {
       </AppBar>
 
       <TabPanel value={value} index={0}>
-        <PlacesFavourite places={places} />
+        <PlacesCountry places={places} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <FerrataFavourite />
+        <FerrataCountry ferrata={ferrata} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Pracujeme na tom
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
+        Pracujeme na tom
       </TabPanel>
     </div>
   )

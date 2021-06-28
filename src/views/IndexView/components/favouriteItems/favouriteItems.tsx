@@ -15,12 +15,7 @@ export const query = graphql`
         slug
         name
         titleImage {
-          gatsbyImageData(
-            layout: FULL_WIDTH
-            placeholder: BLURRED
-            quality: 10
-            height: 3000
-          )
+          gatsbyImageData(placeholder: BLURRED, width: 500)
           title
         }
         country {
