@@ -9,6 +9,7 @@ import Places from "./components/places/places"
 import TypeOfSport from "./components/typeOfSport/typeOfSport"
 import ViaFerrata from "./components/viaFerrata/viaFerrata"
 import FavouriteItems from "./components/favouriteItems/favouriteItems"
+
 //context
 import { UserContext } from "../../providers/user/user.provider"
 

@@ -17,6 +17,6 @@
     "jsx": "preserve",
     "baseUrl": "src"
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/utils/algolia-queries.js"],
   "exclude": ["node_modules"]
 }

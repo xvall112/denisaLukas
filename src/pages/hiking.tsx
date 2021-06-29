@@ -7,7 +7,7 @@ import LayoutPlaces from "../layouts/Place/Place"
 const Hiking = () => {
   return (
     <>
-      <SEO title="Places" />
+      <SEO title="Hiking" />
       <WithLayout component={IndexHiking} layout={LayoutPlaces} />
     </>
   )

@@ -6,6 +6,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import DarkModeToggler from "../../../../components/atoms/DarkModeToggler/DarkModeToggler"
 import Search from "./Search"
 import { CardBase } from "components/organisms"
+import Algolia from "../../../../components/own/Algolia/Algolia"
 //context
 import { MenuContext } from "../../../../providers/menu/menu.providers"
 //material UI
@@ -98,7 +99,7 @@ const TopBar = ({}: Props): JSX.Element => {
                 </Grid>
               </Grid>
             </Grid>
-            {isMd && <Search />}
+            {isMd && <Algolia />}
             <Grid
               item
               xs

@@ -6,7 +6,7 @@ import LayoutPlaces from "../layouts/Place/Place"
 const Places = () => {
   return (
     <>
-      <SEO title="Places" />
+      <SEO title="O nás" description="Stranka o nas" />
       <WithLayout component={AboutIndex} layout={LayoutPlaces} />
     </>
   )

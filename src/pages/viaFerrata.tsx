@@ -7,7 +7,10 @@ import LayoutPlaces from "../layouts/Place/Place"
 const ViaFerrata = () => {
   return (
     <>
-      <SEO title="Places" />
+      <SEO
+        title="viaFerrata"
+        description="Via Ferraty které můžete objevovat"
+      />
       <WithLayout component={IndexViaFerrata} layout={LayoutPlaces} />
     </>
   )

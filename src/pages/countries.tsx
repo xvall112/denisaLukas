@@ -7,7 +7,10 @@ import LayoutPlaces from "../layouts/Place/Place"
 const Countries = () => {
   return (
     <>
-      <SEO title="Countries" />
+      <SEO
+        title="Countries"
+        description="Všechny státy které můžete objevovat"
+      />
       <WithLayout component={IndexCountries} layout={LayoutPlaces} />
     </>
   )

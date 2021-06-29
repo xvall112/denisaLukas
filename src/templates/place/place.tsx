@@ -5,6 +5,7 @@ import { graphql } from "gatsby"
 import LayoutPlaces from "../components/layoutPlaces"
 import ContentfulBody from "../components/contentfulBody"
 import LayoutDescribePlace from "./components/describePlace"
+import SEO from "../../components/own/seo"
 
 export const query = graphql`
   query($slug: String!) {
@@ -23,12 +24,12 @@ export const query = graphql`
       }
       name
       titleImage {
-        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+        gatsbyImageData(width: 250, placeholder: BLURRED)
         title
       }
 
       images {
-        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 30)
+        gatsbyImageData(width: 1000, placeholder: BLURRED)
         title
       }
       describePlace {
@@ -50,8 +51,9 @@ export const query = graphql`
 
 const Place = props => {
   return (
-    <LayoutPlaces data={props.data.contentfulPlaces} slug="places">
-      <>
+    <>
+      <SEO title={props.data.contentfulPlaces.name} />
+      <LayoutPlaces data={props.data.contentfulPlaces} slug="places">
         <LayoutDescribePlace title="Popis" icon="fas fa-info">
           <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
         </LayoutDescribePlace>
@@ -70,8 +72,8 @@ const Place = props => {
             <ContentfulBody body={props.data.contentfulPlaces.moreInfo} />
           </LayoutDescribePlace>
         )}
-      </>
-    </LayoutPlaces>
+      </LayoutPlaces>
+    </>
   )
 }
 

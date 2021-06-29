@@ -7,6 +7,7 @@ import { CardPromo } from "components/organisms"
 import { CardBase } from "components/organisms"
 import { IconAlternate } from "components/molecules"
 import DescriptionSection from "./components/describeSection"
+import SEO from "../../components/own/seo"
 
 //material Ui
 import { makeStyles } from "@material-ui/core/styles"
@@ -32,7 +33,7 @@ export const query = graphql`
       ferrataTime
       heightOfMountain
       images {
-        gatsbyImageData
+        gatsbyImageData(width: 1000, placeholder: BLURRED)
         title
       }
       kindPlace
@@ -85,64 +86,67 @@ const ViaFerrata = props => {
   } = props.data.contentfulViaFerrata
 
   return (
-    <LayoutPlaces data={props.data.contentfulViaFerrata} slug="viaFerrata">
-      <Grid container direction="row" spacing={1}>
-        <Grid item xs={4}>
-          <CardPromo
-            title={level}
-            description="obtížnost"
-            variant="outlined"
-            color={colors.pink}
-            align="center"
-            fontIconClass="fas fa-mountain"
-            withShadow
+    <>
+      <SEO title={name} />
+      <LayoutPlaces data={props.data.contentfulViaFerrata} slug="viaFerrata">
+        <Grid container direction="row" spacing={1}>
+          <Grid item xs={4}>
+            <CardPromo
+              title={level}
+              description="obtížnost"
+              variant="outlined"
+              color={colors.pink}
+              align="center"
+              fontIconClass="fas fa-mountain"
+              withShadow
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <CardPromo
+              title={`${long} m`}
+              description="délka"
+              variant="outlined"
+              color={colors.pink}
+              align="center"
+              fontIconClass="fas fa-level-up-alt"
+              withShadow
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <CardPromo
+              title={`${ferrataTime + parkingToStartTime + backWayTime} min`}
+              description="celkem"
+              variant="outlined"
+              color={colors.pink}
+              align="center"
+              fontIconClass="far fa-clock"
+              withShadow
+            />
+          </Grid>
+          <DescriptionSection
+            location={parkingGps}
+            description={parkingToStartDescription.parkingToStartDescription}
+            time={parkingToStartTime}
+            iconLocation="fas fa-parking"
+            title="Přístup"
+          />
+          <DescriptionSection
+            location={location}
+            description={describeFerrata.describeFerrata}
+            time={ferrataTime}
+            iconLocation="fas fa-map-marker-alt"
+            title="via Ferrata"
+          />
+          <DescriptionSection
+            location={endLocation}
+            description={backWayDescription.backWayDescription}
+            time={backWayTime}
+            iconLocation="fas fa-mountain"
+            title="Sestup"
           />
         </Grid>
-        <Grid item xs={4}>
-          <CardPromo
-            title={`${long} m`}
-            description="délka"
-            variant="outlined"
-            color={colors.pink}
-            align="center"
-            fontIconClass="fas fa-level-up-alt"
-            withShadow
-          />
-        </Grid>
-        <Grid item xs={4}>
-          <CardPromo
-            title={`${ferrataTime + parkingToStartTime + backWayTime} min`}
-            description="celkem"
-            variant="outlined"
-            color={colors.pink}
-            align="center"
-            fontIconClass="far fa-clock"
-            withShadow
-          />
-        </Grid>
-        <DescriptionSection
-          location={parkingGps}
-          description={parkingToStartDescription.parkingToStartDescription}
-          time={parkingToStartTime}
-          iconLocation="fas fa-parking"
-          title="Přístup"
-        />
-        <DescriptionSection
-          location={location}
-          description={describeFerrata.describeFerrata}
-          time={ferrataTime}
-          iconLocation="fas fa-map-marker-alt"
-          title="via Ferrata"
-        />
-        <DescriptionSection
-          location={endLocation}
-          description={backWayDescription.backWayDescription}
-          time={backWayTime}
-          iconLocation="fas fa-mountain"
-          title="Sestup"
-        />
-      </Grid>
-    </LayoutPlaces>
+      </LayoutPlaces>
+    </>
   )
 }
 

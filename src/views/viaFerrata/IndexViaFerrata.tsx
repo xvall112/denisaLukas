@@ -12,7 +12,7 @@ const query = graphql`
         name
         kindPlace
         titleImage {
-          gatsbyImageData(layout: FULL_WIDTH)
+          gatsbyImageData(width: 250, placeholder: BLURRED)
           title
         }
         country {
@@ -20,7 +20,7 @@ const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(placeholder: BLURRED, width: 700)
+          gatsbyImageData(placeholder: BLURRED, width: 400)
           title
         }
         location {

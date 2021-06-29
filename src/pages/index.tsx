@@ -8,7 +8,7 @@ import SEO from "../components/own/seo"
 const IndexPage = (): JSX.Element => {
   return (
     <>
-      <SEO title="Home" />
+      <SEO title="Home" description="Hlavní stránka" />
       <WithLayout component={IndexView} layout={Main} />
     </>
   )

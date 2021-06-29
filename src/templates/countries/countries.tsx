@@ -30,11 +30,7 @@ export const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(
-            layout: FULL_WIDTH
-            placeholder: BLURRED
-            height: 1500
-          )
+          gatsbyImageData(placeholder: BLURRED, width: 400)
           title
         }
         location {
@@ -53,7 +49,7 @@ export const query = graphql`
         name
         kindPlace
         titleImage {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 40)
           title
         }
         country {
@@ -61,11 +57,7 @@ export const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(
-            layout: FULL_WIDTH
-            placeholder: BLURRED
-            height: 1500
-          )
+          gatsbyImageData(placeholder: BLURRED, width: 400)
           title
         }
         location {
