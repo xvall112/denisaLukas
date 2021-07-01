@@ -30,8 +30,14 @@ function Algolia() {
               })
             },
             templates: {
+              header() {
+                return <h2>Faith in Travel</h2>
+              },
               item({ item, components }) {
                 return <ProductItem hit={item} components={components} />
+              },
+              noResults() {
+                return <h3>Tudy cesta nevede, zkuste vyhledat něco jiného</h3>
               },
             },
           },
