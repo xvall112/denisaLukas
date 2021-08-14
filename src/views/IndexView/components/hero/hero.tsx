@@ -127,7 +127,7 @@ const Hero = () => {
                         </Box>
 
                         <Box
-                          fontSize={isMd ? 130 : 70}
+                          fontSize={isMd ? 130 : 50}
                           fontWeight="fontWeightBold"
                           textAlign="center"
                           letterSpacing={5}

@@ -39,7 +39,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface props {
-  slug: string
   item: {
     titleImage: { title: string; gatsbyImageData: any }
     name: string
@@ -47,7 +46,7 @@ interface props {
     slug: string
   }
 }
-const Card = ({ item, slug }: props): JSX.Element => {
+const Card = ({ item }: props): JSX.Element => {
   const classes = useStyles()
   return (
     <div className={classes.root}>

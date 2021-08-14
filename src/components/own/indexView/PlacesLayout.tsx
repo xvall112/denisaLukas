@@ -69,7 +69,7 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
               return (
                 <div key={index}>
                   <Box pr={2}>
-                    <Card item={place} slug={slug} />
+                    <Card item={place} />
                   </Box>
                 </div>
               )
