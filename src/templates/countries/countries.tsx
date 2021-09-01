@@ -33,6 +33,10 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED, width: 400)
           title
         }
+        titleImage {
+          gatsbyImageData(width: 250, placeholder: BLURRED)
+          title
+        }
         location {
           lat
           lon

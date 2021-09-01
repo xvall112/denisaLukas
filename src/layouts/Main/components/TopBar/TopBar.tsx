@@ -111,14 +111,14 @@ const TopBar = ({}: Props): JSX.Element => {
             >
               {isMd && (
                 <>
-                  <Grid item>
+                  {/* <Grid item>
                     <Box mr={2}>
                       <DarkModeToggler
                         themeMode={themeMode}
                         onClick={() => themeToggler()}
                       />
                     </Box>
-                  </Grid>
+                  </Grid> */}
 
                   <Grid item>
                     <IconButton

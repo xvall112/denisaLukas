@@ -88,11 +88,8 @@ const UserProvider = ({ children }) => {
   }
 
   const fetchFavouriteItems = async () => {
-    await console.log("fetch start")
     const userAuth = await getCurrentUser()
-    console.log(userAuth)
     if (!userAuth) {
-      await console.log("neni user")
       await setFavouriteItems([])
     } else {
       const favouriteItemsRef = await firebase

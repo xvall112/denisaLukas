@@ -23,7 +23,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 //context
 import { UserContext } from "../../../providers/user/user.provider"
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: { marginTop: theme.spacing(2) },
   flag: {
     borderRadius: theme.spacing(0.5),
   },
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   folioItem: {
     position: "relative",
     overflow: "hidden",
-    margin: theme.spacing(1, 0),
+
     boxShadow: `0 1.5rem 4rem rgba(22,28,45,.05)`,
     borderRadius: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {},

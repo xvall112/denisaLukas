@@ -79,12 +79,12 @@ export default function WithLayout({
   useEffect(() => {
     isUserAuth()
     fetchFavouriteItems()
-
     console.log("componennt mounth")
     return () => {
       console.log("componennt unMounth")
     }
   }, [currentUser])
+
   const classes = useStyles()
   return (
     <ThemeProvider theme={getTheme(themeMode)}>

@@ -102,12 +102,12 @@ const Sidebar = ({
             justify="space-between"
             alignItems="center"
           >
-            <Grid item>
+            {/*  <Grid item>
               <DarkModeToggler
                 themeMode={themeMode}
                 onClick={() => themeToggler()}
               />
-            </Grid>
+            </Grid> */}
             <Grid item>
               <CardBase noBorder noShadow className={classes.logoCard}>
                 <StaticImage
