@@ -52,7 +52,7 @@ export const dark = {
   primary: {
     main: "#fae596",
     light: "#fff1bc",
-    dark: "#ffd021",
+    dark: "#ffe06a",
     contrastText: "rgba(0, 0, 0, 0.87)",
     heart: "#fff",
   },

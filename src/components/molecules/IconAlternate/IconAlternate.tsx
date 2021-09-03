@@ -44,9 +44,10 @@ const IconAlternate = ({
   ...rest
 }: IconAlternateProps): JSX.Element => {
   const classes = useStyles()
-  const useBackgroundStyles = makeStyles(() => ({
+  const useBackgroundStyles = makeStyles(theme => ({
     background: {
-      background: color[50],
+      background:
+        "linear-gradient(93deg, rgba(250,229,150,0.500437675070028) 0%, rgba(250,229,150,1) 46%, rgba(250,229,150,0.500437675070028) 100%)",
     },
   }))
   const backgroundClasses = useBackgroundStyles()
@@ -65,7 +66,7 @@ const IconAlternate = ({
       <Icon
         size={size}
         fontIconClass={fontIconClass}
-        fontIconColor={color[500]}
+        fontIconColor="black"
         className="icon-alternate__icon"
         {...iconProps}
       />

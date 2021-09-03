@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    
     width: "100%",
     margin: "0 auto",
     padding: theme.spacing(6, 2),

@@ -4,7 +4,14 @@ import React, { useContext } from "react"
 import { IconAlternate } from "components/molecules"
 
 //material Ui
-import { Box, Grid, Typography, colors, Tooltip } from "@material-ui/core"
+import {
+  Box,
+  Grid,
+  Typography,
+  colors,
+  Tooltip,
+  Divider,
+} from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 //context
@@ -116,7 +123,7 @@ const DescribeSection = ({
               )}
             </Grid>
             <Box my={2}>{children}</Box>
-            <hr></hr>
+            <Divider />
           </>
         </Grid>
       </Box>

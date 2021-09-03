@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     "& a": { textDecoration: "none", paddingTop: theme.spacing(2) },
     "& a:hover": {
       textDecoration: "underline",
-      color: theme.palette.text.primary,
+      color: theme.palette.primary.main,
     },
   },
   logoCard: {

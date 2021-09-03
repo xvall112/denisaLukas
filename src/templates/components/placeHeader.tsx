@@ -17,6 +17,7 @@ import {
   ButtonGroup,
   IconButton,
   Tooltip,
+  Divider,
 } from "@material-ui/core"
 
 //context
@@ -153,7 +154,7 @@ const PlaceHeader = ({
         </ButtonGroup>
       </Box>
       <Box mb={3}>
-        <hr></hr>
+        <Divider />
       </Box>
     </>
   )

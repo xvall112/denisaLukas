@@ -141,7 +141,7 @@ const Hero = () => {
                       </Typography>
                       <Box mt={2} textAlign="center">
                         <Button
-                          variant="contained"
+                          variant="outlined"
                           color="primary"
                           size="large"
                           onClick={() => navigate(`/${item.slug}`)}
