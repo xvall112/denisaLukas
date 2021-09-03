@@ -11,10 +11,10 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     position: "relative",
     overflow: "hidden",
-    background: theme.palette.primary.dark,
+    background: theme.palette.primary.main,
   },
   textWhite: {
-    color: "white",
+    color: "black",
   },
   title: {
     fontWeight: "bold",

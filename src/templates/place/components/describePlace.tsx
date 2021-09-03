@@ -50,7 +50,7 @@ const DescribeSection = ({
                   <IconAlternate
                     fontIconClass={icon}
                     size="small"
-                    color={colors.pink}
+                    color={colors.amber}
                   />
                 </Grid>
                 <Grid item>
@@ -75,7 +75,7 @@ const DescribeSection = ({
                     <IconAlternate
                       fontIconClass="far fa-clock"
                       size="small"
-                      color={colors.pink}
+                      color={colors.amber}
                     />
                   </Grid>
                   <Grid item>
@@ -100,7 +100,7 @@ const DescribeSection = ({
                       <IconAlternate
                         fontIconClass="fas fa-compass"
                         size="small"
-                        color={colors.pink}
+                        color={colors.amber}
                       />
                     </Grid>
                     <Grid item>

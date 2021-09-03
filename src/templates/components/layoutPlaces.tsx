@@ -93,75 +93,73 @@ const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
 
   const Nevim = () => {
     return (
-      <Grow in={true}>
-        <div className={classes.root}>
-          <Typography variant="h1" className={classes.name}>
-            <Box
-              whiteSpace="nowrap"
-              height="80vh"
-              component="div"
-              textOverflow="ellipsis"
-              overflow="hidden"
-            >
-              {data.name}
-            </Box>
-          </Typography>
+      <div className={classes.root}>
+        <Typography variant="h1" className={classes.name}>
+          <Box
+            whiteSpace="nowrap"
+            height="80vh"
+            component="div"
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
+            {data.name}
+          </Box>
+        </Typography>
 
-          <Grid container>
-            <Grid item xs={12} md={6}>
-              <div className={classes.slider}>
-                {/* komponenta mapa a slider prepinani button v pleaceHeader */}
-                {map ? (
-                  <LeafletMap
-                    zoom={13}
-                    center={[data.location.lat, data.location.lon]}
-                    marker={[data]}
-                    parking={
-                      data.parkingGps
-                        ? [data.parkingGps.lat, data.parkingGps.lon]
-                        : null
-                    }
-                    endFerrataLocation={
-                      data.endLocation
-                        ? [data.endLocation.lat, data.endLocation.lon]
-                        : null
-                    }
-                    slug={slug}
-                  />
-                ) : (
-                  <Slider
-                    img={data.images}
-                    heightImg={isMd ? "100vh" : "50vh"}
-                    widthImg={"100%"}
-                  />
-                )}
-                <Box className={classes.location}>
-                  {/* komponenta location vpravo dole */}
-                  <Location location={data.location} />
-                </Box>
-              </div>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Box mt={{ xs: 0, lg: 10 }} mb={5} zIndex={100}>
-                <Container maxWidth="xl">
-                  {/* komponenta header */}
-                  <PlaceHeader
-                    kindPlace={data.kindPlace}
-                    country={data.country}
-                    name={data.name}
-                    adress={data.adress}
-                    location={data.location}
-                    id={data.id}
-                  />
-
-                  {/* komponenta body */}
-                  {children}
-                </Container>
+        <Grid container>
+          <Grid item xs={12} md={6}>
+            <div className={classes.slider}>
+              {/* komponenta mapa a slider prepinani button v pleaceHeader */}
+              {map ? (
+                <LeafletMap
+                  zoom={13}
+                  center={[data.location.lat, data.location.lon]}
+                  marker={[data]}
+                  parking={
+                    data.parkingGps
+                      ? [data.parkingGps.lat, data.parkingGps.lon]
+                      : null
+                  }
+                  endFerrataLocation={
+                    data.endLocation
+                      ? [data.endLocation.lat, data.endLocation.lon]
+                      : null
+                  }
+                  slug={slug}
+                />
+              ) : (
+                <Slider
+                  img={data.images}
+                  heightImg={isMd ? "100vh" : "50vh"}
+                  widthImg={"100%"}
+                />
+              )}
+              <Box className={classes.location}>
+                {/* komponenta location vpravo dole */}
+                <Location location={data.location} />
               </Box>
-            </Grid>
+            </div>
           </Grid>
-        </div>
-      </Grow>
+          <Grid item xs={12} md={6}>
+            <Box mt={{ xs: 0, lg: 10 }} mb={5} zIndex={100}>
+              <Container maxWidth="xl">
+                {/* komponenta header */}
+                <PlaceHeader
+                  kindPlace={data.kindPlace}
+                  country={data.country}
+                  name={data.name}
+                  adress={data.adress}
+                  location={data.location}
+                  id={data.id}
+                />
+
+                {/* komponenta body */}
+                {children}
+              </Container>
+            </Box>
+          </Grid>
+        </Grid>
+      </div>
     )
   }
   return (

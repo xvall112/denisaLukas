@@ -24,7 +24,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Container>
+        <Container maxWidth="xl">
           <div>{children}</div>
         </Container>
       )}
@@ -57,7 +57,7 @@ export default function TabPane({ places, ferrata }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="sticky" color="default">
         <Container maxWidth="xl">
           <Tabs
             value={value}

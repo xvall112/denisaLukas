@@ -8,6 +8,14 @@ const getTheme = mode =>
       
       palette: mode === "light" ? light : dark,
       overrides: {
+        MuiDivider:{
+          root:{
+           
+            background: 'linear-gradient(93deg, rgba(250,229,150,0.500437675070028) 0%, rgba(250,229,150,1) 46%, rgba(250,229,150,0.500437675070028) 100%)'
+          }
+          
+         
+        },
         MuiButton: {
           root: {
             borderRadius: '5px',

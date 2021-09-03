@@ -51,8 +51,8 @@ export const dark = {
   type: "dark" as PaletteType,
   primary: {
     main: "#fae596",
-    light: "rgb(166, 212, 250)",
-    dark: "rgb(100, 141, 174)",
+    light: "#fff1bc",
+    dark: "#ffd021",
     contrastText: "rgba(0, 0, 0, 0.87)",
     heart: "#fff",
   },

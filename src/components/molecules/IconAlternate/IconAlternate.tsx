@@ -1,8 +1,8 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import { Avatar } from '@material-ui/core';
-import { Icon } from 'components/atoms';
+import React from "react"
+import clsx from "clsx"
+import { makeStyles } from "@material-ui/core/styles"
+import { Avatar } from "@material-ui/core"
+import { Icon } from "components/atoms"
 
 const useStyles = makeStyles(theme => ({
   extraSmall: {
@@ -22,12 +22,12 @@ const useStyles = makeStyles(theme => ({
     height: 90,
   },
   circle: {
-    borderRadius: '100%',
+    borderRadius: "100%",
   },
   square: {
     borderRadius: theme.spacing(2),
   },
-}));
+}))
 
 /**
  * Component to display the alternate icon
@@ -37,28 +37,28 @@ const useStyles = makeStyles(theme => ({
 const IconAlternate = ({
   iconProps,
   fontIconClass,
-  size = 'medium',
+  size = "medium",
   color = [],
-  shape = 'square',
+  shape = "square",
   className,
   ...rest
 }: IconAlternateProps): JSX.Element => {
-  const classes = useStyles();
+  const classes = useStyles()
   const useBackgroundStyles = makeStyles(() => ({
     background: {
       background: color[50],
     },
-  }));
-  const backgroundClasses = useBackgroundStyles();
+  }))
+  const backgroundClasses = useBackgroundStyles()
 
   return (
     <Avatar
       className={clsx(
-        'icon-alternate',
+        "icon-alternate",
         classes[size],
         classes[shape],
         backgroundClasses.background,
-        className,
+        className
       )}
       {...rest}
     >
@@ -70,7 +70,7 @@ const IconAlternate = ({
         {...iconProps}
       />
     </Avatar>
-  );
-};
+  )
+}
 
-export default IconAlternate;
+export default IconAlternate

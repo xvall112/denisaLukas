@@ -17,6 +17,7 @@ import {
   IconButton,
   Grid,
   Button,
+  Divider,
 } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 
@@ -121,16 +122,19 @@ const Sidebar = ({
             <Grid item>
               <IconButton
                 edge="start"
-                color="inherit"
+                color="primary"
                 onClick={() => handleSidebarClose()}
               >
                 <CloseIcon fontSize="large" />
               </IconButton>
             </Grid>
           </Grid>
+          <Box py={2}>
+            <Divider orientation="horizontal" />
+          </Box>
         </Box>
-        <hr></hr>
-        <Box my={4} ml={2} onClick={() => handleSidebarClose()}>
+
+        <Box mx={2} onClick={() => handleSidebarClose()}>
           <Link to="/">
             <Typography variant="h3" color="textPrimary">
               Home
@@ -154,8 +158,9 @@ const Sidebar = ({
               </Typography>
             </Box>
           </Link>
-
-          <hr></hr>
+          <Box py={2}>
+            <Divider />
+          </Box>
           <Grid container direction="column" spacing={2}>
             {currentUser ? (
               <>
@@ -209,13 +214,13 @@ const Sidebar = ({
               </>
             )}
           </Grid>
-
-          <hr></hr>
-          <Box ml={2}>
-            <IconButton edge="start" color="inherit">
-              <InstagramIcon fontSize="large" />
-            </IconButton>
+          <Box py={2}>
+            <Divider />
           </Box>
+
+          <IconButton edge="start" color="primary">
+            <InstagramIcon fontSize="large" />
+          </IconButton>
         </Box>
       </div>
     </Drawer>

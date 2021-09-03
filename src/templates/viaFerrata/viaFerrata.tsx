@@ -95,7 +95,7 @@ const ViaFerrata = props => {
               title={level}
               description="obtížnost"
               variant="outlined"
-              color={colors.pink}
+              color={colors.amber}
               align="center"
               fontIconClass="fas fa-mountain"
               withShadow
@@ -106,7 +106,7 @@ const ViaFerrata = props => {
               title={`${long} m`}
               description="délka"
               variant="outlined"
-              color={colors.pink}
+              color={colors.amber}
               align="center"
               fontIconClass="fas fa-level-up-alt"
               withShadow
@@ -117,7 +117,7 @@ const ViaFerrata = props => {
               title={`${ferrataTime + parkingToStartTime + backWayTime} min`}
               description="celkem"
               variant="outlined"
-              color={colors.pink}
+              color={colors.amber}
               align="center"
               fontIconClass="far fa-clock"
               withShadow

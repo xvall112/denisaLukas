@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     overflow: "hidden",
     [theme.breakpoints.up("md")]: {
-      height: "70vh",
+      height: "50vh",
     },
   },
 
