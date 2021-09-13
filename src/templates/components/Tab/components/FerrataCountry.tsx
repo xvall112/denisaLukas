@@ -1,13 +1,9 @@
-import React, { useContext } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import React from "react"
 
 //components
 import Card from "../../../../components/own/PlacePageLayout/card"
 import NoFavourite from "./noFavourite"
 import FullScreenMap from "../../../../components/own/fullScreenMap"
-
-//context
-import { UserContext } from "../../../../providers/user/user.provider"
 
 const FerrataCountry = ({ ferrata }) => {
   return (

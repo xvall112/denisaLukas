@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 //components
 import WithLayout from "../../../WithLayout"
 import SEO from "../../components/own/seo"
-import Places from "../../layouts/Place/Place"
+import Main from "../../layouts/Main/Main"
 import Hero from "../components/Hero"
 import Tab from "../components/Tab/Tab"
 
@@ -89,7 +89,7 @@ const Countries = props => {
   return (
     <div>
       <SEO title={name} />
-      <WithLayout component={Nevim} layout={Places} />
+      <WithLayout component={Nevim} layout={Main} />
     </div>
   )
 }

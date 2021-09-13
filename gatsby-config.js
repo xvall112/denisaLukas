@@ -3,8 +3,9 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    title: `Denisa&Lukas`,
+    title: `Faith in Travels`,
     description: `Cestovni blog`,
+    siteUrl: `https://www.faithintravel.cz`,
     author: `@Lukas Valta <valtalukas@sezanm.cz>`,
     social: {
       twitter: `Lukas`,
@@ -12,6 +13,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: "gatsby-plugin-react-leaflet",
       options: {
@@ -69,7 +71,7 @@ module.exports = {
       options: {
         name: `gatsby-starter-default`,
         short_name: `starter`,
-        start_url: `/`,
+        start_url: `faithintravel.cz`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,

@@ -19,6 +19,7 @@ import { MapContext } from "../../providers/map/map.providers"
 import { UserContext } from "../../providers/user/user.provider"
 const useStyles = makeStyles(theme => ({
   fabButton: {
+    width: "100px",
     position: "fixed",
     zIndex: 1,
     bottom: 30,
@@ -53,17 +54,19 @@ const FullScreenMap = ({ markers }: Props): JSX.Element => {
         open={isFullScreenMapOpen}
         onClose={setCloseFullScreenMap}
       >
-        <AppBar>
+        <AppBar color="transparent">
           <Toolbar>
             <IconButton
               edge="start"
-              color="inherit"
+              color="primary"
               onClick={setCloseFullScreenMap}
               aria-label="close"
             >
               <CloseIcon />
             </IconButton>
-            <Typography variant="h6">Mapa</Typography>
+            <Typography color="primary" variant="h6">
+              Mapa
+            </Typography>
           </Toolbar>
         </AppBar>
         <LeafletMap zoom={2} center={[0, 0]} marker={markers} />

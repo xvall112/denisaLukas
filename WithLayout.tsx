@@ -5,10 +5,13 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "./src/theme/index"
 import { MenuContext } from "./src/providers/menu/menu.providers"
 import { SnackbarMap, SnackbarUser, Modal } from "./src/components/own/Snackbar"
-import AOS from "aos"
 import { UserContext } from "./src/providers/user/user.provider"
-
 import { makeStyles } from "@material-ui/core/styles"
+
+import "@fontsource/roboto/300.css"
+import "@fontsource/roboto/400.css"
+import "@fontsource/roboto/500.css"
+import "@fontsource/roboto/700.css"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -60,18 +63,18 @@ export default function WithLayout({
       jssStyles.parentElement.removeChild(jssStyles)
     }
 
-    AOS.init({
+    /*  AOS.init({
       once: true,
       delay: 50,
       duration: 500,
       easing: "ease-in-out",
-    })
+    }) */
   }, [])
 
   const { themeMode, mountedComponent } = useContext(MenuContext)
-  useEffect(() => {
+  /* useEffect(() => {
     AOS.refresh()
-  }, [mountedComponent])
+  }, [mountedComponent]) */
 
   const { fetchFavouriteItems, isUserAuth, currentUser } = useContext(
     UserContext

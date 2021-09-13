@@ -23,7 +23,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 //context
 import { UserContext } from "../../../providers/user/user.provider"
 const useStyles = makeStyles(theme => ({
-  root: { marginTop: theme.spacing(2) },
+  root: { marginTop: theme.spacing(2), marginBottom: theme.spacing(2) },
   flag: {
     borderRadius: theme.spacing(0.5),
   },

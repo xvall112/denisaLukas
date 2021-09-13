@@ -27,7 +27,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={2}>
           <div>{children}</div>
         </Box>
       )}
@@ -75,7 +75,6 @@ export default function TabPane() {
             <Tab label="via Ferrata" {...a11yProps(1)} />
             <Tab label="Hiking" {...a11yProps(2)} />
             <Tab label="Cyklo" {...a11yProps(3)} />
-            <Tab label="ucet" {...a11yProps(4)} />
           </Tabs>
         </Container>
       </AppBar>
@@ -91,9 +90,6 @@ export default function TabPane() {
       </TabPanel>
       <TabPanel value={value} index={3}>
         Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
       </TabPanel>
     </div>
   )

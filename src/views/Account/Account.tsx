@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
       zIndex: 1,
     },
     "& .card-base__content": {
-      padding: theme.spacing(2),
+      padding: theme.spacing(0),
       [theme.breakpoints.up("md")]: {
         padding: theme.spacing(0),
       },
