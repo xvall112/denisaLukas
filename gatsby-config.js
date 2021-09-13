@@ -3,7 +3,7 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    title: `Faith in Travels`,
+    title: `Faith in Travel`,
     description: `Cestovni blog`,
     siteUrl: `https://www.faithintravel.cz`,
     author: `@Lukas Valta <valtalukas@sezanm.cz>`,
