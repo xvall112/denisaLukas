@@ -2,10 +2,8 @@ import React, { useContext } from "react"
 import { graphql, useStaticQuery, Link, navigate } from "gatsby"
 import clsx from "clsx"
 import { StaticImage } from "gatsby-plugin-image"
-import firebase from "gatsby-plugin-firebase"
 
 //components
-import DarkModeToggler from "../../components/atoms/DarkModeToggler/DarkModeToggler"
 import { CardBase } from "components/organisms"
 //materialUI
 import InstagramIcon from "@material-ui/icons/Instagram"
@@ -18,6 +16,7 @@ import {
   Grid,
   Button,
   Divider,
+  Avatar,
 } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 
@@ -53,6 +52,7 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.primary.main,
     },
   },
+  avatar: { backgroundColor: theme.palette.primary.main },
   logoCard: {
     backgroundColor: "black",
     /*  borderRadius: theme.shape.borderRadius, */
@@ -78,12 +78,7 @@ const Sidebar = ({
   ...rest
 }: Props): JSX.Element => {
   const data = useStaticQuery(query)
-  const {
-    themeMode,
-    themeToggler,
-    handleSidebarClose,
-    openSidebar,
-  } = useContext(MenuContext)
+  const { handleSidebarClose, openSidebar } = useContext(MenuContext)
   const classes = useStyles()
   const { logout, currentUser } = useContext(UserContext)
 
@@ -110,14 +105,20 @@ const Sidebar = ({
               />
             </Grid> */}
             <Grid item>
-              <CardBase noBorder noShadow className={classes.logoCard}>
-                <StaticImage
-                  src="../../images/logoWhite.png"
-                  width={40}
-                  quality={95}
-                  alt="logo Faith in Travel"
-                />
-              </CardBase>
+              {currentUser ? (
+                <Link to="/account" onClick={() => handleSidebarClose()}>
+                  <Avatar src="/broken-image.jpg" className={classes.avatar} />
+                </Link>
+              ) : (
+                <CardBase noBorder noShadow className={classes.logoCard}>
+                  <StaticImage
+                    src="../../images/logoWhite.png"
+                    width={40}
+                    quality={95}
+                    alt="logo Faith in Travel"
+                  />
+                </CardBase>
+              )}
             </Grid>
             <Grid item>
               <IconButton

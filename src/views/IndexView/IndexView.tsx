@@ -28,7 +28,7 @@ const query = graphql`
             slug
             kindPlace
             titleImage {
-              gatsbyImageData(placeholder: BLURRED, width: 500)
+              gatsbyImageData(placeholder: BLURRED, width: 400)
               title
             }
             country {
@@ -42,7 +42,7 @@ const query = graphql`
             slug
             kindPlace
             titleImage {
-              gatsbyImageData(placeholder: BLURRED, width: 500)
+              gatsbyImageData(placeholder: BLURRED, width: 400)
               title
             }
             country {

@@ -1,14 +1,14 @@
 import React, { useContext } from "react"
+import { navigate } from "gatsby"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 //components
-import DarkModeToggler from "../../../../components/atoms/DarkModeToggler/DarkModeToggler"
-import Search from "./Search"
 import { CardBase } from "components/organisms"
 import Algolia from "../../../../components/own/Algolia/Algolia"
 //context
 import { MenuContext } from "../../../../providers/menu/menu.providers"
+import { UserContext } from "../../../../providers/user/user.provider"
 //material UI
 import {
   useMediaQuery,
@@ -16,7 +16,9 @@ import {
   Box,
   IconButton,
   Typography,
-  colors,
+  Avatar,
+  Menu,
+  MenuItem,
 } from "@material-ui/core"
 import {
   createStyles,
@@ -33,6 +35,9 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+    },
+    avatar: {
+      backgroundColor: theme.palette.primary.main,
     },
     menu: {
       backgroundColor: "black",
@@ -53,12 +58,21 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 const TopBar = ({}: Props): JSX.Element => {
-  const { themeMode, themeToggler, handleSidebarOpen } = useContext(MenuContext)
+  const { handleSidebarOpen } = useContext(MenuContext)
+  const { currentUser, logout } = useContext(UserContext)
   const classes = useStyles()
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   })
+  // menu pri prihlaseni uzivatele
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
   return (
     <header>
       <div className={classes.root}>
@@ -141,6 +155,28 @@ const TopBar = ({}: Props): JSX.Element => {
                   </IconButton>
                 </Box>
               </Grid>
+              {currentUser && (
+                <>
+                  <Grid item>
+                    <Avatar
+                      onClick={handleClick}
+                      className={classes.avatar}
+                      src="/broken-image.jpg"
+                    />
+                  </Grid>
+                  <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                  >
+                    <MenuItem onClick={handleClose}>Nastavení</MenuItem>
+                    <MenuItem onClick={handleClose}>Moje oblíbené</MenuItem>
+                    <MenuItem onClick={() => logout()}>Odhlásit se</MenuItem>
+                  </Menu>
+                </>
+              )}
             </Grid>
           </Grid>
           {/* {!isMd && (

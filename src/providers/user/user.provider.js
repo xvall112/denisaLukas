@@ -117,7 +117,6 @@ const UserProvider = ({ children }) => {
   const addFavouriteItem = async itemId => {
     await setLoading(true)
     if (!currentUser) {
-      console.log("prihlaste se")
       await setisModalOpen(true)
       await setLoading(false)
     } else {
