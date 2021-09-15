@@ -94,10 +94,10 @@ export default function WithLayout({
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
       <Paper elevation={0}>
-        <Layout className={classes.root}>
-          <SnackbarMap />
-          <SnackbarUser />
-          <Modal />
+        <SnackbarMap />
+        <SnackbarUser />
+        <Modal />
+        <Layout>
           <Component themeMode={themeMode} {...rest} />
         </Layout>
       </Paper>

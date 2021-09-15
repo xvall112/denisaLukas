@@ -11,8 +11,6 @@ import WithLayout from "../../WithLayout"
 import { UserContext } from "../providers/user/user.provider"
 
 const AccountPage = (): JSX.Element => {
-  const { currentUser } = useContext(UserContext)
-
   return (
     <>
       <SEO title="Účet" />

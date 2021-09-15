@@ -8,6 +8,7 @@ import MapProvider from "../providers/map/map.providers"
 import UserProvider from "../providers/user/user.provider"
 import FavouriteProvider from "../providers/favourite/favourite.provider"
 import { UserContext } from "../providers/user/user.provider"
+import LinearProgress from "@material-ui/core/LinearProgress"
 
 const TopLayout = ({ children }) => {
   return (

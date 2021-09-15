@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
-import { navigate } from "gatsby"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 //components
@@ -16,7 +15,6 @@ import {
   Box,
   IconButton,
   Typography,
-  Avatar,
   Menu,
   MenuItem,
 } from "@material-ui/core"
@@ -28,6 +26,8 @@ import {
 } from "@material-ui/core/styles"
 import MenuIcon from "@material-ui/icons/Menu"
 import InstagramIcon from "@material-ui/icons/Instagram"
+import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
+import SearchIcon from "@material-ui/icons/Search"
 
 interface Props {}
 
@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+      backgroundColor:
+        "linear-gradient(to bottom, rgba(0, 0, 0, 0) 4%, #000000)",
     },
     avatar: {
       backgroundColor: theme.palette.primary.main,
@@ -86,8 +88,8 @@ const TopBar = ({}: Props): JSX.Element => {
           >
             <Grid
               item
-              xs={8}
-              md
+              xs={7}
+              md={4}
               container
               direction="row"
               justify="center"
@@ -113,10 +115,15 @@ const TopBar = ({}: Props): JSX.Element => {
                 </Grid>
               </Grid>
             </Grid>
-            {isMd && <Algolia />}
+            {isMd && (
+              <Grid item md={4}>
+                <Algolia />
+              </Grid>
+            )}
             <Grid
               item
-              xs
+              xs={5}
+              md={4}
               container
               direction="row"
               justify="flex-end"
@@ -134,18 +141,34 @@ const TopBar = ({}: Props): JSX.Element => {
                     </Box>
                   </Grid> */}
 
-                  <Grid item>
+                  <Grid item xs={4} md={2}>
                     <IconButton
                       edge="start"
                       color="inherit"
                       aria-label="open drawer"
                     >
-                      <InstagramIcon />
+                      <InstagramIcon fontSize="large" />
                     </IconButton>
                   </Grid>
                 </>
               )}
-              <Grid item>
+              {!isMd && (
+                <Grid item xs={4} md={2}>
+                  <Box className={classes.menu}>
+                    <IconButton
+                      aria-label="open drawer"
+                      onClick={() => handleSidebarOpen()}
+                    >
+                      <SearchIcon
+                        fontSize="large"
+                        className={classes.menuIcon}
+                      />
+                    </IconButton>
+                  </Box>
+                </Grid>
+              )}
+
+              <Grid item xs={4} md={2}>
                 <Box className={classes.menu}>
                   <IconButton
                     aria-label="open drawer"
@@ -157,12 +180,13 @@ const TopBar = ({}: Props): JSX.Element => {
               </Grid>
               {currentUser && (
                 <>
-                  <Grid item>
-                    <Avatar
-                      onClick={handleClick}
-                      className={classes.avatar}
-                      src="/broken-image.jpg"
-                    />
+                  <Grid item xs={4} md={2}>
+                    <IconButton onClick={handleClick}>
+                      <PersonOutlineOutlinedIcon
+                        fontSize="large"
+                        color="primary"
+                      />
+                    </IconButton>
                   </Grid>
                   <Menu
                     id="simple-menu"
@@ -172,7 +196,9 @@ const TopBar = ({}: Props): JSX.Element => {
                     onClose={handleClose}
                   >
                     <MenuItem onClick={handleClose}>Nastavení</MenuItem>
-                    <MenuItem onClick={handleClose}>Moje oblíbené</MenuItem>
+                    <MenuItem onClick={() => navigate("/account")}>
+                      Moje oblíbené
+                    </MenuItem>
                     <MenuItem onClick={() => logout()}>Odhlásit se</MenuItem>
                   </Menu>
                 </>

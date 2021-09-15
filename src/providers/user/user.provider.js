@@ -216,8 +216,9 @@ const UserProvider = ({ children }) => {
     await setLoading(false)
   }
 
-  const logout = () => {
-    return new Promise(resolve => {
+  const logout = async () => {
+    await setLoading(true)
+    await new Promise(resolve => {
       firebase
         .auth()
         .signOut()
@@ -229,6 +230,7 @@ const UserProvider = ({ children }) => {
           resolve()
         })
     })
+    await setLoading(false)
   }
 
   const resetPassword = async email => {
