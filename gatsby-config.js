@@ -76,7 +76,7 @@ module.exports = {
         background_color: `fae596`,
         theme_color: `fae596`,
         display: `fullscreen`,
-        icon: `src/images/logoBlack.png`, // This path is relative to the root of the site.
+        icon: `src/images/manifestIcon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,
