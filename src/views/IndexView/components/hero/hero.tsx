@@ -80,12 +80,12 @@ const Hero = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: isMd ? 1000 : 1000,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
-    pauseOnHover: false,
+    pauseOnHover: true,
     arrows: isMd ? true : false,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
@@ -105,7 +105,7 @@ const Hero = () => {
                       // By using the same grid area for both, they are stacked on top of each other
                       gridArea: "1/1",
                       position: "relative",
-                      height: "70vh",
+                      height: "80vh",
                       zIndex: 100,
                       // This centers the other elements inside the hero component
                       placeItems: "center",
@@ -174,7 +174,7 @@ const Hero = () => {
                     image={item.image.gatsbyImageData}
                     style={{
                       gridArea: "1/1",
-                      height: "70vh",
+                      height: "80vh",
                       zIndex: 1,
                       // You can set a maximum height for the image, if you wish.
                       // maxHeight: 600,

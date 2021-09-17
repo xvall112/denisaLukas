@@ -41,13 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       backgroundColor: theme.palette.primary.main,
     },
-    menu: {
-      backgroundColor: "black",
-      borderRadius: theme.shape.borderRadius,
-    },
-    menuIcon: {
-      color: "white",
-    },
+
     logoCard: {
       backgroundColor: "black",
       /*  borderRadius: theme.shape.borderRadius, */
@@ -98,14 +92,12 @@ const TopBar = ({}: Props): JSX.Element => {
               <Grid item container direction="row" alignItems="center">
                 <Grid item>
                   <Link to="/">
-                    <CardBase noBorder noShadow className={classes.logoCard}>
-                      <StaticImage
-                        src="../../../../images/logoWhite.png"
-                        width={40}
-                        quality={95}
-                        alt="logo Faith in Travel"
-                      />
-                    </CardBase>
+                    <StaticImage
+                      src="../../../../images/logoWhite.png"
+                      width={40}
+                      quality={95}
+                      alt="logo Faith in Travel"
+                    />
                   </Link>
                 </Grid>
                 <Grid item>
@@ -140,7 +132,7 @@ const TopBar = ({}: Props): JSX.Element => {
                       />
                     </Box>
                   </Grid> */}
-
+                  {/* button Instagram */}
                   <Grid item xs={4} md={2}>
                     <IconButton
                       edge="start"
@@ -152,40 +144,32 @@ const TopBar = ({}: Props): JSX.Element => {
                   </Grid>
                 </>
               )}
+              {/*  button search */}
               {!isMd && (
                 <Grid item xs={4} md={2}>
-                  <Box className={classes.menu}>
-                    <IconButton
-                      aria-label="open drawer"
-                      onClick={() => handleSidebarOpen()}
-                    >
-                      <SearchIcon
-                        fontSize="large"
-                        className={classes.menuIcon}
-                      />
-                    </IconButton>
-                  </Box>
-                </Grid>
-              )}
-
-              <Grid item xs={4} md={2}>
-                <Box className={classes.menu}>
                   <IconButton
                     aria-label="open drawer"
                     onClick={() => handleSidebarOpen()}
                   >
-                    <MenuIcon fontSize="large" className={classes.menuIcon} />
+                    <SearchIcon fontSize="large" />
                   </IconButton>
-                </Box>
+                </Grid>
+              )}
+              {/*  button menu */}
+              <Grid item xs={4} md={2}>
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={() => handleSidebarOpen()}
+                >
+                  <MenuIcon fontSize="large" />
+                </IconButton>
               </Grid>
+              {/*  button if user login */}
               {currentUser && (
                 <>
                   <Grid item xs={4} md={2}>
                     <IconButton onClick={handleClick}>
-                      <PersonOutlineOutlinedIcon
-                        fontSize="large"
-                        color="primary"
-                      />
+                      <PersonOutlineOutlinedIcon fontSize="large" />
                     </IconButton>
                   </Grid>
                   <Menu
