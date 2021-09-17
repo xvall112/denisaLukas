@@ -73,8 +73,7 @@ module.exports = {
         lang: `cs`,
         short_name: `FiT`,
         start_url: `/`,
-        background_color:
-          "linear-gradient(93deg, rgba(250,229,150,0.500437675070028) 0%, rgba(250,229,150,1) 46%, rgba(250,229,150,0.500437675070028) 100%)",
+        background_color: `linear-gradient(93deg, rgba(250,229,150,0.500437675070028) 0%, rgba(250,229,150,1) 46%, rgba(250,229,150,0.500437675070028) 100%)`,
         theme_color: `fae596`,
         display: `fullscreen`,
         icon: `src/images/logoBlack.png`, // This path is relative to the root of the site.
