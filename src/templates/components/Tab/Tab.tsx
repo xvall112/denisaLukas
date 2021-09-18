@@ -54,7 +54,7 @@ export default function TabPane({ places, ferrata }) {
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
   }
-
+  console.log("ferrata:", ferrata.nodes.length)
   return (
     <div className={classes.root}>
       <AppBar position="sticky" color="default">
@@ -69,9 +69,12 @@ export default function TabPane({ places, ferrata }) {
             aria-label="scrollable auto tabs example"
           >
             <Tab label="Místa" {...a11yProps(0)} />
-            <Tab label="via Ferrata" {...a11yProps(1)} />
-            <Tab label="Hiking" {...a11yProps(2)} />
-            <Tab label="Cyklo" {...a11yProps(3)} />
+            {ferrata.nodes.length !== 0 && (
+              <Tab label=" via Ferrata" {...a11yProps(1)} />
+            )}
+
+            {/* <Tab label="Hiking" {...a11yProps(2)} />
+            <Tab label="Cyklo" {...a11yProps(3)} /> */}
           </Tabs>
         </Container>
       </AppBar>
@@ -82,12 +85,12 @@ export default function TabPane({ places, ferrata }) {
       <TabPanel value={value} index={1}>
         <FerrataCountry ferrata={ferrata} />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/*  <TabPanel value={value} index={2}>
         Pracujeme na tom
       </TabPanel>
       <TabPanel value={value} index={3}>
         Pracujeme na tom
-      </TabPanel>
+      </TabPanel> */}
     </div>
   )
 }

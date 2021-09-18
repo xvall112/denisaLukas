@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 //components
@@ -24,16 +24,38 @@ export const query = graphql`
         }
       }
     }
+    allContentfulViaFerrata(filter: { node_locale: { eq: "cs" } }) {
+      nodes {
+        id
+        slug
+        name
+        titleImage {
+          gatsbyImageData(placeholder: BLURRED, width: 500)
+          title
+        }
+        country {
+          name
+          flagLink
+        }
+      }
+    }
   }
 `
 
 const FavouriteItems = () => {
   const data = useStaticQuery(query)
   const { favouriteItems } = useContext(UserContext)
-  const favourite = data.allContentfulPlaces.nodes.filter(item =>
+  let favourite
+
+  const favouritePlaces = data.allContentfulPlaces.nodes.filter(item =>
     favouriteItems.includes(item.id)
   )
-  console.log(favourite)
+  const favouriteFerrata = data.allContentfulViaFerrata.nodes.filter(item =>
+    favouriteItems.includes(item.id)
+  )
+  favourite = [...favouritePlaces, ...favouriteFerrata]
+
+  console.log("favourite:", favourite)
   return (
     <>
       <PlacesLayout data={favourite} slug="/account" title="Moje Oblíbené" />

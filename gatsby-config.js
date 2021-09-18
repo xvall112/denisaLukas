@@ -12,6 +12,14 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
@@ -73,8 +81,8 @@ module.exports = {
         lang: `cs`,
         short_name: `FiT`,
         start_url: `/`,
-        background_color: `fae596`,
-        theme_color: `fae596`,
+        background_color: `#fae596`,
+        theme_color: `#fae596`,
         display: `fullscreen`,
         icon: `src/images/manifestIcon.png`, // This path is relative to the root of the site.
       },

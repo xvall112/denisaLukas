@@ -50,6 +50,7 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
           slidesToShow: 1.5,
         },
       },
+
       // You can unslick at a given breakpoint now by adding:
       // settings: "unslick"
       // instead of a settings object

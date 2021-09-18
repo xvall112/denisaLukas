@@ -73,8 +73,8 @@ export default function TabPane() {
           >
             <Tab label="Místa" {...a11yProps(0)} />
             <Tab label="via Ferrata" {...a11yProps(1)} />
-            <Tab label="Hiking" {...a11yProps(2)} />
-            <Tab label="Cyklo" {...a11yProps(3)} />
+            {/* <Tab label="Hiking" {...a11yProps(2)} />
+            <Tab label="Cyklo" {...a11yProps(3)} /> */}
           </Tabs>
         </Container>
       </AppBar>
@@ -85,12 +85,12 @@ export default function TabPane() {
       <TabPanel value={value} index={1}>
         <FerrataFavourite />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/* <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
       <TabPanel value={value} index={3}>
         Item Four
-      </TabPanel>
+      </TabPanel> */}
     </div>
   )
 }
