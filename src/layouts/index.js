@@ -7,7 +7,6 @@ import MenuProvider from "../providers/menu/menu.providers"
 import MapProvider from "../providers/map/map.providers"
 import UserProvider from "../providers/user/user.provider"
 import FavouriteProvider from "../providers/favourite/favourite.provider"
-import ReactPullToRefresh from "../components/own/ReactPullToRefresh"
 
 const TopLayout = ({ children }) => {
   return (
@@ -18,13 +17,12 @@ const TopLayout = ({ children }) => {
           crossOrigin="anonymous"
         ></script>
       </Helmet>
+
       <FavouriteProvider>
         <UserProvider>
           <MapProvider>
             <MenuProvider>
-              <ReactPullToRefresh>
-                <>{children}</>
-              </ReactPullToRefresh>
+              <>{children}</>
             </MenuProvider>
           </MapProvider>
         </UserProvider>

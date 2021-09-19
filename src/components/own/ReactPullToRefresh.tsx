@@ -19,7 +19,7 @@ const ReactPullToRefresh = ({ children }) => {
       refreshContent={<RefreshContent />}
       pullDownThreshold={200}
       onRefresh={() => onRefresh()}
-      triggerHeight={40}
+      triggerHeight={1000}
       backgroundColor="black"
       startInvisible={true}
     >
