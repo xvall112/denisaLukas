@@ -3,10 +3,12 @@ import { ThemeProvider } from "@material-ui/core/styles"
 import { Paper } from "@material-ui/core"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "./src/theme/index"
-import { MenuContext } from "./src/providers/menu/menu.providers"
-import { SnackbarMap, SnackbarUser, Modal } from "./src/components/own/Snackbar"
-import { UserContext } from "./src/providers/user/user.provider"
 import { makeStyles } from "@material-ui/core/styles"
+import { SnackbarMap, SnackbarUser, Modal } from "./src/components/own/Snackbar"
+//constext
+import { UserContext } from "./src/providers/user/user.provider"
+import { MenuContext } from "./src/providers/menu/menu.providers"
+import { FavouriteContext } from "./src/providers/favourite/favourite.provider"
 
 import "@fontsource/roboto/300.css"
 import "@fontsource/roboto/400.css"
@@ -79,6 +81,8 @@ export default function WithLayout({
   const { fetchFavouriteItems, isUserAuth, currentUser } = useContext(
     UserContext
   )
+  const { favouriteItems } = useContext(FavouriteContext)
+
   useEffect(() => {
     isUserAuth()
     fetchFavouriteItems()
@@ -86,7 +90,7 @@ export default function WithLayout({
     return () => {
       console.log("componennt unMounth")
     }
-  }, [currentUser])
+  }, [favouriteItems])
 
   const classes = useStyles()
   return (

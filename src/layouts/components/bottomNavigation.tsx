@@ -1,36 +1,41 @@
-import React from "react"
+import React, { useContext } from "react"
 import { navigate } from "gatsby"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles"
 import BottomNavigation from "@material-ui/core/BottomNavigation"
-
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
-
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import LocationOnIcon from "@material-ui/icons/LocationOn"
 import HomeIcon from "@material-ui/icons/Home"
 import PersonIcon from "@material-ui/icons/Person"
 
-const useStyles = makeStyles({
-  root: {
-    width: "100vw",
-    zIndex: 1000,
-    position: "fixed",
-    bottom: "0px",
-  },
-})
+//context
+import { MenuContext } from "../../providers/menu/menu.providers"
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: "100vw",
+      zIndex: 1000,
+      position: "fixed",
+      bottom: "0px",
+      paddingBottom: theme.spacing(2),
+      height: "auto",
+    },
+  })
+)
 
 export default function LabelBottomNavigation() {
   const classes = useStyles()
-  const [value, setValue] = React.useState("recents")
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
+  const {
+    valueBottomNavigation,
+    handleBottomNavigation,
+    handleSidebarOpen,
+  } = useContext(MenuContext)
 
   return (
     <BottomNavigation
-      value={value}
-      onChange={handleChange}
+      value={valueBottomNavigation}
+      onChange={handleBottomNavigation}
       className={classes.root}
     >
       <BottomNavigationAction
@@ -55,13 +60,13 @@ export default function LabelBottomNavigation() {
         label="Oblíbené"
         value="favorites"
         icon={<FavoriteIcon />}
-        onClick={() => navigate("/account")}
+        onClick={() => /* navigate("/account") */ window.location.reload()}
       />
       <BottomNavigationAction
         label="Účet"
         value="account"
         icon={<PersonIcon />}
-        onClick={() => navigate("/account")}
+        onClick={() => handleSidebarOpen()}
       />
     </BottomNavigation>
   )
