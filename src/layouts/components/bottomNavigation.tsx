@@ -7,6 +7,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 import LocationOnIcon from "@material-ui/icons/LocationOn"
 import HomeIcon from "@material-ui/icons/Home"
 import PersonIcon from "@material-ui/icons/Person"
+import TrendingUpIcon from "@material-ui/icons/TrendingUp"
+import MenuIcon from "@material-ui/icons/Menu"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
@@ -14,11 +16,11 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: "100vw",
+      maxWidth: "100vw",
       zIndex: 1000,
       position: "fixed",
       bottom: "0px",
-      paddingBottom: theme.spacing(2),
+      paddingBottom: theme.spacing(3),
       height: "auto",
     },
   })
@@ -37,6 +39,7 @@ export default function LabelBottomNavigation() {
       value={valueBottomNavigation}
       onChange={handleBottomNavigation}
       className={classes.root}
+      showLabels={true}
     >
       <BottomNavigationAction
         label="Home"
@@ -53,19 +56,19 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction
         label="Ferrata"
         value="ferrata"
-        icon={<LocationOnIcon />}
+        icon={<TrendingUpIcon />}
         onClick={() => navigate("/viaFerrata")}
       />
       <BottomNavigationAction
         label="Oblíbené"
         value="favorites"
         icon={<FavoriteIcon />}
-        onClick={() => /* navigate("/account") */ window.location.reload()}
+        onClick={() => navigate("/account") /* window.location.reload() */}
       />
       <BottomNavigationAction
-        label="Účet"
+        label="Menu"
         value="account"
-        icon={<PersonIcon />}
+        icon={<MenuIcon />}
         onClick={() => handleSidebarOpen()}
       />
     </BottomNavigation>

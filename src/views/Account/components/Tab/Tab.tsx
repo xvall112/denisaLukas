@@ -85,12 +85,6 @@ export default function TabPane() {
       <TabPanel value={value} index={1}>
         <FerrataFavourite />
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel> */}
     </div>
   )
 }
