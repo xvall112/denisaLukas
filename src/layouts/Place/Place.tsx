@@ -3,11 +3,12 @@ import clsx from "clsx"
 
 //materialUI
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useMediaQuery, Divider } from "@material-ui/core"
+import { useMediaQuery, Hidden } from "@material-ui/core"
 
 //components
 import TopBar2 from "./components/TopBar2"
 import SideBar from "../SideBar/SideBar"
+import LabelBottomNavigation from "../components/bottomNavigation"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,6 +40,9 @@ const Place = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
       <TopBar2 />
       <SideBar variant="temporary" />
       <main>{children}</main>
+      <Hidden mdUp>
+        <LabelBottomNavigation />
+      </Hidden>
     </div>
   )
 }

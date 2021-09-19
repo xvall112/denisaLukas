@@ -101,7 +101,7 @@ const TopBar = ({}: Props): JSX.Element => {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Box ml={1}>
+                  <Box ml={1} fontWeight="bold">
                     <Typography variant="subtitle2">FAITH IN TRAVEL</Typography>
                   </Box>
                 </Grid>
@@ -122,16 +122,16 @@ const TopBar = ({}: Props): JSX.Element => {
               alignItems="center"
               spacing={1}
             >
-              {isMd && (
+              {isMd ? (
                 <>
-                  {/* <Grid item>
+                  {/*   <Grid item>
                     <Box mr={2}>
                       <DarkModeToggler
                         themeMode={themeMode}
                         onClick={() => themeToggler()}
                       />
                     </Box>
-                  </Grid> */}
+                  </Grid>  */}
                   {/* button Instagram */}
                   <Grid item xs={4} md={2}>
                     <IconButton
@@ -142,31 +142,18 @@ const TopBar = ({}: Props): JSX.Element => {
                       <InstagramIcon fontSize="large" />
                     </IconButton>
                   </Grid>
-                </>
-              )}
-              {/*  button search */}
-              {!isMd && (
-                <Grid item xs={4} md={2}>
-                  <IconButton
-                    aria-label="open drawer"
-                    onClick={() => handleSidebarOpen()}
-                  >
-                    <SearchIcon fontSize="large" />
-                  </IconButton>
-                </Grid>
-              )}
-              {/*  button menu */}
-              <Grid item xs={4} md={2}>
-                <IconButton
-                  aria-label="open drawer"
-                  onClick={() => handleSidebarOpen()}
-                >
-                  <MenuIcon fontSize="large" />
-                </IconButton>
-              </Grid>
-              {/*  button if user login */}
-              {currentUser && (
-                <>
+
+                  {/*  button menu */}
+                  <Grid item xs={4} md={2}>
+                    <IconButton
+                      aria-label="open drawer"
+                      onClick={() => handleSidebarOpen()}
+                    >
+                      <MenuIcon fontSize="large" />
+                    </IconButton>
+                  </Grid>
+                  {/*  button if user login */}
+
                   <Grid item xs={4} md={2}>
                     <IconButton onClick={handleClick}>
                       <PersonOutlineOutlinedIcon fontSize="large" />
@@ -179,12 +166,36 @@ const TopBar = ({}: Props): JSX.Element => {
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                   >
-                    <MenuItem onClick={handleClose}>Nastavení</MenuItem>
-                    <MenuItem onClick={() => navigate("/account")}>
-                      Moje oblíbené
-                    </MenuItem>
-                    <MenuItem onClick={() => logout()}>Odhlásit se</MenuItem>
+                    {currentUser ? (
+                      <>
+                        {" "}
+                        <MenuItem onClick={handleClose}>Nastavení</MenuItem>
+                        <MenuItem onClick={() => navigate("/account")}>
+                          Moje oblíbené
+                        </MenuItem>
+                        <MenuItem onClick={() => logout()}>
+                          Odhlásit se
+                        </MenuItem>
+                      </>
+                    ) : (
+                      <MenuItem onClick={() => navigate("/signin")}>
+                        Přihlásit se
+                      </MenuItem>
+                    )}
                   </Menu>
+                </>
+              ) : (
+                <>
+                  {/*  button search */}
+
+                  <Grid item xs={4} md={2}>
+                    <IconButton
+                      aria-label="open drawer"
+                      onClick={() => handleSidebarOpen()}
+                    >
+                      <SearchIcon fontSize="large" />
+                    </IconButton>
+                  </Grid>
                 </>
               )}
             </Grid>
