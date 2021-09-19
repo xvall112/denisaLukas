@@ -188,7 +188,7 @@ const TopBar = ({}: Props): JSX.Element => {
                 <>
                   {/*  button search */}
 
-                  <Grid item xs={4} md={2}>
+                  <Grid item xs={5}>
                     <IconButton
                       aria-label="open drawer"
                       onClick={() => handleSidebarOpen()}

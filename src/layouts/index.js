@@ -7,8 +7,7 @@ import MenuProvider from "../providers/menu/menu.providers"
 import MapProvider from "../providers/map/map.providers"
 import UserProvider from "../providers/user/user.provider"
 import FavouriteProvider from "../providers/favourite/favourite.provider"
-import { UserContext } from "../providers/user/user.provider"
-import LinearProgress from "@material-ui/core/LinearProgress"
+import ReactPullToRefresh from "../components/own/ReactPullToRefresh"
 
 const TopLayout = ({ children }) => {
   return (
@@ -23,7 +22,9 @@ const TopLayout = ({ children }) => {
         <UserProvider>
           <MapProvider>
             <MenuProvider>
-              <>{children}</>
+              <ReactPullToRefresh>
+                <>{children}</>
+              </ReactPullToRefresh>
             </MenuProvider>
           </MapProvider>
         </UserProvider>

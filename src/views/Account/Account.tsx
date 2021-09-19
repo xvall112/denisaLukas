@@ -6,10 +6,7 @@ import { Hero } from "./components"
 import TabPane from "./components/Tab/Tab"
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    height: "100%",
-    width: "100%",
-  },
+  root: {},
 
   section: {
     "& .section-alternate__content": {

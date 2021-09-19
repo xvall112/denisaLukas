@@ -46,7 +46,7 @@ const Main = ({ children }: Props): JSX.Element => {
       })}
     >
       {loading && <LinearProgress />}
-      <Section fullWidth className={classes.sectionNoPadding}>
+      <Section className={classes.sectionNoPadding}>
         <Topbar />
       </Section>
       <SideBar variant="temporary" />

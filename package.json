@@ -46,6 +46,7 @@
     "react-firebase-hooks": "^3.0.4",
     "react-helmet": "^6.1.0",
     "react-instantsearch-dom": "^6.11.2",
+    "react-js-pull-to-refresh": "^1.2.3",
     "react-leaflet": "^2.8.0",
     "react-slick": "^0.28.1",
     "react-spring": "^8.0.27",
