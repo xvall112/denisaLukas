@@ -44,31 +44,31 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction
         label="Home"
         value="home"
-        icon={<HomeIcon />}
+        icon={<HomeIcon fontSize="large" />}
         onClick={() => navigate("/")}
       />
       <BottomNavigationAction
         label="Místa"
         value="place"
-        icon={<LocationOnIcon />}
+        icon={<LocationOnIcon fontSize="large" />}
         onClick={() => navigate("/places")}
       />
       <BottomNavigationAction
         label="Ferrata"
         value="ferrata"
-        icon={<TrendingUpIcon />}
+        icon={<TrendingUpIcon fontSize="large" />}
         onClick={() => navigate("/viaFerrata")}
       />
       <BottomNavigationAction
         label="Oblíbené"
         value="favorites"
-        icon={<FavoriteIcon />}
+        icon={<FavoriteIcon fontSize="large" />}
         onClick={() => navigate("/account") /* window.location.reload() */}
       />
       <BottomNavigationAction
         label="Menu"
         value="account"
-        icon={<MenuIcon />}
+        icon={<MenuIcon fontSize="large" />}
         onClick={() => handleSidebarOpen()}
       />
     </BottomNavigation>

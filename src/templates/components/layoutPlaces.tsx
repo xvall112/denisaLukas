@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
       fontWeight: "bold",
     },
   },
+
   name: {
     display: "none",
     color: "white",
@@ -55,10 +56,11 @@ const useStyles = makeStyles(theme => ({
   slider: {
     width: "100vw",
     height: "50vh",
+
     [theme.breakpoints.up("md")]: {
-      width: "100%",
+      width: "50vw",
       height: "100vh",
-      position: "sticky",
+      position: "fixed",
       top: "0px",
     },
   },
@@ -141,7 +143,7 @@ const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box mt={{ xs: 0, lg: 10 }} mb={5} zIndex={100}>
+            <Box mt={{ xs: 0, lg: 10 }} mb={{ xs: 13, md: 5 }} zIndex={100}>
               <Container maxWidth="xl">
                 {/* komponenta header */}
                 <PlaceHeader

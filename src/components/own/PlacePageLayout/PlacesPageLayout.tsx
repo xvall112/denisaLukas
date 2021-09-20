@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       width: "100%",
       height: "100vh",
-      position: "sticky",
+      position: "fixed",
       top: "0px",
     },
   },
@@ -57,7 +57,10 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
               />
             </Box>
             <Filter />
-            <Cards data={data} slug={slug} />
+            {/*  content */}
+            <Box mb={{ xs: 13, md: 0 }}>
+              <Cards data={data} slug={slug} />
+            </Box>
           </Container>
         </Grid>
         <Grid item xs={12} md={6}>
