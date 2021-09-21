@@ -28,6 +28,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
 import SearchIcon from "@material-ui/icons/Search"
+import RefreshOutlinedIcon from "@material-ui/icons/RefreshOutlined"
 
 interface Props {}
 
@@ -187,14 +188,31 @@ const TopBar = ({}: Props): JSX.Element => {
               ) : (
                 <>
                   {/*  button search */}
+                  <Grid
+                    item
+                    xs={12}
+                    container
+                    direction="row"
+                    justify="flex-end"
+                    alignItems="center"
+                  >
+                    <Grid item>
+                      <IconButton
+                        aria-label="open drawer"
+                        onClick={() => handleSidebarOpen()}
+                      >
+                        <SearchIcon fontSize="large" />
+                      </IconButton>
+                    </Grid>
 
-                  <Grid item xs={5}>
-                    <IconButton
-                      aria-label="open drawer"
-                      onClick={() => handleSidebarOpen()}
-                    >
-                      <SearchIcon fontSize="large" />
-                    </IconButton>
+                    <Grid item>
+                      <IconButton
+                        aria-label="open drawer"
+                        onClick={() => window.location.reload()}
+                      >
+                        <RefreshOutlinedIcon fontSize="large" />
+                      </IconButton>
+                    </Grid>
                   </Grid>
                 </>
               )}

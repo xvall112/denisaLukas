@@ -3,9 +3,9 @@ import { navigate } from "gatsby"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles"
 import BottomNavigation from "@material-ui/core/BottomNavigation"
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
-import FavoriteIcon from "@material-ui/icons/Favorite"
-import LocationOnIcon from "@material-ui/icons/LocationOn"
-import HomeIcon from "@material-ui/icons/Home"
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined"
+import PlaceOutlinedIcon from "@material-ui/icons/PlaceOutlined"
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined"
 import PersonIcon from "@material-ui/icons/Person"
 import TrendingUpIcon from "@material-ui/icons/TrendingUp"
 import MenuIcon from "@material-ui/icons/Menu"
@@ -44,13 +44,13 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction
         label="Home"
         value="home"
-        icon={<HomeIcon fontSize="large" />}
+        icon={<HomeOutlinedIcon fontSize="large" />}
         onClick={() => navigate("/")}
       />
       <BottomNavigationAction
         label="Místa"
         value="place"
-        icon={<LocationOnIcon fontSize="large" />}
+        icon={<PlaceOutlinedIcon fontSize="large" />}
         onClick={() => navigate("/places")}
       />
       <BottomNavigationAction
@@ -62,7 +62,7 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction
         label="Oblíbené"
         value="favorites"
-        icon={<FavoriteIcon fontSize="large" />}
+        icon={<FavoriteBorderOutlinedIcon fontSize="large" />}
         onClick={() => navigate("/account") /* window.location.reload() */}
       />
       <BottomNavigationAction

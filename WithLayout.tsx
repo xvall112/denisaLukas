@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "./src/theme/index"
 import { makeStyles } from "@material-ui/core/styles"
 import { SnackbarMap, SnackbarUser, Modal } from "./src/components/own/Snackbar"
-import ReactPullToRefresh from "./src/components/own/ReactPullToRefresh"
+
 //context
 import { UserContext } from "./src/providers/user/user.provider"
 import { MenuContext } from "./src/providers/menu/menu.providers"
@@ -102,11 +102,10 @@ export default function WithLayout({
         <SnackbarMap />
         <SnackbarUser />
         <Modal />
-        <ReactPullToRefresh>
-          <Layout>
-            <Component themeMode={themeMode} {...rest} />
-          </Layout>
-        </ReactPullToRefresh>
+
+        <Layout>
+          <Component themeMode={themeMode} {...rest} />
+        </Layout>
       </Paper>
     </ThemeProvider>
   )
