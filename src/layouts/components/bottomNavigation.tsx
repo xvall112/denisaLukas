@@ -16,7 +16,7 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: "100vw",
+      width: "100vw",
       zIndex: 1000,
       position: "fixed",
       bottom: "0px",
