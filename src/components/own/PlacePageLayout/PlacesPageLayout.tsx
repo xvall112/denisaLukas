@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { MenuContext } from "../../../providers/menu/menu.providers"
 
 //materialUI
-import { Grid, Box, Container, useMediaQuery } from "@material-ui/core"
+import { Grid, Box, Container, useMediaQuery, Hidden } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 //components
@@ -10,7 +10,7 @@ import LeafletMap from "../LeafletMap"
 import { SectionHeader } from "components/molecules"
 import Filter from "./Filter"
 import Cards from "./card"
-
+import FullScreenMap from "../fullScreenMap"
 const useStyles = makeStyles(theme => ({
   root: {},
 
@@ -48,7 +48,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
               display="flex"
               justifyContent="space-evenly"
               alignItems="center"
-              mt={{ xs: 3, md: 10 }}
+              mt={{ xs: 8, md: 10 }}
             >
               <SectionHeader
                 align="left"
@@ -63,16 +63,23 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
             </Box>
           </Container>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <div className={classes.map}>
-            <LeafletMap
-              zoom={filterCountryZoom}
-              center={filterCountryLocation}
-              marker={data}
-              slug={slug}
-            />
-          </div>
-        </Grid>
+        <FullScreenMap
+          markers={data}
+          zoom={filterCountryZoom}
+          center={filterCountryLocation}
+        />
+        <Hidden mdDown>
+          <Grid item xs={12} md={6}>
+            <div className={classes.map}>
+              <LeafletMap
+                zoom={filterCountryZoom}
+                center={filterCountryLocation}
+                marker={data}
+                slug={slug}
+              />
+            </div>
+          </Grid>
+        </Hidden>
       </Grid>
     </>
   )

@@ -6,13 +6,10 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined"
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined"
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined"
-import MapIcon from "@material-ui/icons/Map"
 import MenuIcon from "@material-ui/icons/Menu"
-import Fab from "@material-ui/core/Fab"
 
 //context
-import { MenuContext } from "../../providers/menu/menu.providers"
-import { MapContext } from "../../providers/map/map.providers"
+import { MenuContext } from "../../../providers/menu/menu.providers"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,25 +21,16 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: theme.spacing(3),
       height: "auto",
     },
-    fabButton: {
-      position: "absolute",
-      zIndex: 1,
-      top: -30,
-      left: 0,
-      right: 0,
-      margin: "0 auto",
-    },
   })
 )
 
-export default function LabelBottomNavigation() {
+export default function LabelBottomNavigationMain() {
   const classes = useStyles()
   const {
     valueBottomNavigation,
     handleBottomNavigation,
     handleSidebarOpen,
   } = useContext(MenuContext)
-  const { setOpenFullScreenMap } = useContext(MapContext)
 
   return (
     <BottomNavigation
@@ -63,15 +51,6 @@ export default function LabelBottomNavigation() {
         icon={<SearchOutlinedIcon fontSize="large" />}
         onClick={() => navigate("/places")}
       />
-      <Fab
-        color="primary"
-        aria-label="add"
-        className={classes.fabButton}
-        onClick={setOpenFullScreenMap}
-      >
-        <MapIcon />
-      </Fab>
-
       <BottomNavigationAction
         label="Oblíbené"
         value="favorites"

@@ -11,7 +11,7 @@ import Topbar from "./components/TopBar/TopBar"
 import SideBar from "../SideBar/SideBar"
 import Section from "../../components/organisms/Section/Section"
 import Footer from "./components/Footer/Footer"
-import LabelBottomNavigation from "../components/bottomNavigation"
+import LabelBottomNavigationMain from "./components/bottomNavigationMain"
 //context
 import { UserContext } from "../../providers/user/user.provider"
 
@@ -55,7 +55,7 @@ const Main = ({ children }: Props): JSX.Element => {
         {children}
       </main>
       <Hidden mdUp>
-        <LabelBottomNavigation />
+        <LabelBottomNavigationMain />
       </Hidden>
       <Footer />
     </div>

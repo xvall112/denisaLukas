@@ -6,15 +6,13 @@
 import React, { useContext } from "react"
 import SEO from "../components/own/seo"
 import Account from "views/Account"
-import Main from "../layouts/Main/Main"
+import LayoutPlaces from "../layouts/Place/Place"
 import WithLayout from "../../WithLayout"
-import { UserContext } from "../providers/user/user.provider"
-
 const AccountPage = (): JSX.Element => {
   return (
     <>
       <SEO title="Účet" />
-      <WithLayout component={Account} layout={Main} />
+      <WithLayout component={Account} layout={LayoutPlaces} />
     </>
   )
 }

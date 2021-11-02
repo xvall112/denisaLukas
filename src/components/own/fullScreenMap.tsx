@@ -16,7 +16,6 @@ import CloseIcon from "@material-ui/icons/Close"
 import LeafletMap from "./LeafletMap"
 //context
 import { MapContext } from "../../providers/map/map.providers"
-import { UserContext } from "../../providers/user/user.provider"
 const useStyles = makeStyles(theme => ({
   fabButton: {
     width: "100px",
@@ -30,8 +29,10 @@ const useStyles = makeStyles(theme => ({
 }))
 interface Props {
   markers: any
+  zoom?: number
+  center?: any
 }
-const FullScreenMap = ({ markers }: Props): JSX.Element => {
+const FullScreenMap = ({ markers, zoom, center }: Props): JSX.Element => {
   const {
     setOpenFullScreenMap,
     setCloseFullScreenMap,
@@ -58,18 +59,22 @@ const FullScreenMap = ({ markers }: Props): JSX.Element => {
           <Toolbar>
             <IconButton
               edge="start"
-              color="primary"
+              color="secondary"
               onClick={setCloseFullScreenMap}
               aria-label="close"
             >
               <CloseIcon />
             </IconButton>
-            <Typography color="primary" variant="h6">
+            <Typography color="secondary" variant="h6">
               Mapa
             </Typography>
           </Toolbar>
         </AppBar>
-        <LeafletMap zoom={2} center={[0, 0]} marker={markers} />
+        <LeafletMap
+          zoom={zoom ? zoom : 2}
+          center={center ? center : [0, 0]}
+          marker={markers}
+        />
       </Dialog>
     </div>
   )
