@@ -103,7 +103,7 @@ const TopBar = ({}: Props): JSX.Element => {
                 </Grid>
                 <Grid item>
                   <Box ml={1} fontWeight="bold">
-                    <Typography variant="subtitle2">FAITH IN TRAVEL</Typography>
+                    <Typography variant="h6">FAITH IN TRAVEL</Typography>
                   </Box>
                 </Grid>
               </Grid>
@@ -123,9 +123,10 @@ const TopBar = ({}: Props): JSX.Element => {
               alignItems="center"
               spacing={1}
             >
-              {isMd ? (
-                <>
-                  {/*   <Grid item>
+              <>
+                {isMd ? (
+                  <>
+                    {/*   <Grid item>
                     <Box mr={2}>
                       <DarkModeToggler
                         themeMode={themeMode}
@@ -133,89 +134,67 @@ const TopBar = ({}: Props): JSX.Element => {
                       />
                     </Box>
                   </Grid>  */}
-                  {/* button Instagram */}
-                  <Grid item xs={4} md={2}>
-                    <IconButton
-                      edge="start"
-                      color="inherit"
-                      aria-label="open drawer"
-                    >
-                      <InstagramIcon fontSize="large" />
-                    </IconButton>
-                  </Grid>
+                    {/* button Instagram */}
+                    <Grid item xs={4} md={2}>
+                      <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                      >
+                        <InstagramIcon fontSize="large" />
+                      </IconButton>
+                    </Grid>
 
-                  {/*  button menu */}
-                  <Grid item xs={4} md={2}>
-                    <IconButton
-                      aria-label="open drawer"
-                      onClick={() => handleSidebarOpen()}
-                    >
-                      <MenuIcon fontSize="large" />
-                    </IconButton>
-                  </Grid>
-                  {/*  button if user login */}
-
-                  <Grid item xs={4} md={2}>
-                    <IconButton onClick={handleClick}>
-                      <PersonOutlineOutlinedIcon fontSize="large" />
-                    </IconButton>
-                  </Grid>
-                  <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                  >
-                    {currentUser ? (
-                      <>
-                        {" "}
-                        <MenuItem onClick={handleClose}>Nastavení</MenuItem>
-                        <MenuItem onClick={() => navigate("/account")}>
-                          Moje oblíbené
-                        </MenuItem>
-                        <MenuItem onClick={() => logout()}>
-                          Odhlásit se
-                        </MenuItem>
-                      </>
-                    ) : (
-                      <MenuItem onClick={() => navigate("/signin")}>
-                        Přihlásit se
-                      </MenuItem>
-                    )}
-                  </Menu>
-                </>
-              ) : (
-                <>
-                  {/*  button search */}
-                  <Grid
-                    item
-                    xs={12}
-                    container
-                    direction="row"
-                    justify="flex-end"
-                    alignItems="center"
-                  >
-                    <Grid item>
+                    {/*  button menu */}
+                    <Grid item xs={4} md={2}>
                       <IconButton
                         aria-label="open drawer"
                         onClick={() => handleSidebarOpen()}
                       >
-                        <SearchIcon fontSize="large" />
+                        <MenuIcon fontSize="large" />
                       </IconButton>
                     </Grid>
-
-                    <Grid item>
-                      <IconButton
-                        aria-label="open drawer"
-                        onClick={() => window.location.reload()}
-                      >
-                        <RefreshOutlinedIcon fontSize="large" />
-                      </IconButton>
-                    </Grid>
+                  </>
+                ) : (
+                  <Grid item>
+                    <IconButton
+                      aria-label="open drawer"
+                      onClick={() => window.location.reload()}
+                    >
+                      <RefreshOutlinedIcon fontSize="large" />
+                    </IconButton>
                   </Grid>
-                </>
-              )}
+                )}
+                {/*  button if user login */}
+
+                <Grid item xs={4} md={2}>
+                  <IconButton onClick={handleClick}>
+                    <PersonOutlineOutlinedIcon fontSize="large" />
+                  </IconButton>
+                </Grid>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  {currentUser ? (
+                    <>
+                      {" "}
+                      <MenuItem onClick={handleClose}>Nastavení</MenuItem>
+                      <MenuItem onClick={() => navigate("/account")}>
+                        Moje oblíbené
+                      </MenuItem>
+                      <MenuItem onClick={() => logout()}>Odhlásit se</MenuItem>
+                    </>
+                  ) : (
+                    <MenuItem onClick={() => navigate("/signin")}>
+                      Přihlásit se
+                    </MenuItem>
+                  )}
+                </Menu>
+              </>
             </Grid>
           </Grid>
           {/* {!isMd && (
