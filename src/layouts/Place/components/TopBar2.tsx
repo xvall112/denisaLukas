@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     top: "10px",
     position: "fixed",
     zIndex: 1000,
-
     color: "white",
     [theme.breakpoints.up("md")]: {
       backgroundColor: "white",
