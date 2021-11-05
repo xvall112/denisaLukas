@@ -7,7 +7,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
-import { Typography, Grid } from "@material-ui/core"
+import { Typography, Chip, Box } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,52 +20,10 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.text.primary,
     },
   },
-  folioItem: {
-    borderRadiusTop: theme.shape.borderRadius,
-    width: "200px",
-    position: "relative",
-    overflow: "hidden",
-    margin: theme.spacing(0),
-    boxShadow: `0 1.5rem 4rem rgba(22,28,45,.05)`,
-    borderRadius: theme.spacing(1),
-    [theme.breakpoints.up("sm")]: {},
-    "&:last-child": {
-      [theme.breakpoints.up("md")]: {
-        marginBottom: 0,
-      },
-    },
-    "& img": {
-      width: "200px",
-      height: "100px",
-      borderRadiusTop: theme.shape.borderRadius,
-    },
-  },
-  folioInfoWrapper: {
-    padding: theme.spacing(1, 2),
-    backgroundColor: theme.palette.background.default,
-  },
+
   folioTitle: {
     fontWeight: "bold",
-  },
-  folioSubtitle: {
-    textTransform: "capitalize",
-    margin: theme.spacing(0),
-  },
-  grid: {
-    display: "flex",
-    flexDirection: "column",
-    [theme.breakpoints.up("sm")]: {
-      maxWidth: 500,
-      margin: "0 auto",
-    },
-    [theme.breakpoints.up("md")]: {
-      flexDirection: "row",
-      maxWidth: "100%",
-    },
-  },
-  gridWrapper: {
-    display: "flex",
-    flexDirection: "row",
+    color: theme.palette.text.primary,
   },
 }))
 
@@ -92,18 +50,16 @@ const PopupCard = ({
   const classes = useStyles()
 
   return (
-    <div className={clsx(classes.root, className)} {...rest}>
+    <div className={clsx(className)} {...rest}>
       <Link to={`/${item.slug}`} className={classes.link}>
-        <div className={classes.folioItem}>
+        <div>
           <GatsbyImage
             image={item.titleImage.gatsbyImageData}
             alt={item.titleImage.title}
             formats={["auto", "webp", "avif"]}
-            style={{ height: "100px" }}
+            style={{ height: "100px", width: "200px", borderRadius: "10px" }}
           />
-          <div
-            className={clsx("folio__info-wrapper", classes.folioInfoWrapper)}
-          >
+          <div>
             <div>
               <Typography
                 variant="h5"
@@ -112,14 +68,9 @@ const PopupCard = ({
               >
                 {item.name}
               </Typography>
-
-              <Typography
-                variant="body1"
-                className={classes.folioSubtitle}
-                color="textSecondary"
-              >
-                {item.kindPlace}
-              </Typography>
+              <Box mt={1}>
+                <Chip label={item.kindPlace} />
+              </Box>
             </div>
           </div>
         </div>

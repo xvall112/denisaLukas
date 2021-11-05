@@ -58,10 +58,10 @@ export default function LabelBottomNavigation() {
         onClick={() => navigate("/")}
       />
       <BottomNavigationAction
-        label="Místa"
-        value="place"
+        label="Hledat"
+        value="search"
         icon={<SearchOutlinedIcon fontSize="large" />}
-        onClick={() => navigate("/places")}
+        onClick={() => navigate("/search")}
       />
       <Fab
         color="primary"

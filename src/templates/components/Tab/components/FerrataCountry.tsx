@@ -5,7 +5,7 @@ import Card from "../../../../components/own/PlacePageLayout/card"
 import NoFavourite from "./noFavourite"
 import FullScreenMap from "../../../../components/own/fullScreenMap"
 
-const FerrataCountry = ({ ferrata }) => {
+const FerrataCountry = ({ ferrata, country }) => {
   return (
     <>
       {ferrata.length === 0 ? (
@@ -16,7 +16,11 @@ const FerrataCountry = ({ ferrata }) => {
         />
       ) : (
         <>
-          <FullScreenMap markers={ferrata.nodes} />
+          <FullScreenMap
+            markers={ferrata.nodes}
+            zoom={country.mapZoom}
+            center={country.countryCenterLocation}
+          />
           <Card data={ferrata.nodes} four slug="viaFerrata" />
         </>
       )}

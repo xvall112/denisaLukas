@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     width: "100vw",
     height: "50vh",
     [theme.breakpoints.up("md")]: {
-      width: "100%",
+      width: "50vw",
       height: "100vh",
       position: "fixed",
       top: "0px",

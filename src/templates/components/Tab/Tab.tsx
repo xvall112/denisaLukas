@@ -47,14 +47,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export default function TabPane({ places, ferrata }) {
+export default function TabPane({ places, ferrata, country }) {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
   }
-  console.log("ferrata:", ferrata.nodes.length)
+
   return (
     <div className={classes.root}>
       <AppBar position="sticky" color="default">
@@ -80,10 +80,10 @@ export default function TabPane({ places, ferrata }) {
       </AppBar>
 
       <TabPanel value={value} index={0}>
-        <PlacesCountry places={places} />
+        <PlacesCountry places={places} country={country} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <FerrataCountry ferrata={ferrata} />
+        <PlacesCountry places={ferrata} country={country} />
       </TabPanel>
       {/*  <TabPanel value={value} index={2}>
         Pracujeme na tom

@@ -5,8 +5,7 @@ import { navigate } from "gatsby"
 import DarkModeToggler from "../../../components/atoms/DarkModeToggler/DarkModeToggler"
 
 //materialUI
-import { Button } from "@material-ui/core"
-
+import { Button, Hidden } from "@material-ui/core"
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
 import MenuIcon from "@material-ui/icons/Menu"
 import { makeStyles } from "@material-ui/core/styles"
@@ -19,8 +18,12 @@ const useStyles = makeStyles(theme => ({
     top: "10px",
     position: "fixed",
     zIndex: 1000,
-    backgroundColor: "white",
-    color: "black",
+
+    color: "white",
+    [theme.breakpoints.up("md")]: {
+      backgroundColor: "white",
+      color: "black",
+    },
   },
   menuButton: {
     top: "10px",
@@ -38,7 +41,7 @@ const TopBar2 = (): JSX.Element => {
   return (
     <div id="topBar">
       <Button
-        variant="contained"
+        variant="outlined"
         color="primary"
         aria-label="open drawer"
         onClick={() => navigate(-1)}
@@ -58,15 +61,17 @@ const TopBar2 = (): JSX.Element => {
                 onClick={() => themeToggler()}
               />
             </Box>  */}
-      <Button
-        variant="contained"
-        color="primary"
-        aria-label="open drawer"
-        className={classes.menuButton}
-        onClick={() => handleSidebarOpen()}
-      >
-        <MenuIcon />
-      </Button>
+      <Hidden mdDown>
+        <Button
+          variant="contained"
+          color="primary"
+          aria-label="open drawer"
+          className={classes.menuButton}
+          onClick={() => handleSidebarOpen()}
+        >
+          <MenuIcon />
+        </Button>
+      </Hidden>
       {/* </Grid> 
         </Box> */}
     </div>

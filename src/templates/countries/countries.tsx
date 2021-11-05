@@ -15,6 +15,11 @@ export const query = graphql`
       heroImage {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 40)
       }
+      mapZoom
+      countryCenterLocation {
+        lat
+        lon
+      }
     }
 
     allContentfulPlaces(
@@ -75,13 +80,18 @@ export const query = graphql`
 
 const Countries = props => {
   const { name, heroImage } = props.data.contentfulCountry
+  const country = props.data.contentfulCountry
   const countryPlaces = props.data.allContentfulPlaces
   const countryFerrata = props.data.allContentfulViaFerrata
   const Nevim = () => {
     return (
       <div>
         <Hero title={name} heroImage={heroImage} />
-        <Tab places={countryPlaces} ferrata={countryFerrata} />
+        <Tab
+          places={countryPlaces}
+          ferrata={countryFerrata}
+          country={country}
+        />
       </div>
     )
   }

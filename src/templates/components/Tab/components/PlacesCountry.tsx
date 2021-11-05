@@ -5,7 +5,7 @@ import Card from "../../../../components/own/PlacePageLayout/card"
 import NoFavourite from "./noFavourite"
 import FullScreenMap from "../../../../components/own/fullScreenMap"
 
-const PlacesCountry = ({ places }) => {
+const PlacesCountry = ({ places, country }) => {
   return (
     <>
       {places.length === 0 ? (
@@ -16,7 +16,11 @@ const PlacesCountry = ({ places }) => {
         />
       ) : (
         <>
-          <FullScreenMap markers={places.nodes} />
+          <FullScreenMap
+            markers={places.nodes}
+            zoom={country.mapZoom}
+            center={country.countryCenterLocation}
+          />
           <Card data={places.nodes} four slug="places" />
         </>
       )}
