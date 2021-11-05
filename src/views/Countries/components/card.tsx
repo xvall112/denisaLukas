@@ -39,28 +39,26 @@ const Card = ({ data }) => {
         label={`více než ${data.allContentfulCountry.nodes.length}`}
         title={<>zemí které jsme navštívili</>}
       />
-      <Grid container direction="row" spacing={5}>
+      <Grid container direction="row" spacing={2}>
         {data.allContentfulCountry.nodes.map((item, index) => {
           return (
-            <>
-              <Grid item xs={12} md={4} lg={3} key={index}>
-                <Link to={`/${item.slug}`} className={classes.link}>
-                  <CardBase variant="outlined" liftUp className={classes.card}>
-                    <>
-                      <img
-                        src={item.flagLink}
-                        width="100%"
-                        alt={item.name}
-                        className={classes.flag}
-                      />
-                      <Box mt={2} className={classes.name}>
-                        {item.name}
-                      </Box>
-                    </>
-                  </CardBase>
-                </Link>
-              </Grid>
-            </>
+            <Grid item xs={12} md={4} lg={3} key={index}>
+              <Link to={`/${item.slug}`} className={classes.link}>
+                <CardBase variant="outlined" liftUp className={classes.card}>
+                  <>
+                    <img
+                      src={item.flagLink}
+                      width="90%"
+                      alt={item.name}
+                      className={classes.flag}
+                    />
+                    <Box mt={2} className={classes.name}>
+                      {item.name}
+                    </Box>
+                  </>
+                </CardBase>
+              </Link>
+            </Grid>
           )
         })}
       </Grid>

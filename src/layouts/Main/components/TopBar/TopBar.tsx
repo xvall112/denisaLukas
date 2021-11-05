@@ -17,6 +17,7 @@ import {
   Typography,
   Menu,
   MenuItem,
+  MenuList,
 } from "@material-ui/core"
 import {
   createStyles,
@@ -102,8 +103,8 @@ const TopBar = ({}: Props): JSX.Element => {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Box ml={1} fontWeight="bold">
-                    <Typography variant="h6">FAITH IN TRAVEL</Typography>
+                  <Box ml={1} fontWeight="700" fontSize={20}>
+                    FAITH IN TRAVEL
                   </Box>
                 </Grid>
               </Grid>
@@ -180,14 +181,13 @@ const TopBar = ({}: Props): JSX.Element => {
                   onClose={handleClose}
                 >
                   {currentUser ? (
-                    <>
-                      {" "}
+                    <MenuList>
                       <MenuItem onClick={handleClose}>Nastavení</MenuItem>
                       <MenuItem onClick={() => navigate("/account")}>
                         Moje oblíbené
                       </MenuItem>
                       <MenuItem onClick={() => logout()}>Odhlásit se</MenuItem>
-                    </>
+                    </MenuList>
                   ) : (
                     <MenuItem onClick={() => navigate("/signin")}>
                       Přihlásit se

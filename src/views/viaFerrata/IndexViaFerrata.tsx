@@ -7,6 +7,8 @@ const query = graphql`
   {
     allContentfulViaFerrata(filter: { node_locale: { eq: "cs" } }) {
       nodes {
+        rating
+        level
         id
         slug
         name

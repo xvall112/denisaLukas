@@ -10,6 +10,7 @@ import SEO from "../../components/own/seo"
 export const query = graphql`
   query($slug: String!) {
     contentfulPlaces(slug: { eq: $slug }) {
+      rating
       id
       adress
       slug

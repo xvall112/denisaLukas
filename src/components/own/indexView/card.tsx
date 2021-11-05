@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 //components
 import FlagChip from "../flagChip"
 //materiaUI
-import { Grid, Box } from "@material-ui/core"
+import { Grid, Box, Chip } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -44,6 +44,7 @@ interface props {
     name: string
     country: { flagLink: string; name: string }
     slug: string
+    kindPlace: string
   }
 }
 const Card = ({ item }: props): JSX.Element => {

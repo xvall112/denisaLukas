@@ -8,6 +8,7 @@ const query = graphql`
   {
     allContentfulPlaces(filter: { node_locale: { eq: "cs" } }, limit: 4) {
       nodes {
+        kindPlace
         slug
         name
         titleImage {

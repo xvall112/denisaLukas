@@ -1,5 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+//materialUI
+import { Container, Box } from "@material-ui/core"
 //components
 import Section from "../../components/organisms/Section/Section"
 import Card from "./components/card"
@@ -22,11 +24,11 @@ const IndexCountries = () => {
   const data = useStaticQuery(query)
 
   return (
-    <>
-      <Section fullWidth>
+    <Box mt={7}>
+      <Container maxWidth="xl">
         <Card data={data} />
-      </Section>
-    </>
+      </Container>
+    </Box>
   )
 }
 

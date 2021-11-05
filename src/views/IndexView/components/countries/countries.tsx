@@ -74,7 +74,7 @@ const Countries = () => {
         <Slider {...settings}>
           {data.allContentfulCountry.nodes.map((country, index) => {
             return (
-              <Box pt={1}>
+              <Box pt={1} key={index}>
                 <Link to={`/${country.slug}`} className={classes.link}>
                   <Grid
                     container

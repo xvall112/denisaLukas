@@ -79,6 +79,7 @@ interface Props {
     adress: string
     country: { name: string; flagLink: string }
     id: string
+    rating: number
   }
 }
 const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
@@ -153,6 +154,7 @@ const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
                   adress={data.adress}
                   location={data.location}
                   id={data.id}
+                  rating={data.rating}
                 />
 
                 {/* komponenta body */}

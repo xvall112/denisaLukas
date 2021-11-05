@@ -8,6 +8,7 @@ import { SectionHeader } from "components/molecules"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import { makeStyles } from "@material-ui/core/styles"
+import Rating from "@material-ui/lab/Rating"
 import {
   Grid,
   Chip,
@@ -41,6 +42,7 @@ interface Props {
   name: string
   location: { lat: number; lon: number }
   id: string
+  rating: number
 }
 
 const PlaceHeader = ({
@@ -50,6 +52,7 @@ const PlaceHeader = ({
   adress,
   location,
   id,
+  rating,
 }: Props): JSX.Element => {
   const { changeMap, map, copyLocationToClipboard } = useContext(MapContext)
 
@@ -92,6 +95,7 @@ const PlaceHeader = ({
               />
             </Grid>
           </Grid>
+
           <Grid item>
             {favouriteItems.includes(id) ? (
               <Tooltip
@@ -121,6 +125,13 @@ const PlaceHeader = ({
             )}
           </Grid>
         </Grid>
+        <Rating
+          name="half-rating-read"
+          defaultValue={rating || 5}
+          precision={0.5}
+          readOnly
+          size="small"
+        />
       </Box>
       <Box display="flex" justifyContent="space-evenly" alignItems="center">
         <SectionHeader
@@ -131,6 +142,7 @@ const PlaceHeader = ({
           fadeUp
         />
       </Box>
+
       <Box mt={-2} mb={2}>
         <Grid container direction="row">
           <Typography variant="subtitle1">GPS: &nbsp; </Typography>

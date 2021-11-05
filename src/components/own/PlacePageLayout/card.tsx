@@ -17,6 +17,7 @@ import {
   Tooltip,
   Grow,
 } from "@material-ui/core"
+import Rating from "@material-ui/lab/Rating"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 
@@ -166,7 +167,23 @@ const Main = ({
                         <Grid item>
                           <Chip label={item.kindPlace} />
                         </Grid>
+                        {item.level && (
+                          <Grid item>
+                            <Chip label={item.level} />
+                          </Grid>
+                        )}
+
+                        <Grid item>
+                          <Rating
+                            name="half-rating-read"
+                            defaultValue={item.rating || 5}
+                            precision={0.5}
+                            readOnly
+                            size="small"
+                          />
+                        </Grid>
                       </Grid>
+
                       <Grid item>
                         <Box zIndex={100}>
                           {favouriteItems.includes(id) ? (

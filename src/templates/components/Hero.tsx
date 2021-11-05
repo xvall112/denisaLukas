@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface Props {
-  title: String
+  title: string
   className?: any
   heroImage: any
 }
@@ -51,7 +51,7 @@ const Hero = ({ heroImage, title, className, ...rest }: Props): JSX.Element => {
     <div className={clsx(classes.root, className)} {...rest}>
       <GatsbyImage
         image={heroImage.gatsbyImageData}
-        alt={heroImage.title}
+        alt={title}
         formats={["auto", "webp", "avif"]}
         style={{ height: "100%", width: "100%" }}
       />
