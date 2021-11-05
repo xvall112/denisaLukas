@@ -88,9 +88,7 @@ const TypeOfSport = () => {
                         alignItems="center"
                         xs={8}
                       >
-                        <Box fontWeight="fontWeightBold" fontSize={16}>
-                          {item.name}
-                        </Box>
+                        <Box fontSize={16}>{item.name}</Box>
                       </Grid>
                     </Grid>
                   </CardBase>

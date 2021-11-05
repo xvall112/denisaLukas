@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   popup: {
     "& .leaflet-popup-content-wrapper": {
       background: "black",
-      height: "200px",
+      height: "215px",
       minWidth: "230px",
       "& .leaflet-popup-content": {
         background: "black",

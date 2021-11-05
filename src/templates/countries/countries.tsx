@@ -54,6 +54,7 @@ export const query = graphql`
       filter: { country: { name: { eq: $country } }, node_locale: { eq: "cs" } }
     ) {
       nodes {
+        level
         rating
         id
         slug

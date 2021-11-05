@@ -142,12 +142,12 @@ const Main = ({
                       container
                       direction="row"
                       justify="space-between"
-                      alignItems="center"
+                      alignItems="flex-start"
                       spacing={1}
                     >
                       <Grid
                         item
-                        xs={8}
+                        xs={6}
                         container
                         direction="row"
                         justify="flex-start"
