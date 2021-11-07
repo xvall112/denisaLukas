@@ -147,7 +147,7 @@ const Main = ({
                     >
                       <Grid
                         item
-                        xs={6}
+                        xs={8}
                         container
                         direction="row"
                         justify="flex-start"
@@ -194,6 +194,7 @@ const Main = ({
                               <IconButton
                                 aria-label="remove from favourite"
                                 onClick={() => removeFavouriteItem(id)}
+                                style={{ padding: 0 }}
                               >
                                 <FavoriteIcon fontSize="large" />
                               </IconButton>
@@ -206,6 +207,7 @@ const Main = ({
                               <IconButton
                                 aria-label="add to favourite"
                                 onClick={() => addFavouriteItem(id)}
+                                style={{ padding: 0 }}
                               >
                                 <FavoriteBorderIcon fontSize="large" />
                               </IconButton>

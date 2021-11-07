@@ -20,6 +20,7 @@ const PlacesCountry = ({ places, country }) => {
             markers={places.nodes}
             zoom={country.mapZoom}
             center={country.countryCenterLocation}
+            title={country.name}
           />
           <Card data={places.nodes} four slug="places" />
         </>

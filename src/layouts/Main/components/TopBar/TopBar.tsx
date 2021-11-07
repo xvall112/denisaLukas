@@ -3,7 +3,6 @@ import { Link, navigate } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 //components
-import { CardBase } from "components/organisms"
 import Algolia from "../../../../components/own/Algolia/Algolia"
 //context
 import { MenuContext } from "../../../../providers/menu/menu.providers"
@@ -14,7 +13,6 @@ import {
   Grid,
   Box,
   IconButton,
-  Typography,
   Menu,
   MenuItem,
   MenuList,
@@ -103,7 +101,7 @@ const TopBar = ({}: Props): JSX.Element => {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Box ml={1} fontWeight="700" fontSize={20}>
+                  <Box ml={1} fontWeight="700" fontSize={16}>
                     FAITH IN TRAVEL
                   </Box>
                 </Grid>

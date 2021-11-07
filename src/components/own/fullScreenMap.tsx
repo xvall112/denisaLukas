@@ -7,6 +7,7 @@ import {
   IconButton,
   Typography,
   Fab,
+  Hidden,
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import MapIcon from "@material-ui/icons/Map"
@@ -31,8 +32,14 @@ interface Props {
   markers: any
   zoom?: number
   center?: any
+  title?: string
 }
-const FullScreenMap = ({ markers, zoom, center }: Props): JSX.Element => {
+const FullScreenMap = ({
+  markers,
+  zoom,
+  center,
+  title,
+}: Props): JSX.Element => {
   const {
     setOpenFullScreenMap,
     setCloseFullScreenMap,
@@ -41,15 +48,17 @@ const FullScreenMap = ({ markers, zoom, center }: Props): JSX.Element => {
   const classes = useStyles()
   return (
     <div>
-      <Fab
-        color="primary"
-        variant="extended"
-        className={classes.fabButton}
-        onClick={setOpenFullScreenMap}
-      >
-        <MapIcon />
-        Mapa
-      </Fab>
+      <Hidden mdDown>
+        <Fab
+          color="primary"
+          variant="extended"
+          className={classes.fabButton}
+          onClick={setOpenFullScreenMap}
+        >
+          <MapIcon />
+          Mapa
+        </Fab>
+      </Hidden>
       <Dialog
         fullScreen
         open={isFullScreenMapOpen}
@@ -59,14 +68,14 @@ const FullScreenMap = ({ markers, zoom, center }: Props): JSX.Element => {
           <Toolbar>
             <IconButton
               edge="start"
-              color="secondary"
               onClick={setCloseFullScreenMap}
               aria-label="close"
+              style={{ color: "black" }}
             >
               <CloseIcon />
             </IconButton>
-            <Typography color="secondary" variant="h6">
-              Mapa
+            <Typography variant="h6" style={{ color: "black" }}>
+              {title || "Mapa"}
             </Typography>
           </Toolbar>
         </AppBar>

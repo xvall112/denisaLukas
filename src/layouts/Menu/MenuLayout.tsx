@@ -8,7 +8,7 @@ import { useMediaQuery, Hidden } from "@material-ui/core"
 //components
 import SideBar from "../SideBar/SideBar"
 import Section from "../../components/organisms/Section/Section"
-import LabelBottomNavigationMain from "../Main/components/bottomNavigationMain"
+import BottomNavigation from "../components/bottomNavigation"
 //context
 import { UserContext } from "../../providers/user/user.provider"
 
@@ -47,7 +47,7 @@ const MenuLayout = ({ children }: Props): JSX.Element => {
         {children}
       </main>
       <Hidden mdUp>
-        <LabelBottomNavigationMain />
+        <BottomNavigation />
       </Hidden>
     </div>
   )

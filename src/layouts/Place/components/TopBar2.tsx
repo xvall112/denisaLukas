@@ -5,7 +5,7 @@ import { navigate } from "gatsby"
 import DarkModeToggler from "../../../components/atoms/DarkModeToggler/DarkModeToggler"
 
 //materialUI
-import { Button, Hidden } from "@material-ui/core"
+import { Button, Hidden, Typography } from "@material-ui/core"
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
 import MenuIcon from "@material-ui/icons/Menu"
 import { makeStyles } from "@material-ui/core/styles"
@@ -34,7 +34,10 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const TopBar2 = (): JSX.Element => {
+interface Props {
+  title?: string
+}
+const TopBar2 = ({ title }: Props): JSX.Element => {
   const classes = useStyles()
   const { handleSidebarOpen } = useContext(MenuContext)
   return (
@@ -48,6 +51,7 @@ const TopBar2 = (): JSX.Element => {
       >
         <NavigateBeforeIcon />
       </Button>
+      <Typography color="textPrimary">{title}</Typography>
       {/* <Box position="absolute" right="10px" top="10px" zIndex={1000}>
           <Grid
             container

@@ -58,9 +58,8 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
             </Box>
             <Filter />
             {/*  content */}
-            <Box mb={{ xs: 13, md: 0 }}>
-              <Cards data={data} slug={slug} />
-            </Box>
+
+            <Cards data={data} slug={slug} />
           </Container>
         </Grid>
         <FullScreenMap

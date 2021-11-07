@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 1000,
       position: "fixed",
       bottom: "0px",
-      paddingBottom: theme.spacing(3),
+      paddingBottom: theme.spacing(1),
       height: "auto",
     },
     fabButton: {
@@ -35,7 +35,10 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export default function LabelBottomNavigation() {
+interface Props {
+  map?: boolean
+}
+export default function LabelBottomNavigation({ map }: Props): JSX.Element {
   const classes = useStyles()
   const {
     valueBottomNavigation,
@@ -54,34 +57,36 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction
         label="Home"
         value="home"
-        icon={<HomeOutlinedIcon fontSize="large" />}
+        icon={<HomeOutlinedIcon />}
         onClick={() => navigate("/")}
       />
       <BottomNavigationAction
         label="Hledat"
         value="search"
-        icon={<SearchOutlinedIcon fontSize="large" />}
+        icon={<SearchOutlinedIcon />}
         onClick={() => navigate("/search")}
       />
-      <Fab
-        color="primary"
-        aria-label="add"
-        className={classes.fabButton}
-        onClick={setOpenFullScreenMap}
-      >
-        <MapIcon />
-      </Fab>
+      {map && (
+        <Fab
+          color="primary"
+          aria-label="add"
+          className={classes.fabButton}
+          onClick={setOpenFullScreenMap}
+        >
+          <MapIcon />
+        </Fab>
+      )}
 
       <BottomNavigationAction
         label="Oblíbené"
         value="favorites"
-        icon={<FavoriteBorderOutlinedIcon fontSize="large" />}
+        icon={<FavoriteBorderOutlinedIcon />}
         onClick={() => navigate("/account") /* window.location.reload() */}
       />
       <BottomNavigationAction
         label="Menu"
         value="account"
-        icon={<MenuIcon fontSize="large" />}
+        icon={<MenuIcon />}
         onClick={() => handleSidebarOpen()}
       />
     </BottomNavigation>

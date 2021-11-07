@@ -8,7 +8,7 @@ import { useMediaQuery, Hidden, Box } from "@material-ui/core"
 //components
 import TopBar2 from "./components/TopBar2"
 import SideBar from "../SideBar/SideBar"
-import LabelBottomNavigation from "../components/bottomNavigation"
+import BottomNavigation from "../components/bottomNavigation"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,7 +42,7 @@ const Place = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
       <main>{children}</main>
       <Hidden mdUp>
         <Box mt={10}>
-          <LabelBottomNavigation />
+          <BottomNavigation map={true} />
         </Box>
       </Hidden>
     </div>
