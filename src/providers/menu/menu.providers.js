@@ -8,6 +8,7 @@ export const MenuContext = createContext({
   filterCountryZoom: 2,
   filterCountryLocation: [0, 0],
   valueBottomNavigation: "home",
+  titleTopBar: "",
   setFilterCountry: valueFilter => {},
   handleSidebarOpen: () => {},
   handleSidebarClose: () => {},
@@ -15,6 +16,7 @@ export const MenuContext = createContext({
   themeToggler: () => {},
   setFilterLocation: (lat, lon) => {},
   handleBottomNavigation: (event, newValue) => {},
+  setTitle: title => {},
 })
 
 const MenuProvider = ({ children }) => {
@@ -25,7 +27,11 @@ const MenuProvider = ({ children }) => {
   const [mountedComponent, setMountedComponent] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(false)
   const [valueBottomNavigation, setValueBottomNavigation] = useState("home")
+  const [titleTopBar, setTitleTopBar] = useState("")
 
+  const setTitle = title => {
+    setTitleTopBar(title)
+  }
   //seting actual value bottom navigation
   const handleBottomNavigation = (event, newValue) => {
     setValueBottomNavigation(newValue)
@@ -70,6 +76,7 @@ const MenuProvider = ({ children }) => {
         filterCountryZoom,
         filterCountryLocation,
         valueBottomNavigation,
+        titleTopBar,
         handleSidebarOpen,
         handleSidebarClose,
         setMode,
@@ -77,6 +84,7 @@ const MenuProvider = ({ children }) => {
         setFilterCountry,
         setFilterLocation,
         handleBottomNavigation,
+        setTitle,
       }}
     >
       {children}

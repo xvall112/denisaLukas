@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
 
 //components
@@ -7,6 +7,9 @@ import SEO from "../../components/own/seo"
 import LayoutPlaces from "../../layouts/Place/Place"
 import Hero from "../components/Hero"
 import Tab from "../components/Tab/Tab"
+
+//context
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 export const query = graphql`
   query($slug: String!, $country: String!) {
@@ -86,6 +89,15 @@ const Countries = props => {
   const country = props.data.contentfulCountry
   const countryPlaces = props.data.allContentfulPlaces
   const countryFerrata = props.data.allContentfulViaFerrata
+
+  const { setTitle } = useContext(MenuContext)
+
+  useEffect(() => {
+    setTitle(name)
+    return () => {
+      setTitle("")
+    }
+  }, [])
   const Nevim = () => {
     return (
       <div>

@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { MenuContext } from "../../providers/menu/menu.providers"
 //materialUI
 import { Container, Box } from "@material-ui/core"
 //components
@@ -22,7 +23,13 @@ const query = graphql`
 
 const IndexCountries = () => {
   const data = useStaticQuery(query)
-
+  const { setTitle } = useContext(MenuContext)
+  useEffect(() => {
+    setTitle("státy")
+    return () => {
+      setTitle("")
+    }
+  }, [])
   return (
     <Box mt={7}>
       <Container maxWidth="xl">

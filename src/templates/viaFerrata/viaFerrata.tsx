@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
 
 //components
@@ -12,6 +12,9 @@ import SEO from "../../components/own/seo"
 //material Ui
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid, colors } from "@material-ui/core"
+
+//context
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 export const query = graphql`
   query($slug: String!) {
@@ -86,6 +89,14 @@ const ViaFerrata = props => {
     ferrataTime,
   } = props.data.contentfulViaFerrata
 
+  const { setTitle } = useContext(MenuContext)
+
+  useEffect(() => {
+    setTitle(name)
+    return () => {
+      setTitle("")
+    }
+  }, [])
   return (
     <>
       <SEO title={name} />

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
 
 //components
@@ -6,6 +6,8 @@ import LayoutPlaces from "../components/layoutPlaces"
 import ContentfulBody from "../components/contentfulBody"
 import LayoutDescribePlace from "./components/describePlace"
 import SEO from "../../components/own/seo"
+//context
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 export const query = graphql`
   query($slug: String!) {
@@ -51,6 +53,13 @@ export const query = graphql`
 `
 
 const Place = props => {
+  const { setTitle } = useContext(MenuContext)
+  useEffect(() => {
+    setTitle(props.data.contentfulPlaces.name)
+    return () => {
+      setTitle("")
+    }
+  }, [])
   return (
     <>
       <SEO title={props.data.contentfulPlaces.name} />

@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLayout"
 import { MenuContext } from "../../providers/menu/menu.providers"
@@ -34,13 +34,19 @@ const query = graphql`
 `
 
 const IndexPlaces = () => {
-  const { filterCountry } = useContext(MenuContext)
+  const { filterCountry, setTitle } = useContext(MenuContext)
   const data = useStaticQuery(query)
 
   const dataFilter = data.allContentfulPlaces.nodes.filter(
     item => item.country.name === filterCountry
   )
 
+  useEffect(() => {
+    setTitle("místa")
+    return () => {
+      setTitle("")
+    }
+  }, [])
   return (
     <>
       <PlacesPageLayout
