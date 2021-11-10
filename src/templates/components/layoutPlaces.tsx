@@ -84,7 +84,6 @@ interface Props {
 }
 const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
   const { map } = useContext(MapContext)
-  const { setFilterLocation } = useContext(MenuContext)
   const classes = useStyles()
   const theme = useTheme()
   const isLg = useMediaQuery(theme.breakpoints.up("lg"), {
@@ -144,7 +143,7 @@ const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box mt={{ xs: 0, lg: 10 }} mb={{ xs: 13, md: 5 }} zIndex={100}>
+            <Box mt={{ xs: 0, lg: 10 }} mb={{ xs: 0, md: 5 }} zIndex={100}>
               <Container maxWidth="xl">
                 {/* komponenta header */}
                 <PlaceHeader

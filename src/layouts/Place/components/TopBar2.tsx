@@ -36,11 +36,7 @@ const useStyles = makeStyles(theme => ({
     top: "10px",
     position: "fixed", 
     zIndex: 1000,*/
-    color: "white",
-    [theme.breakpoints.up("md")]: {
-      backgroundColor: "white",
-      color: "black",
-    },
+    color: theme.palette.primary.main,
   },
 
   menuButton: {
@@ -48,8 +44,8 @@ const useStyles = makeStyles(theme => ({
     position: "fixed",
     right: "20px", 
     zIndex: 1000,*/
-    backgroundColor: "white",
-    color: "black",
+
+    color: theme.palette.primary.main,
   },
 }))
 
@@ -97,7 +93,7 @@ const TopBar2 = () => {
             <Grid item xs={2} md="auto">
               <Hidden mdDown>
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   color="primary"
                   aria-label="open drawer"
                   className={classes.menuButton}

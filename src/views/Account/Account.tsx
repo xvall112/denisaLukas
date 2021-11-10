@@ -1,12 +1,12 @@
-import React from "react"
-
+import React, { useContext, useEffect } from "react"
+import { MenuContext } from "../../providers/menu/menu.providers"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box } from "@material-ui/core"
 import { Hero } from "./components"
 import TabPane from "./components/Tab/Tab"
 
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: { marginTop: theme.spacing(7) },
 
   section: {
     "& .section-alternate__content": {
@@ -22,43 +22,17 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-  menu: {
-    height: "auto",
-  },
-  list: {
-    display: "inline-flex",
-    overflow: "auto",
-    flexWrap: "nowrap",
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-      flexDirection: "column",
-      marginRight: theme.spacing(-3),
-      marginLeft: theme.spacing(-3),
-    },
-  },
-  listItem: {
-    marginRight: theme.spacing(2),
-    flex: 0,
-    [theme.breakpoints.up("md")]: {
-      paddingRight: theme.spacing(3),
-      paddingLeft: theme.spacing(3),
-      borderLeft: "2px solid transparent",
-    },
-  },
-  listItemActive: {
-    [theme.breakpoints.up("md")]: {
-      borderLeft: `2px solid ${theme.palette.primary.dark}`,
-    },
-    "& .menu__item": {
-      color: theme.palette.text.primary,
-    },
-  },
 }))
 
 const Account = (): JSX.Element => {
   const classes = useStyles()
-
+  const { setTitle } = useContext(MenuContext)
+  useEffect(() => {
+    setTitle("oblíbené")
+    return () => {
+      setTitle("")
+    }
+  }, [])
   return (
     <div className={classes.root}>
       <Hero />
