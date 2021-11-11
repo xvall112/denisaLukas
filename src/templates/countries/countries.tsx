@@ -87,8 +87,8 @@ export const query = graphql`
 const Countries = props => {
   const { name, heroImage } = props.data.contentfulCountry
   const country = props.data.contentfulCountry
-  const countryPlaces = props.data.allContentfulPlaces
-  const countryFerrata = props.data.allContentfulViaFerrata
+  const countryPlaces = props.data.allContentfulPlaces.nodes
+  const countryFerrata = props.data.allContentfulViaFerrata.nodes
 
   const { setTitle } = useContext(MenuContext)
 
@@ -98,6 +98,7 @@ const Countries = props => {
       setTitle("")
     }
   }, [])
+
   const Nevim = () => {
     return (
       <div>

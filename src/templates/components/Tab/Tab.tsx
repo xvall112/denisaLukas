@@ -69,7 +69,7 @@ export default function TabPane({ places, ferrata, country }) {
             aria-label="scrollable auto tabs example"
           >
             <Tab label="Místa" {...a11yProps(0)} />
-            {ferrata.nodes.length !== 0 && (
+            {ferrata.length !== 0 && (
               <Tab label=" via Ferrata" {...a11yProps(1)} />
             )}
 
