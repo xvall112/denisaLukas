@@ -48,8 +48,9 @@ const Countries = () => {
   const classes = useStyles()
   const settings = {
     infinite: false,
-    slidesToScroll: 4,
+
     slidesToShow: 4,
+    swipeToSlide: true,
     speed: 100,
     rows: 1,
     slidesPerRow: 1,
@@ -62,7 +63,6 @@ const Countries = () => {
           slidesToShow: 1.5,
 
           dots: false,
-          swipeToSlide: true,
         },
       },
     ],
