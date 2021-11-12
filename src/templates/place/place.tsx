@@ -10,7 +10,7 @@ import SEO from "../../components/own/seo"
 import { MenuContext } from "../../providers/menu/menu.providers"
 
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String!, $previousPostId: String, $nextPostId: String) {
     contentfulPlaces(slug: { eq: $slug }) {
       rating
       id
@@ -49,6 +49,20 @@ export const query = graphql`
         lon
       }
     }
+    next: contentfulPlaces(id: { eq: $nextPostId }) {
+      slug
+      name
+      titleImage {
+        gatsbyImageData
+      }
+    }
+    previous: contentfulPlaces(id: { eq: $previousPostId }) {
+      slug
+      name
+      titleImage {
+        gatsbyImageData
+      }
+    }
   }
 `
 
@@ -60,6 +74,8 @@ const Place = props => {
       setTitle("")
     }
   }, [])
+  const { previous, next } = props.data
+  console.log("previous place:", previous)
   return (
     <>
       <SEO title={props.data.contentfulPlaces.name} />

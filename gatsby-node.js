@@ -17,17 +17,26 @@ module.exports.createPages = async ({ graphql, actions }) => {
     query MyQuery {
       allContentfulPlaces {
         nodes {
+          id
           slug
         }
       }
     }
   `)
-  res.data.allContentfulPlaces.nodes.forEach(node => {
+
+  const places = res.data.allContentfulPlaces.nodes
+
+  places.forEach((place, index) => {
+    const previousPlaceId = index === 0 ? null : places[index - 1].id
+    const nextPlaceId =
+      index === places.length - 1 ? null : places[index + 1].id
     createPage({
       component: placeTemplate,
-      path: `/${node.slug}`,
+      path: `/${place.slug}`,
       context: {
-        slug: node.slug,
+        slug: place.slug,
+        previousPlaceId,
+        nextPlaceId,
       },
     })
   })
