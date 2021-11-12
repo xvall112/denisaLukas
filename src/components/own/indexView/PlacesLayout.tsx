@@ -36,7 +36,7 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
   const theme = useTheme()
 
   const settings = {
-    speed: 200,
+    speed: 100,
     arrows: false,
     dots: false,
     infinite: false,

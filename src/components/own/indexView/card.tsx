@@ -60,7 +60,7 @@ const Card = ({ item }: props): JSX.Element => {
             style={{ height: "300px" }}
           />
         </Box>
-        <Box mt={1}>
+        <Box mt={0}>
           <Grid
             container
             direction="row"

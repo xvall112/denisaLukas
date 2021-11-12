@@ -49,11 +49,7 @@ const PlacesFavourite = () => {
   return (
     <>
       {favouritePlaces.length === 0 ? (
-        <NoFavourite
-          title="Nemáte žádná oblíbená místa"
-          button="Objevuj nová místa"
-          slug="/places"
-        />
+        <NoFavourite title="" button="Objevuj nová místa" slug="/places" />
       ) : (
         <>
           <FullScreenMap markers={favouritePlaces} />

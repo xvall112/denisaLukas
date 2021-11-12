@@ -38,7 +38,13 @@ interface Props {
   slug: string
 }
 const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
-  const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
+  console.log("places:", data)
+  const {
+    filterCountry,
+    filterCountryLocation,
+    filterCountryZoom,
+  } = useContext(MenuContext)
+
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
@@ -47,7 +53,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
 
   //load more
   const [list, setList] = useState([...data.slice(0, 10)])
-
+  console.log("list place:", list)
   // State to trigger oad more
   const [loadMore, setLoadMore] = useState(false)
 
@@ -57,11 +63,6 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
   //Set a ref for the loading div
   const loadRef = useRef()
 
-  // Load more button click
-  const handleLoadMore = () => {
-    setLoadMore(true)
-  }
-
   // Handle intersection with load more div
   const handleObserver = entities => {
     const target = entities[0]
@@ -70,6 +71,9 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
     }
   }
 
+  useEffect(() => {
+    setList([...data.slice(0, 10)])
+  }, [data])
   //Initialize the intersection observer API
   useEffect(() => {
     var options = {
@@ -94,7 +98,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
       setList([...list, ...nextResults])
       setLoadMore(false)
     }
-  }, [loadMore, hasMore]) //eslint-disable-line
+  }, [loadMore, hasMore, data]) //eslint-disable-line
 
   //Check if there is more
   useEffect(() => {

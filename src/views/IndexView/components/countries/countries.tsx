@@ -47,22 +47,22 @@ const Countries = () => {
   const data = useStaticQuery(query)
   const classes = useStyles()
   const settings = {
-    infinite: true,
+    infinite: false,
     slidesToScroll: 4,
     slidesToShow: 4,
-    speed: 500,
-    rows: 2,
+    speed: 100,
+    rows: 1,
     slidesPerRow: 1,
     dots: true,
     responsive: [
       {
         breakpoint: 600,
         settings: {
-          slidesToScroll: 2,
-          slidesToShow: 2,
-          speed: 500,
-          rows: 4,
           arrows: false,
+          slidesToShow: 1.5,
+
+          dots: false,
+          swipeToSlide: true,
         },
       },
     ],
@@ -74,15 +74,10 @@ const Countries = () => {
         <Slider {...settings}>
           {data.allContentfulCountry.nodes.map((country, index) => {
             return (
-              <Box pt={1} key={index}>
+              <Box pr={2} key={index}>
                 <Link to={`/${country.slug}`} className={classes.link}>
-                  <Grid
-                    container
-                    direction="row"
-                    justify="flex-start"
-                    alignItems="center"
-                  >
-                    <Grid item xs={6} md={4}>
+                  <Grid container direction="column" justify="flex-start">
+                    <Grid item xs={12}>
                       <img
                         src={country.flagLink}
                         width="100%"
@@ -93,9 +88,8 @@ const Countries = () => {
                     <Grid item xs={6}>
                       <Box
                         className={classes.name}
-                        ml={1}
                         fontWeight="bold"
-                        fontSize={{ xs: 14, md: 18 }}
+                        fontSize={{ xs: 18 }}
                       >
                         {country.name}
                       </Box>

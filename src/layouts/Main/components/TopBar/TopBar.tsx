@@ -138,7 +138,10 @@ const TopBar = ({}: Props): JSX.Element => {
                       <IconButton
                         edge="start"
                         color="inherit"
-                        aria-label="open drawer"
+                        aria-label="link to instagram"
+                        onClick={() =>
+                          navigate("https://www.instagram.com/denisa.lukas/")
+                        }
                       >
                         <InstagramIcon fontSize="large" />
                       </IconButton>

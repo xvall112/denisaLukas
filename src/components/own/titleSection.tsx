@@ -55,7 +55,7 @@ const TitleSection = ({ title, link }: props): JSX.Element => {
   return (
     <div className={classes.root}>
       <Link to={link} className={classes.link}>
-        <Box fontSize={32} mb={2}>
+        <Box fontSize={32} mb={1} fontWeight="bold">
           <Grid
             container
             direction="row"

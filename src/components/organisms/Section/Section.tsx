@@ -6,12 +6,12 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     margin: "0 auto",
-    padding: theme.spacing(6, 2),
-    [theme.breakpoints.up("sm")]: {
+    padding: theme.spacing(2, 2),
+    /* [theme.breakpoints.up("sm")]: {
       padding: theme.spacing(8, 8),
-    },
+    },*/
     [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(12, 8),
+      padding: theme.spacing(2, 4),
     },
   },
   fullWidth: {
