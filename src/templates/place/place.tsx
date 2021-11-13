@@ -10,8 +10,21 @@ import SEO from "../../components/own/seo"
 import { MenuContext } from "../../providers/menu/menu.providers"
 
 export const query = graphql`
-  query($slug: String!, $previousPostId: String, $nextPostId: String) {
+  query($slug: String!, $previousPlaceId: String, $nextPlaceId: String) {
     contentfulPlaces(slug: { eq: $slug }) {
+      inSurrounding {
+        name
+        slug
+        country {
+          flagLink
+          name
+        }
+        titleImage {
+          gatsbyImageData
+          title
+        }
+        kindPlace
+      }
       rating
       id
       adress
@@ -19,6 +32,7 @@ export const query = graphql`
       country {
         flagLink
         name
+        slug
       }
       kindPlace
       location {
@@ -49,19 +63,13 @@ export const query = graphql`
         lon
       }
     }
-    next: contentfulPlaces(id: { eq: $nextPostId }) {
+    next: contentfulPlaces(id: { eq: $nextPlaceId }) {
       slug
       name
-      titleImage {
-        gatsbyImageData
-      }
     }
-    previous: contentfulPlaces(id: { eq: $previousPostId }) {
+    previous: contentfulPlaces(id: { eq: $previousPlaceId }) {
       slug
       name
-      titleImage {
-        gatsbyImageData
-      }
     }
   }
 `
@@ -75,11 +83,18 @@ const Place = props => {
     }
   }, [])
   const { previous, next } = props.data
+  console.log("previous place:", props.data.previous.titleImage)
   console.log("previous place:", previous)
+  console.log("normal place:", props.data.contentfulPlaces.titleImage)
   return (
     <>
       <SEO title={props.data.contentfulPlaces.name} />
-      <LayoutPlaces data={props.data.contentfulPlaces} slug="places">
+      <LayoutPlaces
+        data={props.data.contentfulPlaces}
+        slug="places"
+        next={next}
+        previous={previous}
+      >
         <LayoutDescribePlace title="Popis" icon="fas fa-info">
           <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
         </LayoutDescribePlace>

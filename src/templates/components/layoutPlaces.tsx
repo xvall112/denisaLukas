@@ -8,6 +8,8 @@ import PlaceHeader from "../components/placeHeader"
 import SEO from "../../components/own/seo"
 import Location from "../components/Location"
 import LeafletMap from "../../components/own/LeafletMap"
+import NextPrevious from "../components/nextPrevious"
+import InSeraundings from "../components/InSeraundings"
 //material Ui
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import {
@@ -16,7 +18,6 @@ import {
   Grid,
   useMediaQuery,
   Typography,
-  Grow,
 } from "@material-ui/core"
 
 //context
@@ -67,6 +68,7 @@ const useStyles = makeStyles(theme => ({
 }))
 interface Props {
   children: any
+  inSurrounding?: any
   slug: string
   data: {
     name: string
@@ -80,9 +82,24 @@ interface Props {
     country: { name: string; flagLink: string }
     id: string
     rating: number
+    inSurrounding: any
+  }
+  next?: {
+    slug: string
+    name: string
+  }
+  previous?: {
+    slug: string
+    name: string
   }
 }
-const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
+const LayoutPlaces = ({
+  children,
+  data,
+  slug,
+  next,
+  previous,
+}: Props): JSX.Element => {
   const { map } = useContext(MapContext)
   const classes = useStyles()
   const theme = useTheme()
@@ -158,6 +175,8 @@ const LayoutPlaces = ({ children, data, slug }: Props): JSX.Element => {
 
                 {/* komponenta body */}
                 {children}
+                {data.inSurrounding && <InSeraundings inSurrounding={data} />}
+                <NextPrevious next={next} previous={previous} />
               </Container>
             </Box>
           </Grid>

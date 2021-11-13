@@ -11,14 +11,27 @@ import SEO from "../../components/own/seo"
 
 //material Ui
 import { makeStyles } from "@material-ui/core/styles"
-import { Grid, colors } from "@material-ui/core"
+import { Grid, colors, Divider, Box } from "@material-ui/core"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
 
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String!, $previousFerrataId: String, $nextFerrataId: String) {
     contentfulViaFerrata(slug: { eq: $slug }) {
+      inSurrounding {
+        name
+        slug
+        country {
+          flagLink
+          name
+        }
+        titleImage {
+          gatsbyImageData
+          title
+        }
+        kindPlace
+      }
       rating
       id
       adress
@@ -26,6 +39,7 @@ export const query = graphql`
       country {
         flagLink
         name
+        slug
       }
       describeFerrata {
         describeFerrata
@@ -65,6 +79,14 @@ export const query = graphql`
         backWayDescription
       }
     }
+    next: contentfulViaFerrata(id: { eq: $nextFerrataId }) {
+      slug
+      name
+    }
+    previous: contentfulViaFerrata(id: { eq: $previousFerrataId }) {
+      slug
+      name
+    }
   }
 `
 const useStyles = makeStyles(theme => ({
@@ -73,7 +95,7 @@ const useStyles = makeStyles(theme => ({
 
 const ViaFerrata = props => {
   const classes = useStyles()
-
+  const { previous, next } = props.data
   const {
     level,
     name,
@@ -87,6 +109,7 @@ const ViaFerrata = props => {
     describeFerrata,
     backWayDescription,
     ferrataTime,
+    inSurrounding,
   } = props.data.contentfulViaFerrata
 
   const { setTitle } = useContext(MenuContext)
@@ -100,7 +123,12 @@ const ViaFerrata = props => {
   return (
     <>
       <SEO title={name} />
-      <LayoutPlaces data={props.data.contentfulViaFerrata} slug="viaFerrata">
+      <LayoutPlaces
+        data={props.data.contentfulViaFerrata}
+        slug="viaFerrata"
+        next={next}
+        previous={previous}
+      >
         <Grid container direction="row" spacing={1}>
           <Grid item xs={4}>
             <CardPromo
@@ -157,6 +185,9 @@ const ViaFerrata = props => {
             title="Sestup"
           />
         </Grid>
+        <Box my={3}>
+          <Divider />
+        </Box>
       </LayoutPlaces>
     </>
   )

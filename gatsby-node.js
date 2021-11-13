@@ -75,16 +75,25 @@ module.exports.createPages = async ({ graphql, actions }) => {
       allContentfulViaFerrata {
         nodes {
           slug
+          id
         }
       }
     }
   `)
-  resViaFerrata.data.allContentfulViaFerrata.nodes.forEach(node => {
+
+  const ferratas = resViaFerrata.data.allContentfulViaFerrata.nodes
+
+  ferratas.forEach((ferrata, index) => {
+    const previousFerrataId = index === 0 ? null : ferratas[index - 1].id
+    const nextFerrataId =
+      index === ferratas.length - 1 ? null : ferratas[index + 1].id
     createPage({
       component: viaFerrataTemplate,
-      path: `/${node.slug}`,
+      path: `/${ferrata.slug}`,
       context: {
-        slug: node.slug,
+        slug: ferrata.slug,
+        previousFerrataId,
+        nextFerrataId,
       },
     })
   })
