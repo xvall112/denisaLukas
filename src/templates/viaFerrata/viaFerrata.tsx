@@ -27,7 +27,7 @@ export const query = graphql`
           name
         }
         titleImage {
-          gatsbyImageData
+          gatsbyImageData(width: 100, placeholder: BLURRED)
           title
         }
         kindPlace

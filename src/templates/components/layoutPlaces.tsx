@@ -160,7 +160,7 @@ const LayoutPlaces = ({
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box mt={{ xs: 0, lg: 10 }} mb={{ xs: 0, md: 5 }} zIndex={100}>
+            <Box mt={{ xs: 0, lg: 10 }} mb={{ xs: 4, md: 5 }} zIndex={100}>
               <Container maxWidth="xl">
                 {/* komponenta header */}
                 <PlaceHeader
@@ -175,7 +175,9 @@ const LayoutPlaces = ({
 
                 {/* komponenta body */}
                 {children}
-                {data.inSurrounding && <InSeraundings inSurrounding={data} />}
+                {data.inSurrounding && (
+                  <InSeraundings data={data.inSurrounding} />
+                )}
                 <NextPrevious next={next} previous={previous} />
               </Container>
             </Box>
