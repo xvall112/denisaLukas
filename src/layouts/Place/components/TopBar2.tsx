@@ -12,6 +12,7 @@ import {
   Grid,
   AppBar,
   Toolbar,
+  useScrollTrigger,
 } from "@material-ui/core"
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
 import MenuIcon from "@material-ui/icons/Menu"
@@ -31,6 +32,18 @@ const useStyles = makeStyles(theme => ({
       backdropFilter: "blur( 9px )",
     },
   },
+
+  appBar2: {
+    "& .MuiPaper-elevation4": {
+      boxShadow: "none !important",
+    },
+    "& .MuiAppBar-colorTransparent": {
+      background: "rgba( 0, 0, 0, 0.0 )",
+      boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+      backdropFilter: "blur( 0px )",
+    },
+  },
+
   backButton: {
     /*  left: "20px",
     top: "10px",
@@ -50,10 +63,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const TopBar2 = () => {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  })
   const classes = useStyles()
   const { handleSidebarOpen, titleTopBar } = useContext(MenuContext)
   return (
-    <div id="topBar" className={classes.appBar}>
+    <div id="topBar" className={trigger ? classes.appBar : classes.appBar2}>
       <AppBar position="fixed" color="transparent">
         <Toolbar>
           <Grid
@@ -73,11 +90,13 @@ const TopBar2 = () => {
                 <NavigateBeforeIcon />
               </Button>
             </Grid>
-            <Grid item>
-              <Typography color="primary" variant="h6">
-                {titleTopBar}
-              </Typography>
-            </Grid>
+            {trigger && (
+              <Grid item>
+                <Typography color="primary" variant="h6">
+                  {titleTopBar}
+                </Typography>
+              </Grid>
+            )}
             {/* <Box position="absolute" right="10px" top="10px" zIndex={1000}>
           <Grid
             container
