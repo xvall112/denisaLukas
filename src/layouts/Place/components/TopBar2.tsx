@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { navigate } from "gatsby"
-
+import { useSpring, animated } from "react-spring"
 //components
 import DarkModeToggler from "../../../components/atoms/DarkModeToggler/DarkModeToggler"
 
@@ -69,6 +69,7 @@ const TopBar2 = () => {
   })
   const classes = useStyles()
   const { handleSidebarOpen, titleTopBar } = useContext(MenuContext)
+
   return (
     <div id="topBar" className={trigger ? classes.appBar : classes.appBar2}>
       <AppBar position="fixed" color="transparent">

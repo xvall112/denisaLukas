@@ -43,6 +43,8 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
     filterCountry,
     filterCountryLocation,
     filterCountryZoom,
+    loadList,
+    handleSetLoadList,
   } = useContext(MenuContext)
 
   const theme = useTheme()
@@ -52,7 +54,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
   const classes = useStyles()
 
   //load more
-  const [list, setList] = useState([...data.slice(0, 10)])
+  const [list, setList] = useState([...data.slice(0, loadList)])
   console.log("list place:", list)
   // State to trigger oad more
   const [loadMore, setLoadMore] = useState(false)
@@ -71,9 +73,9 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
     }
   }
 
-  useEffect(() => {
+  /*  useEffect(() => {
     setList([...data.slice(0, 10)])
-  }, [data])
+  }, [data]) */
   //Initialize the intersection observer API
   useEffect(() => {
     var options = {
@@ -97,6 +99,10 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
         : []
       setList([...list, ...nextResults])
       setLoadMore(false)
+    }
+
+    return () => {
+      handleSetLoadList(list.length)
     }
   }, [loadMore, hasMore, data]) //eslint-disable-line
 

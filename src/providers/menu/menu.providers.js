@@ -9,6 +9,7 @@ export const MenuContext = createContext({
   filterCountryLocation: [0, 0],
   valueBottomNavigation: "home",
   titleTopBar: "",
+  loadList: 0,
   setFilterCountry: valueFilter => {},
   handleSidebarOpen: () => {},
   handleSidebarClose: () => {},
@@ -17,6 +18,7 @@ export const MenuContext = createContext({
   setFilterLocation: (lat, lon) => {},
   handleBottomNavigation: (event, newValue) => {},
   setTitle: title => {},
+  handleSetLoadList: number => {},
 })
 
 const MenuProvider = ({ children }) => {
@@ -28,9 +30,14 @@ const MenuProvider = ({ children }) => {
   const [openSidebar, setOpenSidebar] = useState(false)
   const [valueBottomNavigation, setValueBottomNavigation] = useState("home")
   const [titleTopBar, setTitleTopBar] = useState("")
+  const [loadList, setLoadList] = useState(10)
 
   const setTitle = title => {
     setTitleTopBar(title)
+  }
+
+  const handleSetLoadList = number => {
+    setLoadList(number)
   }
   //seting actual value bottom navigation
   const handleBottomNavigation = (event, newValue) => {
@@ -77,6 +84,8 @@ const MenuProvider = ({ children }) => {
         filterCountryLocation,
         valueBottomNavigation,
         titleTopBar,
+        loadList,
+        handleSetLoadList,
         handleSidebarOpen,
         handleSidebarClose,
         setMode,
