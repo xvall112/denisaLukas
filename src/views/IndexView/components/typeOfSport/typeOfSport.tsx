@@ -1,6 +1,7 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery, Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 //components
 import { CardBase } from "components/organisms"
@@ -59,7 +60,7 @@ const TypeOfSport = () => {
           (item: any, index: number) => {
             return (
               <Grid item xs={6} md={3} lg={2} key={index}>
-                <Link to={`/${item.slug}`}>
+                <AniLink duration={2} fade to={`/${item.slug}`}>
                   <CardBase className={classes.card}>
                     <Grid container>
                       <Grid item xs={4}>
@@ -86,7 +87,7 @@ const TypeOfSport = () => {
                       </Grid>
                     </Grid>
                   </CardBase>
-                </Link>
+                </AniLink>
               </Grid>
             )
           }

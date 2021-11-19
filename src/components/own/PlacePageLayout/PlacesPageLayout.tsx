@@ -73,9 +73,9 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
     }
   }
 
-  /*  useEffect(() => {
-    setList([...data.slice(0, 10)])
-  }, [data]) */
+  useEffect(() => {
+    setList([...data.slice(0, loadList)])
+  }, [filterCountry])
   //Initialize the intersection observer API
   useEffect(() => {
     var options = {
