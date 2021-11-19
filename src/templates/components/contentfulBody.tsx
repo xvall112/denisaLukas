@@ -1,13 +1,27 @@
 import React from "react"
-//hooks
-import { useContentfulImage } from "../../hooks/useContentfulImage"
-import { Typography, Box } from "@material-ui/core"
+import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
-import { makeStyles } from "@material-ui/core/styles"
+//hooks
+import { useContentfulAsset } from "../../hooks/useContentfullAsset"
+import { useContentfulImage } from "../../hooks/useContentfulImage"
+//materialUI
+import { Typography, Box, Grid, makeStyles, Chip } from "@material-ui/core"
+import Rating from "@material-ui/lab/Rating"
+//components
+import FlagChip from "../../components/own/flagChip"
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    border: "1px solid ",
+    borderColor: theme.palette.text.secondary,
+    borderRadius: "10px",
+    "& a": {
+      textDecoration: "none",
+      color: theme.palette.text.primary,
+    },
+  },
   img: {
     borderRadius: "5px",
     WebkitBorderRadius: "5px",
@@ -16,6 +30,9 @@ const useStyles = makeStyles(theme => ({
       borderRadius: "5px",
       WebkitBorderRadius: "5px",
     },
+  },
+  flag: {
+    borderRadius: theme.spacing(0.5),
   },
 }))
 
@@ -51,16 +68,17 @@ const options = {
       </Box>
     ),
     [BLOCKS.EMBEDDED_ASSET]: node => {
-      const asset = useContentfulImage(node.data.target.sys.id)
+      const assetImage = useContentfulImage(node.data.target.sys.id)
+
       const classes = useStyles()
 
-      if (asset) {
+      if (assetImage) {
         return (
           <>
             <Box my={2} className={classes.img}>
               <GatsbyImage
-                image={asset.node.gatsbyImageData}
-                alt={asset.node.title}
+                image={assetImage.node.gatsbyImageData}
+                alt={assetImage.node.title}
                 formats={["auto", "webp", "avif"]}
                 style={{
                   width: "100%",
@@ -70,10 +88,89 @@ const options = {
                 }}
               />
               <Box textAlign="center">
-                <Typography variant="caption">{asset.node.title}</Typography>
+                <Typography variant="caption">
+                  {assetImage.node.title}
+                </Typography>
               </Box>
             </Box>
           </>
+        )
+      }
+    },
+
+    [BLOCKS.EMBEDDED_ENTRY]: node => {
+      const asset = useContentfulAsset(node.data.target.sys.id)
+      const classes = useStyles()
+      if (asset) {
+        return (
+          <Box p={1} mx={{ xs: 0, md: 2 }} my={2} className={classes.root}>
+            <Link to={`/${asset.node.slug}`}>
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+                item
+                xs={12}
+                spacing={2}
+              >
+                <Grid item xs={6} md={4}>
+                  <Box className={classes.img}>
+                    <GatsbyImage
+                      image={asset.node.titleImage.gatsbyImageData}
+                      alt={asset.node.titleImage.title}
+                      formats={["auto", "webp", "avif"]}
+                      style={{
+                        width: "100%",
+                        height: "150px",
+                      }}
+                    />
+                  </Box>
+                </Grid>
+                <Grid
+                  container
+                  direction="column"
+                  item
+                  xs={6}
+                  md={8}
+                  spacing={2}
+                >
+                  <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    item
+                    xs={12}
+                    spacing={1}
+                  >
+                    <Grid item>
+                      <FlagChip
+                        name={asset.node.country.name}
+                        flagLink={asset.node.country.flagLink}
+                        className={classes.flag}
+                        width={40}
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Chip label={asset.node.kindPlace} />
+                    </Grid>
+                    <Grid item>
+                      <Rating
+                        name="half-rating-read"
+                        defaultValue={asset.node.rating || 5}
+                        precision={0.5}
+                        readOnly
+                        size="small"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography variant="h4">{asset.node.name}</Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Link>
+          </Box>
         )
       }
     },

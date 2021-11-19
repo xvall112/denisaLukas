@@ -20,7 +20,7 @@ module.exports = {
         allExtensions: true, // defaults to false
       },
     },
-    `gatsby-plugin-transition-link`,
+
     "gatsby-plugin-robots-txt",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,

@@ -83,9 +83,7 @@ const Place = props => {
     }
   }, [])
   const { previous, next } = props.data
-  console.log("previous place:", props.data.previous.titleImage)
-  console.log("previous place:", previous)
-  console.log("normal place:", props.data.contentfulPlaces.titleImage)
+
   return (
     <>
       <SEO title={props.data.contentfulPlaces.name} />

@@ -60,7 +60,7 @@ const TypeOfSport = () => {
           (item: any, index: number) => {
             return (
               <Grid item xs={6} md={3} lg={2} key={index}>
-                <AniLink duration={2} fade to={`/${item.slug}`}>
+                <Link to={`/${item.slug}`}>
                   <CardBase className={classes.card}>
                     <Grid container>
                       <Grid item xs={4}>
@@ -87,7 +87,7 @@ const TypeOfSport = () => {
                       </Grid>
                     </Grid>
                   </CardBase>
-                </AniLink>
+                </Link>
               </Grid>
             )
           }

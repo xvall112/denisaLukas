@@ -1,12 +1,12 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import React from "react"
+import clsx from "clsx"
+import { makeStyles } from "@material-ui/core/styles"
+import { Grid, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   root: {
     marginBottom: theme.spacing(3),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       marginBottom: theme.spacing(4),
     },
   },
@@ -14,15 +14,15 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 0,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   cta: {
     marginLeft: theme.spacing(1),
-    '&:first-child': {
+    "&:first-child": {
       marginLeft: theme.spacing(0),
     },
   },
-}));
+}))
 
 /**
  * Component to display the section headers
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
  */
 const SectionHeader = ({
   title,
-  titleVariant = 'h4',
+  titleVariant,
   subtitleVariant,
   subtitle,
   subtitleColor,
@@ -48,24 +48,31 @@ const SectionHeader = ({
   subtitleProps = {},
   ...rest
 }: SectionHeaderProps): JSX.Element => {
-  const classes = useStyles();
-  let justifyGrid: ('center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | undefined) = 'center';
-  if (align === 'left') {
-    justifyGrid = 'flex-start';
-  } else if (align === 'right') {
-    justifyGrid = 'flex-end';
+  const classes = useStyles()
+  let justifyGrid:
+    | "center"
+    | "flex-start"
+    | "flex-end"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | undefined = "center"
+  if (align === "left") {
+    justifyGrid = "flex-start"
+  } else if (align === "right") {
+    justifyGrid = "flex-end"
   }
 
   return (
     <Grid
       container
       spacing={2}
-      data-aos={fadeUp ? 'fade-up' : ''}
+      data-aos={fadeUp ? "fade-up" : ""}
       className={clsx(
-        'section-header',
+        "section-header",
         classes.root,
         disableGutter ? classes.disableGutter : {},
-        className,
+        className
       )}
       {...rest}
     >
@@ -86,7 +93,7 @@ const SectionHeader = ({
             variant="overline"
             color="primary"
             component="p"
-            align={align || 'center'}
+            align={align || "center"}
             {...labelProps}
           >
             {label}
@@ -96,11 +103,11 @@ const SectionHeader = ({
       <Grid item xs={12} className="section-header__title-wrapper">
         <Typography
           variant={titleVariant}
-          align={align || 'center'}
+          align={align || "center"}
           className={clsx(
-            'section-header__title',
+            "section-header__title",
             classes.title,
-            titleClasses ? titleClasses : {},
+            titleClasses ? titleClasses : {}
           )}
           color="textPrimary"
           {...titleProps}
@@ -111,9 +118,9 @@ const SectionHeader = ({
       {subtitle && (
         <Grid item xs={12} className="section-header__subtitle-wrapper">
           <Typography
-            variant={subtitleVariant || 'h6'}
-            align={align || 'center'}
-            color={subtitleColor || 'textSecondary'}
+            variant={subtitleVariant || "h6"}
+            align={align || "center"}
+            color={subtitleColor || "textSecondary"}
             className="section-header__subtitle"
             {...subtitleProps}
           >
@@ -134,8 +141,8 @@ const SectionHeader = ({
               <div
                 key={index}
                 className={clsx(
-                  'section-header__cta-item-wrapper',
-                  classes.cta,
+                  "section-header__cta-item-wrapper",
+                  classes.cta
                 )}
               >
                 {item}
@@ -145,7 +152,7 @@ const SectionHeader = ({
         </Grid>
       )}
     </Grid>
-  );
-};
+  )
+}
 
-export default SectionHeader;
+export default SectionHeader
