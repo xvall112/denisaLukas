@@ -50,6 +50,20 @@ export const query = graphql`
       }
       slug
       createdAt
+      country {
+        name
+        flagLink
+        slug
+        places {
+          slug
+          name
+          kindPlace
+          titleImage {
+            gatsbyImageData(placeholder: BLURRED, width: 200)
+            title
+          }
+        }
+      }
     }
   }
 `
@@ -77,6 +91,8 @@ const BlogArticle = props => {
     author,
     date,
     text,
+
+    country,
   } = props.data.contentfulBlog
 
   const { setTitle } = useContext(MenuContext)
@@ -98,23 +114,23 @@ const BlogArticle = props => {
           author={author}
           date={date}
         />
-        <SectionAlternate>
+        <Section>
           <Grid container spacing={4}>
             <Grid item xs={12} md={8}>
               <Content data={text} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <SidebarArticles data={sidebarArticles} />
+              <SidebarArticles data={country.places} />
               <SidebarNewsletter className={classes.sidebarNewsletter} />
             </Grid>
           </Grid>
-        </SectionAlternate>
-        <SectionAlternate>
+        </Section>
+        <Section>
           <SimilarStories data={similarStories} />
-        </SectionAlternate>
-        <SectionAlternate className={classes.footerNewsletterSection}>
+        </Section>
+        {/*  <Section className={classes.footerNewsletterSection}>
           <FooterNewsletter />
-        </SectionAlternate>
+        </Section> */}
       </div>
     )
   }

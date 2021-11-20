@@ -40,7 +40,7 @@ export const light = {
 
 export const dark = {
   alternate: {
-    main: "#2D3748",
+    main: "#ffffff",
     dark: "#24242b",
   },
   cardShadow: "rgba(0, 0, 0, .11)",

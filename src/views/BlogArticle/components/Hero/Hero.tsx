@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
   },
   sectionWrapper: {
-    height: 600,
+    height: "70vh",
     backgroundColor: "rgba(0, 0, 0, 0.4)",
   },
   textWhite: {
@@ -75,6 +75,7 @@ const Hero = ({
                   className: classes.textWhite,
                 }}
               />
+
               <List disablePadding>
                 <ListItem disableGutters>
                   <ListItemAvatar className={classes.listItemAvatar}>
