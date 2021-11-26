@@ -184,13 +184,13 @@ const TopBar = ({}: Props): JSX.Element => {
                   {currentUser ? (
                     <MenuList>
                       <MenuItem onClick={handleClose}>Nastavení</MenuItem>
-                      <MenuItem onClick={() => navigate("/account")}>
+                      <MenuItem onClick={() => navigate("/app/favourite")}>
                         Moje oblíbené
                       </MenuItem>
                       <MenuItem onClick={() => logout()}>Odhlásit se</MenuItem>
                     </MenuList>
                   ) : (
-                    <MenuItem onClick={() => navigate("/signin")}>
+                    <MenuItem onClick={() => navigate("/app/login")}>
                       Přihlásit se
                     </MenuItem>
                   )}

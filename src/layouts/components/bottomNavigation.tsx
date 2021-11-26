@@ -81,7 +81,9 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
         label="Oblíbené"
         value="favorites"
         icon={<FavoriteBorderOutlinedIcon />}
-        onClick={() => navigate("/account") /* window.location.reload() */}
+        onClick={
+          () => navigate("/app/favourite") /* window.location.reload() */
+        }
       />
       <BottomNavigationAction
         label="Menu"

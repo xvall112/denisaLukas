@@ -58,7 +58,11 @@ const FavouriteItems = () => {
   console.log("favourite:", favourite)
   return (
     <>
-      <PlacesLayout data={favourite} slug="/account" title="Moje Oblíbené" />
+      <PlacesLayout
+        data={favourite}
+        slug="/app/favourite"
+        title="Moje Oblíbené"
+      />
     </>
   )
 }

@@ -6,11 +6,11 @@
 import React, { useContext } from "react"
 import { navigate } from "gatsby"
 import SigninSimple from "views/SigninSimple"
-import SignLayout from "../layouts/Sign/Sign"
-import WithLayout from "../../WithLayout"
+import SignLayout from "../../layouts/Sign/Sign"
+import WithLayout from "../../../WithLayout"
 
 //context
-import { UserContext } from "../providers/user/user.provider"
+import { UserContext } from "../../providers/user/user.provider"
 
 const SignIn = (): JSX.Element => {
   const { currentUser } = useContext(UserContext)

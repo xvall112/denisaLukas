@@ -171,7 +171,7 @@ const Sidebar = ({
                     color="primary"
                     fullWidth
                     size="large"
-                    onClick={() => navigate(`/account`)}
+                    onClick={() => navigate(`/app/favourite`)}
                   >
                     Moje Oblíbené
                   </Button>
@@ -196,7 +196,7 @@ const Sidebar = ({
                     color="primary"
                     fullWidth
                     size="large"
-                    onClick={() => navigate(`/signin`)}
+                    onClick={() => navigate(`/app/login`)}
                   >
                     Přihlásit se
                   </Button>

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 //materialUI
-import { makeStyles, Box } from "@material-ui/core"
+import { makeStyles, Box, Container } from "@material-ui/core"
 //components
 import { Section } from "../../components/organisms"
 import Hero from "./components/hero/hero"
@@ -59,6 +59,8 @@ const query = graphql`
 const useStyles = makeStyles(() => ({
   sectionNoPaddingTop: {
     paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
   },
   sectionAlternate: {
     padding: 0,
@@ -72,45 +74,47 @@ const IndexPage = () => {
   const { currentUser } = useContext(UserContext)
   return (
     <>
-      <Section fullWidth className={classes.sectionNoPaddingTop}>
-        <>
-          <Hero />
-          <Box mt={2}>
-            <TypeOfSport />
-          </Box>
-        </>
-      </Section>
-      {currentUser && (
+      <Container maxWidth="xl">
         <Section fullWidth className={classes.sectionNoPaddingTop}>
-          <FavouriteItems />
+          <>
+            <Hero />
+            <Box mt={2}>
+              <TypeOfSport />
+            </Box>
+          </>
         </Section>
-      )}
-      <Section fullWidth className={classes.sectionNoPaddingTop}>
-        <Countries />
-      </Section>
-      <Section fullWidth className={classes.sectionNoPaddingTop}>
-        <Places />
-      </Section>
-      <Section fullWidth className={classes.sectionNoPaddingTop}>
-        <ViaFerrata />
-      </Section>
-      {data.contentfulIndexPage.content.map(item => {
-        return (
-          <Section
-            fullWidth
-            className={classes.sectionNoPaddingTop}
-            key={item.id}
-          >
-            <>
-              <PlacesLayout
-                data={item.content}
-                slug={item.slug}
-                title={item.title}
-              />
-            </>
+        <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <Countries />
+        </Section>
+        {currentUser && (
+          <Section fullWidth className={classes.sectionNoPaddingTop}>
+            <FavouriteItems />
           </Section>
-        )
-      })}
+        )}
+        <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <Places />
+        </Section>
+        <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <ViaFerrata />
+        </Section>
+        {data.contentfulIndexPage.content.map(item => {
+          return (
+            <Section
+              fullWidth
+              className={classes.sectionNoPaddingTop}
+              key={item.id}
+            >
+              <>
+                <PlacesLayout
+                  data={item.content}
+                  slug={item.slug}
+                  title={item.title}
+                />
+              </>
+            </Section>
+          )
+        })}
+      </Container>
     </>
   )
 }
