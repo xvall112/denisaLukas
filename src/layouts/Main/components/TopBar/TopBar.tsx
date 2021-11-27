@@ -183,7 +183,9 @@ const TopBar = ({}: Props): JSX.Element => {
                 >
                   {currentUser ? (
                     <MenuList>
-                      <MenuItem onClick={handleClose}>Nastavení</MenuItem>
+                      <MenuItem onClick={() => navigate("/app/account")}>
+                        Nastavení
+                      </MenuItem>
                       <MenuItem onClick={() => navigate("/app/favourite")}>
                         Moje oblíbené
                       </MenuItem>

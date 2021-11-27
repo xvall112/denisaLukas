@@ -1,15 +1,39 @@
 import React, { useEffect, useContext } from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import { MenuContext } from "../../providers/menu/menu.providers"
-import { Divider } from "@material-ui/core"
-import { Section, SectionAlternate } from "components/organisms"
+
 import { Breadcrumb, Newsletter, Result } from "./components"
 
-import { breadcrumb, result } from "./data"
+export const query = graphql`
+  {
+    allContentfulBlog(filter: { node_locale: { eq: "cs" } }) {
+      totalCount
+      nodes {
+        author {
+          name
+          photo {
+            file {
+              url
+            }
+          }
+        }
+        shortDescription
+        date
+        slug
+        title
+        titleImage {
+          title
+          gatsbyImageData(placeholder: BLURRED, width: 500)
+        }
+      }
+    }
+  }
+`
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(8),
     height: "100%",
     width: "100%",
   },
@@ -22,6 +46,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const BlogSearch = (): JSX.Element => {
+  const data = useStaticQuery(query)
+  const blog = data.allContentfulBlog.nodes
   const classes = useStyles()
   const { filterCountry, setTitle } = useContext(MenuContext)
   useEffect(() => {
@@ -32,11 +58,10 @@ const BlogSearch = (): JSX.Element => {
   }, [])
   return (
     <div className={classes.root}>
-      <Result data={result} />
-      <Section>
+      <Result data={blog} />
+      {/* <Section>
         <Newsletter />
-      </Section>
-      <Divider />
+      </Section> */}
     </div>
   )
 }

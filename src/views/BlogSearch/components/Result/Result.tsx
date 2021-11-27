@@ -1,50 +1,21 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import {
-  colors,
   useMediaQuery,
-  FormControl,
-  OutlinedInput,
-  InputAdornment,
-  Button,
+  Container,
   Avatar,
   Typography,
   Grid,
   Divider,
 } from "@material-ui/core"
-import { Icon, Image } from "components/atoms"
-import { CardProduct, Section, SectionAlternate } from "components/organisms"
 
-export const query = graphql`
-  {
-    allContentfulBlog(filter: { node_locale: { eq: "cs" } }) {
-      totalCount
-      nodes {
-        author {
-          name
-          photo {
-            file {
-              url
-            }
-          }
-        }
-        shortDescription
-        date
-        slug
-        title
-        titleImage {
-          title
-          gatsbyImageData(placeholder: BLURRED, width: 500)
-        }
-      }
-    }
-  }
-`
+import { CardProduct } from "components/organisms"
 
 const useStyles = makeStyles(theme => ({
   root: {
+    marginTop: theme.spacing(2),
     "& a": { textDecoration: "none" },
   },
   pagePaddingTop: {
@@ -148,9 +119,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Result = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
+const Result = ({
+  data,
+  className,
+  ...rest
+}: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
-  const data = useStaticQuery(query)
+
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
@@ -186,7 +161,7 @@ const Result = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
 
   return (
     <div className={classes.root} {...rest}>
-      <Section className={classes.pagePaddingTop}>
+      {/* <Section className={classes.pagePaddingTop}>
         <div className={classes.searchInputContainer} data-aos="fade-up">
           <FormControl fullWidth variant="outlined">
             <OutlinedInput
@@ -210,16 +185,24 @@ const Result = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             Vyhledat
           </Button>
         </div>
-      </Section>
-      <Section className={classes.sectionAlternate}>
+      </Section> */}
+      <Container maxWidth="xl">
         <Grid container spacing={isMd ? 4 : 2}>
-          <Grid item xs={12} container>
+          {/* <Grid item xs={12} container>
             <Typography variant="body1" className={classes.answerCount}>
-              {data.allContentfulBlog.totalCount} Článků
+              {data.length} Článek
             </Typography>
-          </Grid>
-          {data.allContentfulBlog.nodes.map((item: any, index: number) => (
-            <Grid item xs={12} sm={6} md={4} key={index} data-aos="fade-up">
+          </Grid> */}
+          {data.map((item: any, index: number) => (
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={3}
+              xl={2}
+              key={index}
+              data-aos="fade-up"
+            >
               <Link to={`/${item.slug}`}>
                 <CardProduct
                   withShadow
@@ -245,7 +228,7 @@ const Result = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
               </Link>
             </Grid>
           ))}
-          <Grid item xs={12} container justify="center">
+          {/*  <Grid item xs={12} container justify="center">
             <Button
               variant="outlined"
               color="primary"
@@ -254,9 +237,9 @@ const Result = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             >
               Load more
             </Button>
-          </Grid>
+          </Grid> */}
         </Grid>
-      </Section>
+      </Container>
     </div>
   )
 }

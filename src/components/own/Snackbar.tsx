@@ -87,7 +87,7 @@ export const Modal = () => {
         <DialogActions>
           <Button
             onClick={() => {
-              closeModal(), navigate(`/signin`)
+              closeModal(), navigate(`/app/login`)
             }}
             color="primary"
             variant="outlined"

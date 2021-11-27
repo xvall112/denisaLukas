@@ -6,7 +6,7 @@
 import React, { useContext } from "react"
 import { navigate } from "gatsby"
 import SigninSimple from "views/SigninSimple"
-import SignLayout from "../../layouts/Sign/Sign"
+import Place from "../../layouts/Place/Place"
 import WithLayout from "../../../WithLayout"
 
 //context
@@ -16,7 +16,7 @@ const SignIn = (): JSX.Element => {
   const { currentUser } = useContext(UserContext)
   if (currentUser) navigate("/")
 
-  return <WithLayout component={SigninSimple} layout={SignLayout} />
+  return <WithLayout component={SigninSimple} layout={Place} />
 }
 
 export default SignIn

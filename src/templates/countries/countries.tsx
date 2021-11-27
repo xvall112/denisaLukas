@@ -81,6 +81,28 @@ export const query = graphql`
         }
       }
     }
+    allContentfulBlog(
+      filter: { country: { name: { eq: $country } }, node_locale: { eq: "cs" } }
+    ) {
+      nodes {
+        author {
+          name
+          photo {
+            file {
+              url
+            }
+          }
+        }
+        shortDescription
+        date
+        slug
+        title
+        titleImage {
+          title
+          gatsbyImageData(placeholder: BLURRED, width: 500)
+        }
+      }
+    }
   }
 `
 
@@ -89,6 +111,7 @@ const Countries = props => {
   const country = props.data.contentfulCountry
   const countryPlaces = props.data.allContentfulPlaces.nodes
   const countryFerrata = props.data.allContentfulViaFerrata.nodes
+  const countryBlog = props.data.allContentfulBlog.nodes
 
   const { setTitle } = useContext(MenuContext)
 
@@ -107,6 +130,7 @@ const Countries = props => {
           places={countryPlaces}
           ferrata={countryFerrata}
           country={country}
+          blog={countryBlog}
         />
       </div>
     )

@@ -5,6 +5,7 @@ import { AppBar, Grid, Container, Box, Tab, Tabs } from "@material-ui/core"
 //components
 import PlacesCountry from "./components/PlacesCountry"
 import FerrataCountry from "./components/FerrataCountry"
+import Result from "../../../views/BlogSearch/components/Result/Result"
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export default function TabPane({ places, ferrata, country }) {
+export default function TabPane({ places, ferrata, country, blog }) {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
@@ -69,21 +70,24 @@ export default function TabPane({ places, ferrata, country }) {
             aria-label="scrollable auto tabs example"
           >
             <Tab label="Místa" {...a11yProps(0)} />
-            {ferrata.length !== 0 && (
-              <Tab label=" via Ferrata" {...a11yProps(1)} />
-            )}
+
+            <Tab label=" via Ferrata" {...a11yProps(1)} />
+
+            <Tab label="Blog" {...a11yProps(2)} />
 
             {/* <Tab label="Hiking" {...a11yProps(2)} />
             <Tab label="Cyklo" {...a11yProps(3)} /> */}
           </Tabs>
         </Container>
       </AppBar>
-
       <TabPanel value={value} index={0}>
         <PlacesCountry places={places} country={country} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <PlacesCountry places={ferrata} country={country} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Result data={blog} />
       </TabPanel>
       {/*  <TabPanel value={value} index={2}>
         Pracujeme na tom
