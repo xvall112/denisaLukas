@@ -186,49 +186,49 @@ const Result = ({
           </Button>
         </div>
       </Section> */}
-      <Container maxWidth="xl">
-        <Grid container spacing={isMd ? 4 : 2}>
-          {/* <Grid item xs={12} container>
+
+      <Grid container spacing={isMd ? 4 : 2}>
+        {/* <Grid item xs={12} container>
             <Typography variant="body1" className={classes.answerCount}>
               {data.length} Článek
             </Typography>
           </Grid> */}
-          {data.map((item: any, index: number) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={3}
-              xl={2}
-              key={index}
-              data-aos="fade-up"
-            >
-              <Link to={`/${item.slug}`}>
-                <CardProduct
-                  withShadow
-                  liftUp
-                  className={classes.cardProduct}
-                  mediaContent={
-                    <GatsbyImage
-                      image={item.titleImage.gatsbyImageData}
-                      alt={item.titleImage.title}
-                      formats={["auto", "webp", "avif"]}
-                      style={{ height: "100%", width: "100%" }}
-                    />
-                  }
-                  cardContent={
-                    <BlogContent
-                      title={item.title}
-                      subtitle={item.shortDescription}
-                      author={item.author}
-                      date={item.date}
-                    />
-                  }
-                />
-              </Link>
-            </Grid>
-          ))}
-          {/*  <Grid item xs={12} container justify="center">
+        {data.map((item: any, index: number) => (
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            xl={2}
+            key={index}
+            data-aos="fade-up"
+          >
+            <Link to={`/${item.slug}`}>
+              <CardProduct
+                withShadow
+                liftUp
+                className={classes.cardProduct}
+                mediaContent={
+                  <GatsbyImage
+                    image={item.titleImage.gatsbyImageData}
+                    alt={item.titleImage.title}
+                    formats={["auto", "webp", "avif"]}
+                    style={{ height: "100%", width: "100%" }}
+                  />
+                }
+                cardContent={
+                  <BlogContent
+                    title={item.title}
+                    subtitle={item.shortDescription}
+                    author={item.author}
+                    date={item.date}
+                  />
+                }
+              />
+            </Link>
+          </Grid>
+        ))}
+        {/*  <Grid item xs={12} container justify="center">
             <Button
               variant="outlined"
               color="primary"
@@ -238,8 +238,7 @@ const Result = ({
               Load more
             </Button>
           </Grid> */}
-        </Grid>
-      </Container>
+      </Grid>
     </div>
   )
 }

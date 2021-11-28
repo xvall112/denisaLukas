@@ -1,20 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import SEO from "../../components/own/seo"
-import LayoutPlaces from "../../layouts/Place/Place"
+import MenuLayout from "../../layouts/Menu/MenuLayout"
 import WithLayout from "../../../WithLayout"
-import clsx from "clsx"
+
 import { parse } from "query-string"
 import { makeStyles } from "@material-ui/core/styles"
-import {
-  Box,
-  List,
-  ListItem,
-  Grid,
-  Typography,
-  Container,
-} from "@material-ui/core"
-import { SectionAlternate, CardBase } from "components/organisms"
-import { Hero, General, Security, Notifications, Billing } from "./components"
+import { Box, Grid, Typography, Container, Avatar } from "@material-ui/core"
+import { CardBase } from "components/organisms"
+import { Hero, General, Security } from "./components"
+
+//context
+import { UserContext } from "../../providers/user/user.provider"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,6 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
   menu: {
     height: "auto",
+    backgroundColor: theme.palette.background.level2,
   },
   list: {
     display: "inline-flex",
@@ -67,30 +64,12 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.text.primary,
     },
   },
+  avatar: {
+    backgroundColor: theme.palette.primary.main,
+    height: "100px",
+    width: "100px",
+  },
 }))
-
-const subPages = [
-  {
-    id: "general",
-    href: "/account/?pid=general",
-    title: "General",
-  },
-  {
-    id: "security",
-    href: "/account/?pid=security",
-    title: "Security",
-  },
-  {
-    id: "notifications",
-    href: "/account/?pid=notifications",
-    title: "Notifications",
-  },
-  {
-    id: "billing",
-    href: "/account/?pid=billing",
-    title: "Billing Information",
-  },
-]
 
 interface TabPanelProps {
   children: JSX.Element
@@ -112,56 +91,52 @@ const TabPanel = ({
 const Account = (): JSX.Element => {
   const classes = useStyles()
   let pageId = parse(window.location.search).pid || "general"
+  const { currentUser } = useContext(UserContext)
 
   return (
     <div className={classes.root}>
       <Hero />
       <Container maxWidth="xl" className={classes.section}>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={3}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={4}>
             <CardBase withShadow align="left" className={classes.menu}>
-              <List disablePadding className={classes.list}>
-                {subPages.map((item, index) => (
-                  <ListItem
-                    key={index}
-                    component={"a"}
-                    href={item.href}
-                    className={clsx(
-                      classes.listItem,
-                      pageId === item.id ? classes.listItemActive : {}
-                    )}
-                    disableGutters
-                  >
-                    <Typography
-                      variant="subtitle1"
-                      noWrap
-                      color="textSecondary"
-                      className="menu__item"
-                    >
-                      {item.title}
-                    </Typography>
-                  </ListItem>
-                ))}
-              </List>
+              <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+                spacing={1}
+              >
+                <Grid item>
+                  <Avatar
+                    src={currentUser.photoURL}
+                    className={classes.avatar}
+                  />
+                </Grid>
+                <Grid item>
+                  <Typography variant="h4">
+                    {currentUser.displayName}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6">{currentUser.email}</Typography>
+                </Grid>
+              </Grid>
             </CardBase>
           </Grid>
-          <Grid item xs={12} md={9}>
-            <CardBase withShadow align="left">
-              <>
-                <TabPanel value={pageId} index={"general"}>
+          <Grid container item xs={12} md={8}>
+            <Grid item xs={12}>
+              <Box mb={2}>
+                <CardBase withShadow align="left" className={classes.menu}>
                   <General />
-                </TabPanel>
-                <TabPanel value={pageId} index={"security"}>
-                  <Security />
-                </TabPanel>
-                <TabPanel value={pageId} index={"notifications"}>
-                  <Notifications />
-                </TabPanel>
-                <TabPanel value={pageId} index={"billing"}>
-                  <Billing />
-                </TabPanel>
-              </>
-            </CardBase>
+                </CardBase>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <CardBase withShadow align="left" className={classes.menu}>
+                <Security />
+              </CardBase>
+            </Grid>
           </Grid>
         </Grid>
       </Container>
@@ -173,7 +148,7 @@ const AccounSettings = (): JSX.Element => {
   return (
     <>
       <SEO title="nastaveni" />
-      <WithLayout component={Account} layout={LayoutPlaces} />
+      <WithLayout component={Account} layout={MenuLayout} />
     </>
   )
 }

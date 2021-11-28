@@ -3,7 +3,7 @@ import clsx from "clsx"
 
 //materialUI
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useMediaQuery, Hidden } from "@material-ui/core"
+import { useMediaQuery, Hidden, Box, Container } from "@material-ui/core"
 import LinearProgress from "@material-ui/core/LinearProgress"
 
 //components
@@ -18,7 +18,7 @@ import { UserContext } from "../../providers/user/user.provider"
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100%",
-    maxWidth: "100vw",
+    width: "100vw",
     color: theme.palette.text.primary,
   },
   sectionNoPadding: {
@@ -45,19 +45,19 @@ const Main = ({ children }: Props): JSX.Element => {
         [classes.root]: true,
       })}
     >
-      {loading && <LinearProgress />}
-      <Section className={classes.sectionNoPadding}>
+      {/* {loading && <LinearProgress />} */}
+      <Container maxWidth="xl">
         <Topbar />
-      </Section>
+      </Container>
       <SideBar variant="temporary" />
       <main>
         {/*  <Divider /> */}
-        {children}
+        <Box mb={8}>{children}</Box>
       </main>
       <Hidden mdUp>
         <BottomNavigation />
       </Hidden>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

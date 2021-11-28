@@ -33,11 +33,7 @@ interface Props {}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1,
-      backgroundColor:
-        "linear-gradient(to bottom, rgba(0, 0, 0, 0) 4%, #000000)",
-    },
+    root: {},
     avatar: {
       backgroundColor: theme.palette.primary.main,
     },
@@ -169,12 +165,12 @@ const TopBar = ({}: Props): JSX.Element => {
                 )}
                 {/*  button if user login */}
 
-                <Grid item xs={4} md={2}>
+                {/* <Grid item xs={4} md={2}>
                   <IconButton onClick={handleClick}>
                     <PersonOutlineOutlinedIcon fontSize="large" />
                   </IconButton>
                 </Grid>
-                <Menu
+                  <Menu
                   id="simple-menu"
                   anchorEl={anchorEl}
                   keepMounted
@@ -196,7 +192,7 @@ const TopBar = ({}: Props): JSX.Element => {
                       Přihlásit se
                     </MenuItem>
                   )}
-                </Menu>
+                </Menu> */}
               </>
             </Grid>
           </Grid>

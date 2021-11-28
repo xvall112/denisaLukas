@@ -107,7 +107,10 @@ const Sidebar = ({
             <Grid item>
               {currentUser ? (
                 <Link to="/app/account" onClick={() => handleSidebarClose()}>
-                  <Avatar src="/broken-image.jpg" className={classes.avatar} />
+                  <Avatar
+                    src={currentUser.photoURL}
+                    className={classes.avatar}
+                  />
                 </Link>
               ) : (
                 <CardBase noBorder noShadow className={classes.logoCard}>
@@ -174,6 +177,17 @@ const Sidebar = ({
                     onClick={() => navigate(`/app/favourite`)}
                   >
                     Moje Oblíbené
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    size="large"
+                    onClick={() => navigate(`/app/account`)}
+                  >
+                    Nastavení
                   </Button>
                 </Grid>
                 <Grid item>

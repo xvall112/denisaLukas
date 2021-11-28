@@ -1,38 +1,34 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React from "react"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
 import {
   useMediaQuery,
   Grid,
   Typography,
   TextField,
-  FormControlLabel,
-  Switch,
   Button,
   Divider,
-} from '@material-ui/core';
+} from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   inputTitle: {
     fontWeight: 700,
     marginBottom: theme.spacing(1),
   },
-  switchTitle: {
-    fontWeight: 700,
-  },
+
   titleCta: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-}));
+}))
 
 const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
+  const theme = useTheme()
+  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
-  });
+  })
 
   return (
     <div className={className} {...rest}>
@@ -40,11 +36,8 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
         <Grid item xs={12}>
           <div className={classes.titleCta}>
             <Typography variant="h6" color="textPrimary">
-              Change Password
+              Zmměnit heslo
             </Typography>
-            <Button variant="outlined" color="primary">
-              Log out
-            </Button>
           </div>
         </Grid>
         <Grid item xs={12}>
@@ -56,10 +49,10 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Current password
+            Současné heslo
           </Typography>
           <TextField
-            placeholder="Old password"
+            placeholder="Současné heslo"
             variant="outlined"
             size="medium"
             name="fullname"
@@ -73,10 +66,10 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            New password
+            Nové heslo
           </Typography>
           <TextField
-            placeholder="New password"
+            placeholder="Nové heslo"
             variant="outlined"
             size="medium"
             name="fullname"
@@ -90,10 +83,10 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Repeat password
+            Opakovat nové heslo
           </Typography>
           <TextField
-            placeholder="Repeat password"
+            placeholder="Opakovat nové heslo"
             variant="outlined"
             size="medium"
             name="fullname"
@@ -104,39 +97,7 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
         <Grid item xs={12}>
           <Divider />
         </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Switch color="primary" defaultChecked />}
-            label={
-              <Typography
-                variant="subtitle1"
-                color="textPrimary"
-                className={classes.switchTitle}
-              >
-                Public Profile
-              </Typography>
-            }
-            labelPlacement="end"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Divider />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Switch color="primary" />}
-            label={
-              <Typography
-                variant="subtitle1"
-                color="textPrimary"
-                className={classes.switchTitle}
-              >
-                Expose your email
-              </Typography>
-            }
-            labelPlacement="end"
-          />
-        </Grid>
+
         <Grid item container justify="flex-start" xs={12}>
           <Button
             variant="contained"
@@ -144,12 +105,12 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="primary"
             size="large"
           >
-            save
+            Uložit
           </Button>
         </Grid>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default Security;
+export default Security

@@ -17,7 +17,7 @@ const query = graphql`
         name
         slug
         icon {
-          gatsbyImageData(layout: FULL_WIDTH)
+          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           title
         }
       }
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     webkitBorderTopLeftRadius: theme.shape.borderRadius,
     borderBottomLeftRadius: theme.shape.borderRadius,
     webkitBorderBottomLeftRadius: theme.shape.borderRadius,
-    overflow: "hidden",
+
     "& img": {
       borderTopLeftRadius: theme.shape.borderRadius,
       webkitBorderTopLeftRadius: theme.shape.borderRadius,
