@@ -97,7 +97,7 @@ const DescribeSection = ({
                 </Grid>
               </Tooltip>
             </Grid>
-            <Box mt={2}>
+            <Box mt={2} textAlign="justify">
               <Typography>{description}</Typography>
             </Box>
           </>

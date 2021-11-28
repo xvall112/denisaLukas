@@ -106,7 +106,7 @@ const Sidebar = ({
             </Grid> */}
             <Grid item>
               {currentUser ? (
-                <Link to="/account" onClick={() => handleSidebarClose()}>
+                <Link to="/app/account" onClick={() => handleSidebarClose()}>
                   <Avatar src="/broken-image.jpg" className={classes.avatar} />
                 </Link>
               ) : (

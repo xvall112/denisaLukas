@@ -1,6 +1,14 @@
 import React from "react"
 import { makeStyles, Theme } from "@material-ui/core/styles"
-import { AppBar, Grid, Container, Box, Tab, Tabs } from "@material-ui/core"
+import {
+  AppBar,
+  Grid,
+  Container,
+  Box,
+  Tab,
+  Tabs,
+  Chip,
+} from "@material-ui/core"
 
 //components
 import PlacesCountry from "./components/PlacesCountry"
@@ -69,11 +77,59 @@ export default function TabPane({ places, ferrata, country, blog }) {
             scrollButtons="auto"
             aria-label="scrollable auto tabs example"
           >
-            <Tab label="Místa" {...a11yProps(0)} />
+            <Tab
+              label={
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                  spacing={1}
+                >
+                  <Grid item>Místa</Grid>
+                  <Grid item>
+                    <Chip size="small" label={places.length} />
+                  </Grid>
+                </Grid>
+              }
+              {...a11yProps(0)}
+            />
 
-            <Tab label=" via Ferrata" {...a11yProps(1)} />
+            <Tab
+              label={
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                  spacing={1}
+                >
+                  <Grid item>via Ferrata</Grid>
+                  <Grid item>
+                    <Chip size="small" label={ferrata.length} />
+                  </Grid>
+                </Grid>
+              }
+              {...a11yProps(1)}
+            />
 
-            <Tab label="Blog" {...a11yProps(2)} />
+            <Tab
+              label={
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                  spacing={1}
+                >
+                  <Grid item>Blog</Grid>
+                  <Grid item>
+                    <Chip size="small" label={blog.length} />
+                  </Grid>
+                </Grid>
+              }
+              {...a11yProps(2)}
+            />
 
             {/* <Tab label="Hiking" {...a11yProps(2)} />
             <Tab label="Cyklo" {...a11yProps(3)} /> */}
