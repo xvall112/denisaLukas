@@ -163,7 +163,7 @@ const Form = (): JSX.Element => {
               align="center"
             >
               Už jste registrováni?{" "}
-              <LearnMoreLink title="Přihlásit se" href="/signin" />
+              <LearnMoreLink title="Přihlásit se" href="/app/login" />
             </Typography>
           </Grid>
         </Grid>

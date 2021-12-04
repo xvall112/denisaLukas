@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import { MenuContext } from "../../providers/menu/menu.providers"
-
+import { Container } from "@material-ui/core"
 import { Breadcrumb, Newsletter, Result } from "./components"
 
 export const query = graphql`
@@ -58,10 +58,12 @@ const BlogSearch = (): JSX.Element => {
   }, [])
   return (
     <div className={classes.root}>
-      <Result data={blog} />
-      {/* <Section>
+      <Container maxWidth="xl">
+        <Result data={blog} />
+        {/* <Section>
         <Newsletter />
       </Section> */}
+      </Container>
     </div>
   )
 }

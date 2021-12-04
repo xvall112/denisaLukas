@@ -152,7 +152,7 @@ const SimilarStories = ({
       />
       <Grid container spacing={2}>
         {data.allContentfulBlog.nodes.map((item: any, index: number) => (
-          <Grid item xs={12} sm={12} md={4} key={index} data-aos="fade-up">
+          <Grid item xs={12} sm={12} md={3} key={index} data-aos="fade-up">
             <Link to={`/${item.slug}`}>
               <CardProduct
                 withShadow

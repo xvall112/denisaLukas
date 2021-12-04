@@ -57,9 +57,9 @@ const Content = ({
         {/* <IconButton className={classes.socialIcon}>
           <FacebookIcon />
         </IconButton> */}
-        <IconButton className={classes.socialIcon}>
+        {/* <IconButton className={classes.socialIcon}>
           <InstagramIcon />
-        </IconButton>
+        </IconButton> */}
         {/* <IconButton className={classes.socialIcon}>
           <TwitterIcon />
         </IconButton>

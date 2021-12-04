@@ -47,6 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     backgroundColor: theme.palette.background.level2,
+    height: "100px",
   },
 }))
 
@@ -63,15 +64,15 @@ const TypeOfSport = () => {
                 <Link to={`/${item.slug}`}>
                   <CardBase className={classes.card}>
                     <Grid container>
-                      <Grid item xs={4}>
+                      <Grid item xs={5}>
                         <Box className={classes.img}>
                           <GatsbyImage
                             image={item.icon.gatsbyImageData}
                             alt={item.icon.title}
                             formats={["auto", "webp", "avif"]}
                             style={{
-                              maxHeight: "70px",
-                              maxWidth: "70px",
+                              height: "100px",
+                              width: "100%",
                             }}
                           />
                         </Box>
@@ -81,7 +82,7 @@ const TypeOfSport = () => {
                         container
                         justify="center"
                         alignItems="center"
-                        xs={8}
+                        xs={7}
                       >
                         <Box fontSize={16}>{item.name}</Box>
                       </Grid>
