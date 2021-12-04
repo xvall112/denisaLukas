@@ -1,7 +1,6 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 //components
 import { CardBase } from "components/organisms"
@@ -47,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     backgroundColor: theme.palette.background.level2,
-    height: "100px",
+    height: "12vh",
   },
 }))
 
@@ -71,7 +70,7 @@ const TypeOfSport = () => {
                             alt={item.icon.title}
                             formats={["auto", "webp", "avif"]}
                             style={{
-                              height: "100px",
+                              height: "12vh",
                               width: "100%",
                             }}
                           />

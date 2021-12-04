@@ -164,18 +164,18 @@ const ViaFerrata = props => {
             />
           </Grid>
           <DescriptionSection
-            location={parkingGps}
-            description={parkingToStartDescription.parkingToStartDescription}
-            time={parkingToStartTime}
-            iconLocation="fas fa-parking"
-            title="Přístup"
-          />
-          <DescriptionSection
             location={location}
             description={describeFerrata.describeFerrata}
             time={ferrataTime}
             iconLocation="fas fa-map-marker-alt"
             title="via Ferrata"
+          />
+          <DescriptionSection
+            location={parkingGps}
+            description={parkingToStartDescription.parkingToStartDescription}
+            time={parkingToStartTime}
+            iconLocation="fas fa-parking"
+            title="Přístup"
           />
           <DescriptionSection
             location={endLocation}
