@@ -33,7 +33,7 @@ interface Props {}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {},
+    root: { zIndex: 1000 },
     avatar: {
       backgroundColor: theme.palette.primary.main,
     },
