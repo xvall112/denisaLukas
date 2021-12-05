@@ -73,6 +73,7 @@ function blogToAlgoliaRecord({
   slug,
   shortDescription,
   titleImage,
+  country,
 }) {
   return {
     objectID: id,
@@ -80,16 +81,16 @@ function blogToAlgoliaRecord({
     shortDescription,
     title,
     titleImage: { ...titleImage.gatsbyImageData },
+    country: country.name,
   }
 }
 
-function countryToAlgoliaRecord({ id, slug, flagLink, name, country }) {
+function countryToAlgoliaRecord({ id, slug, flagLink, name }) {
   return {
     objectID: id,
     slug,
     flagLink,
     name,
-    country: country.name,
   }
 }
 
