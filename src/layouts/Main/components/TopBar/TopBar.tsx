@@ -89,18 +89,18 @@ const TopBar = ({}: Props): JSX.Element => {
                 <Grid item>
                   <Link to="/">
                     <StaticImage
-                      src="../../../../images/logoWhite.png"
-                      width={40}
+                      src="../../../../images/mainLogo.png"
+                      height={40}
                       quality={95}
                       alt="logo Faith in Travel"
                     />
                   </Link>
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <Box ml={1} fontWeight="700" fontSize={16}>
                     FAITH IN TRAVEL
                   </Box>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
             {isMd && (

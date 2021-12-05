@@ -48,12 +48,48 @@ const countryQuery = `   {
     }
        `
 
-function countryToAlgoliaRecord({ id, slug, flagLink, name }) {
+const blogQuery = `    {
+        allContentfulBlog {
+          nodes {
+            id
+            title
+            titleImage {
+              gatsbyImageData
+              title
+            }
+            slug
+            shortDescription
+            country {
+              name
+            }
+          }
+        }
+      }
+         `
+
+function blogToAlgoliaRecord({
+  id,
+  title,
+  slug,
+  shortDescription,
+  titleImage,
+}) {
+  return {
+    objectID: id,
+    slug,
+    shortDescription,
+    title,
+    titleImage: { ...titleImage.gatsbyImageData },
+  }
+}
+
+function countryToAlgoliaRecord({ id, slug, flagLink, name, country }) {
   return {
     objectID: id,
     slug,
     flagLink,
     name,
+    country: country.name,
   }
 }
 
@@ -76,6 +112,12 @@ function pageToAlgoliaRecord({
 }
 
 const queries = [
+  {
+    query: blogQuery,
+    transformer: ({ data }) =>
+      data.allContentfulBlog.nodes.map(blogToAlgoliaRecord),
+    indexName,
+  },
   {
     query: placesQuery,
     transformer: ({ data }) =>
