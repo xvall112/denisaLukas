@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useContext } from "react"
 import clsx from "clsx"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import {
@@ -10,6 +10,9 @@ import {
 } from "@material-ui/core"
 import { Image } from "components/atoms"
 import { SectionHeader } from "components/molecules"
+
+//context
+import { UserContext } from "../../../../providers/user/user.provider"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,11 +48,23 @@ const useStyles = makeStyles(theme => ({
 
 const Form = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
-
+  const [email, setEmail] = useState("")
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   })
+
+  const { addNewsletter, loading } = useContext(UserContext)
+
+  const handleChange = e => {
+    setEmail(e.target.value)
+  }
+
+  const handleSubmit = async e => {
+    await e.preventDefault()
+    await addNewsletter(email)
+    await setEmail("")
+  }
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -71,8 +86,9 @@ const Form = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
         align="left"
       />
       <div className={classes.form}>
-        <Grid container spacing={isMd ? 4 : 2}>
-          {/* <Grid item xs={12} data-aos="fade-up">
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={isMd ? 4 : 2}>
+            {/* <Grid item xs={12} data-aos="fade-up">
             <Typography
               variant="subtitle1"
               color="textPrimary"
@@ -89,39 +105,46 @@ const Form = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
               type="text"
             />
           </Grid> */}
-          <Grid item xs={12} data-aos="fade-up">
-            <Typography
-              variant="subtitle1"
-              color="textPrimary"
-              className={classes.inputTitle}
-            >
-              E-mail
-            </Typography>
-            <TextField
-              placeholder="Váš email"
-              variant="outlined"
-              size="medium"
-              name="email"
-              fullWidth
-              type="email"
-            />
-          </Grid>
-          <Grid item container justify="center" xs={12}>
-            <Button
-              variant="contained"
-              type="submit"
-              color="primary"
-              size="large"
-            >
-              Odebírat
-            </Button>
-          </Grid>
-          {/*  <Grid item container justify="center" xs={12}>
+
+            <Grid item xs={12} data-aos="fade-up">
+              <Typography
+                variant="subtitle1"
+                color="textPrimary"
+                className={classes.inputTitle}
+              >
+                E-mail
+              </Typography>
+              <TextField
+                placeholder="Váš email"
+                variant="outlined"
+                size="medium"
+                name="email"
+                fullWidth
+                type="email"
+                required
+                onChange={handleChange}
+                value={email}
+              />
+            </Grid>
+            <Grid item container justify="center" xs={12}>
+              <Button
+                variant="contained"
+                type="submit"
+                color="primary"
+                size="large"
+                disabled={loading}
+              >
+                Odebírat
+              </Button>
+            </Grid>
+
+            {/*  <Grid item container justify="center" xs={12}>
             <Typography variant="caption" color="textSecondary">
               Subscribe to our Newsletter for new blog posts, tips & new photos.
             </Typography>
           </Grid> */}
-        </Grid>
+          </Grid>
+        </form>
       </div>
     </div>
   )

@@ -110,7 +110,8 @@ const Hero = () => {
                       // This centers the other elements inside the hero component
                       placeItems: "center",
                       display: "grid",
-                      backgroundColor: "rgba(0, 0, 0, 0.4)",
+                      background:
+                        "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%)",
                       borderRadius: "5px",
                     }}
                   >

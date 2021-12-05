@@ -2,12 +2,20 @@ import React, { useContext } from "react"
 import SEO from "../../components/own/seo"
 import MenuLayout from "../../layouts/Menu/MenuLayout"
 import WithLayout from "../../../WithLayout"
-
+import { navigate } from "gatsby"
 import { parse } from "query-string"
 import { makeStyles } from "@material-ui/core/styles"
-import { Box, Grid, Typography, Container, Avatar } from "@material-ui/core"
+import {
+  Box,
+  Grid,
+  Typography,
+  Container,
+  Avatar,
+  Button,
+} from "@material-ui/core"
 import { CardBase } from "components/organisms"
 import { Hero, General, Security } from "./components"
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
 
 //context
 import { UserContext } from "../../providers/user/user.provider"
@@ -95,9 +103,26 @@ const Account = (): JSX.Element => {
 
   return (
     <div className={classes.root}>
-      <Hero />
+      {/* <Hero /> */}
       <Container maxWidth="xl" className={classes.section}>
         <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Box mt={2}>
+              <Button
+                color="primary"
+                startIcon={<ArrowBackIosIcon />}
+                onClick={() => navigate(-1)}
+              >
+                Zpět
+              </Button>
+            </Box>
+            {/* <Box mt={2}>
+                <Grid container direction="row">
+                  <ArrowBackIosIcon color="primary" />
+                  <Typography color="primary">Zpět</Typography>
+                </Grid>
+              </Box> */}
+          </Grid>
           <Grid item xs={12} md={4}>
             <CardBase withShadow align="left" className={classes.menu}>
               <Grid

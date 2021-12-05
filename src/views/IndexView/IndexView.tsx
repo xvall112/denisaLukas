@@ -74,47 +74,51 @@ const IndexPage = () => {
   const { currentUser } = useContext(UserContext)
   return (
     <>
-      <Container maxWidth="xl">
-        <Section fullWidth className={classes.sectionNoPaddingTop}>
-          <>
-            <Hero />
-            <Box mt={2}>
-              <TypeOfSport />
-            </Box>
-          </>
-        </Section>
-        <Section fullWidth className={classes.sectionNoPaddingTop}>
-          <Countries />
-        </Section>
-        {currentUser && (
+      <Box mt={-1}>
+        <Hero />
+      </Box>
+      <Box mt={-1}>
+        <Container maxWidth="xl">
           <Section fullWidth className={classes.sectionNoPaddingTop}>
-            <FavouriteItems />
+            <>
+              <Box mt={2}>
+                <TypeOfSport />
+              </Box>
+            </>
           </Section>
-        )}
-        <Section fullWidth className={classes.sectionNoPaddingTop}>
-          <Places />
-        </Section>
-        <Section fullWidth className={classes.sectionNoPaddingTop}>
-          <ViaFerrata />
-        </Section>
-        {data.contentfulIndexPage.content.map(item => {
-          return (
-            <Section
-              fullWidth
-              className={classes.sectionNoPaddingTop}
-              key={item.id}
-            >
-              <>
-                <PlacesLayout
-                  data={item.content}
-                  slug={item.slug}
-                  title={item.title}
-                />
-              </>
+          <Section fullWidth className={classes.sectionNoPaddingTop}>
+            <Countries />
+          </Section>
+          {currentUser && (
+            <Section fullWidth className={classes.sectionNoPaddingTop}>
+              <FavouriteItems />
             </Section>
-          )
-        })}
-      </Container>
+          )}
+          <Section fullWidth className={classes.sectionNoPaddingTop}>
+            <Places />
+          </Section>
+          <Section fullWidth className={classes.sectionNoPaddingTop}>
+            <ViaFerrata />
+          </Section>
+          {data.contentfulIndexPage.content.map(item => {
+            return (
+              <Section
+                fullWidth
+                className={classes.sectionNoPaddingTop}
+                key={item.id}
+              >
+                <>
+                  <PlacesLayout
+                    data={item.content}
+                    slug={item.slug}
+                    title={item.title}
+                  />
+                </>
+              </Section>
+            )
+          })}
+        </Container>
+      </Box>
     </>
   )
 }

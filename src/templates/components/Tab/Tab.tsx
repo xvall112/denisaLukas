@@ -54,6 +54,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     backgroundColor: theme.palette.background.paper,
   },
+  appBar: {
+    position: "sticky",
+    top: "55px",
+  },
 }))
 
 export default function TabPane({ places, ferrata, country, blog }) {
@@ -66,7 +70,7 @@ export default function TabPane({ places, ferrata, country, blog }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" color="default">
+      <AppBar color="default" className={classes.appBar}>
         <Container maxWidth="xl">
           <Tabs
             value={value}

@@ -46,6 +46,8 @@ export const UserContext = createContext({
   isUserAuth: () => {},
   closeUserSnackbar: () => {},
   closeModal: () => {},
+  addNewsletter: email => {},
+  updateAccount: name => {},
 })
 
 const UserProvider = ({ children }) => {
@@ -87,6 +89,23 @@ const UserProvider = ({ children }) => {
     setCurrentUser(userAuth)
   }
 
+  const updateAccount = async name => {
+    await setLoading(true)
+    const userAuth = await getCurrentUser()
+    await userAuth
+      .updateProfile({
+        displayName: name,
+      })
+      .then(() => {
+        setLoading(false)
+        setSnackbarMessage("Aktualizováno")
+        setIsUserSnackbarOpen(true)
+      })
+      .catch(error => {
+        console.log(error.message)
+      })
+  }
+
   const fetchFavouriteItems = async () => {
     const userAuth = await getCurrentUser()
     if (!userAuth) {
@@ -112,6 +131,27 @@ const UserProvider = ({ children }) => {
       }
     }
     await console.log("fetch finish")
+  }
+
+  const addNewsletter = async email => {
+    await setLoading(true)
+    firebase
+      .firestore()
+      .collection("Newsletter")
+      .doc(email)
+      .set({
+        email: email,
+      })
+      .then(() => {
+        setLoading(false)
+        setSnackbarMessage("Odesláno")
+        setIsUserSnackbarOpen(true)
+        console.log("Document successfully written!")
+      })
+      .catch(error => {
+        setLoading(false)
+        console.error("Error writing document: ", error)
+      })
   }
 
   const addFavouriteItem = async itemId => {
@@ -265,6 +305,8 @@ const UserProvider = ({ children }) => {
         isUserAuth,
         closeUserSnackbar,
         closeModal,
+        addNewsletter,
+        updateAccount,
       }}
     >
       {children}
