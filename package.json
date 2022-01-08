@@ -23,6 +23,7 @@
     "gatsby-plugin-algolia": "^0.20.1",
     "gatsby-plugin-firebase": "^0.2.0-beta.4",
     "gatsby-plugin-gatsby-cloud": "^2.0.0",
+    "gatsby-plugin-google-analytics": "^4.4.0",
     "gatsby-plugin-image": "^1.4.0",
     "gatsby-plugin-layout": "^2.4.0",
     "gatsby-plugin-manifest": "^3.0.0",

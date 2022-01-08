@@ -9,7 +9,7 @@ const ViaFerrata = () => {
     <>
       <SEO
         title="viaFerrata"
-        description="Via Ferraty které můžete objevovat"
+        description="Via Ferrata které můžete objevovat"
       />
       <WithLayout component={IndexViaFerrata} layout={LayoutPlaces} />
     </>

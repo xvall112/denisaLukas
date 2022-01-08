@@ -12,7 +12,7 @@ export const FavouriteContext = createContext({
 
 const FavouriteProvider = ({ children }) => {
   const [favouriteItems, setFavouriteItems] = useState([])
-  const [loading, setLoading] = useState(false)
+
   const [error, setError] = useState(null)
 
   const fetchFavouriteItems = async user => {
@@ -93,7 +93,6 @@ const FavouriteProvider = ({ children }) => {
   return (
     <FavouriteContext.Provider
       value={{
-        loading,
         error,
         favouriteItems,
         fetchFavouriteItems,

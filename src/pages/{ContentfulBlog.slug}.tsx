@@ -137,7 +137,7 @@ const BlogArticle = props => {
 
   return (
     <>
-      <SEO title={title} />
+      <SEO title={title} description={shortDescription} />
       <WithLayout component={Article} layout={Place} />
     </>
   )

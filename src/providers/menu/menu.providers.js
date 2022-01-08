@@ -26,7 +26,7 @@ const MenuProvider = ({ children }) => {
   const [filterCountryZoom, setFilterCountryZoom] = useState(2)
   const [filterCountryLocation, setFilterCountryLocation] = useState([0, 0])
   const [themeMode, setTheme] = useState("dark")
-  const [mountedComponent, setMountedComponent] = useState(false)
+
   const [openSidebar, setOpenSidebar] = useState(false)
   const [valueBottomNavigation, setValueBottomNavigation] = useState("home")
   const [titleTopBar, setTitleTopBar] = useState("")
@@ -77,7 +77,7 @@ const MenuProvider = ({ children }) => {
     <MenuContext.Provider
       value={{
         openSidebar,
-        mountedComponent,
+
         themeMode,
         filterCountry,
         filterCountryZoom,

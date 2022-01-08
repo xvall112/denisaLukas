@@ -4,8 +4,6 @@ import { graphql } from "gatsby"
 //components
 import LayoutPlaces from "../components/layoutPlaces"
 import { CardPromo } from "components/organisms"
-import { CardBase } from "components/organisms"
-import { IconAlternate } from "components/molecules"
 import DescriptionSection from "./components/describeSection"
 import SEO from "../../components/own/seo"
 
@@ -122,7 +120,7 @@ const ViaFerrata = props => {
   }, [])
   return (
     <>
-      <SEO title={name} />
+      <SEO title={name} description={describeFerrata.describeFerrata} />
       <LayoutPlaces
         data={props.data.contentfulViaFerrata}
         slug="viaFerrata"

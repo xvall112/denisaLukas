@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React from "react"
 import { Helmet } from "react-helmet"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"

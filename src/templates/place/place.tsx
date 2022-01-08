@@ -12,6 +12,7 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 export const query = graphql`
   query($slug: String!, $previousPlaceId: String, $nextPlaceId: String) {
     contentfulPlaces(slug: { eq: $slug }) {
+      seoDescribe
       inSurrounding {
         name
         slug
@@ -82,11 +83,11 @@ const Place = props => {
       setTitle("")
     }
   }, [])
-  const { previous, next } = props.data
+  const { previous, next, seoDescribe } = props.data
 
   return (
     <>
-      <SEO title={props.data.contentfulPlaces.name} />
+      <SEO title={props.data.contentfulPlaces.name} description={seoDescribe} />
       <LayoutPlaces
         data={props.data.contentfulPlaces}
         slug="places"
