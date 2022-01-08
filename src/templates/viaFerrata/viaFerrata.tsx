@@ -17,6 +17,7 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 export const query = graphql`
   query($slug: String!, $previousFerrataId: String, $nextFerrataId: String) {
     contentfulViaFerrata(slug: { eq: $slug }) {
+      seoDescription
       inSurrounding {
         name
         slug
@@ -108,6 +109,7 @@ const ViaFerrata = props => {
     backWayDescription,
     ferrataTime,
     inSurrounding,
+    seoDescription,
   } = props.data.contentfulViaFerrata
 
   const { setTitle } = useContext(MenuContext)
@@ -120,7 +122,7 @@ const ViaFerrata = props => {
   }, [])
   return (
     <>
-      <SEO title={name} description={describeFerrata.describeFerrata} />
+      <SEO title={name} description={seoDescription} />
       <LayoutPlaces
         data={props.data.contentfulViaFerrata}
         slug="viaFerrata"

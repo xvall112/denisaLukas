@@ -83,11 +83,14 @@ const Place = props => {
       setTitle("")
     }
   }, [])
-  const { previous, next, seoDescribe } = props.data
+  const { previous, next } = props.data
 
   return (
     <>
-      <SEO title={props.data.contentfulPlaces.name} description={seoDescribe} />
+      <SEO
+        title={props.data.contentfulPlaces.name}
+        description={props.data.contentfulPlaces.seoDescribe}
+      />
       <LayoutPlaces
         data={props.data.contentfulPlaces}
         slug="places"
