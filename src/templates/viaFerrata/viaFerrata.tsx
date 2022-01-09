@@ -8,7 +8,7 @@ import DescriptionSection from "./components/describeSection"
 import SEO from "../../components/own/seo"
 
 //material Ui
-import { makeStyles } from "@material-ui/core/styles"
+
 import { Grid, colors, Divider, Box } from "@material-ui/core"
 
 //context
@@ -88,12 +88,8 @@ export const query = graphql`
     }
   }
 `
-const useStyles = makeStyles(theme => ({
-  root: {},
-}))
 
 const ViaFerrata = props => {
-  const classes = useStyles()
   const { previous, next } = props.data
   const {
     level,
@@ -122,7 +118,7 @@ const ViaFerrata = props => {
   }, [])
   return (
     <>
-      <SEO title={name} description={seoDescription} />
+      <SEO title={name} description="viaFerrata" />
       <LayoutPlaces
         data={props.data.contentfulViaFerrata}
         slug="viaFerrata"
