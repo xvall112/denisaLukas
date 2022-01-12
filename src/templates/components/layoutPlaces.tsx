@@ -83,6 +83,9 @@ interface Props {
     id: string
     rating: number
     inSurrounding: any
+    seoDescription?: String
+    seoDescribe?: String
+    titleImage?: { file: { url: String } }
   }
   next?: {
     slug: string
@@ -188,7 +191,11 @@ const LayoutPlaces = ({
   }
   return (
     <>
-      <SEO title={data.name} />
+      <SEO
+        title={data.name}
+        description={data.seoDescription || data.seoDescribe}
+        image={`https:${data.titleImage.file.url}`}
+      />
       <WithLayout component={Nevim} layout={Places} />
     </>
   )

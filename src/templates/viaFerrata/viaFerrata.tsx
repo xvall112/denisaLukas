@@ -5,7 +5,6 @@ import { graphql } from "gatsby"
 import LayoutPlaces from "../components/layoutPlaces"
 import { CardPromo } from "components/organisms"
 import DescriptionSection from "./components/describeSection"
-import SEO from "../../components/own/seo"
 
 //material Ui
 
@@ -49,6 +48,11 @@ export const query = graphql`
       }
       ferrataTime
       heightOfMountain
+      titleImage {
+        file {
+          url
+        }
+      }
       images {
         gatsbyImageData(width: 1000, placeholder: BLURRED)
         title
@@ -104,8 +108,6 @@ const ViaFerrata = props => {
     describeFerrata,
     backWayDescription,
     ferrataTime,
-    inSurrounding,
-    seoDescription,
   } = props.data.contentfulViaFerrata
 
   const { setTitle } = useContext(MenuContext)
@@ -118,7 +120,6 @@ const ViaFerrata = props => {
   }, [])
   return (
     <>
-      <SEO title={name} description="viaFerrata" />
       <LayoutPlaces
         data={props.data.contentfulViaFerrata}
         slug="viaFerrata"

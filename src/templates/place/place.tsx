@@ -12,6 +12,11 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 export const query = graphql`
   query($slug: String!, $previousPlaceId: String, $nextPlaceId: String) {
     contentfulPlaces(slug: { eq: $slug }) {
+      titleImage {
+        file {
+          url
+        }
+      }
       seoDescribe
       inSurrounding {
         name
@@ -87,16 +92,17 @@ const Place = props => {
 
   return (
     <>
-      <SEO
-        title={props.data.contentfulPlaces.name}
-        description={props.data.contentfulPlaces.seoDescribe}
-      />
       <LayoutPlaces
         data={props.data.contentfulPlaces}
         slug="places"
         next={next}
         previous={previous}
       >
+        <SEO
+          title={props.data.contentfulPlaces.name}
+          description={props.data.contentfulPlaces.seoDescribe}
+          image={`https:${props.data.contentfulPlaces.file.url}`}
+        />
         <LayoutDescribePlace title="Popis" icon="fas fa-info">
           <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
         </LayoutDescribePlace>

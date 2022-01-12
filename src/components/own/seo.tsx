@@ -6,23 +6,29 @@
  */
 
 import * as React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
+import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
+import { some } from "utils/algolia-queries"
 
 interface Props {
   description?: String
   title: String
-  meta?: any
+  image?: String
+  article?: Boolean
 }
-const SEO = ({ description, meta = [], title }: Props): JSX.Element => {
+const SEO = ({ description, title, image, article }: Props): JSX.Element => {
+  const { pathname } = useLocation()
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
-            title
-            description
+            defaultTitle: title
+            titleTemplate
+            siteUrl
+            defaultDescription: description
+            defaultImage: image
             social {
               twitter
             }
@@ -31,52 +37,57 @@ const SEO = ({ description, meta = [], title }: Props): JSX.Element => {
       }
     `
   )
+  const {
+    defaultTitle,
+    defaultDescription,
+    siteUrl,
+    defaultImage,
+    social,
+    titleTemplate,
+  } = site.siteMetadata
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const seo = {
+    title: title || defaultTitle,
+    description: description || defaultDescription,
+    image: `${siteUrl}${defaultImage}` || image,
+    url: `${siteUrl}${pathname}`,
+  }
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang: "cs",
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+      htmlAttributes={{ lang: "cs" }}
+      title={seo.title}
+      titleTemplate={titleTemplate}
+    >
+      <meta name="description" content={seo.description} />
+      <meta name="image" content={seo.image} />
+      {seo.url && <meta property="og:url" content={seo.url} />}
+      {(article ? true : null) && <meta property="og:type" content="article" />}
+      {seo.title && <meta property="og:title" content={seo.title} />}
+      {seo.description && (
+        <meta property="og:description" content={seo.description} />
+      )}
+      {seo.image && <meta property="og:image" content={seo.image} />}
+
+      <meta name="twitter:card" content="summary_large_image" />
+      {social.twitter && (
+        <meta name="twitter:creator" content={social.twitter} />
+      )}
+      {seo.title && <meta name="twitter:title" content={seo.title} />}
+      {seo.description && (
+        <meta name="twitter:description" content={seo.description} />
+      )}
+      {seo.image && <meta name="twitter:image" content={seo.image} />}
+
+      {/* {name && <meta property="og:site_name" content={name} />} */}
+      <meta property="og:locale" content={pathname} />
+      <meta property="og:url" content={seo.url} />
+      <meta property="og:type" content={article ? "article" : "website"} />
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:image" content={seo.image} />
+      <meta property="og:image:alt" content={seo.title} />
+    </Helmet>
   )
 }
 

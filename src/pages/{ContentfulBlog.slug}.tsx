@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import { MenuContext } from "../providers/menu/menu.providers"
 //components
 import SEO from "../components/own/seo"
@@ -7,20 +7,15 @@ import WithLayout from "../../WithLayout"
 import Place from "../layouts/Place/Place"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid } from "@material-ui/core"
-import { Section, SectionAlternate } from "components/organisms"
+import { Section } from "components/organisms"
 import {
   Content,
-  FooterNewsletter,
   Hero,
   SidebarArticles,
   SidebarNewsletter,
   SimilarStories,
 } from "../views/BlogArticle/components"
-import {
-  content,
-  sidebarArticles,
-  similarStories,
-} from "../views/BlogArticle/data"
+import { similarStories } from "../views/BlogArticle/data"
 
 export const query = graphql`
   query($slug: String!) {
@@ -91,7 +86,6 @@ const BlogArticle = props => {
     author,
     date,
     text,
-
     country,
   } = props.data.contentfulBlog
 
@@ -137,7 +131,11 @@ const BlogArticle = props => {
 
   return (
     <>
-      <SEO title={title} description={shortDescription} />
+      <SEO
+        title={title}
+        description={shortDescription}
+        image={`https:${titleImage.file.url}`}
+      />
       <WithLayout component={Article} layout={Place} />
     </>
   )

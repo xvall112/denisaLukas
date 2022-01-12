@@ -16,6 +16,9 @@ export const query = graphql`
     contentfulCountry(slug: { eq: $slug }) {
       name
       heroImage {
+        file {
+          url
+        }
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 40)
       }
       mapZoom
@@ -138,7 +141,7 @@ const Countries = props => {
 
   return (
     <div>
-      <SEO title={name} />
+      <SEO title={name} image={`https:${heroImage.file.url}`} />
       <WithLayout component={Nevim} layout={LayoutPlaces} />
     </div>
   )

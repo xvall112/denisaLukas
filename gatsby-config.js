@@ -5,8 +5,10 @@ module.exports = {
   siteMetadata: {
     title: `Faith in Travel`,
     description: `Cestovni blog`,
+    titleTemplate: "%s - Faith in Travel",
     siteUrl: `https://www.faithintravel.cz`,
     author: `@Lukas Valta <valtalukas@sezanm.cz>`,
+    image: "/src/images/manifestIcon.png",
     social: {
       twitter: `Lukas`,
     },
@@ -29,8 +31,7 @@ module.exports = {
         allExtensions: true, // defaults to false
       },
     },
-
-    "gatsby-plugin-robots-txt",
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
