@@ -1,15 +1,11 @@
 import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
-
 //components
 import LayoutPlaces from "../components/layoutPlaces"
 import { CardPromo } from "components/organisms"
 import DescriptionSection from "./components/describeSection"
-
 //material Ui
-
 import { Grid, colors, Divider, Box } from "@material-ui/core"
-
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
 

@@ -1,11 +1,9 @@
 import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
-
 //components
 import LayoutPlaces from "../components/layoutPlaces"
 import ContentfulBody from "../components/contentfulBody"
 import LayoutDescribePlace from "./components/describePlace"
-import SEO from "../../components/own/seo"
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
 
@@ -98,11 +96,6 @@ const Place = props => {
         next={next}
         previous={previous}
       >
-        <SEO
-          title={props.data.contentfulPlaces.name}
-          description={props.data.contentfulPlaces.seoDescribe}
-          image={`https:${props.data.contentfulPlaces.file.url}`}
-        />
         <LayoutDescribePlace title="Popis" icon="fas fa-info">
           <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
         </LayoutDescribePlace>
