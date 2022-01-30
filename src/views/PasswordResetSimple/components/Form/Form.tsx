@@ -88,7 +88,7 @@ const Form = (): JSX.Element => {
               align="center"
             >
               Vzpomněli jste si na heslo?{" "}
-              <LearnMoreLink title="Přihlásit se" href="/signin" />
+              <LearnMoreLink title="Přihlásit se" href="/app/login" />
             </Typography>
           </Grid>
         </Grid>

@@ -53,6 +53,7 @@ const PlacesFavourite = () => {
       ) : (
         <>
           <FullScreenMap markers={favouritePlaces} />
+
           <Card data={favouritePlaces} four slug="places" />
         </>
       )}

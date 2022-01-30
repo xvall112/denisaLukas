@@ -111,7 +111,7 @@ const Hero = () => {
                       placeItems: "center",
                       display: "grid",
                       background:
-                        "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.09567577030812324) 20%, rgba(0,0,0,0.1026785714285714) 50%, rgba(0,0,0,0.9066001400560224) 100%)",
+                        "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.09567577030812324) 50%, rgba(0,0,0,0.1026785714285714) 50%, rgba(0,0,0,0.9066001400560224) 100%)",
                       borderRadius: "5px",
                     }}
                   >

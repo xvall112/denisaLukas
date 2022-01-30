@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react"
 import { MenuContext } from "../../providers/menu/menu.providers"
-
+import L from "leaflet"
 import clsx from "clsx"
 
 import { Map, ZoomControl, TileLayer, Marker, Popup } from "react-leaflet"
@@ -53,12 +53,23 @@ const LeafletMap = ({
   const mapRef = useRef()
 
   useEffect(() => {
-    const { current } = mapRef
+    const { current = {} } = mapRef
     const { leafletElement: map } = current
-
-    return () => {}
+    map.locate({
+      setView: true,
+    })
+    map.on("locationfound", handleOnLocationFound)
   }, [])
 
+  const handleOnLocationFound = event => {
+    const { current = {} } = mapRef
+    const { leafletElement: map } = current
+
+    const latlng = event.latlng
+    const radius = event.accuracy
+    const circle = L.circle(latlng, radius)
+    circle.addTo(map)
+  }
   if (typeof window !== "undefined") {
     return (
       <Map

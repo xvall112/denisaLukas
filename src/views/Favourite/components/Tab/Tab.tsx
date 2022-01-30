@@ -84,10 +84,14 @@ export default function TabPane() {
       </AppBar>
 
       <TabPanel value={value} index={0}>
-        <PlacesFavourite />
+        <Container maxWidth="xl">
+          <PlacesFavourite />
+        </Container>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <FerrataFavourite />
+        <Container maxWidth="xl">
+          <FerrataFavourite />
+        </Container>
       </TabPanel>
     </div>
   )
