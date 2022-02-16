@@ -19,6 +19,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
         nodes {
           id
           slug
+          location {
+            lat
+            lon
+          }
         }
       }
     }
@@ -35,6 +39,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
       path: `/${place.slug}`,
       context: {
         slug: place.slug,
+        maxLat: place.location.lat + 0.2,
+        minLat: place.location.lat - 0.2,
+        maxLon: place.location.lon + 0.2,
+        minLon: place.location.lon - 0.2,
         previousPlaceId,
         nextPlaceId,
       },

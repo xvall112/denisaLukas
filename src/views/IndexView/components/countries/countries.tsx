@@ -22,6 +22,34 @@ export const query = graphql`
     }
   }
 `
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", right: 10 }}
+      onClick={onClick}
+    />
+  )
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        left: 10,
+        zIndex: 10,
+      }}
+      onClick={onClick}
+    />
+  )
+}
+
 const useStyles = makeStyles(theme =>
   createStyles({
     root: {
@@ -55,6 +83,8 @@ const Countries = () => {
     rows: 1,
     slidesPerRow: 1,
     dots: true,
+    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
     responsive: [
       {
         breakpoint: 600,

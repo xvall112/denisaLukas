@@ -9,7 +9,7 @@ import SEO from "../../components/own/seo"
 import Location from "../components/Location"
 import LeafletMap from "../../components/own/LeafletMap"
 import NextPrevious from "../components/nextPrevious"
-import InSeraundings from "../components/InSeraundings"
+
 //material Ui
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import {
@@ -178,9 +178,7 @@ const LayoutPlaces = ({
 
                 {/* komponenta body */}
                 {children}
-                {data.inSurrounding && (
-                  <InSeraundings data={data.inSurrounding} />
-                )}
+
                 <NextPrevious next={next} previous={previous} />
               </Container>
             </Box>

@@ -4,11 +4,20 @@ import { graphql } from "gatsby"
 import LayoutPlaces from "../components/layoutPlaces"
 import ContentfulBody from "../components/contentfulBody"
 import LayoutDescribePlace from "./components/describePlace"
+import InSeraundings from "../components/InSeraundings"
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
 
 export const query = graphql`
-  query($slug: String!, $previousPlaceId: String, $nextPlaceId: String) {
+  query(
+    $slug: String!
+    $previousPlaceId: String
+    $nextPlaceId: String
+    $maxLat: Float
+    $minLat: Float
+    $maxLon: Float
+    $minLon: Float
+  ) {
     contentfulPlaces(slug: { eq: $slug }) {
       titleImage {
         file {
@@ -24,7 +33,7 @@ export const query = graphql`
           name
         }
         titleImage {
-          gatsbyImageData(width: 200, placeholder: BLURRED)
+          gatsbyImageData(width: 600, placeholder: BLURRED)
           title
         }
         kindPlace
@@ -75,43 +84,99 @@ export const query = graphql`
       slug
       name
     }
+    placeInSurrounding: allContentfulPlaces(
+      filter: {
+        location: {
+          lat: { gt: $minLat, lt: $maxLat }
+          lon: { gt: $minLon, lt: $maxLon }
+        }
+        node_locale: { eq: "cs" }
+        slug: { ne: $slug }
+      }
+    ) {
+      nodes {
+        name
+        titleImage {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED, width: 200)
+          title
+        }
+        kindPlace
+        slug
+      }
+    }
+    viaFerrataInSurrounding: allContentfulViaFerrata(
+      filter: {
+        location: {
+          lat: { gt: $minLat, lt: $maxLat }
+          lon: { gt: $minLon, lt: $maxLon }
+        }
+        node_locale: { eq: "cs" }
+        slug: { ne: $slug }
+      }
+    ) {
+      nodes {
+        name
+        titleImage {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED, width: 200)
+          title
+        }
+        kindPlace
+        slug
+      }
+    }
   }
 `
 
 const Place = props => {
+  const {
+    previous,
+    next,
+    placeInSurrounding,
+    contentfulPlaces,
+    viaFerrataInSurrounding,
+  } = props.data
   const { setTitle } = useContext(MenuContext)
   useEffect(() => {
-    setTitle(props.data.contentfulPlaces.name)
+    setTitle(contentfulPlaces.name)
     return () => {
       setTitle("")
     }
   }, [])
-  const { previous, next } = props.data
 
   return (
     <>
       <LayoutPlaces
-        data={props.data.contentfulPlaces}
+        data={contentfulPlaces}
         slug="places"
         next={next}
         previous={previous}
       >
         <LayoutDescribePlace title="Popis" icon="fas fa-info">
-          <ContentfulBody body={props.data.contentfulPlaces.describePlace} />
+          <ContentfulBody body={contentfulPlaces.describePlace} />
         </LayoutDescribePlace>
-        {props.data.contentfulPlaces.parking && (
+        {contentfulPlaces.parking && (
           <LayoutDescribePlace
             icon="fas fa-parking"
             title="Parkoviště"
-            parkingGps={props.data.contentfulPlaces.parkingGps}
+            parkingGps={contentfulPlaces.parkingGps}
           >
-            <ContentfulBody body={props.data.contentfulPlaces.parking} />
+            <ContentfulBody body={contentfulPlaces.parking} />
           </LayoutDescribePlace>
         )}
 
-        {props.data.contentfulPlaces.moreInfo && (
+        {contentfulPlaces.moreInfo && (
           <LayoutDescribePlace title="Zajímavosti" icon="fas fa-comment">
-            <ContentfulBody body={props.data.contentfulPlaces.moreInfo} />
+            <ContentfulBody body={contentfulPlaces.moreInfo} />
+          </LayoutDescribePlace>
+        )}
+        {placeInSurrounding.nodes.length !== 0 && (
+          <LayoutDescribePlace title="Místa v okolí" icon="fas fa-map-pin">
+            <InSeraundings data={placeInSurrounding.nodes} />
+          </LayoutDescribePlace>
+        )}
+        {viaFerrataInSurrounding.nodes.length !== 0 && (
+          <LayoutDescribePlace title="Ferraty v okolí" icon="fas fa-mountain">
+            <InSeraundings data={viaFerrataInSurrounding.nodes} />
           </LayoutDescribePlace>
         )}
       </LayoutPlaces>

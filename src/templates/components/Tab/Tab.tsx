@@ -1,18 +1,9 @@
 import React from "react"
 import { makeStyles, Theme } from "@material-ui/core/styles"
-import {
-  AppBar,
-  Grid,
-  Container,
-  Box,
-  Tab,
-  Tabs,
-  Chip,
-} from "@material-ui/core"
+import { AppBar, Grid, Container, Tab, Tabs, Chip } from "@material-ui/core"
 
 //components
 import PlacesCountry from "./components/PlacesCountry"
-import FerrataCountry from "./components/FerrataCountry"
 import Result from "../../../views/BlogSearch/components/Result/Result"
 
 interface TabPanelProps {

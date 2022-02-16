@@ -3,9 +3,33 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Slider from "react-slick"
 import { Link } from "gatsby"
 
+//components
+
 //materiaUI
-import { Grid, Box, Divider, Typography } from "@material-ui/core"
+import { Grid, Box, Divider } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", right: 10 }}
+      onClick={onClick}
+    />
+  )
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", left: 10, zIndex: 10 }}
+      onClick={onClick}
+    />
+  )
+}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -49,21 +73,29 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface Props {
-  data?: any
+  data?: [
+    {
+      name: String
+      titleImage: any
+      kindPlace: String
+      slug: String
+    }
+  ]
 }
 
 const InSeraundings = ({ data }: Props): JSX.Element => {
-  console.log(data)
   const classes = useStyles()
-  const theme = useTheme()
 
   const settings = {
     speed: 100,
-    arrows: false,
+    centerMode: false,
+    arrows: true,
     dots: false,
     infinite: false,
     slidesToShow: 3.5,
     slidesToScroll: 1,
+    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
     responsive: [
       {
         breakpoint: 600,
@@ -92,7 +124,7 @@ const InSeraundings = ({ data }: Props): JSX.Element => {
                           image={item.titleImage.gatsbyImageData}
                           alt={item.titleImage.title}
                           formats={["auto", "webp", "avif"]}
-                          style={{ height: "150px" }}
+                          style={{ height: "150px", width: "100%" }}
                         />
                       </Box>
                       <Box mt={0}>
@@ -113,9 +145,6 @@ const InSeraundings = ({ data }: Props): JSX.Element => {
           })}
         </Slider>
       </Grid>
-      <Box my={2}>
-        <Divider />
-      </Box>
     </>
   )
 }

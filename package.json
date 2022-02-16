@@ -49,18 +49,17 @@
     "react-firebase-hooks": "^3.0.4",
     "react-helmet": "^6.1.0",
     "react-instantsearch-dom": "^6.11.2",
-    "react-js-pull-to-refresh": "^1.2.3",
     "react-leaflet": "^2.8.0",
     "react-slick": "^0.28.1",
     "react-spring": "^8.0.27",
     "react-visibility-sensor": "^5.1.1",
     "sass": "^1.32.8",
     "slick-carousel": "^1.8.1",
-    "swiper": "^6.5.0",
     "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/leaflet": "^1.7.0",
+    "eslint-config-react-app": "^7.0.0",
     "prettier": "2.2.1"
   },
   "keywords": [
