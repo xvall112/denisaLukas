@@ -147,7 +147,11 @@ const ViaFerrata = props => {
           </Grid>
           <Grid item xs={4}>
             <CardPromo
-              title={`${ferrataTime + parkingToStartTime + backWayTime} min`}
+              title={`${Math.floor(
+                (ferrataTime + parkingToStartTime + backWayTime) / 60
+              )} h ${
+                (ferrataTime + parkingToStartTime + backWayTime) % 60
+              } min`}
               description="celkem"
               variant="outlined"
               color={colors.amber}

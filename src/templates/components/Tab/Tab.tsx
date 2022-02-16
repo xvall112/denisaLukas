@@ -116,7 +116,23 @@ export default function TabPane({ places, ferrata, country, blog }) {
               }
               {...a11yProps(1)}
             />
-
+            <Tab
+              label={
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                  spacing={1}
+                >
+                  <Grid item>Hiking</Grid>
+                  <Grid item>
+                    <Chip size="small" label={ferrata.length} />
+                  </Grid>
+                </Grid>
+              }
+              {...a11yProps(2)}
+            />
             <Tab
               label={
                 <Grid
@@ -132,7 +148,7 @@ export default function TabPane({ places, ferrata, country, blog }) {
                   </Grid>
                 </Grid>
               }
-              {...a11yProps(2)}
+              {...a11yProps(3)}
             />
 
             {/* <Tab label="Hiking" {...a11yProps(2)} />
@@ -147,6 +163,9 @@ export default function TabPane({ places, ferrata, country, blog }) {
         <PlacesCountry places={ferrata} country={country} />
       </TabPanel>
       <TabPanel value={value} index={2}>
+        <PlacesCountry places={ferrata} country={country} />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
         <Result data={blog} />
       </TabPanel>
       {/*  <TabPanel value={value} index={2}>

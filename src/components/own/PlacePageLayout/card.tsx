@@ -15,7 +15,6 @@ import {
   Box,
   IconButton,
   Tooltip,
-  Grow,
 } from "@material-ui/core"
 import Rating from "@material-ui/lab/Rating"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
@@ -172,16 +171,6 @@ const Main = ({
                             <Chip label={item.level} />
                           </Grid>
                         )}
-
-                        <Grid item>
-                          <Rating
-                            name="half-rating-read"
-                            defaultValue={item.rating || 5}
-                            precision={0.5}
-                            readOnly
-                            size="small"
-                          />
-                        </Grid>
                       </Grid>
 
                       <Grid item>
@@ -214,6 +203,15 @@ const Main = ({
                             </Tooltip>
                           )}
                         </Box>
+                      </Grid>
+                      <Grid item>
+                        <Rating
+                          name="half-rating-read"
+                          defaultValue={item.rating || 5}
+                          precision={0.5}
+                          readOnly
+                          size="small"
+                        />
                       </Grid>
                     </Grid>
                     <Link to={`/${item.slug}`} className={classes.link}>

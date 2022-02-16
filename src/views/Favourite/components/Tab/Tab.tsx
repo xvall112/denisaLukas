@@ -27,9 +27,9 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box p={2}>
+        <Container maxWidth="xl">
           <div>{children}</div>
-        </Box>
+        </Container>
       )}
     </div>
   )
@@ -84,14 +84,10 @@ export default function TabPane() {
       </AppBar>
 
       <TabPanel value={value} index={0}>
-        <Container maxWidth="xl">
-          <PlacesFavourite />
-        </Container>
+        <PlacesFavourite />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Container maxWidth="xl">
-          <FerrataFavourite />
-        </Container>
+        <FerrataFavourite />
       </TabPanel>
     </div>
   )
