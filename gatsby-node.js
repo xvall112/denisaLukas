@@ -84,6 +84,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
         nodes {
           slug
           id
+          location {
+            lat
+            lon
+          }
         }
       }
     }
@@ -99,6 +103,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
       component: viaFerrataTemplate,
       path: `/${ferrata.slug}`,
       context: {
+        maxLat: ferrata.location.lat + 0.2,
+        minLat: ferrata.location.lat - 0.2,
+        maxLon: ferrata.location.lon + 0.2,
+        minLon: ferrata.location.lon - 0.2,
         slug: ferrata.slug,
         previousFerrataId,
         nextFerrataId,

@@ -13,19 +13,7 @@ export const query = graphql`
   query($slug: String!, $previousFerrataId: String, $nextFerrataId: String) {
     contentfulViaFerrata(slug: { eq: $slug }) {
       seoDescription
-      inSurrounding {
-        name
-        slug
-        country {
-          flagLink
-          name
-        }
-        titleImage {
-          gatsbyImageData(width: 100, placeholder: BLURRED)
-          title
-        }
-        kindPlace
-      }
+
       rating
       id
       adress
@@ -76,6 +64,21 @@ export const query = graphql`
       }
       backWayDescription {
         backWayDescription
+      }
+      geoJson {
+        features {
+          geometry {
+            coordinates
+            type
+          }
+          properties {
+            stroke
+            stroke_opacity
+            stroke_width
+          }
+          type
+        }
+        type
       }
     }
     next: contentfulViaFerrata(id: { eq: $nextFerrataId }) {

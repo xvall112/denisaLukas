@@ -3,8 +3,15 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 import L from "leaflet"
 import clsx from "clsx"
 
-import { Map, ZoomControl, TileLayer, Marker, Popup } from "react-leaflet"
-import GPX from "leaflet-plugins/layer/vector/GPX"
+import {
+  Map,
+  ZoomControl,
+  TileLayer,
+  Marker,
+  Popup,
+  GeoJSON,
+} from "react-leaflet"
+
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -37,6 +44,7 @@ interface LeafletMap {
   slug?: string
   parking?: [number, number]
   endFerrataLocation?: [number, number]
+  geoJSON?: any
 }
 const LeafletMap = ({
   marker,
@@ -46,6 +54,7 @@ const LeafletMap = ({
   className,
   parking,
   endFerrataLocation,
+  geoJSON,
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
@@ -88,6 +97,8 @@ const LeafletMap = ({
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {geoJSON && <GeoJSON data={geoJSON} />}
+
         {endFerrataLocation && (
           <Marker position={endFerrataLocation}>
             <Popup>Vrchol</Popup>

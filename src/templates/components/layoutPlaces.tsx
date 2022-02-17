@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 
 //components
 import WithLayout from "../../../WithLayout"
@@ -22,7 +22,7 @@ import {
 
 //context
 import { MapContext } from "../../providers/map/map.providers"
-import { MenuContext } from "../../providers/menu/menu.providers"
+import GEO from "./geo.json"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -86,6 +86,7 @@ interface Props {
     seoDescription?: String
     seoDescribe?: String
     titleImage?: { file: { url: String } }
+    geoJson?: any
   }
   next?: {
     slug: string
@@ -114,6 +115,8 @@ const LayoutPlaces = ({
   })
 
   const Nevim = () => {
+    console.log("contentful:", data.geoJson)
+    console.log("GEO:", GEO)
     return (
       <div className={classes.root}>
         <Typography variant="h1" className={classes.name}>
@@ -134,6 +137,7 @@ const LayoutPlaces = ({
               {/* komponenta mapa a slider prepinani button v pleaceHeader */}
               {map ? (
                 <LeafletMap
+                  geoJSON={data.geoJson && data.geoJson}
                   zoom={13}
                   center={[data.location.lat, data.location.lon]}
                   marker={[data]}
