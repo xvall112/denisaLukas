@@ -75,6 +75,21 @@ export const query = graphql`
         lat
         lon
       }
+      geoJson {
+        features {
+          geometry {
+            coordinates
+            type
+          }
+          properties {
+            stroke
+            stroke_opacity
+            stroke_width
+          }
+          type
+        }
+        type
+      }
     }
     next: contentfulPlaces(id: { eq: $nextPlaceId }) {
       slug

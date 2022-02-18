@@ -22,7 +22,6 @@ import {
 
 //context
 import { MapContext } from "../../providers/map/map.providers"
-import GEO from "./geo.json"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -115,8 +114,6 @@ const LayoutPlaces = ({
   })
 
   const Nevim = () => {
-    console.log("contentful:", data.geoJson)
-    console.log("GEO:", GEO)
     return (
       <div className={classes.root}>
         <Typography variant="h1" className={classes.name}>

@@ -12,6 +12,7 @@ import {
   GeoJSON,
 } from "react-leaflet"
 
+import GEO from "./geo.json"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -67,7 +68,17 @@ const LeafletMap = ({
     map.locate({
       setView: true,
     })
+
     map.on("locationfound", handleOnLocationFound)
+
+    const GeoJSON = L.geoJSON(geoJSON, {
+      style: function (feature) {
+        return {
+          color: feature.properties.stroke,
+        }
+      },
+    })
+    GeoJSON.addTo(map)
   }, [])
 
   const handleOnLocationFound = event => {
@@ -79,6 +90,7 @@ const LeafletMap = ({
     const circle = L.circle(latlng, radius)
     circle.addTo(map)
   }
+
   if (typeof window !== "undefined") {
     return (
       <Map
@@ -97,7 +109,7 @@ const LeafletMap = ({
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {geoJSON && <GeoJSON data={geoJSON} />}
+        {/* {geoJSON && <GeoJSON data={geoJSON} />} */}
 
         {endFerrataLocation && (
           <Marker position={endFerrataLocation}>
