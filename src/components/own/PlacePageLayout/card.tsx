@@ -146,14 +146,14 @@ const Main = ({
                     >
                       <Grid
                         item
-                        xs={8}
+                        xs={10}
                         container
                         direction="row"
                         justify="flex-start"
                         alignItems="center"
                         spacing={1}
                       >
-                        <Grid item>
+                        <Grid item xs="auto">
                           <Grid container alignItems="center">
                             <FlagChip
                               name={item.country.name}
@@ -163,17 +163,23 @@ const Main = ({
                             />
                           </Grid>
                         </Grid>
-                        <Grid item>
-                          <Chip label={item.kindPlace} />
-                        </Grid>
+
+                        {item.kindPlace.map((item, index) => {
+                          return (
+                            <Grid item xs="auto">
+                              <Chip key={index} label={item} />
+                            </Grid>
+                          )
+                        })}
+
                         {item.level && (
-                          <Grid item>
+                          <Grid item xs="auto">
                             <Chip label={item.level} />
                           </Grid>
                         )}
                       </Grid>
 
-                      <Grid item>
+                      <Grid item xs={2}>
                         <Box zIndex={100}>
                           {favouriteItems.includes(id) ? (
                             <Tooltip

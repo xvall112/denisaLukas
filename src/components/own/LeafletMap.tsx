@@ -12,7 +12,6 @@ import {
   GeoJSON,
 } from "react-leaflet"
 
-import GEO from "./geo.json"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -76,6 +75,12 @@ const LeafletMap = ({
         return {
           color: feature.properties.stroke,
         }
+      },
+      onEachFeature: (feature = {}, layer) => {
+        const { properties = {} } = feature
+        const { description } = properties
+        if (!description) return
+        layer.bindTooltip(description)
       },
     })
     GeoJSON.addTo(map)

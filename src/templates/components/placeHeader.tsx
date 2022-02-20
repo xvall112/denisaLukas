@@ -28,12 +28,11 @@ import { UserContext } from "../../providers/user/user.provider"
 const useStyles = makeStyles(theme => ({
   flag: {
     borderRadius: theme.spacing(0.5),
-    marginLeft: theme.spacing(1),
   },
 }))
 
 interface Props {
-  kindPlace: string
+  kindPlace: string[]
   country: {
     name: string
     flagLink: string
@@ -86,7 +85,13 @@ const PlaceHeader = ({
               justify="flex-start"
               alignItems="center"
             >
-              <Chip label={kindPlace} />
+              {kindPlace.map((item, index) => {
+                return (
+                  <Box mr={1}>
+                    <Chip key={index} label={item} />
+                  </Box>
+                )
+              })}
               <FlagChip
                 name={country.name}
                 flagLink={country.flagLink}
