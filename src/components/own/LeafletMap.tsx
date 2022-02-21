@@ -81,6 +81,7 @@ const LeafletMap = ({
         const { description } = properties
         if (!description) return
         layer.bindTooltip(description)
+        layer.bindPopup(description)
       },
     })
     GeoJSON.addTo(map)

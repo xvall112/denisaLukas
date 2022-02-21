@@ -72,6 +72,7 @@ export const query = graphql`
             type
           }
           properties {
+            description
             stroke
             stroke_opacity
             stroke_width
