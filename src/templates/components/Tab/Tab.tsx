@@ -107,7 +107,7 @@ export default function TabPane({ places, ferrata, country, blog }) {
               }
               {...a11yProps(1)}
             />
-            <Tab
+            {/*  <Tab
               label={
                 <Grid
                   container
@@ -123,7 +123,7 @@ export default function TabPane({ places, ferrata, country, blog }) {
                 </Grid>
               }
               {...a11yProps(2)}
-            />
+            /> */}
             <Tab
               label={
                 <Grid
