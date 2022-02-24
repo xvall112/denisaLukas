@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef } from "react"
-import { MenuContext } from "../../providers/menu/menu.providers"
 import L from "leaflet"
 import clsx from "clsx"
 
@@ -11,6 +10,11 @@ import {
   Popup,
   GeoJSON,
 } from "react-leaflet"
+import GEO from "./geo.json"
+
+//context
+import { MenuContext } from "../../providers/menu/menu.providers"
+import { MapContext } from "providers/map/map.providers"
 
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
@@ -58,7 +62,7 @@ const LeafletMap = ({
   ...rest
 }: LeafletMap): JSX.Element => {
   const classes = useStyles()
-  const { filterCountryLocation, filterCountryZoom } = useContext(MenuContext)
+  const { highlightedCard } = useContext(MapContext)
   const mapRef = useRef()
 
   useEffect(() => {
@@ -115,7 +119,16 @@ const LeafletMap = ({
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* {geoJSON && <GeoJSON data={geoJSON} />} */}
+        {/* {geoJSON && (
+          <GeoJSON
+            data={geoJSON}
+            style={function (feature) {
+              return {
+                color: feature.properties.stroke,
+              }
+            }}
+          ></GeoJSON>
+        )} */}
 
         {endFerrataLocation && (
           <Marker position={endFerrataLocation}>
@@ -130,7 +143,12 @@ const LeafletMap = ({
         {marker &&
           marker.length &&
           marker.map((item, i) => (
-            <Marker position={[item.location.lat, item.location.lon]} key={i}>
+            <Marker
+              position={[item.location.lat, item.location.lon]}
+              key={i}
+              opacity={item.id === highlightedCard ? 1 : 0.7}
+              zIndexOffset={item.id === highlightedCard ? 1000 : 0}
+            >
               <Popup className={classes.popup}>
                 <PopupCard item={item} slug={slug} />
               </Popup>

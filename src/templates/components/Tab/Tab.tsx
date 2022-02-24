@@ -139,7 +139,7 @@ export default function TabPane({ places, ferrata, country, blog }) {
                   </Grid>
                 </Grid>
               }
-              {...a11yProps(3)}
+              {...a11yProps(2)}
             />
 
             {/* <Tab label="Hiking" {...a11yProps(2)} />
@@ -153,10 +153,10 @@ export default function TabPane({ places, ferrata, country, blog }) {
       <TabPanel value={value} index={1}>
         <PlacesCountry places={ferrata} country={country} />
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/*  <TabPanel value={value} index={2}>
         <PlacesCountry places={ferrata} country={country} />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
+      </TabPanel> */}
+      <TabPanel value={value} index={2}>
         <Result data={blog} />
       </TabPanel>
       {/*  <TabPanel value={value} index={2}>

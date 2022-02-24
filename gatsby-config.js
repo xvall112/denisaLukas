@@ -93,8 +93,8 @@ module.exports = {
         lang: `cs`,
         short_name: `FiT`,
         start_url: `/`,
-        background_color: `#fff`,
-        theme_color: `#fff`,
+        background_color: `#000`,
+        theme_color: `#000`,
         display: `fullscreen`,
         icon: `src/images/manifestIcon.png`, // This path is relative to the root of the site.
       },

@@ -22,6 +22,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 
 //context
 import { UserContext } from "../../../providers/user/user.provider"
+import { MapContext } from "providers/map/map.providers"
+
 const useStyles = makeStyles(theme => ({
   root: { marginTop: theme.spacing(2), marginBottom: theme.spacing(2) },
   flag: {
@@ -99,6 +101,7 @@ const Main = ({
   ...rest
 }: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
+  const { setHighlighted } = useContext(MapContext)
   const { addFavouriteItem, favouriteItems, removeFavouriteItem } = useContext(
     UserContext
   )
@@ -117,7 +120,12 @@ const Main = ({
               xl={3}
               key={index}
             >
-              <div className={classes.folioItem} data-aos="fade-up">
+              <div
+                className={classes.folioItem}
+                data-aos="fade-up"
+                onMouseEnter={() => setHighlighted(id)}
+                onMouseLeave={() => setHighlighted(null)}
+              >
                 {/*  <GatsbyImage
                   image={item.titleImage.gatsbyImageData}
                   alt={item.titleImage.title}

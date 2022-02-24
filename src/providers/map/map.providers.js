@@ -5,11 +5,13 @@ export const MapContext = createContext({
   snackbar: false,
   snackbarMessage: "",
   isFullScreenMapOpen: false,
+  highlightedCard: null,
   changeMap: () => {},
   handleCloseToast: () => {},
   setOpenFullScreenMap: () => {},
   setCloseFullScreenMap: () => {},
   copyLocationToClipboard: location => {},
+  setHighlighted: index => {},
 })
 
 const MapProvider = ({ children }) => {
@@ -17,6 +19,11 @@ const MapProvider = ({ children }) => {
   const [snackbarMessage, setSnackbarMessage] = useState("")
   const [map, setMap] = useState(false)
   const [isFullScreenMapOpen, setIsFullScreenMapOpen] = useState(false)
+  const [highlightedCard, setHighlightedCard] = useState(null)
+
+  const setHighlighted = index => {
+    setHighlightedCard(index)
+  }
 
   const setOpenFullScreenMap = () => {
     setIsFullScreenMapOpen(true)
@@ -45,11 +52,13 @@ const MapProvider = ({ children }) => {
         snackbarMessage,
         map,
         isFullScreenMapOpen,
+        highlightedCard,
         changeMap,
         handleCloseToast,
         copyLocationToClipboard,
         setOpenFullScreenMap,
         setCloseFullScreenMap,
+        setHighlighted,
       }}
     >
       {children}

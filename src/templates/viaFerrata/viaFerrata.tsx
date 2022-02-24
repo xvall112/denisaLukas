@@ -13,7 +13,6 @@ export const query = graphql`
   query($slug: String!, $previousFerrataId: String, $nextFerrataId: String) {
     contentfulViaFerrata(slug: { eq: $slug }) {
       seoDescription
-
       rating
       id
       adress

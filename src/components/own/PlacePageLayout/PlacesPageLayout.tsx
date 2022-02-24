@@ -38,7 +38,6 @@ interface Props {
   slug: string
 }
 const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
-  console.log("places:", data)
   const {
     filterCountry,
     filterCountryLocation,
@@ -55,7 +54,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
 
   //load more
   const [list, setList] = useState([...data.slice(0, loadList)])
-  console.log("list place:", list)
+
   // State to trigger oad more
   const [loadMore, setLoadMore] = useState(false)
 
