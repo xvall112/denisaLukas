@@ -45,25 +45,38 @@ const options = {
   },
   renderNode: {
     [BLOCKS.HEADING_1]: (node, children) => (
-      <Typography variant="h1">{children}</Typography>
+      <Box mt={3}>
+        <Typography variant="h1">{children}</Typography>
+      </Box>
     ),
     [BLOCKS.HEADING_2]: (node, children) => (
-      <Typography variant="h2">{children}</Typography>
+      <Box mt={3}>
+        <Typography variant="h2">{children}</Typography>
+      </Box>
     ),
+
     [BLOCKS.HEADING_3]: (node, children) => (
-      <Typography variant="h3">{children}</Typography>
+      <Box mt={3}>
+        <Typography variant="h3">{children}</Typography>
+      </Box>
     ),
     [BLOCKS.HEADING_4]: (node, children) => (
-      <Typography variant="h4">{children}</Typography>
+      <Box mt={3}>
+        <Typography variant="h4">{children}</Typography>
+      </Box>
     ),
     [BLOCKS.HEADING_5]: (node, children) => (
-      <Typography variant="h5">{children}</Typography>
+      <Box mt={3}>
+        <Typography variant="h5">{children}</Typography>
+      </Box>
     ),
     [BLOCKS.HEADING_6]: (node, children) => (
-      <Typography variant="h6">{children}</Typography>
+      <Box mt={3}>
+        <Typography variant="h6">{children}</Typography>
+      </Box>
     ),
     [BLOCKS.PARAGRAPH]: (node, children) => (
-      <Box textAlign="justify">
+      <Box textAlign="justify" mt={2}>
         <Typography variant="subtitle1">{children}</Typography>
       </Box>
     ),

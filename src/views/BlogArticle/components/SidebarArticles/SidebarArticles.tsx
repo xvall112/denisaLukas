@@ -125,9 +125,9 @@ const SidebarArticles = ({
       >
         Další místa
       </Typography>
-      <Grid container spacing={0}>
-        {data.length > 1 &&
-          data.map((item: any, index: number) => (
+      {data && (
+        <Grid container spacing={0}>
+          {data.map((item: any, index: number) => (
             <Grid
               item
               xs={12}
@@ -159,7 +159,8 @@ const SidebarArticles = ({
               </Link>
             </Grid>
           ))}
-      </Grid>
+        </Grid>
+      )}
     </div>
   )
 }
