@@ -126,38 +126,39 @@ const SidebarArticles = ({
         Další místa
       </Typography>
       <Grid container spacing={0}>
-        {data.map((item: any, index: number) => (
-          <Grid
-            item
-            xs={12}
-            data-aos="fade-up"
-            className={classes.gridItem}
-            key={index}
-          >
-            <Link to={`/${item.slug}`}>
-              <CardProduct
-                className={classes.cardProduct}
-                mediaContent={
-                  <GatsbyImage
-                    image={item.titleImage.gatsbyImageData}
-                    alt={item.titleImage.title}
-                    formats={["auto", "webp", "avif"]}
-                    style={{ height: "100%" }}
-                  />
-                }
-                cardContent={
-                  <BlogContent
-                    name={item.name}
-                    subtitle={item.kindPlace}
-                    /* author={item.author} */
+        {data.length > 1 &&
+          data.map((item: any, index: number) => (
+            <Grid
+              item
+              xs={12}
+              data-aos="fade-up"
+              className={classes.gridItem}
+              key={index}
+            >
+              <Link to={`/${item.slug}`}>
+                <CardProduct
+                  className={classes.cardProduct}
+                  mediaContent={
+                    <GatsbyImage
+                      image={item.titleImage.gatsbyImageData}
+                      alt={item.titleImage.title}
+                      formats={["auto", "webp", "avif"]}
+                      style={{ height: "100%" }}
+                    />
+                  }
+                  cardContent={
+                    <BlogContent
+                      name={item.name}
+                      subtitle={item.kindPlace}
+                      /* author={item.author} */
 
-                    /* tags={item.tags} */
-                  />
-                }
-              />
-            </Link>
-          </Grid>
-        ))}
+                      /* tags={item.tags} */
+                    />
+                  }
+                />
+              </Link>
+            </Grid>
+          ))}
       </Grid>
     </div>
   )
