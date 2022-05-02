@@ -114,7 +114,10 @@ const BlogArticle = props => {
               <Content data={text} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <SidebarArticles data={country.places} />
+              {country.places.length > 1 && (
+                <SidebarArticles data={country.places} />
+              )}
+
               <SidebarNewsletter className={classes.sidebarNewsletter} />
             </Grid>
           </Grid>
