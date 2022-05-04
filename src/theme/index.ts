@@ -33,7 +33,7 @@ const getTheme = mode =>
         contentWidth: 1236,
       },
       typography: {
-        fontFamily: "Lato, Roboto, Arial",
+        fontFamily: "Roboto, Arial",
       },
 
       zIndex: {

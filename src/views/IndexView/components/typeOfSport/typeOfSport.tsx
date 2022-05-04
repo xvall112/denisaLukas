@@ -6,7 +6,7 @@ import { graphql, useStaticQuery, Link } from "gatsby"
 import { CardBase } from "components/organisms"
 
 //materialUi
-import { Grid, Box } from "@material-ui/core"
+import { Grid, Box, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 const query = graphql`
@@ -16,7 +16,7 @@ const query = graphql`
         name
         slug
         icon {
-          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, width: 100)
           title
         }
       }
@@ -30,6 +30,9 @@ const useStyles = makeStyles(theme => ({
     "& .MuiCardContent-root": {
       padding: "0px",
     },
+  },
+  text: {
+    fontWeight: 700,
   },
   img: {
     borderTopLeftRadius: theme.shape.borderRadius,
@@ -46,7 +49,13 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     backgroundColor: theme.palette.background.level2,
-    height: "12vh",
+    height: "20vh",
+    "& :hover": {
+      "& img": {
+        transform: "scale(1.2)",
+        transition: "transform 0.5s",
+      },
+    },
   },
 }))
 
@@ -59,18 +68,18 @@ const TypeOfSport = () => {
         {data.allContentfulTypeOfActivities.nodes.map(
           (item: any, index: number) => {
             return (
-              <Grid item xs={6} md={3} lg={2} key={index}>
+              <Grid item xs={12} md={4} lg={4} key={index}>
                 <Link to={`/${item.slug}`}>
                   <CardBase className={classes.card}>
                     <Grid container>
-                      <Grid item xs={5}>
+                      <Grid item xs={4}>
                         <Box className={classes.img}>
                           <GatsbyImage
                             image={item.icon.gatsbyImageData}
                             alt={item.icon.title}
                             formats={["auto", "webp", "avif"]}
                             style={{
-                              height: "12vh",
+                              height: "20vh",
                               width: "100%",
                             }}
                           />
@@ -83,7 +92,9 @@ const TypeOfSport = () => {
                         alignItems="center"
                         xs={7}
                       >
-                        <Box fontSize={16}>{item.name}</Box>
+                        <Typography variant="h5" className={classes.text}>
+                          {item.name}
+                        </Typography>
                       </Grid>
                     </Grid>
                   </CardBase>

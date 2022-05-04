@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     "& :hover": {
       color: theme.palette.text.primary,
+      "& img": { transform: "scale(1.15)", transition: "ease 0.5s" },
     },
   },
   name: {

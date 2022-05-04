@@ -8,6 +8,7 @@ import { useContentfulAsset } from "../../hooks/useContentfullAsset"
 import { useContentfulImage } from "../../hooks/useContentfulImage"
 //materialUI
 import { Typography, Box, Grid, makeStyles, Chip } from "@material-ui/core"
+import { Alert, AlertTitle } from "@material-ui/lab"
 import Rating from "@material-ui/lab/Rating"
 //components
 import FlagChip from "../../components/own/flagChip"
@@ -41,7 +42,6 @@ const options = {
     [MARKS.BOLD]: text => <b>{text}</b>,
     [MARKS.ITALIC]: text => <i>{text}</i>,
     [MARKS.CODE]: text => <code>{text}</code>,
-    [MARKS.BOLD]: text => <b>{text}</b>,
   },
   renderNode: {
     [BLOCKS.HEADING_1]: (node, children) => (
@@ -78,6 +78,14 @@ const options = {
     [BLOCKS.PARAGRAPH]: (node, children) => (
       <Box textAlign="justify" mt={2}>
         <Typography variant="subtitle1">{children}</Typography>
+      </Box>
+    ),
+    [BLOCKS.QUOTE]: (node, children) => (
+      <Box textAlign="justify" mt={2}>
+        <Alert severity="info">
+          <AlertTitle>Tip</AlertTitle>
+          <Typography variant="subtitle1">{children}</Typography>
+        </Alert>
       </Box>
     ),
     [BLOCKS.EMBEDDED_ASSET]: node => {

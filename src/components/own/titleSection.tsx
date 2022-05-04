@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 //materiaUI
-import { Box, Grid, useMediaQuery } from "@material-ui/core"
+import { Box, Grid, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import NavigateNextIcon from "@material-ui/icons/NavigateNext"
 
@@ -55,14 +55,14 @@ const TitleSection = ({ title, link }: props): JSX.Element => {
   return (
     <div className={classes.root}>
       <Link to={link} className={classes.link}>
-        <Box fontSize={26} mb={1} fontWeight="bold">
+        <Box mb={1} fontWeight="700">
           <Grid
             container
             direction="row"
             justify={isLg ? "flex-start" : "space-between"}
             alignItems="center"
           >
-            {title}
+            <Typography variant="h3">{title}</Typography>
             <span>Prozkoumat vše</span>
             <NavigateNextIcon className="icon" />
           </Grid>
