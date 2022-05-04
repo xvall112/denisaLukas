@@ -95,7 +95,7 @@ const options = {
                 formats={["auto", "webp", "avif"]}
                 style={{
                   width: "100%",
-                  height: "100%",
+                  maxHeight: "80vh",
                   /*      borderRadius: "5px",
                   WebkitBorderRadius: "5px", */
                 }}

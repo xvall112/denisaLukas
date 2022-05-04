@@ -1,6 +1,7 @@
 import React from "react"
 import clsx from "clsx"
 import { makeStyles } from "@material-ui/core/styles"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -34,7 +35,7 @@ const Parallax = ({
   ...rest
 }: ParallaxProps): JSX.Element => {
   const classes = useStyles()
-
+  const image = getImage(backgroundImage)
   React.useEffect(() => {
     const jarallaxElems = document.querySelectorAll(".jarallax")
     if (!jarallaxElems || (jarallaxElems && jarallaxElems.length === 0)) {
@@ -54,8 +55,15 @@ const Parallax = ({
     >
       <div
         className={clsx("jarallax-img", "parallax__image", classes.image)}
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      />
+        //style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        <GatsbyImage
+          image={image}
+          alt={backgroundImage.title}
+          style={{ height: "100%", width: "100%" }}
+        />
+      </div>
+
       {children}
     </div>
   )

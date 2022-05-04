@@ -37,7 +37,7 @@ export const query = graphql`
         raw
       }
       titleImage {
-        gatsbyImageData
+        gatsbyImageData(placeholder: BLURRED, width: 1000)
         title
         file {
           url

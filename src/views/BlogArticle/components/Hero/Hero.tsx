@@ -58,7 +58,7 @@ const Hero = ({
   const classes = useStyles()
   return (
     <div className={clsx(classes.root, className)} {...rest}>
-      <Parallax backgroundImage={cover.file.url}>
+      <Parallax backgroundImage={cover}>
         <div className={classes.sectionWrapper}>
           <Section className={classes.section}>
             <>

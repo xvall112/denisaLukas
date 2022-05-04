@@ -10,7 +10,7 @@ interface ParallaxProps {
   /**
    * The parallax background image
    */
-  backgroundImage: string;
+  backgroundImage: any;
 
   // All other props
   [x:string]: any;
