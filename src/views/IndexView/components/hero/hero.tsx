@@ -14,13 +14,16 @@ import HeroCardPlace from "./components/heroCardPlace"
 
 const query = graphql`
   {
-    allContentfulLandingPage(filter: { node_locale: { eq: "cs" } }) {
+    allContentfulLandingPage(
+      filter: { node_locale: { eq: "cs" } }
+      sort: { order: DESC, fields: createdAt }
+    ) {
       nodes {
         description
         slug
         title
         image {
-          gatsbyImageData(width: 2000)
+          gatsbyImageData(width: 800)
           title
         }
       }

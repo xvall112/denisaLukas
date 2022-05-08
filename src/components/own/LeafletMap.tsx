@@ -68,11 +68,11 @@ const LeafletMap = ({
   useEffect(() => {
     const { current = {} } = mapRef
     const { leafletElement: map } = current
-    map.locate({
+    /*  map.locate({
       setView: true,
-    })
+    }) */
 
-    map.on("locationfound", handleOnLocationFound)
+    /* map.on("locationfound", handleOnLocationFound) */
 
     const GeoJSON = L.geoJSON(geoJSON, {
       style: function (feature) {
