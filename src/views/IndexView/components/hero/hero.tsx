@@ -23,7 +23,7 @@ const query = graphql`
         slug
         title
         image {
-          gatsbyImageData(width: 800)
+          gatsbyImageData(width: 1000)
           title
         }
       }

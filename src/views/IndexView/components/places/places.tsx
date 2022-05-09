@@ -12,7 +12,7 @@ const query = graphql`
         slug
         name
         titleImage {
-          gatsbyImageData(placeholder: BLURRED, width: 300, quality: 30)
+          gatsbyImageData(placeholder: BLURRED, width: 500, quality: 30)
           title
         }
         country {

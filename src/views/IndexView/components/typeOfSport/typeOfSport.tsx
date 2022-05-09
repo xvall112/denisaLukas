@@ -16,7 +16,7 @@ const query = graphql`
         name
         slug
         icon {
-          gatsbyImageData(placeholder: BLURRED, width: 150)
+          gatsbyImageData(placeholder: BLURRED, width: 200)
           title
         }
       }

@@ -93,7 +93,7 @@ export const query = graphql`
 `
 
 const ViaFerrata = props => {
-  const { previous, next } = props.data
+  const { previous, next, contentfulViaFerrata } = props.data
   const {
     level,
     name,
@@ -120,7 +120,7 @@ const ViaFerrata = props => {
   return (
     <>
       <LayoutPlaces
-        data={props.data.contentfulViaFerrata}
+        data={contentfulViaFerrata}
         slug="viaFerrata"
         next={next}
         previous={previous}
