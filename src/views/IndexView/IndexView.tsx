@@ -73,18 +73,16 @@ const IndexPage = () => {
   const classes = useStyles()
   const { currentUser } = useContext(UserContext)
   return (
-    <>
+    <Box overflow="hidden">
       <Box mt={-1}>
         <Hero />
       </Box>
       <Box mt={-1}>
         <Container maxWidth="xl">
           <Section fullWidth className={classes.sectionNoPaddingTop}>
-            <>
-              <Box mt={2}>
-                <TypeOfSport />
-              </Box>
-            </>
+            <Box mt={2}>
+              <TypeOfSport />
+            </Box>
           </Section>
           <Section fullWidth className={classes.sectionNoPaddingTop}>
             <Countries />
@@ -119,7 +117,7 @@ const IndexPage = () => {
           })}
         </Container>
       </Box>
-    </>
+    </Box>
   )
 }
 

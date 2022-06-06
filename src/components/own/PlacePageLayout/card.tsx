@@ -25,7 +25,11 @@ import { UserContext } from "../../../providers/user/user.provider"
 import { MapContext } from "providers/map/map.providers"
 
 const useStyles = makeStyles(theme => ({
-  root: { marginTop: theme.spacing(2), marginBottom: theme.spacing(2) },
+  root: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    height: "100%",
+  },
   flag: {
     borderRadius: theme.spacing(0.5),
   },
@@ -38,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   folioItem: {
     position: "relative",
     overflow: "hidden",
-
+    height: "100%",
     boxShadow: `0 1.5rem 4rem rgba(22,28,45,.05)`,
     borderRadius: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {},
@@ -134,7 +138,7 @@ const Main = ({
                 <Link to={`/${item.slug}`} className={classes.link}>
                   <SliderSlick
                     img={item.images}
-                    heightImg={"200px"}
+                    heightImg={"300px"}
                     widthImg={"100%"}
                   />
                 </Link>
@@ -230,7 +234,8 @@ const Main = ({
                     </Grid>
                     <Link to={`/${item.slug}`} className={classes.link}>
                       <Typography
-                        variant="h4"
+                        variant="h5"
+                        noWrap={true}
                         className={classes.folioTitle}
                         color="textPrimary"
                       >

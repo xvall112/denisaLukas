@@ -52,7 +52,9 @@ const Main = ({ children }: Props): JSX.Element => {
       <SideBar variant="temporary" />
       <main>
         {/*  <Divider /> */}
-        <Box mb={8}>{children}</Box>
+        <Box mb={8} overflow="hidden">
+          {children}
+        </Box>
       </main>
       <Hidden mdUp>
         <BottomNavigation />

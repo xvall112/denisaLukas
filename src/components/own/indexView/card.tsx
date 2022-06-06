@@ -19,9 +19,10 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: "none",
+
     "& :hover": {
       color: theme.palette.text.primary,
-      "& img": { transform: "scale(1.15)", transition: "ease 0.5s" },
+      "& img": { transform: "scale(1.15)", transition: "all .5s ease-in-out" },
     },
   },
   name: {
@@ -58,7 +59,7 @@ const Card = ({ item }: props): JSX.Element => {
             image={item.titleImage.gatsbyImageData}
             alt={item.titleImage.title}
             formats={["auto", "webp", "avif"]}
-            style={{ height: "300px" }}
+            style={{ height: "350px" }}
           />
         </Box>
         <Box mt={0}>

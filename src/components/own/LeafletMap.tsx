@@ -2,15 +2,7 @@ import React, { useContext, useEffect, useRef } from "react"
 import L from "leaflet"
 import clsx from "clsx"
 
-import {
-  Map,
-  ZoomControl,
-  TileLayer,
-  Marker,
-  Popup,
-  GeoJSON,
-} from "react-leaflet"
-import GEO from "./geo.json"
+import { Map, ZoomControl, TileLayer, Marker, Popup } from "react-leaflet"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
@@ -101,6 +93,16 @@ const LeafletMap = ({
     circle.addTo(map)
   }
 
+  function markerIcon() {
+    return L.icon({
+      iconUrl: require("../../images/manifestIcon.png"),
+      iconRetinaUrl: require("../../images/manifestIcon.png"),
+      iconSize: [25, 40],
+      iconAnchor: [10, 40],
+      tooltipAnchor: [15, -20],
+      shadowUrl: require("images/marker-shadow.png"),
+    })
+  }
   if (typeof window !== "undefined") {
     return (
       <Map
@@ -131,7 +133,7 @@ const LeafletMap = ({
         )} */}
 
         {endFerrataLocation && (
-          <Marker position={endFerrataLocation}>
+          <Marker position={endFerrataLocation} icon={markerIcon()}>
             <Popup>Vrchol</Popup>
           </Marker>
         )}

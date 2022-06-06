@@ -4,13 +4,43 @@ import { graphql } from "gatsby"
 import LayoutPlaces from "../components/layoutPlaces"
 import { CardPromo } from "components/organisms"
 import DescriptionSection from "./components/describeSection"
+import InSeraundings from "../components/InSeraundings"
+import LayoutDescribePlace from "../place/components/describePlace"
 //material Ui
 import { Grid, colors, Divider, Box } from "@material-ui/core"
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
 
 export const query = graphql`
-  query($slug: String!, $previousFerrataId: String, $nextFerrataId: String) {
+  query(
+    $slug: String!
+    $previousFerrataId: String
+    $nextFerrataId: String
+    $maxLat: Float
+    $minLat: Float
+    $maxLon: Float
+    $minLon: Float
+  ) {
+    viaFerrataInSurrounding: allContentfulViaFerrata(
+      filter: {
+        location: {
+          lat: { gt: $minLat, lt: $maxLat }
+          lon: { gt: $minLon, lt: $maxLon }
+        }
+        node_locale: { eq: "cs" }
+        slug: { ne: $slug }
+      }
+    ) {
+      nodes {
+        name
+        titleImage {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED, width: 200)
+          title
+        }
+        kindPlace
+        slug
+      }
+    }
     contentfulViaFerrata(slug: { eq: $slug }) {
       seoDescription
       rating
@@ -81,6 +111,7 @@ export const query = graphql`
         type
       }
     }
+
     next: contentfulViaFerrata(id: { eq: $nextFerrataId }) {
       slug
       name
@@ -93,7 +124,12 @@ export const query = graphql`
 `
 
 const ViaFerrata = props => {
-  const { previous, next, contentfulViaFerrata } = props.data
+  const {
+    previous,
+    next,
+    contentfulViaFerrata,
+    viaFerrataInSurrounding,
+  } = props.data
   const {
     level,
     name,
@@ -185,6 +221,13 @@ const ViaFerrata = props => {
             title="Sestup"
           />
         </Grid>
+        {viaFerrataInSurrounding.nodes.length !== 0 && (
+          <Box mt={3}>
+            <LayoutDescribePlace title="Ferraty v okolí" icon="fas fa-mountain">
+              <InSeraundings data={viaFerrataInSurrounding.nodes} />
+            </LayoutDescribePlace>
+          </Box>
+        )}
         <Box my={3}>
           <Divider />
         </Box>

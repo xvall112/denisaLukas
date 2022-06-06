@@ -18,6 +18,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       allContentfulPlaces {
         nodes {
           id
+
           slug
           location {
             lat
@@ -84,6 +85,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
         nodes {
           slug
           id
+
           location {
             lat
             lon
