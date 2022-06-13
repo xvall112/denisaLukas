@@ -55,14 +55,14 @@ const TitleSection = ({ title, link }: props): JSX.Element => {
   return (
     <div className={classes.root}>
       <Link to={link} className={classes.link}>
-        <Box mb={1} fontWeight="700">
+        <Box mb={1} fontWeight="400">
           <Grid
             container
             direction="row"
             justify={isLg ? "flex-start" : "space-between"}
             alignItems="center"
           >
-            <Typography variant="h3">{title}</Typography>
+            <Typography variant="h4">{title}</Typography>
             <span>Prozkoumat vše</span>
             <NavigateNextIcon className="icon" />
           </Grid>

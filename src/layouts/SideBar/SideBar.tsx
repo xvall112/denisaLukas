@@ -19,7 +19,7 @@ import {
   Avatar,
 } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
-
+import ThemeModeToggler from "../../components/own/ThemeModeToggler"
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
 import { UserContext } from "../../providers/user/user.provider"
@@ -236,6 +236,7 @@ const Sidebar = ({
           <IconButton edge="start" color="primary">
             <InstagramIcon fontSize="large" />
           </IconButton>
+          <ThemeModeToggler />
         </Box>
       </div>
     </Drawer>
