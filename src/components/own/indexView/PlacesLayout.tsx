@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   nextPlace: {
     border: "1px solid",
     borderColor: theme.palette.text.primary,
-    height: "300px",
+    height: "350px",
     borderRadius: theme.spacing(1),
     textDecoration: "none",
     width: "95%",
@@ -47,7 +47,7 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1.2,
         },
       },
 

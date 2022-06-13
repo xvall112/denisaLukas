@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: theme.spacing(2, 2),
+    /*  padding: theme.spacing(2, 2),
     "&:last-child": {
       padding: theme.spacing(2, 2),
     },
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
       "&:last-child": {
         padding: theme.spacing(3, 3),
       },
-    },
+    }, */
   },
   left: {
     alignItems: "flex-start",
@@ -77,6 +77,7 @@ const CardBase = ({
 
   return (
     <Card
+      variant="outlined"
       className={clsx(
         "card-base",
         classes.root,

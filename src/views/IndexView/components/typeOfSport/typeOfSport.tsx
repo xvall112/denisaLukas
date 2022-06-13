@@ -50,11 +50,10 @@ const useStyles = makeStyles(theme => ({
   card: {
     backgroundColor: theme.palette.background.level2,
     height: "20vh",
-    "& :hover": {
-      "& img": {
-        transform: "scale(1.2)",
-        transition: "transform 0.5s",
-      },
+
+    "& :hover img": {
+      transition: "transform 0.5s,-webkit-transform 0.5s ",
+      transform: "scale(1.2)",
     },
   },
 }))
@@ -70,7 +69,7 @@ const TypeOfSport = () => {
             return (
               <Grid item xs={12} md={4} lg={4} key={index}>
                 <Link to={`/${item.slug}`}>
-                  <CardBase className={classes.card}>
+                  <CardBase noShadow liftUp className={classes.card}>
                     <Grid container>
                       <Grid item xs={4}>
                         <Box className={classes.img}>

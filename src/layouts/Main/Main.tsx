@@ -18,7 +18,6 @@ import { UserContext } from "../../providers/user/user.provider"
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100%",
-    width: "100vw",
     color: theme.palette.text.primary,
   },
   sectionNoPadding: {
@@ -52,9 +51,8 @@ const Main = ({ children }: Props): JSX.Element => {
       <SideBar variant="temporary" />
       <main>
         {/*  <Divider /> */}
-        <Box mb={8} overflow="hidden">
-          {children}
-        </Box>
+
+        {children}
       </main>
       <Hidden mdUp>
         <BottomNavigation />

@@ -74,49 +74,47 @@ const IndexPage = () => {
   const { currentUser } = useContext(UserContext)
   return (
     <Box overflow="hidden">
-      <Box mt={-1}>
-        <Hero />
-      </Box>
-      <Box mt={-1}>
-        <Container maxWidth="xl">
+      <Container maxWidth="xl">
+        <Box mt={1}>
+          <Hero />
+        </Box>
+        <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <Box mt={2}>
+            <TypeOfSport />
+          </Box>
+        </Section>
+        <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <Countries />
+        </Section>
+        {currentUser && (
           <Section fullWidth className={classes.sectionNoPaddingTop}>
-            <Box mt={2}>
-              <TypeOfSport />
-            </Box>
+            <FavouriteItems />
           </Section>
-          <Section fullWidth className={classes.sectionNoPaddingTop}>
-            <Countries />
-          </Section>
-          {currentUser && (
-            <Section fullWidth className={classes.sectionNoPaddingTop}>
-              <FavouriteItems />
+        )}
+        <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <Places />
+        </Section>
+        <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <ViaFerrata />
+        </Section>
+        {data.contentfulIndexPage.content.map(item => {
+          return (
+            <Section
+              fullWidth
+              className={classes.sectionNoPaddingTop}
+              key={item.id}
+            >
+              <>
+                <PlacesLayout
+                  data={item.content}
+                  slug={item.slug}
+                  title={item.title}
+                />
+              </>
             </Section>
-          )}
-          <Section fullWidth className={classes.sectionNoPaddingTop}>
-            <Places />
-          </Section>
-          <Section fullWidth className={classes.sectionNoPaddingTop}>
-            <ViaFerrata />
-          </Section>
-          {data.contentfulIndexPage.content.map(item => {
-            return (
-              <Section
-                fullWidth
-                className={classes.sectionNoPaddingTop}
-                key={item.id}
-              >
-                <>
-                  <PlacesLayout
-                    data={item.content}
-                    slug={item.slug}
-                    title={item.title}
-                  />
-                </>
-              </Section>
-            )
-          })}
-        </Container>
-      </Box>
+          )
+        })}
+      </Container>
     </Box>
   )
 }
