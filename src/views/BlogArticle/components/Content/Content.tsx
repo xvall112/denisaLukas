@@ -6,6 +6,7 @@ import {
   GridList,
   GridListTile,
   IconButton,
+  Box,
 } from "@material-ui/core"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import TwitterIcon from "@material-ui/icons/Twitter"
@@ -51,7 +52,7 @@ const Content = ({
   })
 
   return (
-    <div className={className} {...rest}>
+    <Box className={className} {...rest} mx={{ xs: 0, md: 10 }}>
       <ContentfulBody body={data} />
       <div>
         {/* <IconButton className={classes.socialIcon}>
@@ -67,7 +68,7 @@ const Content = ({
           <PinterestIcon />
         </IconButton>  */}
       </div>
-    </div>
+    </Box>
   )
 }
 

@@ -76,8 +76,8 @@ const options = {
       </Box>
     ),
     [BLOCKS.PARAGRAPH]: (node, children) => (
-      <Box textAlign="justify" mt={2}>
-        <Typography variant="subtitle1">{children}</Typography>
+      <Box textAlign="justify" mt={2} lineHeight={1.9} fontSize="1.125rem">
+        {children}
       </Box>
     ),
     [BLOCKS.QUOTE]: (node, children) => (
