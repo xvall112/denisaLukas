@@ -74,10 +74,10 @@ const IndexPage = () => {
   const { currentUser } = useContext(UserContext)
   return (
     <Box overflow="hidden">
+      <Box mt={1} mx={{ xs: 0, md: 3 }}>
+        <Hero />
+      </Box>
       <Container maxWidth="xl">
-        <Box mt={1}>
-          <Hero />
-        </Box>
         <Section fullWidth className={classes.sectionNoPaddingTop}>
           <Box mt={2}>
             <TypeOfSport />

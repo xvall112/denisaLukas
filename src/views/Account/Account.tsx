@@ -42,6 +42,7 @@ const useStyles = makeStyles(theme => ({
   menu: {
     height: "auto",
     backgroundColor: theme.palette.background.level2,
+    [theme.breakpoints.up("md")]: { position: "sticky", top: 30 },
   },
   list: {
     display: "inline-flex",

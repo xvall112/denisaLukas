@@ -74,14 +74,16 @@ export default function WithLayout({
     }) */
   }, [])
 
-  const { themeMode, mountedComponent } = useContext(MenuContext)
+  const { themeMode, setMode } = useContext(MenuContext)
   /* useEffect(() => {
     AOS.refresh()
   }, [mountedComponent]) */
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem("themeMode")
+    localTheme ? setMode(localTheme) : setMode("dark")
+  }, [])
 
-  const { fetchFavouriteItems, isUserAuth, currentUser } = useContext(
-    UserContext
-  )
+  const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
   const { favouriteItems } = useContext(FavouriteContext)
 
   useEffect(() => {
@@ -93,7 +95,6 @@ export default function WithLayout({
     }
   }, [favouriteItems])
 
-  const classes = useStyles()
   return (
     <ThemeProvider theme={getTheme(themeMode)}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

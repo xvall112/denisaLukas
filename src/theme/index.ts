@@ -11,6 +11,7 @@ const getTheme = mode =>
   responsiveFontSizes(
     createMuiTheme({
       palette: mode === "light" ? light : dark,
+      shape: { borderRadius: 10 },
       overrides: {
         MuiDivider: {
           root: {

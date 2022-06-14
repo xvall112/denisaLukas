@@ -110,42 +110,40 @@ const InSeraundings = ({ data }: Props): JSX.Element => {
     ],
   }
   return (
-    <>
-      <Grid item xs={12}>
-        <Slider {...settings}>
-          {data.map((item, index) => {
-            return (
-              <div key={index}>
-                <Box pr={2}>
-                  <div className={classes.root}>
-                    <Link to={`/${item.slug}`} className={classes.link}>
-                      <Box className={classes.img}>
-                        <GatsbyImage
-                          image={item.titleImage.gatsbyImageData}
-                          alt={item.titleImage.title}
-                          formats={["auto", "webp", "avif"]}
-                          style={{ height: "150px", width: "100%" }}
-                        />
+    <Box width="100%" mt={2}>
+      <Slider {...settings}>
+        {data.map((item, index) => {
+          return (
+            <div key={index}>
+              <Box pr={2}>
+                <div className={classes.root}>
+                  <Link to={`/${item.slug}`} className={classes.link}>
+                    <Box className={classes.img}>
+                      <GatsbyImage
+                        image={item.titleImage.gatsbyImageData}
+                        alt={item.titleImage.title}
+                        formats={["auto", "webp", "avif"]}
+                        style={{ height: "150px", width: "100%" }}
+                      />
+                    </Box>
+                    <Box mt={0}>
+                      <Box
+                        textAlign="center"
+                        color="text.primary"
+                        fontWeight="bold"
+                        fontSize={16}
+                      >
+                        {item.name}
                       </Box>
-                      <Box mt={0}>
-                        <Box
-                          textAlign="center"
-                          color="text.primary"
-                          fontWeight="bold"
-                          fontSize={16}
-                        >
-                          {item.name}
-                        </Box>
-                      </Box>
-                    </Link>
-                  </div>
-                </Box>
-              </div>
-            )
-          })}
-        </Slider>
-      </Grid>
-    </>
+                    </Box>
+                  </Link>
+                </div>
+              </Box>
+            </div>
+          )
+        })}
+      </Slider>
+    </Box>
   )
 }
 

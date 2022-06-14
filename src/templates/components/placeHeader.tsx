@@ -121,6 +121,7 @@ const PlaceHeader = ({
                 aria-label="Přidat do oblíbených"
               >
                 <IconButton
+                  color="primary"
                   aria-label="add to favourite"
                   onClick={() => addFavouriteItem(id)}
                 >

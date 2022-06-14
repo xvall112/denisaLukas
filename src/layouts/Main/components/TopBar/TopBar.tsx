@@ -8,15 +8,7 @@ import Algolia from "../../../../components/own/Algolia/Algolia"
 import { MenuContext } from "../../../../providers/menu/menu.providers"
 import { UserContext } from "../../../../providers/user/user.provider"
 //material UI
-import {
-  useMediaQuery,
-  Grid,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  MenuList,
-} from "@material-ui/core"
+import { useMediaQuery, Grid, IconButton } from "@material-ui/core"
 import {
   createStyles,
   useTheme,
@@ -25,8 +17,6 @@ import {
 } from "@material-ui/core/styles"
 import MenuIcon from "@material-ui/icons/Menu"
 import InstagramIcon from "@material-ui/icons/Instagram"
-import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
-import SearchIcon from "@material-ui/icons/Search"
 import RefreshOutlinedIcon from "@material-ui/icons/RefreshOutlined"
 
 interface Props {}
@@ -36,15 +26,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: { zIndex: 1000 },
     avatar: {
       backgroundColor: theme.palette.primary.main,
-    },
-
-    logoCard: {
-      backgroundColor: "black",
-      /*  borderRadius: theme.shape.borderRadius, */
-      "& .MuiCardContent-root": {
-        padding: theme.spacing(1),
-      },
-      margin: theme.spacing(1, 0),
     },
   })
 )
@@ -96,11 +77,6 @@ const TopBar = ({}: Props): JSX.Element => {
                     />
                   </Link>
                 </Grid>
-                {/* <Grid item>
-                  <Box ml={1} fontWeight="700" fontSize={16}>
-                    FAITH IN TRAVEL
-                  </Box>
-                </Grid> */}
               </Grid>
             </Grid>
             {isMd && (
@@ -146,6 +122,7 @@ const TopBar = ({}: Props): JSX.Element => {
                     {/*  button menu */}
                     <Grid item xs={4} md={2}>
                       <IconButton
+                        color="inherit"
                         aria-label="open drawer"
                         onClick={() => handleSidebarOpen()}
                       >

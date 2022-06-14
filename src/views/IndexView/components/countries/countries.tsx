@@ -116,11 +116,7 @@ const Countries = () => {
                       />
                     </Grid>
                     <Grid item xs={6}>
-                      <Box
-                        className={classes.name}
-                        fontWeight="bold"
-                        fontSize={{ xs: 18 }}
-                      >
+                      <Box className={classes.name} fontSize={{ xs: 16 }}>
                         {country.name}
                       </Box>
                     </Grid>

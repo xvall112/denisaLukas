@@ -13,9 +13,9 @@ export const light = {
   },
   type: "light" as PaletteType,
   primary: {
-    main: "#fae596",
+    main: "#ffaa00",
     light: "#fff1bc",
-    dark: "#ffe06a",
+    dark: "#ff9100",
     contrastText: "#000",
   },
   secondary: {
@@ -30,8 +30,8 @@ export const light = {
   },
   divider: "rgba(0, 0, 0, 0.12)",
   background: {
-    paper: "#f5f5f5",
-    default: "#141414",
+    paper: "#fff",
+    default: "#fff",
     level2: "#f5f5f5",
     level1: "#fff",
     footer: "#1b1642",

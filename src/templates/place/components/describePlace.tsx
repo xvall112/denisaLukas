@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 
 //components
 import { IconAlternate } from "components/molecules"
-
+import { CardBase } from "components/organisms"
 //material Ui
 import {
   Box,
@@ -40,9 +40,9 @@ const DescribeSection = ({
   const { copyLocationToClipboard } = useContext(MapContext)
   const classes = useStyles()
   return (
-    <>
-      <Box mb={4}>
-        <Grid item xs={12}>
+    <Box mb={1}>
+      <Grid item xs={12}>
+        <CardBase withShadow variant="outlined" align="left">
           <>
             <Grid container direction="row" alignItems="center">
               <Grid
@@ -122,12 +122,11 @@ const DescribeSection = ({
                 </Tooltip>
               )}
             </Grid>
-            <Box my={2}>{children}</Box>
-            <Divider />
+            <Box width="100%">{children}</Box>
           </>
-        </Grid>
-      </Box>
-    </>
+        </CardBase>
+      </Grid>
+    </Box>
   )
 }
 

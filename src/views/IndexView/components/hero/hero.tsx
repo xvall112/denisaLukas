@@ -62,12 +62,12 @@ const useStyles = makeStyles(theme => ({
     color: "white",
   },
   img: {
-    borderRadius: "5px",
-    WebkitBorderRadius: "5px",
+    borderRadius: theme.shape.borderRadius,
+    WebkitBorderRadius: theme.shape.borderRadius,
     overflow: "hidden",
     "& img": {
-      borderRadius: "5px",
-      WebkitBorderRadius: "5px",
+      borderRadius: theme.shape.borderRadius,
+      WebkitBorderRadius: theme.shape.borderRadius,
     },
   },
 }))

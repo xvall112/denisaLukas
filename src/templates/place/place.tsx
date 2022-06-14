@@ -158,6 +158,7 @@ const Place = props => {
       setTitle("")
     }
   }, [])
+  const data = [...placeInSurrounding.nodes, ...viaFerrataInSurrounding.nodes]
 
   return (
     <>
@@ -185,14 +186,9 @@ const Place = props => {
             <ContentfulBody body={contentfulPlaces.moreInfo} />
           </LayoutDescribePlace>
         )}
-        {placeInSurrounding.nodes.length !== 0 && (
-          <LayoutDescribePlace title="Místa v okolí" icon="fas fa-map-pin">
-            <InSeraundings data={placeInSurrounding.nodes} />
-          </LayoutDescribePlace>
-        )}
-        {viaFerrataInSurrounding.nodes.length !== 0 && (
-          <LayoutDescribePlace title="Ferraty v okolí" icon="fas fa-mountain">
-            <InSeraundings data={viaFerrataInSurrounding.nodes} />
+        {data.length !== 0 && (
+          <LayoutDescribePlace title="V okolí" icon="fas fa-map-pin">
+            <InSeraundings data={data} />
           </LayoutDescribePlace>
         )}
       </LayoutPlaces>

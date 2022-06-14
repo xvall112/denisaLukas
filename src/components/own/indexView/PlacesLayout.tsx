@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     border: "1px solid",
     borderColor: theme.palette.text.primary,
     height: "350px",
-    borderRadius: theme.spacing(1),
+    borderRadius: theme.shape.borderRadius,
     textDecoration: "none",
     width: "95%",
   },

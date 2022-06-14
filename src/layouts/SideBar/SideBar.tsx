@@ -236,7 +236,7 @@ const Sidebar = ({
           <IconButton edge="start" color="primary">
             <InstagramIcon fontSize="large" />
           </IconButton>
-          {/* <ThemeModeToggler /> */}
+          <ThemeModeToggler />
         </Box>
       </div>
     </Drawer>

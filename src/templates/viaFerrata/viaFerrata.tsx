@@ -41,6 +41,26 @@ export const query = graphql`
         slug
       }
     }
+    placeInSurrounding: allContentfulPlaces(
+      filter: {
+        location: {
+          lat: { gt: $minLat, lt: $maxLat }
+          lon: { gt: $minLon, lt: $maxLon }
+        }
+        node_locale: { eq: "cs" }
+        slug: { ne: $slug }
+      }
+    ) {
+      nodes {
+        name
+        titleImage {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED, width: 200)
+          title
+        }
+        kindPlace
+        slug
+      }
+    }
     contentfulViaFerrata(slug: { eq: $slug }) {
       seoDescription
       rating
@@ -129,6 +149,7 @@ const ViaFerrata = props => {
     next,
     contentfulViaFerrata,
     viaFerrataInSurrounding,
+    placeInSurrounding,
   } = props.data
   const {
     level,
@@ -153,6 +174,8 @@ const ViaFerrata = props => {
       setTitle("")
     }
   }, [])
+
+  const data = [...placeInSurrounding.nodes, ...viaFerrataInSurrounding.nodes]
   return (
     <>
       <LayoutPlaces
@@ -221,10 +244,10 @@ const ViaFerrata = props => {
             title="Sestup"
           />
         </Grid>
-        {viaFerrataInSurrounding.nodes.length !== 0 && (
-          <Box mt={3}>
-            <LayoutDescribePlace title="Ferraty v okolí" icon="fas fa-mountain">
-              <InSeraundings data={viaFerrataInSurrounding.nodes} />
+        {data.length !== 0 && (
+          <Box mt={1}>
+            <LayoutDescribePlace title="V okolí" icon="fas fa-map-pin">
+              <InSeraundings data={data} />
             </LayoutDescribePlace>
           </Box>
         )}

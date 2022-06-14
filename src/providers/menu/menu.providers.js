@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react"
 export const MenuContext = createContext({
   openSidebar: false,
   mountedComponent: false,
-  themeMode: "dark",
+  themeMode: "",
   filterCountry: "",
   filterCountryZoom: 2,
   filterCountryLocation: [0, 0],

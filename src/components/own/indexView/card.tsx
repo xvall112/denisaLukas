@@ -9,12 +9,12 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   img: {
-    borderRadius: "5px",
-    WebkitBorderRadius: "5px",
+    borderRadius: theme.shape.borderRadius,
+    WebkitBorderRadius: theme.shape.borderRadius,
     overflow: "hidden",
     "& img": {
-      borderRadius: "5px",
-      WebkitBorderRadius: "5px",
+      borderRadius: theme.shape.borderRadius,
+      WebkitBorderRadius: theme.shape.borderRadius,
     },
   },
   link: {
@@ -27,16 +27,16 @@ const useStyles = makeStyles(theme => ({
   },
   name: {
     color: theme.palette.text.primary,
-
     fontSize: "16px",
+    fontWeight: 400,
   },
   root: {
-    borderRadius: theme.spacing(0.5),
-    WebkitBorderRadius: theme.spacing(0.5),
+    borderRadius: theme.shape.borderRadius,
+    WebkitBorderRadius: theme.shape.borderRadius,
     overflow: "hidden",
   },
   imageFlag: {
-    borderRadius: theme.spacing(0.5),
+    borderRadius: theme.shape.borderRadius,
   },
 }))
 

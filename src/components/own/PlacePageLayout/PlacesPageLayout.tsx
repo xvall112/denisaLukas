@@ -11,6 +11,7 @@ import {
   Button,
   CircularProgress,
 } from "@material-ui/core"
+import Skeleton from "@material-ui/lab/Skeleton"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 //components
@@ -112,22 +113,10 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
   }, [list]) //eslint-disable-line
 
   return (
-    <>
+    <Box mt={10}>
       <Grid container direction={isMd ? "row" : "column-reverse"}>
         <Grid item xs={12} md={6}>
           <Container maxWidth="xl">
-            <Box
-              display="flex"
-              justifyContent="space-evenly"
-              alignItems="center"
-              mt={{ xs: 8, md: 10 }}
-            >
-              <SectionHeader
-                align="left"
-                label={`více než ${data.length}`}
-                title={<>míst které můžete objevovat</>}
-              />
-            </Box>
             <Filter />
             {/*  content */}
 
@@ -146,8 +135,29 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
             )} */}
             <div ref={loadRef}>
               {hasMore && (
-                <Box textAlign="center">
-                  <CircularProgress color="primary" />
+                <Box mb={4}>
+                  <Grid container direction="row" spacing={3}>
+                    <Grid item xs={12} md={6} lg={6} xl={3}>
+                      <Skeleton
+                        animation="wave"
+                        variant="rect"
+                        width="100%"
+                        height="300px"
+                      />
+                      <Skeleton
+                        animation="wave"
+                        variant="text"
+                        width="40%"
+                        height="50px"
+                      />
+                      <Skeleton
+                        animation="wave"
+                        variant="text"
+                        width="30%"
+                        height="50px"
+                      />
+                    </Grid>
+                  </Grid>
                 </Box>
               )}
             </div>
@@ -171,7 +181,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
           </Grid>
         </Hidden>
       </Grid>
-    </>
+    </Box>
   )
 }
 
