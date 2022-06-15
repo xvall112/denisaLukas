@@ -12,6 +12,7 @@ const query = graphql`
         slug
         name
         kindPlace
+        adress
         titleImage {
           gatsbyImageData(width: 250, placeholder: BLURRED)
           title

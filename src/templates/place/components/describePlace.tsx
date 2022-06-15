@@ -111,12 +111,11 @@ const DescribeSection = ({
                       />
                     </Grid>
                     <Grid item>
-                      <Typography>
-                        {" "}
+                      <Box fontSize={12}>
                         {parkingGps.lat.toFixed(5)}
                         <br></br>
                         {parkingGps.lon.toFixed(5)}
-                      </Typography>
+                      </Box>
                     </Grid>
                   </Grid>
                 </Tooltip>

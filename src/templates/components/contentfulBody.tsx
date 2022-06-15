@@ -76,7 +76,12 @@ const options = {
       </Box>
     ),
     [BLOCKS.PARAGRAPH]: (node, children) => (
-      <Box textAlign="justify" mt={2} lineHeight={1.9} fontSize="1.125rem">
+      <Box
+        textAlign="justify"
+        mt={2}
+        lineHeight={{ xs: 1.5 }}
+        fontSize={{ xs: "1rem" }}
+      >
         {children}
       </Box>
     ),

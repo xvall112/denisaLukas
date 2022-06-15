@@ -117,7 +117,8 @@ const Main = ({
             <Grid
               item
               xs={12}
-              md={four ? 3 : 6}
+              sm={12}
+              md={12}
               lg={four ? 3 : 6}
               xl={3}
               key={index}
@@ -188,46 +189,50 @@ const Main = ({
                       alignItems="flex-start"
                       spacing={0}
                     >
-                      <Grid item xs={10}>
+                      <Grid item xs={8}>
                         <Typography
                           variant="h6"
                           noWrap={true}
-                          className={classes.folioTitle}
                           color="textPrimary"
                         >
                           {item.name}
                         </Typography>
                       </Grid>
 
+                      <Grid item xs={4}>
+                        <Box
+                          display="flex"
+                          justifyContent="flex-end"
+                          alignItems="center"
+                          mt={1}
+                        >
+                          <Rating
+                            name="half-rating-read"
+                            defaultValue={item.rating || 5}
+                            precision={0.5}
+                            readOnly
+                            size="small"
+                          />
+                        </Box>
+                      </Grid>
                       <Grid item xs={12}>
-                        <Rating
-                          name="half-rating-read"
-                          defaultValue={item.rating || 5}
-                          precision={0.5}
-                          readOnly
-                          size="small"
-                        />
+                        <Typography
+                          variant="body1"
+                          color="textSecondary"
+                          noWrap={true}
+                        >
+                          {item.adress}
+                        </Typography>
                       </Grid>
                       <Grid
                         item
-                        xs={10}
+                        xs={12}
                         container
                         direction="row"
                         justify="flex-start"
                         alignItems="center"
                         spacing={1}
                       >
-                        <Grid item xs="auto">
-                          <Grid container alignItems="center">
-                            <FlagChip
-                              name={item.country.name}
-                              flagLink={item.country.flagLink}
-                              className={classes.flag}
-                              width={40}
-                            />
-                          </Grid>
-                        </Grid>
-
                         {item.kindPlace.map((item, index) => {
                           return (
                             <Grid item xs="auto">
