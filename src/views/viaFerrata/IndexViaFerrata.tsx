@@ -11,6 +11,7 @@ const query = graphql`
         level
         id
         slug
+        adress
         name
         kindPlace
         titleImage {
