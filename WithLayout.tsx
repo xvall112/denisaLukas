@@ -79,8 +79,9 @@ export default function WithLayout({
     AOS.refresh()
   }, [mountedComponent]) */
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("themeMode")
-    localTheme ? setMode(localTheme) : setMode("dark")
+    /*    const localTheme = window.localStorage.getItem("themeMode")
+    localTheme ? setMode(localTheme) : */
+    setMode("dark")
   }, [])
 
   const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
