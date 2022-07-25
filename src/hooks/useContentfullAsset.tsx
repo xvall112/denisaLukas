@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 
 export const useContentfulAsset = (assetUrl: string) => {
-  const { assets } = useStaticQuery(
+  const { assets, ferratas } = useStaticQuery(
     graphql`
       query CONTENTFUL_ASSET_QUERY {
         assets: allContentfulPlaces {
@@ -10,6 +10,28 @@ export const useContentfulAsset = (assetUrl: string) => {
               contentful_id
               slug
               name
+              seoDescribe
+              titleImage {
+                contentful_id
+                gatsbyImageData(layout: FULL_WIDTH, height: 500)
+                title
+              }
+              rating
+              kindPlace
+              country {
+                name
+                flagLink
+              }
+            }
+          }
+        }
+        ferratas: allContentfulViaFerrata {
+          edges {
+            node {
+              contentful_id
+              slug
+              name
+              seoDescription
               titleImage {
                 contentful_id
                 gatsbyImageData(layout: FULL_WIDTH, height: 500)
@@ -28,5 +50,8 @@ export const useContentfulAsset = (assetUrl: string) => {
     `
   )
   const asset = assets.edges.find(({ node }) => node.contentful_id === assetUrl)
-  return asset
+  const ferrata = ferratas.edges.find(
+    ({ node }) => node.contentful_id === assetUrl
+  )
+  return asset ? asset : ferrata
 }

@@ -1,13 +1,20 @@
 import React from "react"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { BLOCKS, MARKS } from "@contentful/rich-text-types"
+import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 //hooks
 import { useContentfulAsset } from "../../hooks/useContentfullAsset"
 import { useContentfulImage } from "../../hooks/useContentfulImage"
 //materialUI
-import { Typography, Box, Grid, makeStyles, Chip } from "@material-ui/core"
+import {
+  Typography,
+  Box,
+  Grid,
+  makeStyles,
+  Chip,
+  Hidden,
+} from "@material-ui/core"
 import { Alert, AlertTitle } from "@material-ui/lab"
 import Rating from "@material-ui/lab/Rating"
 //components
@@ -22,6 +29,13 @@ const useStyles = makeStyles(theme => ({
       textDecoration: "none",
       color: theme.palette.text.primary,
     },
+    "&:hover": {
+      borderColor: `${theme.palette.primary.main} !important`,
+    },
+  },
+  hyperlink: {
+    textDecoration: "none",
+    color: theme.palette.primary.main,
   },
   img: {
     borderRadius: "5px",
@@ -43,7 +57,13 @@ const options = {
     [MARKS.ITALIC]: text => <i>{text}</i>,
     [MARKS.CODE]: text => <code>{text}</code>,
   },
+
   renderNode: {
+    [INLINES.HYPERLINK]: ({ data }, children) => (
+      <a style={{ textDecoration: "none", color: "gold" }} href={data.uri}>
+        {children}
+      </a>
+    ),
     [BLOCKS.HEADING_1]: (node, children) => (
       <Box mt={3}>
         <Typography variant="h1">{children}</Typography>
@@ -80,7 +100,7 @@ const options = {
         textAlign="justify"
         mt={2}
         lineHeight={{ xs: 1.5 }}
-        fontSize={{ xs: "1rem" }}
+        fontSize={{ xs: "1rem", md: "1.2rem" }}
       >
         {children}
       </Box>
@@ -169,18 +189,41 @@ const options = {
                     xs={12}
                     spacing={1}
                   >
-                    <Grid item>
-                      <FlagChip
-                        name={asset.node.country.name}
-                        flagLink={asset.node.country.flagLink}
-                        className={classes.flag}
-                        width={40}
-                      />
+                    <Grid item xs={12}>
+                      <Grid
+                        container
+                        direction="row"
+                        alignItems="center"
+                        spacing={1}
+                      >
+                        <Grid item>
+                          <Grid
+                            container
+                            direction="row"
+                            alignItems="center"
+                            spacing={1}
+                          >
+                            <Grid item>
+                              <FlagChip
+                                name={asset.node.country.name}
+                                flagLink={asset.node.country.flagLink}
+                                className={classes.flag}
+                                width={40}
+                              />
+                            </Grid>
+
+                            {asset.node.kindPlace.map((item, index) => {
+                              return (
+                                <Grid item>
+                                  <Chip label={item} key={index} size="small" />
+                                </Grid>
+                              )
+                            })}
+                          </Grid>
+                        </Grid>
+                      </Grid>
                     </Grid>
-                    <Grid item>
-                      <Chip label={asset.node.kindPlace} />
-                    </Grid>
-                    <Grid item>
+                    <Grid item xs={12}>
                       <Rating
                         name="half-rating-read"
                         defaultValue={asset.node.rating || 5}
@@ -189,9 +232,16 @@ const options = {
                         size="small"
                       />
                     </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography variant="h4">{asset.node.name}</Typography>
+                    <Grid item xs={12}>
+                      <Typography variant="h5">{asset.node.name}</Typography>
+                    </Grid>
+                    <Hidden smDown>
+                      <Grid item xs={12}>
+                        <Typography variant="subtitle">
+                          {asset.node.seoDescribe || asset.node.seoDescription}
+                        </Typography>
+                      </Grid>
+                    </Hidden>
                   </Grid>
                 </Grid>
               </Grid>
