@@ -5,7 +5,6 @@ import WithLayout from "../../../WithLayout"
 import Slider from "../../components/own/sliderSlick"
 import Places from "../../layouts/Place/Place"
 import PlaceHeader from "../components/placeHeader"
-import SEO from "../../components/own/seo"
 import Location from "../components/Location"
 import LeafletMap from "../../components/own/LeafletMap"
 import NextPrevious from "../components/nextPrevious"
@@ -190,11 +189,6 @@ const LayoutPlaces = ({
   }
   return (
     <>
-      <SEO
-        title={data.name}
-        description={data.seoDescription || data.seoDescribe}
-        image={`https:${data.titleImage.file.url}`}
-      />
       <WithLayout component={Nevim} layout={Places} />
     </>
   )

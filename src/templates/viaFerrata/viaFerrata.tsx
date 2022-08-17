@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
 //components
+import SEO from "../../components/own/seo"
 import LayoutPlaces from "../components/layoutPlaces"
 import { CardPromo } from "components/organisms"
 import DescriptionSection from "./components/describeSection"
@@ -153,6 +154,7 @@ const ViaFerrata = props => {
   } = props.data
   const {
     level,
+
     name,
     location,
     long,
@@ -164,6 +166,8 @@ const ViaFerrata = props => {
     describeFerrata,
     backWayDescription,
     ferrataTime,
+    seoDescription,
+    titleImage,
   } = props.data.contentfulViaFerrata
 
   const { setTitle } = useContext(MenuContext)
@@ -178,6 +182,11 @@ const ViaFerrata = props => {
   const data = [...placeInSurrounding.nodes, ...viaFerrataInSurrounding.nodes]
   return (
     <>
+      <SEO
+        title={name}
+        description={seoDescription}
+        image={`https:${titleImage.file.url}`}
+      />
       <LayoutPlaces
         data={contentfulViaFerrata}
         slug="viaFerrata"

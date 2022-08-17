@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
 //components
+import SEO from "../../components/own/seo"
 import LayoutPlaces from "../components/layoutPlaces"
 import ContentfulBody from "../components/contentfulBody"
 import LayoutDescribePlace from "./components/describePlace"
@@ -25,19 +26,7 @@ export const query = graphql`
         }
       }
       seoDescribe
-      inSurrounding {
-        name
-        slug
-        country {
-          flagLink
-          name
-        }
-        titleImage {
-          gatsbyImageData(width: 600, placeholder: BLURRED)
-          title
-        }
-        kindPlace
-      }
+
       rating
       id
       adress
@@ -151,7 +140,11 @@ const Place = props => {
     contentfulPlaces,
     viaFerrataInSurrounding,
   } = props.data
+
+  const { name, seoDescription, titleImage } = props.data.contentfulPlaces
+
   const { setTitle } = useContext(MenuContext)
+
   useEffect(() => {
     setTitle(contentfulPlaces.name)
     return () => {
@@ -162,6 +155,11 @@ const Place = props => {
 
   return (
     <>
+      <SEO
+        title={name}
+        description={seoDescription}
+        image={`https:${titleImage.file.url}`}
+      />
       <LayoutPlaces
         data={contentfulPlaces}
         slug="places"

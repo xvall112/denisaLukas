@@ -49,7 +49,7 @@ const SEO = ({ description, title, image, article }: Props): JSX.Element => {
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${defaultImage}` || image,
+    image: image || `${siteUrl}${defaultImage}`,
     url: `${siteUrl}${pathname}`,
   }
 

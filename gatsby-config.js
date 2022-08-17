@@ -8,7 +8,7 @@ module.exports = {
     titleTemplate: "%s - Faith in Travel",
     siteUrl: `https://www.faithintravel.cz`,
     author: `@Lukas Valta <valtalukas@sezanm.cz>`,
-    image: "/src/images/manifestIcon.png",
+    image: `/manifestIcon.png`,
     social: {
       twitter: `Lukas`,
     },

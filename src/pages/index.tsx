@@ -15,7 +15,7 @@ const IndexPage = (): JSX.Element => {
 
   return (
     <>
-      <SEO title={`Lukas & Denisa & Sofie`} description="Hlavní stránka" />
+      <SEO title="Faith in Travel" description="Lukas Denisa Sofie" />
       <WithLayout component={IndexView} layout={Main} />
     </>
   )
