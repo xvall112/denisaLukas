@@ -9,34 +9,33 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   img: {
-    borderRadius: theme.shape.borderRadius,
-    WebkitBorderRadius: theme.shape.borderRadius,
+    borderRadius: "5px",
+    WebkitBorderRadius: "5px",
     overflow: "hidden",
     "& img": {
-      borderRadius: theme.shape.borderRadius,
-      WebkitBorderRadius: theme.shape.borderRadius,
+      borderRadius: "5px",
+      WebkitBorderRadius: "5px",
     },
   },
   link: {
     textDecoration: "none",
-
     "& :hover": {
       color: theme.palette.text.primary,
-      "& img": { transform: "scale(1.15)", transition: "all .5s ease-in-out" },
+      "& img": { transform: "scale(1.15)", transition: "ease 0.5s" },
     },
   },
   name: {
     color: theme.palette.text.primary,
+
     fontSize: "16px",
-    fontWeight: 400,
   },
   root: {
-    borderRadius: theme.shape.borderRadius,
-    WebkitBorderRadius: theme.shape.borderRadius,
+    borderRadius: theme.spacing(0.5),
+    WebkitBorderRadius: theme.spacing(0.5),
     overflow: "hidden",
   },
   imageFlag: {
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: theme.spacing(0.5),
   },
 }))
 
@@ -59,7 +58,7 @@ const Card = ({ item }: props): JSX.Element => {
             image={item.titleImage.gatsbyImageData}
             alt={item.titleImage.title}
             formats={["auto", "webp", "avif"]}
-            style={{ height: "350px" }}
+            style={{ width: "100%" }}
           />
         </Box>
         <Box mt={0}>

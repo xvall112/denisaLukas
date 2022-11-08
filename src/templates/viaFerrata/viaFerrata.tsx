@@ -55,7 +55,7 @@ export const query = graphql`
       nodes {
         name
         titleImage {
-          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED, width: 200)
+          gatsbyImageData(placeholder: BLURRED, width: 200)
           title
         }
         kindPlace
@@ -88,7 +88,11 @@ export const query = graphql`
         }
       }
       images {
-        gatsbyImageData(width: 1000, placeholder: BLURRED)
+        gatsbyImageData(
+          width: 1000
+          placeholder: BLURRED
+          outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
+        )
         title
       }
       kindPlace

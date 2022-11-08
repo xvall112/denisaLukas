@@ -23,7 +23,10 @@ const query = graphql`
         slug
         title
         image {
-          gatsbyImageData(width: 1000)
+          gatsbyImageData(
+            width: 800
+            outputPixelDensities: [0.5, 0.5, 0.5, 0.5]
+          )
           title
         }
       }
@@ -155,7 +158,7 @@ const Hero = () => {
                       </Box>
                     </Grid>
 
-                    <Box position="absolute" bottom="50px" width="100%">
+                    {/*<Box position="absolute" bottom="50px" width="100%">
                       <Grid
                         container
                         direction="row"
@@ -163,16 +166,16 @@ const Hero = () => {
                         alignItems="center"
                         spacing={2}
                       >
-                        {/* {item.place &&
+                         {item.place &&
                         item.place.map((place, index) => {
                           return (
                             <Grid item xs={10} md={5} lg={2} key={index}>
                               <HeroCardPlace name={place.name} />
                             </Grid>
                           )
-                        })} */}
+                        })} 
                       </Grid>
-                    </Box>
+                    </Box>*/}
                   </div>
                   <GatsbyImage
                     image={item.image.gatsbyImageData}

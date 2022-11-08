@@ -42,7 +42,12 @@ export const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(placeholder: BLURRED, width: 400)
+          gatsbyImageData(
+            placeholder: BLURRED
+            width: 400
+            outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
+          )
+
           title
         }
         titleImage {
@@ -75,7 +80,11 @@ export const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(placeholder: BLURRED, width: 400)
+          gatsbyImageData(
+            placeholder: BLURRED
+            width: 400
+            outputPixelDensities: [0.25, 0.5, 1]
+          )
           title
         }
         location {
@@ -102,7 +111,11 @@ export const query = graphql`
         title
         titleImage {
           title
-          gatsbyImageData(placeholder: BLURRED, width: 500)
+          gatsbyImageData(
+            placeholder: BLURRED
+            width: 500
+            outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
+          )
         }
       }
     }

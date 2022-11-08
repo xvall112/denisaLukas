@@ -15,7 +15,12 @@ export const query = graphql`
         slug
         name
         titleImage {
-          gatsbyImageData(placeholder: BLURRED, width: 500)
+          gatsbyImageData(
+            placeholder: BLURRED
+            width: 500
+            height: 600
+            outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
+          )
           title
         }
         country {
@@ -30,7 +35,12 @@ export const query = graphql`
         slug
         name
         titleImage {
-          gatsbyImageData(placeholder: BLURRED, width: 500)
+          gatsbyImageData(
+            placeholder: BLURRED
+            width: 500
+            height: 600
+            outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
+          )
           title
         }
         country {
