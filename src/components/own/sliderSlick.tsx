@@ -92,6 +92,7 @@ const SliderSlick = ({
                     width: widthImg,
                   }}
                   formats={["auto", "webp", "avif"]}
+                  loading={index === 0 ? "eager" : "lazy"}
                 />
               </div>
             )
