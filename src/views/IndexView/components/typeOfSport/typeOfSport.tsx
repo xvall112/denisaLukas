@@ -19,7 +19,7 @@ const query = graphql`
           gatsbyImageData(
             placeholder: BLURRED
             width: 200
-            outputPixelDensities: [0.5, 0.5, 0.5, 0.5]
+            outputPixelDensities: 0.5
           )
           title
         }
