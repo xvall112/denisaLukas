@@ -6,7 +6,7 @@ import WithLayout from "../../../WithLayout"
 import SEO from "../../components/own/seo"
 import LayoutPlaces from "../../layouts/Place/Place"
 import Hero from "../components/Hero"
-import Tab from "../components/Tab/Tab"
+import Tab from "./Tab/Tab"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
@@ -36,6 +36,7 @@ export const query = graphql`
         id
         slug
         name
+        adress
         kindPlace
         country {
           name
@@ -70,6 +71,7 @@ export const query = graphql`
         id
         slug
         name
+        adress
         kindPlace
         titleImage {
           gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 40)

@@ -13,7 +13,7 @@ export const useContentfulAsset = (assetUrl: string) => {
               seoDescribe
               titleImage {
                 contentful_id
-                gatsbyImageData(layout: FULL_WIDTH, height: 500)
+                gatsbyImageData(layout: FULL_WIDTH, height: 800)
                 title
               }
               rating
@@ -34,7 +34,7 @@ export const useContentfulAsset = (assetUrl: string) => {
               seoDescription
               titleImage {
                 contentful_id
-                gatsbyImageData(layout: FULL_WIDTH, height: 500)
+                gatsbyImageData(layout: FULL_WIDTH, height: 800)
                 title
               }
               rating

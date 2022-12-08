@@ -1,40 +1,17 @@
-import React, { useContext } from "react"
+import React from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
-
-//components
-import SliderSlick from "../sliderSlick"
-import { IconAlternate } from "components/molecules"
+import { GatsbyImage } from "gatsby-plugin-image"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
-import {
-  Typography,
-  Grid,
-  Chip,
-  Box,
-  IconButton,
-  Tooltip,
-  colors,
-} from "@material-ui/core"
+import { Typography, Grid, Chip, Box } from "@material-ui/core"
 import Rating from "@material-ui/lab/Rating"
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
-import FavoriteIcon from "@material-ui/icons/Favorite"
-
-//context
-import { UserContext } from "../../../providers/user/user.provider"
-import { MapContext } from "providers/map/map.providers"
 
 const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     height: "100%",
-  },
-  hearIconContainer: {
-    position: "absolute",
-    top: theme.spacing(1),
-    right: theme.spacing(1),
-    cursor: "pointer",
   },
   flag: {
     borderRadius: theme.spacing(0.5),
@@ -56,6 +33,10 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up("md")]: {
         marginBottom: 0,
       },
+    },
+    "& img": {
+      borderRadius: theme.spacing(1),
+      WebkitBorderRadius: theme.spacing(1),
     },
   },
   image: {
@@ -91,72 +72,21 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-interface ViewComponentProps {
-  slug: string
-  item: any
-  themeMode?: string
-  // All other props
-  [x: string]: any
-}
-
-const Card = ({ item, slug }: ViewComponentProps): JSX.Element => {
+const Card = ({ item }) => {
   const classes = useStyles()
-  const { setHighlighted } = useContext(MapContext)
-  const { addFavouriteItem, favouriteItems, removeFavouriteItem } = useContext(
-    UserContext
-  )
-
   return (
-    <div
-      className={classes.folioItem}
-      data-aos="fade-up"
-      onMouseEnter={() => setHighlighted(item.id)}
-      onMouseLeave={() => setHighlighted(null)}
-    >
-      <Grid item xs={2}>
-        <Box
-          zIndex={1000}
-          display="flex"
-          justifyContent="flex-end"
-          position="absolute"
-          top="10px"
-          right="10px"
-        >
-          {favouriteItems.includes(item.id) ? (
-            <Tooltip
-              title="Odebrat z oblíbených"
-              aria-label="Odebrat z oblíbených"
-            >
-              <div className={classes.hearIconContainer}>
-                <IconAlternate
-                  onClick={() => removeFavouriteItem(item.id)}
-                  fontIconClass="fa fa-heart"
-                  size="small"
-                  shape="circle"
-                />
-              </div>
-            </Tooltip>
-          ) : (
-            <Tooltip
-              title="Přidat do oblíbených"
-              aria-label="Přidat do oblíbených"
-            >
-              <div className={classes.hearIconContainer}>
-                <IconAlternate
-                  onClick={() => addFavouriteItem(item.id)}
-                  fontIconClass="far fa-heart"
-                  size="small"
-                  shape="circle"
-                />
-              </div>
-            </Tooltip>
-          )}
-        </Box>
-      </Grid>
+    <Box className={classes.folioItem}>
       <Link to={`/${item.slug}`} className={classes.link}>
-        <SliderSlick img={item.images} heightImg={"300px"} widthImg={"100%"} />
+        <GatsbyImage
+          image={item.titleImage.gatsbyImageData}
+          alt={item.titleImage.title}
+          formats={["auto", "webp", "avif"]}
+        />
 
-        <div className={clsx("folio__info-wrapper", classes.folioInfoWrapper)}>
+        <Box
+          pt={1}
+          className={clsx("folio__info-wrapper", classes.folioInfoWrapper)}
+        >
           <Grid
             container
             direction="row"
@@ -188,7 +118,7 @@ const Card = ({ item, slug }: ViewComponentProps): JSX.Element => {
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body1" color="textSecondary" noWrap={true}>
-                {item.adress}
+                {item.adress && item.adress}
               </Typography>
             </Grid>
             <Grid
@@ -200,13 +130,14 @@ const Card = ({ item, slug }: ViewComponentProps): JSX.Element => {
               alignItems="center"
               spacing={1}
             >
-              {item.kindPlace.map((item, index) => {
-                return (
-                  <Grid item xs="auto">
-                    <Chip key={index} label={item} />
-                  </Grid>
-                )
-              })}
+              {item.kindPlace &&
+                item.kindPlace.map((item, index) => {
+                  return (
+                    <Grid item xs="auto">
+                      <Chip key={index} label={item} />
+                    </Grid>
+                  )
+                })}
 
               {item.level && (
                 <Grid item xs="auto">
@@ -215,9 +146,9 @@ const Card = ({ item, slug }: ViewComponentProps): JSX.Element => {
               )}
             </Grid>
           </Grid>
-        </div>
+        </Box>
       </Link>
-    </div>
+    </Box>
   )
 }
 

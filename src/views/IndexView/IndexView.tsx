@@ -10,7 +10,7 @@ import Places from "./components/places/places"
 import TypeOfSport from "./components/typeOfSport/typeOfSport"
 import ViaFerrata from "./components/viaFerrata/viaFerrata"
 import FavouriteItems from "./components/favouriteItems/favouriteItems"
-import PlacesLayout from "../../components/own/indexView/PlacesLayout"
+import PlacesLayout from "./components/components/PlacesLayout"
 //context
 import { UserContext } from "../../providers/user/user.provider"
 
@@ -26,6 +26,8 @@ const query = graphql`
             id
             name
             slug
+            rating
+            adress
             kindPlace
             titleImage {
               gatsbyImageData(
@@ -45,7 +47,9 @@ const query = graphql`
             id
             name
             slug
+            rating
             kindPlace
+            adress
             titleImage {
               gatsbyImageData(
                 placeholder: BLURRED
@@ -68,7 +72,6 @@ const query = graphql`
 
 const useStyles = makeStyles(() => ({
   sectionNoPaddingTop: {
-    paddingTop: 0,
     paddingLeft: 0,
     paddingRight: 0,
   },
@@ -84,15 +87,18 @@ const IndexPage = () => {
   const { currentUser } = useContext(UserContext)
   return (
     <Box overflow="hidden">
-      <Box mt={1} mx={{ xs: 0, md: 3 }}>
-        <Hero />
-      </Box>
       <Container maxWidth="xl">
         <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <Box mt={1}>
+            <Hero />
+          </Box>
+        </Section>
+
+        {/*  <Section fullWidth className={classes.sectionNoPaddingTop}>
           <Box mt={2}>
             <TypeOfSport />
           </Box>
-        </Section>
+        </Section> */}
         <Section fullWidth className={classes.sectionNoPaddingTop}>
           <Countries />
         </Section>

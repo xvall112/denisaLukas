@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import { ThemeProvider } from "@material-ui/core/styles"
 import { Paper } from "@material-ui/core"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -20,33 +20,6 @@ const useStyles = makeStyles(theme => ({
   root: {},
 }))
 
-/* export const useDarkMode = () => {
-  const [themeMode, setTheme] = useState("dark")
-  const [mountedComponent, setMountedComponent] = useState(false)
-
-  const setMode = mode => {
-    window.localStorage.setItem("themeMode", mode)
-    setTheme(mode)
-  }
-
-  const themeToggler = () => {
-    themeMode === "light" ? setMode("dark") : setMode("light")
-  }
-
-  useEffect(() => {
-    const localTheme = window.localStorage.getItem("themeMode")
-    localTheme ? setTheme(localTheme) : setMode("dark")
-    setMountedComponent(true)
-    AOS.refresh()
-  }, [])
-
-  useEffect(() => {
-    AOS.refresh()
-  }, [themeMode])
-
-  return [themeMode, themeToggler, mountedComponent]
-} */
-
 interface Props {
   layout: any
   component: any
@@ -59,33 +32,22 @@ export default function WithLayout({
   layout: Layout,
   ...rest
 }: Props): JSX.Element {
+  const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
+  const { favouriteItems } = useContext(FavouriteContext)
+  const { themeMode, setMode } = useContext(MenuContext)
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side")
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles)
     }
-
-    /*  AOS.init({
-      once: true,
-      delay: 50,
-      duration: 500,
-      easing: "ease-in-out",
-    }) */
   }, [])
 
-  const { themeMode, setMode } = useContext(MenuContext)
-  /* useEffect(() => {
-    AOS.refresh()
-  }, [mountedComponent]) */
   useEffect(() => {
-    /*    const localTheme = window.localStorage.getItem("themeMode")
-    localTheme ? setMode(localTheme) : */
-    setMode("dark")
+    const localTheme = window.localStorage.getItem("themeMode")
+    localTheme ? setMode(localTheme) : setMode("dark")
   }, [])
-
-  const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
-  const { favouriteItems } = useContext(FavouriteContext)
 
   useEffect(() => {
     isUserAuth()

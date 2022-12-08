@@ -3,6 +3,8 @@ import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
+//components
+import { CardBase } from "components/organisms"
 //hooks
 import { useContentfulAsset } from "../../hooks/useContentfullAsset"
 import { useContentfulImage } from "../../hooks/useContentfulImage"
@@ -22,32 +24,33 @@ import FlagChip from "../../components/own/flagChip"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    border: "1px solid ",
-    borderColor: theme.palette.text.secondary,
-    borderRadius: "10px",
-    "& a": {
-      textDecoration: "none",
-      color: theme.palette.text.primary,
+    "& a": { textDecoration: "none" },
+    "& .MuiCardContent-root": {
+      padding: "0px",
     },
-    "&:hover": {
-      borderColor: `${theme.palette.primary.main} !important`,
-    },
+  },
+  content: {
+    padding: "20px",
   },
   hyperlink: {
     textDecoration: "none",
     color: theme.palette.primary.main,
   },
   img: {
-    borderRadius: "5px",
-    WebkitBorderRadius: "5px",
+    borderRadius: "10px 0 0 10px",
+    WebkitBorderRadius: "10px",
     overflow: "hidden",
     "& img": {
-      borderRadius: "5px",
-      WebkitBorderRadius: "5px",
+      borderRadius: "10px 0 0 10px",
+      WebkitBorderRadius: "10px",
     },
+    height: "100%",
   },
   flag: {
     borderRadius: theme.spacing(0.5),
+  },
+  card: {
+    backgroundColor: theme.palette.background.level2,
   },
 }))
 
@@ -149,102 +152,100 @@ const options = {
       const classes = useStyles()
       if (asset) {
         return (
-          <Box p={1} mx={{ xs: 0, md: 2 }} my={2} className={classes.root}>
+          <Box py={1} mx={{ xs: 0, md: 0 }} my={2} className={classes.root}>
             <Link to={`/${asset.node.slug}`}>
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                item
-                xs={12}
-                spacing={2}
-              >
-                <Grid item xs={6} md={4}>
-                  <Box className={classes.img}>
+              <CardBase noShadow liftUp className={classes.card}>
+                <Grid container direction="row">
+                  <Grid item xs={6} md={5}>
                     <GatsbyImage
                       image={asset.node.titleImage.gatsbyImageData}
                       alt={asset.node.titleImage.title}
                       formats={["auto", "webp", "avif"]}
                       style={{
                         width: "100%",
-                        height: "150px",
+                        height: "100%",
                       }}
                     />
-                  </Box>
-                </Grid>
-                <Grid
-                  container
-                  direction="column"
-                  item
-                  xs={6}
-                  md={8}
-                  spacing={2}
-                >
+                  </Grid>
                   <Grid
                     container
-                    direction="row"
-                    alignItems="center"
+                    direction="column"
                     item
-                    xs={12}
-                    spacing={1}
+                    xs={6}
+                    md={7}
+                    spacing={2}
+                    className={classes.content}
                   >
-                    <Grid item xs={12}>
-                      <Grid
-                        container
-                        direction="row"
-                        alignItems="center"
-                        spacing={1}
-                      >
-                        <Grid item>
-                          <Grid
-                            container
-                            direction="row"
-                            alignItems="center"
-                            spacing={1}
-                          >
-                            <Grid item>
-                              <FlagChip
-                                name={asset.node.country.name}
-                                flagLink={asset.node.country.flagLink}
-                                className={classes.flag}
-                                width={40}
-                              />
-                            </Grid>
+                    <Grid
+                      container
+                      direction="row"
+                      alignItems="center"
+                      item
+                      xs={12}
+                      spacing={1}
+                    >
+                      <Grid item xs={12}>
+                        <Grid
+                          container
+                          direction="row"
+                          alignItems="center"
+                          spacing={1}
+                        >
+                          <Grid item>
+                            <Grid
+                              container
+                              direction="row"
+                              alignItems="center"
+                              spacing={1}
+                            >
+                              <Grid item>
+                                <FlagChip
+                                  name={asset.node.country.name}
+                                  flagLink={asset.node.country.flagLink}
+                                  className={classes.flag}
+                                  width={40}
+                                />
+                              </Grid>
 
-                            {asset.node.kindPlace.map((item, index) => {
-                              return (
-                                <Grid item>
-                                  <Chip label={item} key={index} size="small" />
-                                </Grid>
-                              )
-                            })}
+                              {asset.node.kindPlace.map((item, index) => {
+                                return (
+                                  <Grid item>
+                                    <Chip
+                                      label={item}
+                                      key={index}
+                                      size="small"
+                                    />
+                                  </Grid>
+                                )
+                              })}
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Rating
-                        name="half-rating-read"
-                        defaultValue={asset.node.rating || 5}
-                        precision={0.5}
-                        readOnly
-                        size="small"
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Typography variant="h5">{asset.node.name}</Typography>
-                    </Grid>
-                    <Hidden smDown>
                       <Grid item xs={12}>
-                        <Typography variant="subtitle">
-                          {asset.node.seoDescribe || asset.node.seoDescription}
-                        </Typography>
+                        <Rating
+                          name="half-rating-read"
+                          defaultValue={asset.node.rating || 5}
+                          precision={0.5}
+                          readOnly
+                          size="small"
+                        />
                       </Grid>
-                    </Hidden>
+                      <Grid item xs={12}>
+                        <Typography variant="h5">{asset.node.name}</Typography>
+                      </Grid>
+                      <Hidden smDown>
+                        <Grid item xs={12}>
+                          <Typography variant="subtitle">
+                            {asset.node.seoDescribe ||
+                              asset.node.seoDescription}
+                          </Typography>
+                        </Grid>
+                      </Hidden>
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
+              </CardBase>
             </Link>
           </Box>
         )

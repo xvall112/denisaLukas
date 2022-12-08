@@ -57,14 +57,39 @@ function SamplePrevArrow(props) {
 
 const useStyles = makeStyles(theme => ({
   root: {
+    borderRadius: "10px",
+    webkitBorderRadius: "10px",
+    overflow: "hidden",
     "& .slick-dots": {
-      bottom: "15px",
+      [theme.breakpoints.up("md")]: {
+        bottom: "15px",
+      },
       "& li": { margin: "0px" },
       "& button:before": { color: "white !important", fontSize: "10px" },
     },
     color: "white",
   },
-  img: {
+  heroText: {
+    gridArea: "1/1",
+    position: "relative",
+    height: "40vh",
+    zIndex: 100,
+    // This centers the other elements inside the hero component
+    placeItems: "center",
+    display: "grid",
+    borderRadius: "5px",
+    [theme.breakpoints.up("md")]: {
+      height: "60vh",
+    },
+  },
+  heroImg: {
+    filter: "brightness(0.7)",
+    gridArea: "1/1",
+    height: "40vh",
+    zIndex: 1,
+    [theme.breakpoints.up("md")]: {
+      height: "60vh",
+    },
     borderRadius: theme.shape.borderRadius,
     WebkitBorderRadius: theme.shape.borderRadius,
     overflow: "hidden",
@@ -99,53 +124,39 @@ const Hero = () => {
     cssEase: "linear",
   }
   return (
-    <div className={classes.root}>
+    <Box boxShadow={3} className={classes.root}>
       <Slider {...settings}>
         {data.allContentfulLandingPage.nodes.map((item, index) => {
           return (
             <div key={index}>
-              <div className={classes.img}>
-                <div style={{ display: "grid" }} /* className={classes.img} */>
-                  <div
-                    style={{
-                      // By using the same grid area for both, they are stacked on top of each other
-                      gridArea: "1/1",
-                      position: "relative",
-                      height: "80vh",
-                      zIndex: 100,
-                      // This centers the other elements inside the hero component
-                      placeItems: "center",
-                      display: "grid",
-                      background:
-                        "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.09567577030812324) 50%, rgba(0,0,0,0.1026785714285714) 50%, rgba(0,0,0,0.9066001400560224) 100%)",
-                      borderRadius: "5px",
-                    }}
+              <div style={{ display: "grid" }} /* className={classes.img} */>
+                <div className={classes.heroText}>
+                  <Grid
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
+                    data-aos="fade-up"
                   >
-                    <Grid
-                      container
-                      direction="column"
-                      justify="center"
-                      alignItems="center"
-                      data-aos="fade-up"
-                    >
-                      <Typography component="span">
-                        <Box letterSpacing={16} textAlign="center">
-                          EXPLORE
-                        </Box>
+                    <Typography component="span">
+                      <Box letterSpacing={16} textAlign="center">
+                        EXPLORE
+                      </Box>
 
-                        <Box
-                          fontSize={isMd ? 130 : 50}
-                          fontWeight="fontWeightBold"
-                          textAlign="center"
-                          letterSpacing={5}
-                        >
-                          {item.title}
-                        </Box>
+                      <Box
+                        fontSize={isMd ? 130 : 50}
+                        fontWeight="fontWeightBold"
+                        textAlign="center"
+                        letterSpacing={5}
+                      >
+                        {item.title}
+                      </Box>
 
-                        <Box fontSize={20} textAlign="center">
-                          {item.description}
-                        </Box>
-                      </Typography>
+                      <Box fontSize={20} textAlign="center">
+                        {item.description}
+                      </Box>
+                    </Typography>
+                    {isMd && (
                       <Box mt={2} textAlign="center">
                         <Button
                           variant="outlined"
@@ -156,9 +167,10 @@ const Hero = () => {
                           cestovat
                         </Button>
                       </Box>
-                    </Grid>
+                    )}
+                  </Grid>
 
-                    {/*<Box position="absolute" bottom="50px" width="100%">
+                  {/*<Box position="absolute" bottom="50px" width="100%">
                       <Grid
                         container
                         direction="row"
@@ -176,26 +188,19 @@ const Hero = () => {
                         })} 
                       </Grid>
                     </Box>*/}
-                  </div>
-                  <GatsbyImage
-                    image={item.image.gatsbyImageData}
-                    style={{
-                      gridArea: "1/1",
-                      height: "80vh",
-                      zIndex: 1,
-                      // You can set a maximum height for the image, if you wish.
-                      // maxHeight: 600,
-                    }}
-                    alt={item.image.title}
-                    formats={["auto", "webp", "avif"]}
-                  />
                 </div>
+                <GatsbyImage
+                  image={item.image.gatsbyImageData}
+                  className={classes.heroImg}
+                  alt={item.image.title}
+                  formats={["auto", "webp", "avif"]}
+                />
               </div>
             </div>
           )
         })}
       </Slider>
-    </div>
+    </Box>
   )
 }
 

@@ -16,11 +16,7 @@ const query = graphql`
         name
         slug
         icon {
-          gatsbyImageData(
-            placeholder: BLURRED
-            width: 200
-            outputPixelDensities: 0.5
-          )
+          gatsbyImageData(placeholder: BLURRED, width: 200)
           title
         }
       }
@@ -55,10 +51,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.level2,
     height: "20vh",
 
-    "& :hover img": {
+    /*  "& :hover img": {
       transition: "transform 0.5s,-webkit-transform 0.5s ",
       transform: "scale(1.2)",
-    },
+    }, */
   },
 }))
 

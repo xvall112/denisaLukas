@@ -1,14 +1,23 @@
 import React, { useContext, useState, useEffect, useRef } from "react"
 
 //materialUI
-import { Box, CircularProgress } from "@material-ui/core"
-
+import { Box, CircularProgress, Grid } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
 //components
 import Card from "../../../../components/own/PlacePageLayout/card"
 import NoFavourite from "./noFavourite"
 import FullScreenMap from "../../../../components/own/fullScreenMap"
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    height: "100%",
+  },
+}))
+
 const PlacesCountry = ({ places, country }) => {
+  const classes = useStyles()
   //load more
   const [list, setList] = useState([...places.slice(0, 8)])
 
@@ -77,7 +86,18 @@ const PlacesCountry = ({ places, country }) => {
             center={country.countryCenterLocation}
             title={country.name}
           />
-          <Card data={list} four slug="places" />
+          <div className={classes.root}>
+            <Grid container direction="row" spacing={3}>
+              {list.map((item: any, index: number) => {
+                return (
+                  <Grid item xs={12} sm={12} md={4} lg={3} xl={3} key={index}>
+                    <Card item={item} slug="places" />
+                  </Grid>
+                )
+              })}
+            </Grid>
+          </div>
+
           <div ref={loadRef}>
             {hasMore && (
               <Box textAlign="center">

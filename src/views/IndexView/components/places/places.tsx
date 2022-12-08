@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 //components
-import PlacesLayout from "../../../../components/own/indexView/PlacesLayout"
+import PlacesLayout from "../components/PlacesLayout"
 
 const query = graphql`
   {
@@ -11,6 +11,9 @@ const query = graphql`
         kindPlace
         slug
         name
+        rating
+        kindPlace
+        adress
         titleImage {
           gatsbyImageData(
             placeholder: BLURRED

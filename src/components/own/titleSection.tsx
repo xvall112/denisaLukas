@@ -7,6 +7,7 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext"
 
 const useStyles = makeStyles(theme => ({
   root: {},
+  typo: { fontWeight: 700 },
   link: {
     "& .icon": {
       fontSize: 32,
@@ -62,7 +63,9 @@ const TitleSection = ({ title, link }: props): JSX.Element => {
             justify={isLg ? "flex-start" : "space-between"}
             alignItems="center"
           >
-            <Typography variant="h4">{title}</Typography>
+            <Typography variant="h4" className={classes.typo}>
+              {title}
+            </Typography>
             <span>Prozkoumat vše</span>
             <NavigateNextIcon className="icon" />
           </Grid>

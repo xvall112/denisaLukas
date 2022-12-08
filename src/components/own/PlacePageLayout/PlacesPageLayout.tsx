@@ -18,10 +18,14 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import LeafletMap from "../LeafletMap"
 import { SectionHeader } from "components/molecules"
 import Filter from "./Filter"
-import Cards from "./card"
+import Card from "./card"
 import FullScreenMap from "../fullScreenMap"
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    height: "100%",
+  },
 
   map: {
     width: "100vw",
@@ -120,7 +124,17 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
             <Filter />
             {/*  content */}
 
-            <Cards data={list} slug={slug} />
+            <div className={classes.root}>
+              <Grid container direction="row" spacing={3}>
+                {list.map((item: any, index: number) => {
+                  return (
+                    <Grid item xs={12} sm={6} md={6} lg={6} xl={3} key={index}>
+                      <Card item={item} slug={slug} />
+                    </Grid>
+                  )
+                })}
+              </Grid>
+            </div>
             {/* {hasMore ? (
               <Button
                 variant="outlined"
@@ -137,7 +151,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
               {hasMore && (
                 <Box mb={4}>
                   <Grid container direction="row" spacing={3}>
-                    <Grid item xs={12} md={6} lg={6} xl={3}>
+                    <Grid item xs={12} sm={6} md={6} lg={6} xl={3}>
                       <Skeleton
                         animation="wave"
                         variant="rect"

@@ -24,6 +24,11 @@ interface Props {}
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: { zIndex: 1000 },
+    logo: {
+      backgroundColor: "black",
+      borderRadius: "5px",
+      padding: "5px 0 0 5px",
+    },
     avatar: {
       backgroundColor: theme.palette.primary.main,
     },
@@ -67,7 +72,7 @@ const TopBar = ({}: Props): JSX.Element => {
               alignItems="center"
             >
               <Grid item container direction="row" alignItems="center">
-                <Grid item>
+                <Grid item className={classes.logo}>
                   <Link to="/">
                     <StaticImage
                       src="../../../../images/mainLogo.png"

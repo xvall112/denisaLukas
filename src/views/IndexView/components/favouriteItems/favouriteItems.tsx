@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 //components
-import PlacesLayout from "../../../../components/own/indexView/PlacesLayout"
+import PlacesLayout from "../components/PlacesLayout"
 
 //context
 import { UserContext } from "../../../../providers/user/user.provider"
@@ -14,6 +14,9 @@ export const query = graphql`
         id
         slug
         name
+        rating
+        kindPlace
+        adress
         titleImage {
           gatsbyImageData(
             placeholder: BLURRED
@@ -34,6 +37,9 @@ export const query = graphql`
         id
         slug
         name
+        rating
+        kindPlace
+        adress
         titleImage {
           gatsbyImageData(
             placeholder: BLURRED

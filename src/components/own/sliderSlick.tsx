@@ -83,8 +83,9 @@ const SliderSlick = ({
         {img &&
           img.map((item, index) => {
             return (
-              <div key={index} className={classes.img}>
+              <div className={classes.img}>
                 <GatsbyImage
+                  key={index}
                   image={item.gatsbyImageData}
                   alt={item.title}
                   style={{

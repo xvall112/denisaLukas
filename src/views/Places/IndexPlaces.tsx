@@ -8,9 +8,9 @@ const query = graphql`
     allContentfulPlaces(filter: { node_locale: { eq: "cs" } }) {
       nodes {
         id
-        rating
         slug
         name
+        rating
         kindPlace
         adress
         titleImage {

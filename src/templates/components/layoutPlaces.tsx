@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   location: {
     display: "none",
     color: "white",
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
       display: "inline",
       position: "fixed",
       left: "40vw",
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   name: {
     display: "none",
     color: "white",
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
       display: "inline",
       position: "fixed",
       left: "35px",
@@ -55,12 +55,16 @@ const useStyles = makeStyles(theme => ({
   slider: {
     width: "100vw",
     height: "50vh",
-
+    overflow: "hidden",
+    borderRadius: "0 10px 10px 0",
+    WebkitBorderRadius: "0 0 10px 10px",
     [theme.breakpoints.up("md")]: {
       width: "50vw",
       height: "100vh",
       position: "fixed",
       top: "0px",
+      borderRadius: "0 10px 10px 0",
+      WebkitBorderRadius: "0 10px 10px 0",
     },
   },
 }))
@@ -129,7 +133,7 @@ const LayoutPlaces = ({
 
         <Grid container>
           <Grid item xs={12} md={6}>
-            <div className={classes.slider}>
+            <Box className={classes.slider}>
               {/* komponenta mapa a slider prepinani button v pleaceHeader */}
               {map ? (
                 <LeafletMap
@@ -160,7 +164,7 @@ const LayoutPlaces = ({
                 {/* komponenta location vpravo dole */}
                 <Location location={data.location} />
               </Box>
-            </div>
+            </Box>
           </Grid>
           <Grid item xs={12} md={6}>
             <Box mt={{ xs: 0, lg: 10 }} mb={{ xs: 4, md: 5 }} zIndex={100}>

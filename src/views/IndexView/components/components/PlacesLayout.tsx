@@ -1,19 +1,21 @@
 import React from "react"
-
 import Slider from "react-slick"
-import { Link } from "gatsby"
+
 //components
 import Card from "./card"
-import Title from "../titleSection"
+import Title from "../../../../components/own/titleSection"
 
 //materiaUI
-import { Grid, Box, Typography } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   root: {
     "& .slick-track": {
       margin: 0,
+    },
+    "& .slick-slide": {
+      padding: "0px 5px",
     },
   },
   nextPlace: {
@@ -36,13 +38,14 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
   const theme = useTheme()
 
   const settings = {
-    speed: 100,
+    speed: 200,
     arrows: false,
     dots: false,
     infinite: false,
     slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: false,
+
     responsive: [
       {
         breakpoint: 600,
@@ -67,15 +70,9 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
         <Grid item xs={12}>
           <Slider {...settings}>
             {data.map((place, index) => {
-              return (
-                <div key={index}>
-                  <Box pr={2}>
-                    <Card item={place} />
-                  </Box>
-                </div>
-              )
+              return <Card item={place} />
             })}
-            <Link to={slug}>
+            {/*   <Link to={slug}>
               <Grid
                 container
                 justify="center"
@@ -86,7 +83,7 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
                   Prozkoumat vše
                 </Typography>
               </Grid>
-            </Link>
+            </Link> */}
           </Slider>
         </Grid>
       )}
