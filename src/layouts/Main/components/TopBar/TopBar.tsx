@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: { zIndex: 1000 },
     logo: {
       backgroundColor: "black",
-      borderRadius: "5px",
+      borderRadius: theme.shape.borderRadius,
       padding: "5px 0 0 5px",
     },
     avatar: {

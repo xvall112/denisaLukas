@@ -3,7 +3,7 @@ import clsx from "clsx"
 
 //materialUI
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useMediaQuery, Hidden, Box, Container } from "@material-ui/core"
+import { useMediaQuery, Hidden, AppBar, Container } from "@material-ui/core"
 import LinearProgress from "@material-ui/core/LinearProgress"
 
 //components
@@ -45,9 +45,11 @@ const Main = ({ children }: Props): JSX.Element => {
       })}
     >
       {/* {loading && <LinearProgress />} */}
-      <Container maxWidth="xl">
-        <Topbar />
-      </Container>
+      <AppBar position="sticky" color="inherit">
+        <Container maxWidth="xl">
+          <Topbar />
+        </Container>
+      </AppBar>
       <SideBar variant="temporary" />
       <main>
         {/*  <Divider /> */}

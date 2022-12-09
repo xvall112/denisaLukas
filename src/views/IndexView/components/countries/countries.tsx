@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme =>
       overflow: "hidden",
       borderRadius: theme.shape.borderRadius,
       webkitBorderRadius: theme.shape.borderRadius,
-      color: "white",
+
       [theme.breakpoints.up("lg")]: {
         height: "400px",
         "&:hover": {
@@ -97,6 +97,8 @@ const useStyles = makeStyles(theme =>
     },
     typo: {
       fontWeight: 700,
+      color: "white",
+      zIndex: 100,
     },
   })
 )

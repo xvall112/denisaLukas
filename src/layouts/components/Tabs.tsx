@@ -1,6 +1,11 @@
 import React from "react"
-import { makeStyles, Theme, useTheme } from "@material-ui/core/styles"
-import AppBar from "@material-ui/core/AppBar"
+import {
+  makeStyles,
+  Theme,
+  useTheme,
+  withStyles,
+} from "@material-ui/core/styles"
+
 import Tabs from "@material-ui/core/Tabs"
 import { Tab, useMediaQuery } from "@material-ui/core"
 import PhoneIcon from "@material-ui/icons/Phone"
@@ -15,6 +20,11 @@ interface TabPanelProps {
   children?: React.ReactNode
   index: any
   value: any
+}
+
+interface StyledTabProps {
+  label: string
+  icon: any
 }
 
 function a11yProps(index: any) {
@@ -32,6 +42,22 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
+const AntTabs = withStyles({
+  root: {},
+  indicator: {},
+})(Tabs)
+
+const AntTab = withStyles(theme => ({
+  root: {
+    textTransform: "none",
+    lineHeight: 1,
+    minWidth: "50px",
+    [theme.breakpoints.up("md")]: {
+      marginRight: "20px",
+    },
+  },
+}))((props: StyledTabProps) => <Tab disableRipple {...props} />)
+
 export default function ScrollableTabsButtonForce() {
   const classes = useStyles()
   const theme = useTheme()
@@ -45,7 +71,7 @@ export default function ScrollableTabsButtonForce() {
 
   return (
     <div className={classes.root}>
-      <Tabs
+      <AntTabs
         value={value}
         onChange={handleChange}
         variant="scrollable"
@@ -54,14 +80,14 @@ export default function ScrollableTabsButtonForce() {
         textColor="primary"
         aria-label="scrollable force tabs example"
       >
-        <Tab label="Item One" icon={<PhoneIcon />} {...a11yProps(0)} />
-        <Tab label="Item Two" icon={<FavoriteIcon />} {...a11yProps(1)} />
-        <Tab label="Item Three" icon={<PersonPinIcon />} {...a11yProps(2)} />
-        <Tab label="Item Four" icon={<HelpIcon />} {...a11yProps(3)} />
-        <Tab label="Item Five" icon={<ShoppingBasket />} {...a11yProps(4)} />
-        <Tab label="Item Six" icon={<ThumbDown />} {...a11yProps(5)} />
-        <Tab label="Item Seven" icon={<ThumbUp />} {...a11yProps(6)} />
-      </Tabs>
+        <AntTab label="Item One" icon={<PhoneIcon />} {...a11yProps(0)} />
+        <AntTab label="Item Two" icon={<FavoriteIcon />} {...a11yProps(1)} />
+        <AntTab label="Item Three" icon={<PersonPinIcon />} {...a11yProps(2)} />
+        <AntTab label="Item Four" icon={<HelpIcon />} {...a11yProps(3)} />
+        <AntTab label="Item Five" icon={<ShoppingBasket />} {...a11yProps(4)} />
+        <AntTab label="Item Six" icon={<ThumbDown />} {...a11yProps(5)} />
+        <AntTab label="Item Seven" icon={<ThumbUp />} {...a11yProps(6)} />
+      </AntTabs>
     </div>
   )
 }

@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
 
     borderRadius: theme.spacing(1),
-    [theme.breakpoints.up("sm")]: {},
+
     "&:last-child": {
       [theme.breakpoints.up("md")]: {
         marginBottom: 0,

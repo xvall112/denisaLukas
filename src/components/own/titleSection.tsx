@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     color: "white",
     backgroundColor: "black",
-    paddingX: "5px",
+    padding: "0 10px",
     borderRadius: theme.shape.borderRadius,
   },
   link: {
