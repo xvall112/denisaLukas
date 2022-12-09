@@ -4,6 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 //components
 import Algolia from "../../../../components/own/Algolia/Algolia"
+import Tabs from "../../../components/Tabs"
 //context
 import { MenuContext } from "../../../../providers/menu/menu.providers"
 import { UserContext } from "../../../../providers/user/user.provider"
@@ -99,10 +100,9 @@ const TopBar = ({}: Props): JSX.Element => {
               alignItems="center"
               spacing={1}
             >
-              <>
-                {isMd ? (
-                  <>
-                    {/*   <Grid item>
+              {isMd && (
+                <>
+                  {/*   <Grid item>
                     <Box mr={2}>
                       <DarkModeToggler
                         themeMode={themeMode}
@@ -110,32 +110,34 @@ const TopBar = ({}: Props): JSX.Element => {
                       />
                     </Box>
                   </Grid>  */}
-                    {/* button Instagram */}
-                    <Grid item xs={4} md={2}>
-                      <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="link to instagram"
-                        onClick={() =>
-                          navigate("https://www.instagram.com/denisa.lukas/")
-                        }
-                      >
-                        <InstagramIcon fontSize="large" />
-                      </IconButton>
-                    </Grid>
-
-                    {/*  button menu */}
-                    <Grid item xs={4} md={2}>
-                      <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={() => handleSidebarOpen()}
-                      >
-                        <MenuIcon fontSize="large" />
-                      </IconButton>
-                    </Grid>
-                  </>
-                ) : (
+                  {/* button Instagram */}
+                  <Grid item xs={4} md={2}>
+                    <IconButton
+                      edge="start"
+                      color="inherit"
+                      aria-label="link to instagram"
+                      onClick={() =>
+                        navigate("https://www.instagram.com/denisa.lukas/")
+                      }
+                    >
+                      <InstagramIcon fontSize="large" />
+                    </IconButton>
+                  </Grid>
+                </>
+              )}
+              {/*  button menu */}
+              <Grid item xs={5} md={2}>
+                <IconButton
+                  color="primary"
+                  aria-label="open drawer"
+                  onClick={() => handleSidebarOpen()}
+                >
+                  <MenuIcon fontSize="large" />
+                </IconButton>
+              </Grid>
+              <>
+                {/*   refresh button
+              (
                   <Grid item>
                     <IconButton
                       aria-label="open drawer"
@@ -144,7 +146,7 @@ const TopBar = ({}: Props): JSX.Element => {
                       <RefreshOutlinedIcon fontSize="large" />
                     </IconButton>
                   </Grid>
-                )}
+                ) */}
                 {/*  button if user login */}
 
                 {/* <Grid item xs={4} md={2}>
@@ -184,6 +186,7 @@ const TopBar = ({}: Props): JSX.Element => {
                 </Grid>
               )} */}
         </Grid>
+        <Tabs />
       </div>
     </header>
   )

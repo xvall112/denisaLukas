@@ -7,7 +7,13 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext"
 
 const useStyles = makeStyles(theme => ({
   root: {},
-  typo: { fontWeight: 700 },
+  typo: {
+    fontWeight: 700,
+    color: "white",
+    backgroundColor: "black",
+    paddingX: "5px",
+    borderRadius: theme.shape.borderRadius,
+  },
   link: {
     "& .icon": {
       fontSize: 32,
@@ -31,7 +37,6 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.primary,
     textDecoration: "none",
     "& :hover": {
-      color: theme.palette.text.primary,
       "& .icon": {
         opacity: 1,
       },

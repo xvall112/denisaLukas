@@ -64,35 +64,29 @@ const useStyles = makeStyles(theme =>
       "& .slick-dots": {
         "& button:before": { color: "white !important", fontSize: "10px" },
       },
-      "& a": {
-        color: "white",
-      },
     },
     card: {
       boxShadow: theme.shadows[3],
       height: "200px",
       position: "relative",
       overflow: "hidden",
-      borderRadius: "5px",
-      webkitBorderRadius: "5px",
+      borderRadius: theme.shape.borderRadius,
+      webkitBorderRadius: theme.shape.borderRadius,
+      color: "white",
       [theme.breakpoints.up("lg")]: {
         height: "400px",
-      },
-      "&:hover": {
-        "& img": {
-          transform: "scale(1.2)",
-          filter: "brightness(1)",
+        "&:hover": {
+          "& img": {
+            transform: "scale(1.2)",
+            filter: "brightness(1)",
+          },
         },
-      },
-      "& .lazy-load-image-loaded": {
-        display: "flex !important",
       },
     },
     img: {
       borderRadius: theme.shape.borderRadius,
       WebkitBorderRadius: theme.shape.borderRadius,
       overflow: "hidden",
-
       objectFit: "cover",
       "& img": {
         borderRadius: theme.shape.borderRadius,
@@ -165,7 +159,7 @@ const Countries = () => {
                   bottom={0}
                   left={0}
                   right={0}
-                  padding={{ sm: 2, lg: 3 }}
+                  padding={{ xs: 2, lg: 3 }}
                   fontWeight={700}
                   /*     style={{
                     opacity: 0.3,

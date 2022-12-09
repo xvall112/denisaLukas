@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
   location: {
     cursor: "pointer",
   },
+  card: {},
 }))
 interface Props {
   children: any
@@ -42,7 +43,12 @@ const DescribeSection = ({
   return (
     <Box mb={1}>
       <Grid item xs={12}>
-        <CardBase withShadow variant="outlined" align="left">
+        <CardBase
+          withShadow
+          variant="outlined"
+          align="left"
+          className={classes.card}
+        >
           <>
             <Grid container direction="row" alignItems="center">
               <Grid

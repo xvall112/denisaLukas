@@ -13,14 +13,14 @@ export const light = {
   },
   type: "light" as PaletteType,
   primary: {
-    main: "#ffaa00",
+    main: "#000",
     light: "#fff1bc",
     dark: "#ff9100",
-    contrastText: "#000",
+    contrastText: "#fff",
   },
   secondary: {
-    light: "#ffb74d",
-    main: "#f9b934",
+    light: "#fff",
+    main: "#fff",
     dark: "#f57c00",
     contrastText: "rgba(0, 0, 0, 0.87)",
   },

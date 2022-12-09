@@ -54,7 +54,7 @@ const Main = ({ children }: Props): JSX.Element => {
 
         {children}
       </main>
-      <Hidden mdUp>
+      <Hidden lgUp>
         <BottomNavigation />
       </Hidden>
       {/* <Footer /> */}

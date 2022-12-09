@@ -209,12 +209,8 @@ const options = {
 
                               {asset.node.kindPlace.map((item, index) => {
                                 return (
-                                  <Grid item>
-                                    <Chip
-                                      label={item}
-                                      key={index}
-                                      size="small"
-                                    />
+                                  <Grid item key={index}>
+                                    <Chip label={item} size="small" />
                                   </Grid>
                                 )
                               })}
@@ -236,7 +232,7 @@ const options = {
                       </Grid>
                       <Hidden smDown>
                         <Grid item xs={12}>
-                          <Typography variant="subtitle">
+                          <Typography>
                             {asset.node.seoDescribe ||
                               asset.node.seoDescription}
                           </Typography>

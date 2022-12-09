@@ -46,6 +46,7 @@ const IconAlternate = ({
   const classes = useStyles()
   const useBackgroundStyles = makeStyles(theme => ({
     background: {
+      backgroundColor: "black",
       background:
         "linear-gradient(93deg, rgba(250,229,150,0.500437675070028) 0%, rgba(250,229,150,1) 46%, rgba(250,229,150,0.500437675070028) 100%)",
     },

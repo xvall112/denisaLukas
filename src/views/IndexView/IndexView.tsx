@@ -82,9 +82,9 @@ const useStyles = makeStyles(() => ({
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
-
   const classes = useStyles()
   const { currentUser } = useContext(UserContext)
+
   return (
     <Box overflow="hidden">
       <Container maxWidth="xl">

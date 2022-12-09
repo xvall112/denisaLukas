@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 1000,
       position: "fixed",
       bottom: "0px",
-      paddingBottom: theme.spacing(1),
+
       height: "auto",
     },
     fabButton: {

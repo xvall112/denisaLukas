@@ -87,8 +87,8 @@ const PlaceHeader = ({
             >
               {kindPlace.map((item, index) => {
                 return (
-                  <Box mr={1}>
-                    <Chip key={index} label={item} />
+                  <Box mr={1} key={index}>
+                    <Chip label={item} />
                   </Box>
                 )
               })}

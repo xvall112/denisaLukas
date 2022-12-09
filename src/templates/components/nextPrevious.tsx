@@ -60,7 +60,7 @@ const nextPrevious = ({ previous, next }: Props): JSX.Element => {
                 variant="outlined"
                 color="primary"
                 fullWidth
-                startIcon={<ArrowBackIosIcon />}
+                /* startIcon={<ArrowBackIosIcon />} */
                 size="large"
                 onClick={() => navigate(`/${previous.slug}`)}
               >
@@ -97,7 +97,7 @@ const nextPrevious = ({ previous, next }: Props): JSX.Element => {
                 variant="outlined"
                 color="primary"
                 fullWidth
-                endIcon={<ArrowForwardIosIcon />}
+                /*       endIcon={<ArrowForwardIosIcon />} */
                 size="large"
                 onClick={() => navigate(`/${next.slug}`)}
               >

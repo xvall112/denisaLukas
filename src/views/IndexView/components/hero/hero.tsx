@@ -152,22 +152,21 @@ const Hero = () => {
                         {item.title}
                       </Box>
 
-                      <Box fontSize={20} textAlign="center">
+                      {/* <Box fontSize={20} textAlign="center">
                         {item.description}
-                      </Box>
+                      </Box> */}
                     </Typography>
-                    {isMd && (
-                      <Box mt={2} textAlign="center">
-                        <Button
-                          variant="outlined"
-                          color="primary"
-                          size="large"
-                          onClick={() => navigate(`/${item.slug}`)}
-                        >
-                          cestovat
-                        </Button>
-                      </Box>
-                    )}
+
+                    <Box mt={2} textAlign="center">
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        size="large"
+                        onClick={() => navigate(`/${item.slug}`)}
+                      >
+                        cestovat
+                      </Button>
+                    </Box>
                   </Grid>
 
                   {/*<Box position="absolute" bottom="50px" width="100%">

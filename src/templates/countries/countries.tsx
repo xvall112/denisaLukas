@@ -142,7 +142,7 @@ const Countries = props => {
 
   const Nevim = () => {
     return (
-      <div>
+      <>
         <Hero title={name} heroImage={heroImage} />
         <Tab
           places={countryPlaces}
@@ -150,15 +150,15 @@ const Countries = props => {
           country={country}
           blog={countryBlog}
         />
-      </div>
+      </>
     )
   }
 
   return (
-    <div>
+    <>
       <SEO title={name} image={`https:${heroImage.file.url}`} />
       <WithLayout component={Nevim} layout={LayoutPlaces} />
-    </div>
+    </>
   )
 }
 
