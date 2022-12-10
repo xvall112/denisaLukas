@@ -38,7 +38,7 @@ interface ViewComponentProps {
     level: string
     rating: number
   }
-  slug: string
+
   themeMode?: string
   // All other props
   [x: string]: any

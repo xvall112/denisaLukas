@@ -37,7 +37,7 @@ interface LeafletMap {
   className?: any
   rest?: any
   marker: any
-  slug?: string
+
   parking?: [number, number]
   endFerrataLocation?: [number, number]
   geoJSON?: any
@@ -46,7 +46,7 @@ const LeafletMap = ({
   marker,
   zoom,
   center,
-  slug,
+
   className,
   parking,
   endFerrataLocation,
@@ -152,7 +152,7 @@ const LeafletMap = ({
               zIndexOffset={item.id === highlightedCard ? 1000 : 0}
             >
               <Popup className={classes.popup}>
-                <PopupCard item={item} slug={slug} />
+                <PopupCard item={item} />
               </Popup>
             </Marker>
           ))}

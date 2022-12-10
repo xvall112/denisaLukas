@@ -4,7 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 //components
 import Algolia from "../../../../components/own/Algolia/Algolia"
-import Tabs from "../../../components/Tabs"
+import Tabs from "./Tabs"
 //context
 import { MenuContext } from "../../../../providers/menu/menu.providers"
 import { UserContext } from "../../../../providers/user/user.provider"

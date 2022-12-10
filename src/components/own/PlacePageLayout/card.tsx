@@ -92,14 +92,13 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface ViewComponentProps {
-  slug: string
   item: any
   themeMode?: string
   // All other props
   [x: string]: any
 }
 
-const Card = ({ item, slug }: ViewComponentProps): JSX.Element => {
+const Card = ({ item }: ViewComponentProps): JSX.Element => {
   const classes = useStyles()
   const { setHighlighted } = useContext(MapContext)
   const { addFavouriteItem, favouriteItems, removeFavouriteItem } = useContext(
@@ -202,8 +201,8 @@ const Card = ({ item, slug }: ViewComponentProps): JSX.Element => {
             >
               {item.kindPlace.map((item, index) => {
                 return (
-                  <Grid item xs="auto">
-                    <Chip key={index} label={item} />
+                  <Grid item xs="auto" key={index}>
+                    <Chip label={item} />
                   </Grid>
                 )
               })}

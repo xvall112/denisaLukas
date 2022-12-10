@@ -2,21 +2,12 @@ import React, { useContext, useState, useEffect, useRef } from "react"
 import { MenuContext } from "../../../providers/menu/menu.providers"
 
 //materialUI
-import {
-  Grid,
-  Box,
-  Container,
-  useMediaQuery,
-  Hidden,
-  Button,
-  CircularProgress,
-} from "@material-ui/core"
+import { Grid, Box, Container, useMediaQuery, Hidden } from "@material-ui/core"
 import Skeleton from "@material-ui/lab/Skeleton"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 //components
 import LeafletMap from "../LeafletMap"
-import { SectionHeader } from "components/molecules"
 import Filter from "./Filter"
 import Card from "./card"
 import FullScreenMap from "../fullScreenMap"
@@ -40,9 +31,8 @@ const useStyles = makeStyles(theme => ({
 }))
 interface Props {
   data: any
-  slug: string
 }
-const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
+const IndexPlaces = ({ data }: Props): JSX.Element => {
   const {
     filterCountry,
     filterCountryLocation,
@@ -129,7 +119,7 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
                 {list.map((item: any, index: number) => {
                   return (
                     <Grid item xs={12} sm={6} md={6} lg={6} xl={3} key={index}>
-                      <Card item={item} slug={slug} />
+                      <Card item={item} />
                     </Grid>
                   )
                 })}
@@ -189,7 +179,6 @@ const IndexPlaces = ({ data, slug }: Props): JSX.Element => {
                 zoom={filterCountryZoom}
                 center={filterCountryLocation}
                 marker={data}
-                slug={slug}
               />
             </div>
           </Grid>
