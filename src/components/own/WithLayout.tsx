@@ -5,20 +5,11 @@ import { Paper } from "@material-ui/core"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import getTheme from "../../theme/index"
 import { SnackbarMap, SnackbarUser, Modal } from "./Snackbar"
-import Tabs from "../../layouts/Main/components/TopBar/Tabs"
+
 //context
 import { UserContext } from "../../providers/user/user.provider"
 import { MenuContext } from "../../providers/menu/menu.providers"
 import { FavouriteContext } from "../../providers/favourite/favourite.provider"
-
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import "firebase/auth"
-import "firebase/firestore"
-import "@fontsource/roboto/300.css"
-import "@fontsource/roboto/400.css"
-import "@fontsource/roboto/500.css"
-import "@fontsource/roboto/700.css"
 
 export const useDarkMode = () => {
   const { themeMode, setMode } = useContext(MenuContext)

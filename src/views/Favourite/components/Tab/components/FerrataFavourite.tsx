@@ -31,7 +31,7 @@ const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(placeholder: BLURRED, width: 400)
+          gatsbyImageData(width: 400, placeholder: BLURRED)
           title
         }
         location {
