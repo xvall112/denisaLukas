@@ -24,6 +24,7 @@ const query = graphql`
         title
         image {
           gatsbyImageData(
+            placeholder: BLURRED
             width: 800
             outputPixelDensities: [0.5, 0.5, 0.5, 0.5]
           )
@@ -61,11 +62,10 @@ const useStyles = makeStyles(theme => ({
     webkitBorderRadius: "10px",
     overflow: "hidden",
     "& .slick-dots": {
-      [theme.breakpoints.up("md")]: {
-        bottom: "15px",
-      },
-      "& li": { margin: "0px" },
+      bottom: "15px",
       "& button:before": { color: "white !important", fontSize: "10px" },
+
+      "& li": { margin: "0px" },
     },
     color: "white",
   },
@@ -193,6 +193,7 @@ const Hero = () => {
                   className={classes.heroImg}
                   alt={item.image.title}
                   formats={["auto", "webp", "avif"]}
+                  loading={index === 0 ? "eager" : "lazy"}
                 />
               </div>
             </div>

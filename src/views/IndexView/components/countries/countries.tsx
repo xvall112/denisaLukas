@@ -20,7 +20,7 @@ export const query = graphql`
         slug
         flagLink
         heroImage {
-          gatsbyImageData(height: 500)
+          gatsbyImageData(height: 500, placeholder: BLURRED)
           title
         }
       }
@@ -98,7 +98,6 @@ const useStyles = makeStyles(theme =>
     typo: {
       fontWeight: 700,
       color: "white",
-      zIndex: 100,
     },
   })
 )
@@ -162,7 +161,7 @@ const Countries = () => {
                   left={0}
                   right={0}
                   padding={{ xs: 2, lg: 3 }}
-                  fontWeight={700}
+
                   /*     style={{
                     opacity: 0.3,
                     backgroundImage: `url(${item.flagLink})`,

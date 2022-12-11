@@ -70,7 +70,7 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
         <Grid item xs={12}>
           <Slider {...settings}>
             {data.map((place, index) => {
-              return <Card item={place} />
+              return <Card item={place} key={index} />
             })}
             {/*   <Link to={slug}>
               <Grid

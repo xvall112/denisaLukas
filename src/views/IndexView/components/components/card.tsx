@@ -130,14 +130,14 @@ const Card = ({ item }) => {
               alignItems="center"
               spacing={1}
             >
-              {item.kindPlace &&
+              {/*  {item.kindPlace &&
                 item.kindPlace.map((item, index) => {
                   return (
-                    <Grid item xs="auto">
-                      <Chip key={index} label={item} />
+                    <Grid item xs="auto" key={index}>
+                      <Chip label={item} />
                     </Grid>
                   )
-                })}
+                })} */}
 
               {item.level && (
                 <Grid item xs="auto">
