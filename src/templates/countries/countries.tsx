@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
 
 //components
-import WithLayout from "../../../WithLayout"
 import SEO from "../../components/own/seo"
 import LayoutPlaces from "../../layouts/Place/Place"
 import Hero from "../components/Hero"
@@ -157,7 +156,9 @@ const Countries = props => {
   return (
     <>
       <SEO title={name} image={`https:${heroImage.file.url}`} />
-      <WithLayout component={Nevim} layout={LayoutPlaces} />
+      <LayoutPlaces>
+        <Nevim />
+      </LayoutPlaces>
     </>
   )
 }

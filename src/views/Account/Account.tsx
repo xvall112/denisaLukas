@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 import SEO from "../../components/own/seo"
 import MenuLayout from "../../layouts/Menu/MenuLayout"
-import WithLayout from "../../../WithLayout"
 import { navigate } from "gatsby"
 import { parse } from "query-string"
 import { makeStyles } from "@material-ui/core/styles"
@@ -174,7 +173,9 @@ const AccounSettings = (): JSX.Element => {
   return (
     <>
       <SEO title="nastaveni" />
-      <WithLayout component={Account} layout={MenuLayout} />
+      <MenuLayout>
+        <Account />
+      </MenuLayout>
     </>
   )
 }

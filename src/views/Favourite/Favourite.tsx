@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import SEO from "../../components/own/seo"
 import LayoutPlaces from "../../layouts/Place/Place"
-import WithLayout from "../../../WithLayout"
 import { MenuContext } from "../../providers/menu/menu.providers"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box } from "@material-ui/core"
@@ -50,7 +49,9 @@ const AccountPage = (): JSX.Element => {
   return (
     <>
       <SEO title="oblíbené" />
-      <WithLayout component={Account} layout={LayoutPlaces} />
+      <LayoutPlaces>
+        <Account />
+      </LayoutPlaces>
     </>
   )
 }

@@ -115,14 +115,14 @@ export default function ScrollableTabsButtonForce() {
         <LinkTab
           label="Home"
           to="/"
-          icon={
+          /*    icon={
             <SvgIcon>
               <path d="M18.5,7.5v4.1a2.76,2.76,0,0,0-1.11-.23H14.64a2.87,2.87,0,0,0-1.14.24V7.5Z" />
               <rect height="4" width="3" x="14.5" y="3.5" />
               <circle cx="15.5" cy="5.5" r="0.5" />
               <path d="M20.5,14.48v13a1,1,0,0,1-1,1h-7a1,1,0,0,1-1-1v-13a3,3,0,0,1,1.87-2.74,3.16,3.16,0,0,1,1.19-.24h2.88a3,3,0,0,1,1.16.23A3,3,0,0,1,20.5,14.48Z" />
             </SvgIcon>
-          }
+          } */
           {...a11yProps(0)}
         />
         {data.allContentfulTypeOfPlace.nodes.map((tab, index) => {
@@ -130,7 +130,7 @@ export default function ScrollableTabsButtonForce() {
             <LinkTab
               label={tab.name}
               to={`/${tab.slug}`}
-              icon={<FavoriteIcon />}
+              /* icon={<FavoriteIcon />} */
               {...a11yProps(index + 1)}
               key={index}
             />

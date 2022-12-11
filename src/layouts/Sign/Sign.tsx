@@ -19,11 +19,9 @@ const useStyles = makeStyles(theme => ({
 
 interface Props {
   children: React.ReactNode
-  themeToggler: Function
-  themeMode: string
 }
 
-const Place = ({ children, themeToggler, themeMode }: Props): JSX.Element => {
+const Place = ({ children }: Props): JSX.Element => {
   const classes = useStyles()
 
   const theme = useTheme()

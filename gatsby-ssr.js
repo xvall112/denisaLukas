@@ -5,5 +5,9 @@
  */
 
 // You can delete this file if you're not using it
-import "firebase/auth"
-import "firebase/firestore"
+import React from "react"
+import TopLayout from "./TopLayout.tsx"
+
+export const wrapRootElement = ({ element }) => {
+  return <TopLayout>{element}</TopLayout>
+}

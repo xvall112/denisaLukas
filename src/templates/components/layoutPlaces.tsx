@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 
 //components
-import WithLayout from "../../../WithLayout"
 import Slider from "../../components/own/sliderSlick"
 import Places from "../../layouts/Place/Place"
 import PlaceHeader from "../components/placeHeader"
@@ -193,7 +192,9 @@ const LayoutPlaces = ({
   }
   return (
     <>
-      <WithLayout component={Nevim} layout={Places} />
+      <Places>
+        <Nevim />
+      </Places>
     </>
   )
 }

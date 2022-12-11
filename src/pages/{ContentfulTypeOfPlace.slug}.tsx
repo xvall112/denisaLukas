@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 //components
 import SEO from "../components/own/seo"
-import WithLayout from "../../WithLayout"
 import Main from "../layouts/Main/Main"
 import Places from "../components/own/Places"
 //materialUi
@@ -50,24 +49,13 @@ export const query = graphql`
 
 const TypeOfPlace = props => {
   const { nodes } = props.data.allContentfulPlaces
-
-  const TypePlaces = () => {
-    return (
-      <>
+  return (
+    <>
+      <Main>
         <Container maxWidth="xl">
           <Places places={nodes} />
         </Container>
-      </>
-    )
-  }
-  return (
-    <>
-      {/* <SEO
-        title={title}
-        description={shortDescription}
-        image={`https:${titleImage.file.url}`}
-      /> */}
-      <WithLayout component={TypePlaces} layout={Main} />
+      </Main>
     </>
   )
 }
