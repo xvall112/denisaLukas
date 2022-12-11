@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 //materialUI
 import {
@@ -7,16 +7,9 @@ import {
   useTheme,
   withStyles,
 } from "@material-ui/core/styles"
-
 import { Tab, useMediaQuery, Tabs, SvgIcon } from "@material-ui/core"
-import PhoneIcon from "@material-ui/icons/Phone"
-import FavoriteIcon from "@material-ui/icons/Favorite"
-import PersonPinIcon from "@material-ui/icons/PersonPin"
-import HelpIcon from "@material-ui/icons/Help"
-import ShoppingBasket from "@material-ui/icons/ShoppingBasket"
-import ThumbDown from "@material-ui/icons/ThumbDown"
-import ThumbUp from "@material-ui/icons/ThumbUp"
-
+//context
+import { MenuContext } from "../../../../providers/menu/menu.providers"
 interface TabPanelProps {
   children?: React.ReactNode
   index: any
@@ -84,33 +77,28 @@ function LinkTab(props) {
 }
 
 export default function ScrollableTabsButtonForce() {
-  useEffect(() => {
-    console.log("tabs mounted")
-    return () => {
-      console.log("tabs UNMOUNTED")
-    }
-  }, [])
+  const { topTabsValue, setTopTabsValue } = useContext(MenuContext)
   const data = useStaticQuery(query)
   const classes = useStyles()
   const theme = useTheme()
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = React.useState(2)
   const isLg = useMediaQuery(theme.breakpoints.up("lg"), {
     defaultMatches: true,
   })
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue)
+    setTopTabsValue(newValue)
   }
 
   return (
     <div className={classes.root}>
       <AntTabs
-        value={value}
+        value={topTabsValue}
         onChange={handleChange}
         variant="scrollable"
         scrollButtons={isLg ? "on" : "off"}
         indicatorColor="primary"
         textColor="primary"
-        aria-label="scrollable force tabs example"
+        aria-label="scrollable force tabs type of place"
       >
         <LinkTab
           label="Home"

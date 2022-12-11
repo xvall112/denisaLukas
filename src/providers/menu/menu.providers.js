@@ -10,6 +10,8 @@ export const MenuContext = createContext({
   valueBottomNavigation: "home",
   titleTopBar: "",
   loadList: 0,
+  topTabsValue: 0,
+  setTopTabsValue: newValue => {},
   setFilterCountry: valueFilter => {},
   handleSidebarOpen: () => {},
   handleSidebarClose: () => {},
@@ -23,10 +25,10 @@ export const MenuContext = createContext({
 
 const MenuProvider = ({ children }) => {
   const [filterCountry, setFilterCountryState] = useState("")
-  const [filterCountryZoom, setFilterCountryZoom] = useState(2)
+  const [filterCountryZoom, setFilterCountryZoom] = useState(0)
   const [filterCountryLocation, setFilterCountryLocation] = useState([0, 0])
-  const [themeMode, setTheme] = useState("dark")
-
+  const [themeMode, setTheme] = useState("light")
+  const [topTabsValue, setTopTabsValue] = useState(2)
   const [openSidebar, setOpenSidebar] = useState(false)
   const [valueBottomNavigation, setValueBottomNavigation] = useState("home")
   const [titleTopBar, setTitleTopBar] = useState("")
@@ -77,7 +79,7 @@ const MenuProvider = ({ children }) => {
     <MenuContext.Provider
       value={{
         openSidebar,
-
+        topTabsValue,
         themeMode,
         filterCountry,
         filterCountryZoom,
@@ -85,6 +87,7 @@ const MenuProvider = ({ children }) => {
         valueBottomNavigation,
         titleTopBar,
         loadList,
+        setTopTabsValue,
         handleSetLoadList,
         handleSidebarOpen,
         handleSidebarClose,

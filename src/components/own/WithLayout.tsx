@@ -95,7 +95,6 @@ export default function WithLayout({ children }: Props): JSX.Element {
           <SnackbarMap />
           <SnackbarUser />
           <Modal />
-
           {children}
         </Paper>
       </ThemeProvider>

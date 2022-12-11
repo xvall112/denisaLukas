@@ -5,7 +5,7 @@ import SEO from "../components/own/seo"
 import Main from "../layouts/Main/Main"
 import Places from "../components/own/Places"
 //materialUi
-import { Container } from "@material-ui/core"
+import { Container, Box } from "@material-ui/core"
 
 export const query = graphql`
   query($slug: String!) {
@@ -53,7 +53,9 @@ const TypeOfPlace = props => {
     <>
       <Main>
         <Container maxWidth="xl">
-          <Places places={nodes} />
+          <Box pb={8}>
+            <Places places={nodes} />
+          </Box>
         </Container>
       </Main>
     </>

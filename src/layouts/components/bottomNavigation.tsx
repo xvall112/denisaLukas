@@ -21,8 +21,15 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 1000,
       position: "fixed",
       bottom: "0px",
-      paddingBottom: "10px",
+      paddingBottom: "15px",
       height: "auto",
+      borderTop: "1px solid grey",
+
+      background: "rgba( 255, 255, 255, 0.7)",
+      boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+      backdropFilter: "blur( 20px )",
+      webkitBackdropFilter: " blur( 20px )",
+      borderRadius: "10px",
     },
     fabButton: {
       position: "absolute",
