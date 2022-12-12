@@ -14,3 +14,7 @@ const Places = () => {
 }
 
 export default Places
+
+export function Head() {
+  return <SEO title="O nás" description="Stranka o nas" />
+}

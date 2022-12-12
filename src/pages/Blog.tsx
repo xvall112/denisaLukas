@@ -6,7 +6,6 @@ import LayoutPlaces from "../layouts/Place/Place"
 const Blog = () => {
   return (
     <>
-      <SEO title="Blog" description="Články o cestování" />
       <LayoutPlaces>
         <BlogSearch />
       </LayoutPlaces>
@@ -15,3 +14,7 @@ const Blog = () => {
 }
 
 export default Blog
+
+export function Head() {
+  return <SEO title="Blog" description="Články o cestování" />
+}

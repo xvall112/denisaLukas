@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 //materialUI
 import { makeStyles, Box, Container } from "@material-ui/core"
@@ -7,7 +7,6 @@ import { Section } from "../../components/organisms"
 import Hero from "./components/hero/hero"
 import Countries from "./components/countries/countries"
 import Places from "./components/places/places"
-import TypeOfSport from "./components/typeOfSport/typeOfSport"
 import ViaFerrata from "./components/viaFerrata/viaFerrata"
 import FavouriteItems from "./components/favouriteItems/favouriteItems"
 import PlacesLayout from "./components/components/PlacesLayout"

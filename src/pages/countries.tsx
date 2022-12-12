@@ -18,3 +18,9 @@ const Countries = () => {
 }
 
 export default Countries
+
+export function Head() {
+  return (
+    <SEO title="Destinace" description="Všechny státy které můžete objevovat" />
+  )
+}

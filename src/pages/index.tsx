@@ -14,7 +14,6 @@ const IndexPage = (): JSX.Element => {
 
   return (
     <>
-      <SEO title="Faith in Travel" description="Lukas Denisa Sofie" />
       <Main>
         <IndexView />
       </Main>
@@ -23,3 +22,7 @@ const IndexPage = (): JSX.Element => {
 }
 
 export default IndexPage
+
+export function Head() {
+  return <SEO title="Lukas Denisa Sofie" description="Lukas Denisa Sofie" />
+}

@@ -1,5 +1,4 @@
 import React from "react"
-import { Helmet } from "react-helmet"
 import WithLayout from "./src/components/own/WithLayout"
 
 import MenuProvider from "./src/providers/menu/menu.providers"
@@ -10,13 +9,6 @@ import FavouriteProvider from "./src/providers/favourite/favourite.provider"
 const TopLayout = ({ children }) => {
   return (
     <>
-      <Helmet>
-        <script
-          src="https://kit.fontawesome.com/4c273e6d43.js"
-          crossOrigin="anonymous"
-        ></script>
-      </Helmet>
-
       <FavouriteProvider>
         <UserProvider>
           <MapProvider>

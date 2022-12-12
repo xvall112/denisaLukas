@@ -99,11 +99,6 @@ const BlogArticle = props => {
   const classes = useStyles()
   return (
     <>
-      <SEO
-        title={title}
-        description={shortDescription}
-        image={`https:${titleImage.file.url}`}
-      />
       <Place>
         <div className={classes.root}>
           <Hero
@@ -137,3 +132,14 @@ const BlogArticle = props => {
 }
 
 export default BlogArticle
+
+export function Head(props) {
+  const { title, shortDescription, titleImage } = props.data.contentfulBlog
+  return (
+    <SEO
+      title={title}
+      description={shortDescription}
+      image={`https:${titleImage.file.url}`}
+    />
+  )
+}

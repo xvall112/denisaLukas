@@ -13,7 +13,6 @@ const Places = () => {
   }, [])
   return (
     <>
-      <SEO title="Search" description="Vyhledavani" />
       <LayoutMenu>
         <IndexSearch />
       </LayoutMenu>
@@ -22,3 +21,7 @@ const Places = () => {
 }
 
 export default Places
+
+export function Head() {
+  return <SEO title="Objevuj" description="Vyhledavani" />
+}

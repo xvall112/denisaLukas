@@ -18,3 +18,9 @@ const ViaFerrata = () => {
 }
 
 export default ViaFerrata
+
+export function Head() {
+  return (
+    <SEO title="via Ferrata" description="Via Ferraty které můžete objevovat" />
+  )
+}

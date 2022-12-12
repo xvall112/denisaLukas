@@ -6,7 +6,6 @@ import LayoutPlaces from "../layouts/Place/Place"
 const Places = () => {
   return (
     <>
-      <SEO title="Places" description="Místa která můžete objevovat" />
       <LayoutPlaces>
         <IndexPlaces />
       </LayoutPlaces>
@@ -15,3 +14,7 @@ const Places = () => {
 }
 
 export default Places
+
+export function Head() {
+  return <SEO title="Místa" description="Místa která můžete objevovat" />
+}

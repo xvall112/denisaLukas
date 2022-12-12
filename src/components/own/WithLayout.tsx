@@ -48,13 +48,13 @@ interface Props {
 }
 
 export default function WithLayout({ children }: Props): JSX.Element {
-  React.useEffect(() => {
+  /* React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side")
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles)
     }
-  }, [])
+  }, []) */
 
   const [themeMode, themeToggler, mountedComponent] = useDarkMode()
 
@@ -72,13 +72,6 @@ export default function WithLayout({ children }: Props): JSX.Element {
 
   return (
     <>
-      <Helmet>
-        <script
-          src="https://kit.fontawesome.com/4c273e6d43.js"
-          crossOrigin="anonymous"
-        ></script>
-      </Helmet>
-
       <ThemeProvider theme={getTheme(themeMode)}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
