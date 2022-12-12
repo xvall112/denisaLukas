@@ -58,7 +58,6 @@ const IndexPlaces = () => {
         data={
           filterCountry === "" ? data.allContentfulPlaces.nodes : dataFilter
         }
-        slug="places"
       />
     </>
   )

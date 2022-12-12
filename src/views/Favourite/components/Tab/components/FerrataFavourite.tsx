@@ -74,7 +74,7 @@ const FerrataFavourite = () => {
               {favouriteFerrata.map((item: any, index: number) => {
                 return (
                   <Grid item xs={12} sm={12} md={4} lg={3} xl={3} key={index}>
-                    <Card item={item} slug="places" />
+                    <Card item={item} />
                   </Grid>
                 )
               })}

@@ -104,12 +104,12 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     {
       resolve: `gatsby-plugin-offline`,
-      /* options: {
+      options: {
         precachePages: [`/places/`, `/viaFerrata/*`, "/*"],
         workboxConfig: {
           importWorkboxFrom: `cdn`,
         },
-      }, */
+      },
     },
     {
       resolve: `gatsby-plugin-algolia`,
