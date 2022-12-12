@@ -72,7 +72,7 @@ function blogToAlgoliaRecord({
   title,
   slug,
   shortDescription,
-  titleImage,
+
   country,
 }) {
   return {
@@ -80,7 +80,7 @@ function blogToAlgoliaRecord({
     slug,
     shortDescription,
     title,
-    titleImage: { ...titleImage.gatsbyImageData },
+
     country: country.name,
   }
 }
@@ -99,7 +99,7 @@ function pageToAlgoliaRecord({
   kindPlace,
   name,
   slug,
-  titleImage,
+
   country,
 }) {
   return {
@@ -107,7 +107,7 @@ function pageToAlgoliaRecord({
     kindPlace,
     name,
     slug,
-    titleImage: { ...titleImage.gatsbyImageData },
+
     country: country.name,
   }
 }
