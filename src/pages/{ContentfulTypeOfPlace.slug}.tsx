@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 //components
+import PlaceLayout from "../components/own/PlacePageLayout/PlacesPageLayout copy"
 import SEO from "../components/own/seo"
 import Main from "../layouts/Main/Main"
 import Places from "../components/own/Places"
@@ -52,11 +53,7 @@ const TypeOfPlace = props => {
   return (
     <>
       <Main>
-        <Container maxWidth="xl">
-          <Box pb={8}>
-            <Places places={nodes} />
-          </Box>
-        </Container>
+        <PlaceLayout data={nodes} />
       </Main>
     </>
   )

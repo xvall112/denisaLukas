@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme =>
       borderRadius: theme.shape.borderRadius,
       WebkitBorderRadius: theme.shape.borderRadius,
       overflow: "hidden",
-      objectFit: "cover",
+      height: "100%",
       "& img": {
         borderRadius: theme.shape.borderRadius,
         WebkitBorderRadius: theme.shape.borderRadius,
@@ -148,10 +148,6 @@ const Countries = () => {
               <Link to={item.slug} className={classes.card} key={index}>
                 <GatsbyImage
                   image={item.heroImage.gatsbyImageData}
-                  style={{
-                    height: "100%",
-                    width: "100%",
-                  }}
                   alt={item.heroImage.title}
                   className={classes.img}
                 />

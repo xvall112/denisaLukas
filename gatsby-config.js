@@ -5,7 +5,7 @@ module.exports = {
   siteMetadata: {
     title: `Faith in Travel`,
     description: `Cestovni blog`,
-    titleTemplate: "%s - Faith in Travel",
+    titleTemplate: " - Faith in Travel",
     siteUrl: `https://www.faithintravel.cz`,
     author: `@Lukas Valta <valtalukas@sezanm.cz>`,
     image: `/manifestIcon.png`,

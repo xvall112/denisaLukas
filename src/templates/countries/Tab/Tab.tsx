@@ -3,6 +3,7 @@ import { makeStyles, Theme } from "@material-ui/core/styles"
 import { AppBar, Grid, Container, Tab, Tabs, Chip } from "@material-ui/core"
 
 //components
+
 import PlacesCountry from "./components/PlacesCountry"
 import Result from "../../../views/BlogSearch/components/Result/Result"
 
@@ -153,18 +154,10 @@ export default function TabPane({ places, ferrata, country, blog }) {
       <TabPanel value={value} index={1}>
         <PlacesCountry places={ferrata} country={country} />
       </TabPanel>
-      {/*  <TabPanel value={value} index={2}>
-        <PlacesCountry places={ferrata} country={country} />
-      </TabPanel> */}
+
       <TabPanel value={value} index={2}>
         <Result data={blog} />
       </TabPanel>
-      {/*  <TabPanel value={value} index={2}>
-        Pracujeme na tom
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Pracujeme na tom
-      </TabPanel> */}
     </div>
   )
 }
