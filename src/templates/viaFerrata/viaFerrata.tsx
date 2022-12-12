@@ -186,11 +186,6 @@ const ViaFerrata = props => {
   const data = [...placeInSurrounding.nodes, ...viaFerrataInSurrounding.nodes]
   return (
     <>
-      <SEO
-        title={name}
-        description={seoDescription}
-        image={`https:${titleImage.file.url}`}
-      />
       <LayoutPlaces
         data={contentfulViaFerrata}
         slug="viaFerrata"
@@ -273,3 +268,14 @@ const ViaFerrata = props => {
 }
 
 export default ViaFerrata
+
+export function Head(props) {
+  const { name, seoDescription, titleImage } = props.data.contentfulViaFerrata
+  return (
+    <SEO
+      title={name}
+      description={seoDescription}
+      image={`https:${titleImage.file.url}`}
+    />
+  )
+}

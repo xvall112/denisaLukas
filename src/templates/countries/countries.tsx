@@ -155,7 +155,6 @@ const Countries = props => {
 
   return (
     <>
-      <SEO title={name} image={`https:${heroImage.file.url}`} />
       <LayoutPlaces>
         <Nevim />
       </LayoutPlaces>
@@ -164,3 +163,8 @@ const Countries = props => {
 }
 
 export default Countries
+
+export function Head(props) {
+  const { name, heroImage } = props.data.contentfulCountry
+  return <SEO title={name} image={`https:${heroImage.file.url}`} />
+}

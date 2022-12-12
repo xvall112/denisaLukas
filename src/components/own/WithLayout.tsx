@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useState } from "react"
-import { Helmet } from "react-helmet"
 import { ThemeProvider } from "@material-ui/core/styles"
 import { Paper } from "@material-ui/core"
 import CssBaseline from "@material-ui/core/CssBaseline"

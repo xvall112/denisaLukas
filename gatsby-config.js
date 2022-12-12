@@ -25,7 +25,6 @@ module.exports = {
     },
 
     `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
       resolve: "gatsby-plugin-react-leaflet",
@@ -92,18 +91,12 @@ module.exports = {
         icon: `src/images/manifestIcon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-gatsby-cloud`,
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [`/places/`, `/viaFerrata/*`, "/*"],
-        workboxConfig: {
-          importWorkboxFrom: `cdn`,
-        },
-      },
-    },
+
+    `gatsby-plugin-offline`,
+
     {
       resolve: `gatsby-plugin-algolia`,
       options: {

@@ -6,18 +6,23 @@
  */
 
 import * as React from "react"
-import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
-import { some } from "utils/algolia-queries"
 
 interface Props {
   description?: String
   title: String
   image?: String
   article?: Boolean
+  children?: any
 }
-const SEO = ({ description, title, image, article }: Props): JSX.Element => {
+const SEO = ({
+  description,
+  title,
+  image,
+  article,
+  children,
+}: Props): JSX.Element => {
   const { pathname } = useLocation()
   const { site } = useStaticQuery(
     graphql`
@@ -54,11 +59,8 @@ const SEO = ({ description, title, image, article }: Props): JSX.Element => {
   }
 
   return (
-    <Helmet
-      htmlAttributes={{ lang: "cs" }}
-      title={seo.title}
-      titleTemplate={titleTemplate}
-    >
+    <>
+      <title>{`${seo.title}${titleTemplate}`}</title>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       {seo.url && <meta property="og:url" content={seo.url} />}
@@ -87,7 +89,8 @@ const SEO = ({ description, title, image, article }: Props): JSX.Element => {
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:image:alt" content={seo.title} />
-    </Helmet>
+      {children}
+    </>
   )
 }
 
