@@ -9,7 +9,15 @@ import Tabs from "./Tabs"
 import { MenuContext } from "../../../../providers/menu/menu.providers"
 import { UserContext } from "../../../../providers/user/user.provider"
 //material UI
-import { useMediaQuery, Grid, IconButton } from "@material-ui/core"
+import {
+  useMediaQuery,
+  Grid,
+  IconButton,
+  Avatar,
+  Menu,
+  MenuItem,
+  Box,
+} from "@material-ui/core"
 import {
   createStyles,
   useTheme,
@@ -32,23 +40,25 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     avatar: {
       backgroundColor: theme.palette.primary.main,
+      cursor: "pointer",
     },
   })
 )
 
 const TopBar = ({}: Props): JSX.Element => {
-  const { handleSidebarOpen } = useContext(MenuContext)
   const { currentUser, logout } = useContext(UserContext)
   const classes = useStyles()
   const theme = useTheme()
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   })
-  // menu pri prihlaseni uzivatele
+  // menu uzivatele
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
   }
+
   const handleClose = () => {
     setAnchorEl(null)
   }
@@ -100,9 +110,8 @@ const TopBar = ({}: Props): JSX.Element => {
               alignItems="center"
               spacing={1}
             >
-              {isMd && (
-                <>
-                  {/*   <Grid item>
+              <>
+                {/*   <Grid item>
                     <Box mr={2}>
                       <DarkModeToggler
                         themeMode={themeMode}
@@ -110,31 +119,59 @@ const TopBar = ({}: Props): JSX.Element => {
                       />
                     </Box>
                   </Grid>  */}
-                  {/* button Instagram */}
-                  <Grid item xs={4} md={2}>
-                    <IconButton
-                      edge="start"
-                      color="inherit"
-                      aria-label="link to instagram"
-                      onClick={() =>
-                        navigate("https://www.instagram.com/denisa.lukas/")
-                      }
-                    >
+                {/* button Instagram */}
+                <Grid item xs={4} md={2}>
+                  <Box
+                    onClick={() =>
+                      navigate("https://www.instagram.com/denisa.lukas/")
+                    }
+                  >
+                    <Avatar variant="rounded" className={classes.avatar}>
                       <InstagramIcon fontSize="large" />
-                    </IconButton>
-                  </Grid>
-                </>
+                    </Avatar>
+                  </Box>
+                </Grid>
+              </>
+
+              {/*  button profile */}
+              {isMd && (
+                <Grid item xs={5} md={2}>
+                  <Box onClick={handleClick}>
+                    <Avatar
+                      src={currentUser?.photoURL}
+                      variant="rounded"
+                      className={classes.avatar}
+                    />
+                  </Box>
+                  <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                  >
+                    {currentUser ? (
+                      <>
+                        <MenuItem onClick={() => navigate(`/app/favourite`)}>
+                          Moje Oblíbené
+                        </MenuItem>
+
+                        <MenuItem onClick={() => navigate(`/app/account`)}>
+                          Nastavení
+                        </MenuItem>
+                        <MenuItem onClick={logout}>Odhlásit se</MenuItem>
+                      </>
+                    ) : (
+                      <>
+                        <MenuItem onClick={() => navigate(`/app/login`)}>
+                          {" "}
+                          Přihlásit se
+                        </MenuItem>
+                      </>
+                    )}
+                  </Menu>
+                </Grid>
               )}
-              {/*  button menu */}
-              <Grid item xs={5} md={2}>
-                <IconButton
-                  color="primary"
-                  aria-label="open drawer"
-                  onClick={() => handleSidebarOpen()}
-                >
-                  <MenuIcon fontSize="large" />
-                </IconButton>
-              </Grid>
               <>
                 {/*   refresh button
               (

@@ -99,7 +99,7 @@ const TabPanel = ({
 const Account = (): JSX.Element => {
   const classes = useStyles()
   let pageId = parse(window.location.search).pid || "general"
-  const { currentUser } = useContext(UserContext)
+  const { currentUser, logout } = useContext(UserContext)
 
   return (
     <div className={classes.root}>
@@ -123,6 +123,7 @@ const Account = (): JSX.Element => {
                 </Grid>
               </Box> */}
           </Grid>
+
           <Grid item xs={12} md={4}>
             <CardBase withShadow align="left" className={classes.menu}>
               <Grid
@@ -146,9 +147,32 @@ const Account = (): JSX.Element => {
                 <Grid item>
                   <Typography variant="h6">{currentUser.email}</Typography>
                 </Grid>
+                <Grid item>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    size="large"
+                    onClick={() => navigate(`/app/favourite`)}
+                  >
+                    Moje Oblíbené
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    fullWidth
+                    size="large"
+                    onClick={logout}
+                  >
+                    Odhlásit se
+                  </Button>
+                </Grid>
               </Grid>
             </CardBase>
           </Grid>
+
           <Grid container item xs={12} md={8}>
             <Grid item xs={12}>
               <Box mb={2}>

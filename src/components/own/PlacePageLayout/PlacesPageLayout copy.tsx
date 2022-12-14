@@ -74,7 +74,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
   useEffect(() => {
     var options = {
       root: null,
-      rootMargin: "20px",
+      rootMargin: "500px",
       threshold: 1.0,
     }
     const observer = new IntersectionObserver(handleObserver, options)
@@ -120,6 +120,29 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
                     </Grid>
                   )
                 })}
+
+                {hasMore && (
+                  <Grid item xs={12} sm={12} md={4} lg={3} xl={2} ref={loadRef}>
+                    <Skeleton
+                      animation="wave"
+                      variant="rect"
+                      width="100%"
+                      height="300px"
+                    />
+                    <Skeleton
+                      animation="wave"
+                      variant="text"
+                      width="40%"
+                      height="50px"
+                    />
+                    <Skeleton
+                      animation="wave"
+                      variant="text"
+                      width="30%"
+                      height="50px"
+                    />
+                  </Grid>
+                )}
               </Grid>
             </div>
             {/* {hasMore ? (
@@ -134,34 +157,6 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
             ) : (
               <p>No more results</p>
             )} */}
-            <div ref={loadRef}>
-              {hasMore && (
-                <Box mb={4}>
-                  <Grid container direction="row" spacing={3}>
-                    <Grid item xs={12} sm={12} md={4} lg={3} xl={2}>
-                      <Skeleton
-                        animation="wave"
-                        variant="rect"
-                        width="100%"
-                        height="300px"
-                      />
-                      <Skeleton
-                        animation="wave"
-                        variant="text"
-                        width="40%"
-                        height="50px"
-                      />
-                      <Skeleton
-                        animation="wave"
-                        variant="text"
-                        width="30%"
-                        height="50px"
-                      />
-                    </Grid>
-                  </Grid>
-                </Box>
-              )}
-            </div>
           </Container>
         </Grid>
         <FullScreenMap

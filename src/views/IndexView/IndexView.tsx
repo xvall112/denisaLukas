@@ -98,9 +98,9 @@ const IndexPage = () => {
             <TypeOfSport />
           </Box>
         </Section> */}
-        <Section fullWidth className={classes.sectionNoPaddingTop}>
+        {/* <Section fullWidth className={classes.sectionNoPaddingTop}>
           <Countries />
-        </Section>
+        </Section> */}
         {currentUser && (
           <Section fullWidth className={classes.sectionNoPaddingTop}>
             <FavouriteItems />

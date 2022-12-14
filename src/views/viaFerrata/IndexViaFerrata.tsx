@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLayout"
+import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLayout copy"
 import { MenuContext } from "../../providers/menu/menu.providers"
 
 const query = graphql`
@@ -42,24 +42,19 @@ const query = graphql`
 const IndexViaFerrata = () => {
   const { filterCountry, setTitle } = useContext(MenuContext)
   const data = useStaticQuery(query)
-  const dataFilter = data.allContentfulViaFerrata.nodes.filter(
+  /*  const dataFilter = data.allContentfulViaFerrata.nodes.filter(
     item => item.country.name === filterCountry
-  )
+  ) */
 
-  useEffect(() => {
+  /*  useEffect(() => {
     setTitle("via Ferrata")
     return () => {
       setTitle("")
     }
-  }, [])
+  }, []) */
   return (
     <>
-      <PlacesPageLayout
-        data={
-          filterCountry === "" ? data.allContentfulViaFerrata.nodes : dataFilter
-        }
-        slug="viaFerrata"
-      />
+      <PlacesPageLayout data={data.allContentfulViaFerrata.nodes} />
     </>
   )
 }

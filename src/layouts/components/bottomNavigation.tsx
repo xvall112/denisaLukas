@@ -1,18 +1,20 @@
 import React, { useContext } from "react"
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles"
 import BottomNavigation from "@material-ui/core/BottomNavigation"
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
-import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined"
-import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined"
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined"
+import FavoriteIcon from "@material-ui/icons/Favorite"
+import SearchIcon from "@material-ui/icons/Search"
+import HomeIcon from "@material-ui/icons/Home"
+import Avatar from "@material-ui/core/Avatar"
 import MapIcon from "@material-ui/icons/Map"
-import MenuIcon from "@material-ui/icons/Menu"
+import PersonIcon from "@material-ui/icons/Person"
 import Fab from "@material-ui/core/Fab"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
 import { MapContext } from "../../providers/map/map.providers"
+import { UserContext } from "../../providers/user/user.provider"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,7 +55,7 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
     handleSidebarOpen,
   } = useContext(MenuContext)
   const { setOpenFullScreenMap } = useContext(MapContext)
-
+  const { logout, currentUser } = useContext(UserContext)
   return (
     <BottomNavigation
       value={valueBottomNavigation}
@@ -62,15 +64,15 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
       showLabels={true}
     >
       <BottomNavigationAction
-        label="Home"
+        /* label="Home" */
         value="home"
-        icon={<HomeOutlinedIcon />}
+        icon={<HomeIcon fontSize="large" />}
         onClick={() => navigate("/")}
       />
       <BottomNavigationAction
-        label="Hledat"
+        /*  label="Hledat" */
         value="search"
-        icon={<SearchOutlinedIcon />}
+        icon={<SearchIcon fontSize="large" />}
         onClick={() => navigate("/search")}
       />
       {map && (
@@ -83,21 +85,24 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
           <MapIcon />
         </Fab>
       )}
-
       <BottomNavigationAction
-        label="Oblíbené"
-        value="favorites"
-        icon={<FavoriteBorderOutlinedIcon />}
-        onClick={
-          () => navigate("/app/favourite") /* window.location.reload() */
-        }
+        /*  label="Hledat" */
+        value="favourite"
+        icon={<FavoriteIcon fontSize="large" />}
+        onClick={() => navigate("/app/favourite")}
       />
       <BottomNavigationAction
+        value="profil"
+        icon={<PersonIcon fontSize="large" />}
+        onClick={() => navigate("/app/account") /* window.location.reload() */}
+      />
+
+      {/*  <BottomNavigationAction
         label="Menu"
         value="account"
         icon={<MenuIcon />}
         onClick={() => handleSidebarOpen()}
-      />
+      /> */}
     </BottomNavigation>
   )
 }

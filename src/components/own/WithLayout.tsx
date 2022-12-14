@@ -57,7 +57,9 @@ export default function WithLayout({ children }: Props): JSX.Element {
 
   const [themeMode, themeToggler, mountedComponent] = useDarkMode()
 
-  const { fetchFavouriteItems, isUserAuth } = useContext(UserContext)
+  const { fetchFavouriteItems, isUserAuth, currentUser } = useContext(
+    UserContext
+  )
   const { favouriteItems } = useContext(FavouriteContext)
 
   useEffect(() => {
@@ -67,20 +69,18 @@ export default function WithLayout({ children }: Props): JSX.Element {
     return () => {
       console.log("componennt unMounth")
     }
-  }, [favouriteItems])
+  }, [favouriteItems, currentUser])
 
   return (
-    <>
-      <ThemeProvider theme={getTheme(themeMode)}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Paper elevation={0}>
-          <SnackbarMap />
-          <SnackbarUser />
-          <Modal />
-          {children}
-        </Paper>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={getTheme(themeMode)}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <Paper elevation={0}>
+        <SnackbarMap />
+        <SnackbarUser />
+        <Modal />
+        {children}
+      </Paper>
+    </ThemeProvider>
   )
 }

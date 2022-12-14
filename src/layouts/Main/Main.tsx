@@ -57,7 +57,7 @@ const Main = ({ children }: Props): JSX.Element => {
         {children}
       </main>
       <Hidden lgUp>
-        <BottomNavigation />
+        <BottomNavigation map={true} />
       </Hidden>
       {/* <Footer /> */}
     </div>
