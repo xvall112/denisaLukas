@@ -1,7 +1,7 @@
 import * as React from "react"
-
+import { Link } from "gatsby"
 //Material UI
-import InputBase from "@material-ui/core/InputBase"
+import { InputBase, Box } from "@material-ui/core"
 import { createStyles, fade, Theme, makeStyles } from "@material-ui/core/styles"
 import SearchIcon from "@material-ui/icons/Search"
 
@@ -12,11 +12,13 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: theme.spacing(1),
       position: "relative",
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
+      backgroundColor: fade(theme.palette.primary.main, 0.15),
       "&:hover": {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
+        backgroundColor: fade(theme.palette.primary.main, 0.25),
       },
+      color: theme.palette.text.secondary,
       marginLeft: 0,
+      height: "100%",
       width: "100%",
       [theme.breakpoints.up("md")]: {
         marginLeft: theme.spacing(1),
@@ -54,19 +56,21 @@ const useStyles = makeStyles((theme: Theme) =>
 const Search = () => {
   const classes = useStyles()
   return (
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon />
+    <Link to={"/search"}>
+      <div className={classes.search}>
+        <div className={classes.searchIcon}>
+          <SearchIcon />
+        </div>
+        <InputBase
+          placeholder="Kam cestuješ?"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+          inputProps={{ "aria-label": "Kam cestuješ?" }}
+        />
       </div>
-      <InputBase
-        placeholder="Kam cestuješ?"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        inputProps={{ "aria-label": "Kam cestuješ?" }}
-      />
-    </div>
+    </Link>
   )
 }
 

@@ -68,7 +68,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
   }
 
   useEffect(() => {
-    setList([...data.slice(0, loadList)])
+    setList([...data.slice(0, loadList < 10 ? 8 : loadList)])
   }, [])
   //Initialize the intersection observer API
   useEffect(() => {

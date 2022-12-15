@@ -21,8 +21,11 @@ const useStyles = makeStyles(theme => ({
   fabButton: {
     width: "100px",
     position: "fixed",
-    zIndex: 1,
-    bottom: 30,
+    zIndex: 1000,
+    bottom: 90,
+    [theme.breakpoints.up("sm")]: {
+      bottom: 40,
+    },
     left: 0,
     right: 0,
     margin: "0 auto",
@@ -48,17 +51,17 @@ const FullScreenMap = ({
   const classes = useStyles()
   return (
     <div>
-      <Hidden mdDown>
-        <Fab
-          color="primary"
-          variant="extended"
-          className={classes.fabButton}
-          onClick={setOpenFullScreenMap}
-        >
-          <MapIcon />
-          Mapa
-        </Fab>
-      </Hidden>
+      {/*   <Hidden mdDown> */}
+      <Fab
+        color="primary"
+        variant="extended"
+        className={classes.fabButton}
+        onClick={setOpenFullScreenMap}
+      >
+        <MapIcon />
+        Mapa
+      </Fab>
+      {/*  </Hidden> */}
       <Dialog
         fullScreen
         open={isFullScreenMapOpen}

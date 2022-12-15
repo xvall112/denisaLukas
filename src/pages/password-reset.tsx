@@ -1,13 +1,13 @@
 import React from "react"
 import PasswordResetSimple from "views/PasswordResetSimple"
-import SignLayout from "../layouts/Sign/Sign"
+import MenuLayout from "../layouts/Menu/MenuLayout"
 
 const PasswordReset = (): JSX.Element => {
   return (
     <>
-      <SignLayout>
+      <MenuLayout>
         <PasswordResetSimple />
-      </SignLayout>
+      </MenuLayout>
     </>
   )
 }

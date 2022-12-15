@@ -111,7 +111,7 @@ const TopBar2 = () => {
               />
             </Box>  */}
             <Grid item xs={2} md="auto">
-              <Hidden mdDown>
+              {/* <Hidden mdDown>
                 <Button
                   variant="outlined"
                   color="primary"
@@ -121,7 +121,7 @@ const TopBar2 = () => {
                 >
                   <MenuIcon />
                 </Button>
-              </Hidden>
+              </Hidden> */}
             </Grid>
           </Grid>
           {/* </Grid> 

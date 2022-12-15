@@ -3,7 +3,7 @@ import Slider from "react-slick"
 
 //components
 import Card from "./card"
-import Title from "../../../../components/own/titleSection"
+import Title from "../../../components/own/titleSection"
 
 //materiaUI
 import { Grid } from "@material-ui/core"

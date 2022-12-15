@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: "none",
+    "& img": {
+      borderRadius: `${theme.shape.borderRadius} 0 0 ${theme.shape.borderRadius}`,
+      WebkitBorderRadius: `${theme.shape.borderRadius} 0 0 ${theme.shape.borderRadius}`,
+    },
     "& :hover": {
       color: theme.palette.text.primary,
     },
@@ -59,18 +63,17 @@ const PopupCard = ({
           image={item.titleImage.gatsbyImageData}
           alt={item.titleImage.title}
           formats={["auto", "webp", "avif"]}
-          style={{ height: "100px", width: "200px", borderRadius: "10px" }}
+          style={{ height: "150px", minWidth: "200px", borderRadius: "10px" }}
         />
+        <Box p={1}>
+          <Typography
+            variant="h5"
+            className={classes.folioTitle}
+            color="textPrimary"
+          >
+            {item.name}
+          </Typography>
 
-        <Typography
-          variant="h5"
-          className={classes.folioTitle}
-          color="textPrimary"
-        >
-          {item.name}
-        </Typography>
-
-        <Grid item>
           <Rating
             name="half-rating-read"
             defaultValue={item.rating || 5}
@@ -78,18 +81,19 @@ const PopupCard = ({
             readOnly
             size="small"
           />
-        </Grid>
-        <Grid container spacing={1}>
-          <Grid item>
-            <Chip label={item.kindPlace} />
-          </Grid>
 
-          {item.level && (
+          <Grid container spacing={1}>
             <Grid item>
-              <Chip label={item.level} />
+              <Chip label={item.kindPlace} />
             </Grid>
-          )}
-        </Grid>
+
+            {item.level && (
+              <Grid item>
+                <Chip label={item.level} />
+              </Grid>
+            )}
+          </Grid>
+        </Box>
       </Link>
     </div>
   )

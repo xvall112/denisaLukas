@@ -1,12 +1,17 @@
 import React from "react"
 import clsx from "clsx"
-
+import { navigate } from "gatsby"
 //materialUI
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useMediaQuery, Hidden, Box } from "@material-ui/core"
-
+import {
+  useMediaQuery,
+  Hidden,
+  Container,
+  Grid,
+  Button,
+} from "@material-ui/core"
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
 //components
-import SideBar from "../SideBar/SideBar"
 import BottomNavigation from "../components/bottomNavigation"
 
 const useStyles = makeStyles(theme => ({
@@ -38,12 +43,31 @@ const MenuLayout = ({ children }: Props): JSX.Element => {
         [classes.root]: true,
       })}
     >
-      <SideBar variant="temporary" />
+      <Hidden mdDown>
+        <Container maxWidth="xl">
+          <Grid item xs={12}>
+            <Button
+              color="primary"
+              startIcon={<ArrowBackIosIcon />}
+              onClick={() => navigate("/")}
+            >
+              Zpět
+            </Button>
+
+            {/* <Box mt={2}>
+                <Grid container direction="row">
+                  <ArrowBackIosIcon color="primary" />
+                  <Typography color="primary">Zpět</Typography>
+                </Grid>
+              </Box> */}
+          </Grid>
+        </Container>
+      </Hidden>
       <main>
         {/*  <Divider /> */}
-        <Box mb={10}>{children}</Box>
+        {children}
       </main>
-      <Hidden mdUp>
+      <Hidden lgUp>
         <BottomNavigation />
       </Hidden>
     </div>

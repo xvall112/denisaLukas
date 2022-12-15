@@ -5,6 +5,7 @@ import { StaticImage } from "gatsby-plugin-image"
 //components
 import Algolia from "../../../../components/own/Algolia/Algolia"
 import Tabs from "./Tabs"
+import Search from "./Search"
 //context
 import { MenuContext } from "../../../../providers/menu/menu.providers"
 import { UserContext } from "../../../../providers/user/user.provider"
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.primary.main,
       cursor: "pointer",
     },
+    menu: {},
   })
 )
 
@@ -97,7 +99,7 @@ const TopBar = ({}: Props): JSX.Element => {
             </Grid>
             {isMd && (
               <Grid item md={4}>
-                <Algolia />
+                <Search />
               </Grid>
             )}
             <Grid
@@ -120,7 +122,7 @@ const TopBar = ({}: Props): JSX.Element => {
                     </Box>
                   </Grid>  */}
                 {/* button Instagram */}
-                <Grid item xs={4} md={2}>
+                {/* <Grid item xs={4} md={2}>
                   <Box
                     onClick={() =>
                       navigate("https://www.instagram.com/denisa.lukas/")
@@ -130,7 +132,7 @@ const TopBar = ({}: Props): JSX.Element => {
                       <InstagramIcon fontSize="large" />
                     </Avatar>
                   </Box>
-                </Grid>
+                </Grid> */}
               </>
 
               {/*  button profile */}
@@ -151,23 +153,35 @@ const TopBar = ({}: Props): JSX.Element => {
                     onClose={handleClose}
                   >
                     {currentUser ? (
-                      <>
-                        <MenuItem onClick={() => navigate(`/app/favourite`)}>
+                      <Box>
+                        <MenuItem
+                          onClick={() => {
+                            navigate(`/app/favourite`), handleClose()
+                          }}
+                        >
                           Moje Oblíbené
                         </MenuItem>
 
-                        <MenuItem onClick={() => navigate(`/app/account`)}>
+                        <MenuItem
+                          onClick={() => {
+                            navigate(`/app/account`), handleClose()
+                          }}
+                        >
                           Nastavení
                         </MenuItem>
                         <MenuItem onClick={logout}>Odhlásit se</MenuItem>
-                      </>
+                      </Box>
                     ) : (
-                      <>
-                        <MenuItem onClick={() => navigate(`/app/login`)}>
+                      <Box>
+                        <MenuItem
+                          onClick={() => {
+                            navigate(`/app/login`), handleClose()
+                          }}
+                        >
                           {" "}
                           Přihlásit se
                         </MenuItem>
-                      </>
+                      </Box>
                     )}
                   </Menu>
                 </Grid>

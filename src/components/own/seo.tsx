@@ -61,6 +61,7 @@ const SEO = ({
   return (
     <>
       <title>{`${seo.title}${titleTemplate}`}</title>
+      <meta name="locale" content="cs" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       {seo.url && <meta property="og:url" content={seo.url} />}

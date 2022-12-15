@@ -49,11 +49,9 @@ interface Props {
 }
 export default function LabelBottomNavigation({ map }: Props): JSX.Element {
   const classes = useStyles()
-  const {
-    valueBottomNavigation,
-    handleBottomNavigation,
-    handleSidebarOpen,
-  } = useContext(MenuContext)
+  const { valueBottomNavigation, handleBottomNavigation } = useContext(
+    MenuContext
+  )
   const { setOpenFullScreenMap } = useContext(MapContext)
   const { logout, currentUser } = useContext(UserContext)
   return (
@@ -75,7 +73,7 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
         icon={<SearchIcon fontSize="large" />}
         onClick={() => navigate("/search")}
       />
-      {map && (
+      {/*    {map && (
         <Fab
           color="primary"
           aria-label="add"
@@ -84,7 +82,7 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
         >
           <MapIcon />
         </Fab>
-      )}
+      )} */}
       <BottomNavigationAction
         /*  label="Hledat" */
         value="favourite"

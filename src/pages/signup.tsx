@@ -6,7 +6,7 @@
 import React, { useContext } from "react"
 import { navigate } from "gatsby"
 import SignupSimple from "views/SignupSimple"
-import SignLayout from "../layouts/Sign/Sign"
+import MenuLayout from "../layouts/Menu/MenuLayout"
 
 //context
 import { UserContext } from "../providers/user/user.provider"
@@ -16,9 +16,9 @@ const SignUp = (): JSX.Element => {
   if (currentUser) navigate(-1)
   return (
     <>
-      <SignLayout>
+      <MenuLayout>
         <SignupSimple />
-      </SignLayout>
+      </MenuLayout>
     </>
   )
 }

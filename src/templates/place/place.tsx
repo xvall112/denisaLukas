@@ -159,11 +159,6 @@ const Place = props => {
 
   return (
     <>
-      <SEO
-        title={name}
-        description={seoDescription}
-        image={`https:${titleImage.file.url}`}
-      />
       <LayoutPlaces
         data={contentfulPlaces}
         slug="places"
@@ -199,3 +194,14 @@ const Place = props => {
 }
 
 export default Place
+
+export function Head(props) {
+  const { name, seoDescription, titleImage } = props.data.contentfulPlaces
+  return (
+    <SEO
+      title={name}
+      description={seoDescription}
+      image={`https:${titleImage.file.url}`}
+    />
+  )
+}

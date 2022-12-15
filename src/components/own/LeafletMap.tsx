@@ -2,7 +2,13 @@ import React, { useContext, useEffect, useRef } from "react"
 import L from "leaflet"
 import clsx from "clsx"
 
-import { Map, ZoomControl, TileLayer, Marker, Popup } from "react-leaflet"
+import {
+  MapContainer,
+  ZoomControl,
+  TileLayer,
+  Marker,
+  Popup,
+} from "react-leaflet"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
@@ -18,14 +24,9 @@ const useStyles = makeStyles(theme => ({
   root: {},
   popup: {
     "& .leaflet-popup-content-wrapper": {
-      background: "black",
-      height: "215px",
-      minWidth: "230px",
+      background: theme.palette.background.level2,
       "& .leaflet-popup-content": {
-        background: "black",
-        "& p": {
-          margin: "0px",
-        },
+        margin: "0px !important",
       },
     },
   },
@@ -57,15 +58,15 @@ const LeafletMap = ({
   const { highlightedCard } = useContext(MapContext)
   const mapRef = useRef()
 
-  useEffect(() => {
+  /* useEffect(() => {
     const { current = {} } = mapRef
-    const { leafletElement: map } = current
-    /*  map.locate({
+    const { leafletElement: map } = current */
+  /*  map.locate({
       setView: true,
     }) */
 
-    /* map.on("locationfound", handleOnLocationFound) */
-
+  /* map.on("locationfound", handleOnLocationFound) */
+  /* 
     const GeoJSON = L.geoJSON(geoJSON, {
       style: function (feature) {
         return {
@@ -81,8 +82,8 @@ const LeafletMap = ({
       },
     })
     GeoJSON.addTo(map)
-  }, [])
-
+  }, []) */
+  /* 
   const handleOnLocationFound = event => {
     const { current = {} } = mapRef
     const { leafletElement: map } = current
@@ -91,7 +92,7 @@ const LeafletMap = ({
     const radius = event.accuracy
     const circle = L.circle(latlng, radius)
     circle.addTo(map)
-  }
+  } */
 
   function markerIcon() {
     return L.icon({
@@ -105,7 +106,7 @@ const LeafletMap = ({
   }
   if (typeof window !== "undefined") {
     return (
-      <Map
+      <MapContainer
         ref={mapRef}
         zoomControl={false}
         zoom={zoom}
@@ -156,7 +157,7 @@ const LeafletMap = ({
               </Popup>
             </Marker>
           ))}
-      </Map>
+      </MapContainer>
     )
   }
   return null

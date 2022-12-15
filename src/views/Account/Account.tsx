@@ -11,6 +11,7 @@ import {
   Container,
   Avatar,
   Button,
+  Hidden,
 } from "@material-ui/core"
 import { CardBase } from "components/organisms"
 import { Hero, General, Security } from "./components"
@@ -23,6 +24,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: "100%",
     width: "100%",
+    marginTop: "10px",
   },
   section: {
     "& .section-alternate__content": {
@@ -106,8 +108,8 @@ const Account = (): JSX.Element => {
       {/* <Hero /> */}
       <Container maxWidth="xl" className={classes.section}>
         <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Box mt={2}>
+          {/* <Hidden smDown>
+            <Grid item xs={12}>
               <Button
                 color="primary"
                 startIcon={<ArrowBackIosIcon />}
@@ -115,14 +117,15 @@ const Account = (): JSX.Element => {
               >
                 Zpět
               </Button>
-            </Box>
-            {/* <Box mt={2}>
+
+              <Box mt={2}>
                 <Grid container direction="row">
                   <ArrowBackIosIcon color="primary" />
                   <Typography color="primary">Zpět</Typography>
                 </Grid>
-              </Box> */}
-          </Grid>
+              </Box> 
+            </Grid>
+          </Hidden> */}
 
           <Grid item xs={12} md={4}>
             <CardBase withShadow align="left" className={classes.menu}>

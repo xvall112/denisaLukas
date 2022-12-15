@@ -73,41 +73,45 @@ export default function TabPane({ places, ferrata, country, blog }) {
             scrollButtons="auto"
             aria-label="scrollable auto tabs example"
           >
-            <Tab
-              label={
-                <Grid
-                  container
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                  spacing={1}
-                >
-                  <Grid item>Místa</Grid>
-                  <Grid item>
-                    <Chip size="small" label={places.length} />
+            {places.length !== 0 && (
+              <Tab
+                label={
+                  <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <Grid item>Místa</Grid>
+                    <Grid item>
+                      <Chip size="small" label={places.length} />
+                    </Grid>
                   </Grid>
-                </Grid>
-              }
-              {...a11yProps(0)}
-            />
+                }
+                {...a11yProps(0)}
+              />
+            )}
+            {ferrata.length !== 0 && (
+              <Tab
+                label={
+                  <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <Grid item>via Ferrata</Grid>
+                    <Grid item>
+                      <Chip size="small" label={ferrata.length} />
+                    </Grid>
+                  </Grid>
+                }
+                {...a11yProps(1)}
+              />
+            )}
 
-            <Tab
-              label={
-                <Grid
-                  container
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                  spacing={1}
-                >
-                  <Grid item>via Ferrata</Grid>
-                  <Grid item>
-                    <Chip size="small" label={ferrata.length} />
-                  </Grid>
-                </Grid>
-              }
-              {...a11yProps(1)}
-            />
             {/*  <Tab
               label={
                 <Grid
@@ -125,39 +129,45 @@ export default function TabPane({ places, ferrata, country, blog }) {
               }
               {...a11yProps(2)}
             /> */}
-            <Tab
-              label={
-                <Grid
-                  container
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                  spacing={1}
-                >
-                  <Grid item>Blog</Grid>
-                  <Grid item>
-                    <Chip size="small" label={blog.length} />
+            {blog.length !== 0 && (
+              <Tab
+                label={
+                  <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <Grid item>Blog</Grid>
+                    <Grid item>
+                      <Chip size="small" label={blog.length} />
+                    </Grid>
                   </Grid>
-                </Grid>
-              }
-              {...a11yProps(2)}
-            />
-
+                }
+                {...a11yProps(2)}
+              />
+            )}
             {/* <Tab label="Hiking" {...a11yProps(2)} />
             <Tab label="Cyklo" {...a11yProps(3)} /> */}
           </Tabs>
         </Container>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <PlacesCountry places={places} country={country} />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <PlacesCountry places={ferrata} country={country} />
-      </TabPanel>
-
-      <TabPanel value={value} index={2}>
-        <Result data={blog} />
-      </TabPanel>
+      {places.length !== 0 && (
+        <TabPanel value={value} index={0}>
+          <PlacesCountry places={places} country={country} />
+        </TabPanel>
+      )}
+      {ferrata.length !== 0 && (
+        <TabPanel value={value} index={1}>
+          <PlacesCountry places={ferrata} country={country} />
+        </TabPanel>
+      )}
+      {blog.length !== 0 && (
+        <TabPanel value={value} index={2}>
+          <Result data={blog} />
+        </TabPanel>
+      )}
     </div>
   )
 }

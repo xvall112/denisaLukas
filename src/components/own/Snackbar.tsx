@@ -90,12 +90,13 @@ export const Modal = () => {
               closeModal(), navigate(`/app/login`)
             }}
             color="primary"
-            variant="outlined"
+            variant="contained"
             autoFocus
+            fullWidth
           >
             Přihlásit se
           </Button>
-          <Button
+          {/*  <Button
             onClick={() => {
               closeModal(), navigate(`/signup`)
             }}
@@ -103,7 +104,7 @@ export const Modal = () => {
             variant="contained"
           >
             Registrovat se
-          </Button>
+          </Button> */}
         </DialogActions>
       </Dialog>
     </div>
