@@ -64,40 +64,42 @@ const SEO = ({
       <meta name="locale" content="cs" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
-
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="Faith in Travel" />
       <link
         rel="apple-touch-startup-image"
-        href={`${siteUrl}${defaultImage}`}
+        href={defaultImage}
         media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
       />
       <link
         rel="apple-touch-startup-image"
-        href={`${siteUrl}${defaultImage}`}
+        href={defaultImage}
         media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
       />
       <link
         rel="apple-touch-startup-image"
-        href={`${siteUrl}${defaultImage}`}
+        href={defaultImage}
         media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
       />
       <link
         rel="apple-touch-startup-image"
-        href={`${siteUrl}${defaultImage}`}
+        href={defaultImage}
         media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
       />
       <link
         rel="apple-touch-startup-image"
-        href={`${siteUrl}${defaultImage}`}
+        href={defaultImage}
         media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
       />
       <link
         rel="apple-touch-startup-image"
-        href={`${siteUrl}${defaultImage}`}
+        href={defaultImage}
         media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
       />
       <link
         rel="apple-touch-startup-image"
-        href={`${siteUrl}${defaultImage}`}
+        href={defaultImage}
         media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
       />
       <link
