@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "black",
       borderRadius: theme.shape.borderRadius,
       padding: "5px 0 0 5px",
+      marginTop: "5px",
     },
     avatar: {
       backgroundColor: theme.palette.primary.main,

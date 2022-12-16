@@ -6,6 +6,7 @@ import Algolia from "../../components/own/Algolia/Algolia"
 import Countries from "./components/countries/countries"
 import { Section } from "../../components/organisms"
 import PlacesLayout from "./components/PlacesLayout"
+import Title from "../../components/own/titleSection"
 //materialUI
 import { Container, Typography, makeStyles } from "@material-ui/core"
 
@@ -81,9 +82,9 @@ const IndexSearch = () => {
   return (
     <>
       <Container maxWidth="xl">
-        <Section fullWidth className={classes.sectionNoPaddingTop}>
-          <Typography variant="h3">Hledat</Typography>
-        </Section>
+        {/*  <Section fullWidth className={classes.sectionNoPaddingTop}>
+          <Title title={"Hledat"} link={"/search"} />
+        </Section> */}
         <Section fullWidth className={classes.sectionNoPaddingTop}>
           <Algolia />
         </Section>

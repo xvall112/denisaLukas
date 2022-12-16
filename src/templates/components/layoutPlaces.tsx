@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 
 //components
-import Slider from "../../components/own/sliderSlick"
+import Slider from "./sliderSlick"
 import Places from "../../layouts/Place/Place"
 import PlaceHeader from "../components/placeHeader"
 import Location from "../components/Location"

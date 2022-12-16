@@ -7,15 +7,7 @@ import SliderSlick from "../sliderSlick"
 import { IconAlternate } from "components/molecules"
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
-import {
-  Typography,
-  Grid,
-  Chip,
-  Box,
-  IconButton,
-  Tooltip,
-  colors,
-} from "@material-ui/core"
+import { Typography, Grid, Chip, Box, Tooltip } from "@material-ui/core"
 import Rating from "@material-ui/lab/Rating"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"

@@ -145,7 +145,7 @@ const Countries = () => {
         <Slider {...settings}>
           {data.allContentfulCountry.nodes.map((item, index) => {
             return (
-              <Link to={item.slug} className={classes.card} key={index}>
+              <Link to={`/${item.slug}`} className={classes.card} key={index}>
                 <GatsbyImage
                   image={item.heroImage.gatsbyImageData}
                   alt={item.heroImage.title}

@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   card: {
-    backgroundColor: theme.palette.background.level2,
+    backgroundColor: theme.palette.background.level1,
     height: "20vh",
 
     /*  "& :hover img": {

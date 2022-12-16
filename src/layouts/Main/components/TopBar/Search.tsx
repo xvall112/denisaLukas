@@ -12,17 +12,19 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: theme.spacing(1),
       position: "relative",
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.primary.main, 0.15),
-      "&:hover": {
-        backgroundColor: fade(theme.palette.primary.main, 0.25),
-      },
-      color: theme.palette.text.secondary,
+      backgroundColor: theme.palette.background.level1,
+
+      color: theme.palette.text.primary,
       marginLeft: 0,
       height: "100%",
       width: "100%",
+      border: "1px solid black",
       [theme.breakpoints.up("md")]: {
         marginLeft: theme.spacing(1),
         width: "auto",
+      },
+      "&:hover": {
+        boxShadow: theme.shadows[3],
       },
     },
     searchIcon: {

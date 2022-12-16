@@ -4,6 +4,7 @@ import algoliasearch from "algoliasearch"
 import Autocomplet from "./components/Autocomplet"
 import ProductItem from "./components/ProductItem"
 import "@algolia/autocomplete-theme-classic"
+import Title from "../../own/titleSection"
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -13,6 +14,7 @@ const searchClient = algoliasearch(
 function Algolia() {
   return (
     <div className="app-container">
+      <Title title={"Hledat"} link={"/search"} />
       <Autocomplet
         openOnFocus={true}
         getSources={({ query }) => [

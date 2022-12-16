@@ -1,15 +1,14 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 //materialUI
 import { makeStyles, Box, Container } from "@material-ui/core"
 //components
 import { Section } from "../../components/organisms"
 import Hero from "./components/hero/hero"
-import FavouriteItems from "./components/favouriteItems/favouriteItems"
 import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLayout copy"
-import Title from "../../components/own/titleSection"
+
 //context
-import { UserContext } from "../../providers/user/user.provider"
+import { MenuContext } from "../../providers/menu/menu.providers"
 
 const query = graphql`
   {
@@ -101,8 +100,11 @@ const IndexPage = () => {
   const { places, viaFerrata } = data
   const all = [...places.nodes, ...viaFerrata.nodes].slice(0, 40)
   const classes = useStyles()
-  const { currentUser } = useContext(UserContext)
-
+  const { setTopTabsValue, handleBottomNavigation } = useContext(MenuContext)
+  useEffect(() => {
+    setTopTabsValue(0)
+    handleBottomNavigation("home")
+  }, [])
   return (
     <Box overflow="hidden">
       <Container maxWidth="xl">

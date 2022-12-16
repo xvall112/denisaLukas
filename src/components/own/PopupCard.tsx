@@ -17,9 +17,12 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: "none",
+    borderRadius: theme.shape.borderRadius,
+    WebkitBorderRadius: theme.shape.borderRadius,
+    overflow: "hidden",
     "& img": {
-      borderRadius: `${theme.shape.borderRadius} 0 0 ${theme.shape.borderRadius}`,
-      WebkitBorderRadius: `${theme.shape.borderRadius} 0 0 ${theme.shape.borderRadius}`,
+      borderRadius: theme.shape.borderRadius,
+      WebkitBorderRadius: theme.shape.borderRadius,
     },
     "& :hover": {
       color: theme.palette.text.primary,
