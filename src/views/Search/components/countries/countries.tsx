@@ -140,7 +140,7 @@ const Countries = () => {
   }
   return (
     <Box className={classes.root}>
-      <Title title={"Destinace"} link={"countries"} />
+      <Title title={"Destinace"} link={"/countries"} />
       <Grid item xs={12}>
         <Slider {...settings}>
           {data.allContentfulCountry.nodes.map((item, index) => {

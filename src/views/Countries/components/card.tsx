@@ -8,6 +8,7 @@ import { makeStyles, createStyles, useTheme } from "@material-ui/core/styles"
 //components
 import { SectionHeader } from "components/molecules"
 import { CardBase } from "components/organisms"
+import Title from "../../../components/own/titleSection"
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -34,11 +35,7 @@ const Card = ({ data }) => {
   const classes = useStyles()
   return (
     <>
-      <SectionHeader
-        align="left"
-        label={`více než ${data.allContentfulCountry.nodes.length}`}
-        title={<>zemí které jsme navštívili</>}
-      />
+      <Title title={"Destinace"} link={"/countries"} />
       <Grid container direction="row" spacing={2}>
         {data.allContentfulCountry.nodes.map((item, index) => {
           return (

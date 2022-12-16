@@ -62,8 +62,7 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
 
   return (
     <div className={classes.root}>
-      <Title title={title} link={slug} />
-
+      <Title title={title} link={`/${slug}`} />
       {data.length === 0 ? (
         <p>Nemáte žadné oblíbené položky</p>
       ) : (

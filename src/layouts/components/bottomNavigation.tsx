@@ -1,20 +1,16 @@
 import React, { useContext } from "react"
-import { navigate, Link } from "gatsby"
+import { navigate } from "gatsby"
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles"
 import BottomNavigation from "@material-ui/core/BottomNavigation"
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import SearchIcon from "@material-ui/icons/Search"
 import HomeIcon from "@material-ui/icons/Home"
-import Avatar from "@material-ui/core/Avatar"
-import MapIcon from "@material-ui/icons/Map"
+
 import PersonIcon from "@material-ui/icons/Person"
-import Fab from "@material-ui/core/Fab"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
-import { MapContext } from "../../providers/map/map.providers"
-import { UserContext } from "../../providers/user/user.provider"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -52,8 +48,9 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
   const { valueBottomNavigation, handleBottomNavigation } = useContext(
     MenuContext
   )
-  const { setOpenFullScreenMap } = useContext(MapContext)
-  const { logout, currentUser } = useContext(UserContext)
+
+  /* const { setOpenFullScreenMap } = useContext(MapContext)
+  const { logout, currentUser } = useContext(UserContext) */
   return (
     <BottomNavigation
       value={valueBottomNavigation}

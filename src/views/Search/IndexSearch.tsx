@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 //components
 import TypeOfActivities from "./components/typeOfSport/typeOfSport"
@@ -6,9 +6,9 @@ import Algolia from "../../components/own/Algolia/Algolia"
 import Countries from "./components/countries/countries"
 import { Section } from "../../components/organisms"
 import PlacesLayout from "./components/PlacesLayout"
-import Title from "../../components/own/titleSection"
+
 //materialUI
-import { Container, Typography, makeStyles } from "@material-ui/core"
+import { Container, makeStyles } from "@material-ui/core"
 
 const query = graphql`
   {

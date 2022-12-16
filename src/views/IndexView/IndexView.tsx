@@ -9,7 +9,7 @@ import PlacesPageLayout from "../../components/own/PlacePageLayout/PlacesPageLay
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
-
+import { MapContext } from "../../providers/map/map.providers"
 const query = graphql`
   {
     places: allContentfulPlaces(filter: { node_locale: { eq: "cs" } }) {
@@ -97,13 +97,15 @@ const useStyles = makeStyles(() => ({
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
+  const { setCloseFullScreenMap } = useContext(MapContext)
   const { places, viaFerrata } = data
   const all = [...places.nodes, ...viaFerrata.nodes].slice(0, 40)
   const classes = useStyles()
   const { setTopTabsValue, handleBottomNavigation } = useContext(MenuContext)
   useEffect(() => {
     setTopTabsValue(0)
-    handleBottomNavigation("home")
+    handleBottomNavigation("click", "home")
+    setCloseFullScreenMap()
   }, [])
   return (
     <Box overflow="hidden">

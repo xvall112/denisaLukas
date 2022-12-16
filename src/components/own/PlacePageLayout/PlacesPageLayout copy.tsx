@@ -107,7 +107,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
   }, [list]) //eslint-disable-line
 
   return (
-    <Box>
+    <Box mb={10}>
       <Grid container direction={isMd ? "row" : "column-reverse"}>
         <Grid item xs={12} /* md={6} */>
           <Container maxWidth="xl">

@@ -25,7 +25,7 @@ const IndexCountries = () => {
   const data = useStaticQuery(query)
   const { setTitle } = useContext(MenuContext)
   useEffect(() => {
-    setTitle("státy")
+    setTitle("Destinace")
     return () => {
       setTitle("")
     }

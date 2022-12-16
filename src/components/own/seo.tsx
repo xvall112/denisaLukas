@@ -64,6 +64,47 @@ const SEO = ({
       <meta name="locale" content="cs" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+
+      <link
+        rel="apple-touch-startup-image"
+        href={`${siteUrl}${defaultImage}`}
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+      />
+      <link
+        rel="apple-touch-startup-image"
+        href={`${siteUrl}${defaultImage}`}
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+      />
+      <link
+        rel="apple-touch-startup-image"
+        href={`${siteUrl}${defaultImage}`}
+        media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+      />
+      <link
+        rel="apple-touch-startup-image"
+        href={`${siteUrl}${defaultImage}`}
+        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+      />
+      <link
+        rel="apple-touch-startup-image"
+        href={`${siteUrl}${defaultImage}`}
+        media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
+      />
+      <link
+        rel="apple-touch-startup-image"
+        href={`${siteUrl}${defaultImage}`}
+        media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
+      />
+      <link
+        rel="apple-touch-startup-image"
+        href={`${siteUrl}${defaultImage}`}
+        media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="images/icons/apple-touch-icon.png"
+      />
       {seo.url && <meta property="og:url" content={seo.url} />}
       {(article ? true : null) && <meta property="og:type" content="article" />}
       {seo.title && <meta property="og:title" content={seo.title} />}
@@ -90,42 +131,6 @@ const SEO = ({
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:image:alt" content={seo.title} />
-
-      <link
-        rel="apple-touch-startup-image"
-        href="images/manifestIcon.png"
-        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-      />
-      <link
-        rel="apple-touch-startup-image"
-        href="images/manifestIcon.png"
-        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-      />
-      <link
-        rel="apple-touch-startup-image"
-        href="images/manifestIcon.png"
-        media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
-      />
-      <link
-        rel="apple-touch-startup-image"
-        href="images/manifestIcon.png"
-        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
-      />
-      <link
-        rel="apple-touch-startup-image"
-        href="images/manifestIcon.png"
-        media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
-      />
-      <link
-        rel="apple-touch-startup-image"
-        href="images/manifestIcon.png"
-        media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
-      />
-      <link
-        rel="apple-touch-startup-image"
-        href="images/manifestIcon.png"
-        media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)"
-      />
 
       {children}
     </>

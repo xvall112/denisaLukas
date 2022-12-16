@@ -150,7 +150,6 @@ const LayoutPlaces = ({
                       ? [data.endLocation.lat, data.endLocation.lon]
                       : null
                   }
-                  slug={slug}
                 />
               ) : (
                 <Slider
@@ -166,11 +165,11 @@ const LayoutPlaces = ({
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box mt={{ xs: 0, lg: 10 }} mb={{ xs: 4, md: 5 }} zIndex={100}>
+            <Box mt={{ xs: 0, md: 8 }} mb={{ xs: 4, md: 5 }} zIndex={100}>
               <Container maxWidth="xl">
                 {/* komponenta header */}
                 <PlaceHeader
-                  kindPlace={data.kindPlace}
+                  kindPlace={[data.kindPlace]}
                   country={data.country}
                   name={data.name}
                   adress={data.adress}
