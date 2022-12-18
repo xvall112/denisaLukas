@@ -5,6 +5,7 @@ const placesQuery = `   {
     nodes {
       id
       name
+      adress
       slug
       kindPlace
       titleImage {
@@ -26,6 +27,7 @@ const viaFerrataQuery = `   {
           name
         }
         kindPlace
+        adress
         slug
         titleImage {
           gatsbyImageData
@@ -94,20 +96,13 @@ function countryToAlgoliaRecord({ id, slug, flagLink, name }) {
   }
 }
 
-function pageToAlgoliaRecord({
-  id,
-  kindPlace,
-  name,
-  slug,
-
-  country,
-}) {
+function pageToAlgoliaRecord({ id, kindPlace, name, slug, adress, country }) {
   return {
     objectID: id,
     kindPlace,
     name,
     slug,
-
+    adress,
     country: country.name,
   }
 }

@@ -6,7 +6,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import SearchIcon from "@material-ui/icons/Search"
 import HomeIcon from "@material-ui/icons/Home"
-
+import { fade } from "@material-ui/core"
 import PersonIcon from "@material-ui/icons/Person"
 
 //context
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "auto",
       borderTop: "1px solid grey",
 
-      background: "rgba( 255, 255, 255, 0.7)",
+      background: fade(theme.palette.background.default, 0.7),
       boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
       backdropFilter: "blur( 20px )",
       webkitBackdropFilter: " blur( 20px )",

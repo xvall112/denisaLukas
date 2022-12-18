@@ -12,34 +12,17 @@ import { FavouriteContext } from "../../providers/favourite/favourite.provider"
 
 export const useDarkMode = () => {
   const { themeMode, setMode } = useContext(MenuContext)
-  const [mountedComponent, setMountedComponent] = useState(false)
-
-  const setTheme = mode => {
-    try {
-      window.localStorage.setItem("themeMode", mode)
-    } catch {
-      /* do nothing */
-    }
-
-    setMode(mode)
-  }
-
-  const themeToggler = () => {
-    themeMode === "light" ? setTheme("dark") : setTheme("light")
-  }
 
   useEffect(() => {
     try {
       const localTheme = window.localStorage.getItem("themeMode")
-      localTheme ? setMode(localTheme) : setTheme("light")
+      localTheme ? setMode(localTheme) : setMode("light")
     } catch {
       setMode("light")
     }
-
-    setMountedComponent(true)
   }, [])
 
-  return [themeMode, themeToggler, mountedComponent]
+  return [themeMode]
 }
 
 interface Props {
@@ -47,15 +30,15 @@ interface Props {
 }
 
 export default function WithLayout({ children }: Props): JSX.Element {
-  /* React.useEffect(() => {
+  React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side")
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles)
     }
-  }, []) */
+  }, [])
 
-  const [themeMode, themeToggler, mountedComponent] = useDarkMode()
+  const [themeMode] = useDarkMode()
 
   const { fetchFavouriteItems, isUserAuth, currentUser } = useContext(
     UserContext

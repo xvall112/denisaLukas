@@ -16,7 +16,7 @@ export const MenuContext = createContext({
   handleSidebarOpen: () => {},
   handleSidebarClose: () => {},
   setMode: value => {},
-  themeToggler: () => {},
+
   setFilterLocation: (lat, lon) => {},
   handleBottomNavigation: (event, newValue) => {},
   setTitle: title => {},
@@ -49,12 +49,12 @@ const MenuProvider = ({ children }) => {
   const handleSidebarClose = () => setOpenSidebar(false)
 
   const setMode = mode => {
-    window.localStorage.setItem("themeMode", mode)
+    try {
+      window.localStorage.setItem("themeMode", mode)
+    } catch {
+      /* do nothing */
+    }
     setTheme(mode)
-  }
-
-  const themeToggler = () => {
-    themeMode === "light" ? setMode("dark") : setMode("light")
   }
 
   const setFilterLocation = (lat, lon) => {
@@ -92,7 +92,7 @@ const MenuProvider = ({ children }) => {
         handleSidebarOpen,
         handleSidebarClose,
         setMode,
-        themeToggler,
+
         setFilterCountry,
         setFilterLocation,
         handleBottomNavigation,

@@ -11,12 +11,12 @@ import {
   Container,
   Avatar,
   Button,
-  Hidden,
 } from "@material-ui/core"
 import { CardBase } from "components/organisms"
 import { Hero, General, Security } from "./components"
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
-
+//components
+import ThemeModeToggler from "../../components/own/ThemeModeToggler"
 //context
 import { UserContext } from "../../providers/user/user.provider"
 
@@ -149,6 +149,9 @@ const Account = (): JSX.Element => {
                 </Grid>
                 <Grid item>
                   <Typography variant="h6">{currentUser.email}</Typography>
+                </Grid>
+                <Grid item>
+                  <ThemeModeToggler />
                 </Grid>
                 <Grid item>
                   <Button

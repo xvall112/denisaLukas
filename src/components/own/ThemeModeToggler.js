@@ -7,14 +7,14 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 
 const ThemeModeToggler = () => {
   const theme = useTheme()
-  const { themeToggler, themeMode } = useContext(MenuContext)
+  const { themeMode, setMode } = useContext(MenuContext)
 
   return (
     <Button
       variant={"outlined"}
-      onClick={() => themeToggler()}
+      onClick={() => setMode(themeMode === "light" ? "dark" : "light")}
       aria-label="Dark mode toggler"
-      color={themeMode === "light" ? "primary" : "secondary"}
+      color={themeMode === "light" ? "primary" : "primary"}
       sx={{
         borderRadius: 2,
         minWidth: "auto",
