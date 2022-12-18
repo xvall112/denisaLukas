@@ -106,7 +106,6 @@ function pageToAlgoliaRecord({ id, kindPlace, name, slug, adress, country }) {
     country: country.name,
   }
 }
-
 const queries = [
   {
     query: blogQuery,
