@@ -4,9 +4,8 @@ import { graphql } from "gatsby"
 import PlaceLayout from "../components/own/PlacePageLayout/PlacesPageLayout copy"
 import SEO from "../components/own/seo"
 import Main from "../layouts/Main/Main"
-import Places from "../components/own/Places"
+
 //materialUi
-import { Container, Box } from "@material-ui/core"
 
 export const query = graphql`
   query($slug: String!) {
@@ -32,11 +31,7 @@ export const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(
-            width: 400
-            placeholder: BLURRED
-            outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
-          )
+          gatsbyImageData(width: 500, height: 500, placeholder: BLURRED)
           title
         }
         location {

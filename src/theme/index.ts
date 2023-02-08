@@ -1,8 +1,4 @@
-import {
-  createMuiTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@material-ui/core"
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
 import { light, dark } from "./palette"
 
 import "@fontsource/roboto"
@@ -13,6 +9,11 @@ const getTheme = mode =>
       palette: mode === "light" ? light : dark,
       shape: { borderRadius: 10 },
       overrides: {
+        MuiContainer: {
+          maxWidthXl: {
+            maxWidth: "2500px !important",
+          },
+        },
         MuiDivider: {
           root: {
             background:

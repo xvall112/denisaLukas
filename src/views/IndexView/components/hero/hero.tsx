@@ -23,11 +23,7 @@ const query = graphql`
         slug
         title
         image {
-          gatsbyImageData(
-            placeholder: BLURRED
-            width: 800
-            outputPixelDensities: [0.5, 0.5, 0.5, 0.5]
-          )
+          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           title
         }
       }

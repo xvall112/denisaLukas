@@ -37,7 +37,7 @@ const Account = (): JSX.Element => {
   }, [])
   return (
     <div className={classes.root}>
-      {/*  <Hero /> */}
+      <Hero />
       <Box className={classes.section}>
         <TabPane />
       </Box>

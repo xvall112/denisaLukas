@@ -6,8 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Title from "../../../../components/own/titleSection"
 //material UI
 import { Grid, Box, Typography } from "@material-ui/core"
-import { makeStyles, createStyles } from "@material-ui/core/styles"
-import { shadows } from "@material-ui/system"
+import { makeStyles, createStyles, useTheme } from "@material-ui/core/styles"
 
 export const query = graphql`
   {
@@ -105,6 +104,11 @@ const useStyles = makeStyles(theme =>
 const Countries = () => {
   const data = useStaticQuery(query)
   const classes = useStyles()
+  const theme = useTheme()
+  const sm = theme.breakpoints.values.sm
+  const md = theme.breakpoints.values.md
+  const lg = theme.breakpoints.values.lg
+  const xl = theme.breakpoints.values.xl
   const settings = {
     infinite: false,
 
@@ -119,7 +123,7 @@ const Countries = () => {
     nextArrow: <SampleNextArrow />,
     responsive: [
       {
-        breakpoint: 1536,
+        breakpoint: lg,
         settings: {
           arrows: true,
           slidesToShow: 4.5,
@@ -128,7 +132,7 @@ const Countries = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: sm,
         settings: {
           arrows: false,
           slidesToShow: 1.5,

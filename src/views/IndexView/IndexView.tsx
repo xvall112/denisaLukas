@@ -30,11 +30,7 @@ const query = graphql`
           title
         }
         images {
-          gatsbyImageData(
-            width: 400
-            placeholder: BLURRED
-            outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
-          )
+          gatsbyImageData(width: 400, height: 400, placeholder: BLURRED)
           title
         }
         location {
@@ -66,7 +62,8 @@ const query = graphql`
         }
         images {
           gatsbyImageData(
-            width: 400
+            width: 500
+            height: 500
             placeholder: BLURRED
             outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
           )

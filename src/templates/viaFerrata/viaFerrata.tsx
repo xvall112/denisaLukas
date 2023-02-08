@@ -113,7 +113,7 @@ export const query = graphql`
       parkingToStartTime
       slug
       titleImage {
-        gatsbyImageData
+        gatsbyImageData(width: 300, placeholder: BLURRED)
         title
       }
       backWayDescription {

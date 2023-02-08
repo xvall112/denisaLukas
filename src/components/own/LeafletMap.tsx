@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react"
+import React, { useContext, useRef } from "react"
 import L from "leaflet"
 import clsx from "clsx"
 
@@ -11,7 +11,6 @@ import {
 } from "react-leaflet"
 
 //context
-import { MenuContext } from "../../providers/menu/menu.providers"
 import { MapContext } from "providers/map/map.providers"
 
 //materialUI
@@ -47,7 +46,6 @@ const LeafletMap = ({
   marker,
   zoom,
   center,
-
   className,
   parking,
   endFerrataLocation,

@@ -30,7 +30,7 @@ const query = graphql`
           flagLink
         }
         images {
-          gatsbyImageData(width: 400, placeholder: BLURRED)
+          gatsbyImageData(width: 400, height: 400, placeholder: BLURRED)
           title
         }
         location {
@@ -69,7 +69,7 @@ const PlacesFavourite = () => {
             <Grid container direction="row" spacing={3}>
               {favouritePlaces.map((item: any, index: number) => {
                 return (
-                  <Grid item xs={12} sm={12} md={4} lg={3} xl={3} key={index}>
+                  <Grid item xs={12} sm={6} md={3} lg={3} xl={2} key={index}>
                     <Card item={item} />
                   </Grid>
                 )

@@ -48,6 +48,7 @@ export const UserContext = createContext({
   closeModal: () => {},
   addNewsletter: email => {},
   updateAccount: name => {},
+  SignInByGoogle: () => {},
 })
 
 const UserProvider = ({ children }) => {
@@ -74,6 +75,7 @@ const UserProvider = ({ children }) => {
       console.log(currentUser)
     }
   }) */
+  const provider = new firebase.auth.GoogleAuthProvider()
   const getCurrentUser = () => {
     return new Promise((resolve, reject) => {
       const unsubscribe = firebase.auth().onAuthStateChanged(userAuth => {
@@ -237,6 +239,34 @@ const UserProvider = ({ children }) => {
     }
   }
 
+  const SignInByGoogle = async () => {
+    await setError(null)
+    await setLoading(true)
+    await firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(result => {
+        var credential = result.credential
+        var user = result.user
+        setCurrentUser(user)
+        createUserProfileDocument(user)
+        setSnackbarMessage("Jste přihlášen")
+        setIsUserSnackbarOpen(true)
+      })
+      .catch(error => {
+        // Handle Errors here.
+        var errorCode = error.code
+        var errorMessage = error.message
+        // The email of the user's account used.
+        var email = error.email
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential
+        setError(error)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
   const signIn = async (email, password) => {
     await setError(null)
     await setLoading(true)
@@ -253,7 +283,9 @@ const UserProvider = ({ children }) => {
       .catch(error => {
         setError(error)
       })
-    await setLoading(false)
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   const logout = async () => {
@@ -307,6 +339,7 @@ const UserProvider = ({ children }) => {
         closeModal,
         addNewsletter,
         updateAccount,
+        SignInByGoogle,
       }}
     >
       {children}

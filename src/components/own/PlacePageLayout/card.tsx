@@ -55,7 +55,8 @@ const useStyles = makeStyles(theme => ({
     height: 450,
   },
   folioInfoWrapper: {
-    marginTop: "-10px",
+    marginTop: "0px",
+    marginBottom: "10px",
   },
   folioTitle: {
     fontWeight: "bold",
@@ -145,7 +146,7 @@ const Card = ({ item }: ViewComponentProps): JSX.Element => {
         </Box>
       </Grid>
       <Link to={`/${item.slug}`} className={classes.link}>
-        <SliderSlick img={item.images} heightImg={"300px"} widthImg={"100%"} />
+        <SliderSlick img={item.images} heightImg={"100%"} widthImg={"100%"} />
 
         <div className={clsx("folio__info-wrapper", classes.folioInfoWrapper)}>
           <Grid

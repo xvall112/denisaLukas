@@ -16,7 +16,7 @@ const query = graphql`
         name
         slug
         icon {
-          gatsbyImageData(placeholder: BLURRED, width: 200)
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
           title
         }
       }
@@ -49,7 +49,6 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     backgroundColor: theme.palette.background.level1,
-    height: "20vh",
 
     /*  "& :hover img": {
       transition: "transform 0.5s,-webkit-transform 0.5s ",
@@ -67,7 +66,7 @@ const TypeOfSport = () => {
         {data.allContentfulTypeOfActivities.nodes.map(
           (item: any, index: number) => {
             return (
-              <Grid item xs={12} md={4} lg={4} key={index}>
+              <Grid item xs={12} md={4} lg={3} key={index}>
                 <Link to={`/${item.slug}`}>
                   <CardBase noShadow liftUp className={classes.card}>
                     <Grid container>
@@ -78,7 +77,7 @@ const TypeOfSport = () => {
                             alt={item.icon.title}
                             formats={["auto", "webp", "avif"]}
                             style={{
-                              height: "20vh",
+                              height: "100%",
                               width: "100%",
                             }}
                           />

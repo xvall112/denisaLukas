@@ -39,7 +39,7 @@ const validationSchema = yup.object({
 
 const Form = (): JSX.Element => {
   const classes = useStyles()
-  const { signUp, loading, error } = useContext(UserContext)
+  const { signUp, loading, error, SignInByGoogle } = useContext(UserContext)
 
   const formik = useFormik({
     initialValues: {
@@ -66,6 +66,22 @@ const Form = (): JSX.Element => {
               </Alert>
             </Grid>
           )}
+          <Grid item xs={12}>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={SignInByGoogle}
+              size="large"
+              fullWidth
+              disabled={loading}
+              startIcon={loading ? <CircularProgress size={14} /> : null}
+            >
+              Pomocí Google
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography align="center">nebo</Typography>
+          </Grid>
           <Grid item xs={12}>
             <TextField
               placeholder="Jméno"
@@ -151,9 +167,10 @@ const Form = (): JSX.Element => {
               type="submit"
               color="primary"
               fullWidth
+              startIcon={loading ? <CircularProgress size={14} /> : null}
               disabled={!formik.isValid || loading}
             >
-              {loading ? <CircularProgress /> : "Registrovat se"}
+              Registrovat se
             </Button>
           </Grid>
           <Grid item xs={12}>

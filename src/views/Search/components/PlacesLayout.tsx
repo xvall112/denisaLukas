@@ -36,27 +36,44 @@ interface Props {
 const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
   const classes = useStyles()
   const theme = useTheme()
-
+  const sm = theme.breakpoints.values.sm
+  const md = theme.breakpoints.values.md
+  const lg = theme.breakpoints.values.lg
+  const xl = theme.breakpoints.values.xl
   const settings = {
     speed: 200,
     arrows: false,
     dots: false,
     infinite: false,
-    slidesToShow: 4,
+    slidesToShow: 6,
     slidesToScroll: 1,
     centerMode: false,
 
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: sm,
         settings: {
           slidesToShow: 1.2,
         },
       },
-
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
+      {
+        breakpoint: md,
+        settings: {
+          slidesToShow: 2.2,
+        },
+      },
+      {
+        breakpoint: lg,
+        settings: {
+          slidesToShow: 4.2,
+        },
+      },
+      {
+        breakpoint: xl,
+        settings: {
+          slidesToShow: 6,
+        },
+      },
     ],
   }
 

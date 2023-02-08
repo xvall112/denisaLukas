@@ -50,6 +50,7 @@ const MenuLayout = ({ children }: Props): JSX.Element => {
               color="primary"
               startIcon={<ArrowBackIosIcon />}
               onClick={() => navigate("/")}
+              style={{ marginTop: "10px" }}
             >
               Zpět
             </Button>

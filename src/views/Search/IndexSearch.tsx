@@ -26,12 +26,7 @@ const query = graphql`
             adress
             kindPlace
             titleImage {
-              gatsbyImageData(
-                placeholder: BLURRED
-                width: 500
-                height: 500
-                outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
-              )
+              gatsbyImageData(placeholder: BLURRED, width: 500, height: 500)
               title
             }
             country {
@@ -47,12 +42,7 @@ const query = graphql`
             kindPlace
             adress
             titleImage {
-              gatsbyImageData(
-                placeholder: BLURRED
-                width: 500
-                height: 500
-                outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
-              )
+              gatsbyImageData(placeholder: BLURRED, width: 500, height: 500)
               title
             }
             country {
