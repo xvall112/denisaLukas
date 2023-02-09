@@ -5,9 +5,7 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 //components
 import { CardBase } from "components/organisms"
-//hooks
-import { useContentfulAsset } from "../../hooks/useContentfullAsset"
-import { useContentfulImage } from "../../hooks/useContentfulImage"
+
 //materialUI
 import {
   Typography,
@@ -117,29 +115,25 @@ const options = {
       </Box>
     ),
     [BLOCKS.EMBEDDED_ASSET]: node => {
-      const assetImage = useContentfulImage(node.data.target.sys.id)
-
       const classes = useStyles()
-
-      if (assetImage) {
+      const { gatsbyImageData, title } = node.data.target
+      if (gatsbyImageData) {
         return (
           <>
             <Box my={2} className={classes.img}>
               <GatsbyImage
-                image={assetImage.node.gatsbyImageData}
-                alt={assetImage.node.title}
+                image={gatsbyImageData}
+                alt={title}
                 formats={["auto", "webp", "avif"]}
                 style={{
-                  width: "100%",
-                  maxHeight: "80vh",
+                  width: "70%",
+                  maxHeight: "50vh",
                   /*      borderRadius: "5px",
                   WebkitBorderRadius: "5px", */
                 }}
               />
               <Box textAlign="center">
-                <Typography variant="caption">
-                  {assetImage.node.title}
-                </Typography>
+                <Typography variant="caption">{title}</Typography>
               </Box>
             </Box>
           </>
@@ -148,18 +142,27 @@ const options = {
     },
 
     [BLOCKS.EMBEDDED_ENTRY]: node => {
-      const asset = useContentfulAsset(node.data.target.sys.id)
+      const {
+        slug,
+        titleImage,
+        country,
+        kindPlace,
+        rating,
+        name,
+        seoDescribe,
+        seoDescription,
+      } = node.data.target
       const classes = useStyles()
-      if (asset) {
+      if (true) {
         return (
           <Box py={1} mx={{ xs: 0, md: 0 }} my={2} className={classes.root}>
-            <Link to={`/${asset.node.slug}`}>
+            <Link to={`/${slug}`}>
               <CardBase noShadow liftUp className={classes.card}>
                 <Grid container direction="row">
-                  <Grid item xs={6} md={5}>
+                  <Grid item xs={6} sm={6} md={4} xl={3}>
                     <GatsbyImage
-                      image={asset.node.titleImage.gatsbyImageData}
-                      alt={asset.node.titleImage.title}
+                      image={titleImage.gatsbyImageData}
+                      alt={titleImage.title}
                       formats={["auto", "webp", "avif"]}
                       style={{
                         width: "100%",
@@ -172,7 +175,9 @@ const options = {
                     direction="column"
                     item
                     xs={6}
-                    md={7}
+                    sm={6}
+                    md={8}
+                    xl={9}
                     spacing={2}
                     className={classes.content}
                   >
@@ -200,14 +205,14 @@ const options = {
                             >
                               <Grid item>
                                 <FlagChip
-                                  name={asset.node.country.name}
-                                  flagLink={asset.node.country.flagLink}
+                                  name={country.name}
+                                  flagLink={country.flagLink}
                                   className={classes.flag}
                                   width={40}
                                 />
                               </Grid>
 
-                              {asset.node.kindPlace.map((item, index) => {
+                              {kindPlace.map((item, index) => {
                                 return (
                                   <Grid item key={index}>
                                     <Chip label={item} size="small" />
@@ -221,20 +226,19 @@ const options = {
                       <Grid item xs={12}>
                         <Rating
                           name="half-rating-read"
-                          defaultValue={asset.node.rating || 5}
+                          defaultValue={rating || 5}
                           precision={0.5}
                           readOnly
                           size="small"
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <Typography variant="h5">{asset.node.name}</Typography>
+                        <Typography variant="h5">{name}</Typography>
                       </Grid>
                       <Hidden smDown>
                         <Grid item xs={12}>
                           <Typography>
-                            {asset.node.seoDescribe ||
-                              asset.node.seoDescription}
+                            {seoDescribe || seoDescription}
                           </Typography>
                         </Grid>
                       </Hidden>

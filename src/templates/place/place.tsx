@@ -53,6 +53,50 @@ export const query = graphql`
       }
       describePlace {
         raw
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            __typename
+            gatsbyImageData(width: 800)
+            title
+          }
+          ... on ContentfulPlaces {
+            __typename
+            contentful_id
+            slug
+            name
+            seoDescribe
+            titleImage {
+              contentful_id
+              gatsbyImageData(height: 200)
+              title
+            }
+            rating
+            kindPlace
+            country {
+              name
+              flagLink
+            }
+          }
+          ... on ContentfulViaFerrata {
+            __typename
+            contentful_id
+            slug
+            name
+            seoDescription
+            titleImage {
+              contentful_id
+              gatsbyImageData(height: 200)
+              title
+            }
+            rating
+            kindPlace
+            country {
+              name
+              flagLink
+            }
+          }
+        }
       }
       moreInfo {
         raw
