@@ -84,23 +84,33 @@ interface Props {
 }
 
 const InSeraundings = ({ data }: Props): JSX.Element => {
+  const theme = useTheme()
   const classes = useStyles()
-
+  const sm = theme.breakpoints.values.sm
+  const md = theme.breakpoints.values.md
+  const lg = theme.breakpoints.values.lg
+  const xl = theme.breakpoints.values.xl
   const settings = {
     speed: 100,
     centerMode: false,
     arrows: true,
     dots: false,
     infinite: false,
-    slidesToShow: 3.5,
+    slidesToShow: 5.5,
     slidesToScroll: 1,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: sm,
         settings: {
           slidesToShow: 2.5,
+        },
+      },
+      {
+        breakpoint: xl,
+        settings: {
+          slidesToShow: 4.5,
         },
       },
 

@@ -84,6 +84,7 @@ const PlaceHeader = ({
               direction="row"
               justify="flex-start"
               alignItems="center"
+              spacing={2}
             >
               {kindPlace.map((item, index) => {
                 return (

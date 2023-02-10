@@ -88,11 +88,7 @@ export const query = graphql`
         }
       }
       images {
-        gatsbyImageData(
-          width: 1000
-          placeholder: BLURRED
-          outputPixelDensities: [0.25, 0.25, 0.25, 0.25]
-        )
+        gatsbyImageData(width: 800, placeholder: BLURRED)
         title
       }
       kindPlace

@@ -113,7 +113,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
           <Container maxWidth="xl">
             <div className={classes.root}>
               <Grid container direction="row" spacing={3}>
-                {list.map((item: any, index: number) => {
+                {data.map((item: any, index: number) => {
                   return (
                     <Grid item xs={12} sm={6} md={3} lg={3} xl={2} key={index}>
                       <Card item={item} />
@@ -127,7 +127,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
                       animation="wave"
                       variant="rect"
                       width="100%"
-                      height="400px"
+                      height="300px"
                     />
                     <Skeleton
                       animation="wave"

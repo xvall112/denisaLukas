@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "10px 0 0 10px",
     WebkitBorderRadius: "10px",
     overflow: "hidden",
+    textAlign: "center",
     "& img": {
       borderRadius: "10px 0 0 10px",
       WebkitBorderRadius: "10px",
@@ -128,6 +129,7 @@ const options = {
                 style={{
                   width: "70%",
                   maxHeight: "50vh",
+
                   /*      borderRadius: "5px",
                   WebkitBorderRadius: "5px", */
                 }}

@@ -8,16 +8,15 @@ import {
   TileLayer,
   Marker,
   Popup,
+  GeoJSON,
 } from "react-leaflet"
-
 //context
 import { MapContext } from "providers/map/map.providers"
-
 //materialUI
 import { makeStyles } from "@material-ui/core/styles"
-
 //components
 import PopupCard from "./PopupCard"
+import mountainPin from "images/mountain.png"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -42,6 +41,7 @@ interface LeafletMap {
   endFerrataLocation?: [number, number]
   geoJSON?: any
 }
+
 const LeafletMap = ({
   marker,
   zoom,
@@ -91,15 +91,13 @@ const LeafletMap = ({
     const circle = L.circle(latlng, radius)
     circle.addTo(map)
   } */
-
   function markerIcon() {
     return L.icon({
-      iconUrl: require("../../images/manifestIcon.png"),
-      iconRetinaUrl: require("../../images/manifestIcon.png"),
+      iconUrl: mountainPin,
+
       iconSize: [25, 40],
       iconAnchor: [10, 40],
-      tooltipAnchor: [15, -20],
-      shadowUrl: require("images/marker-shadow.png"),
+      tooltipAnchor: [0, 0],
     })
   }
   if (typeof window !== "undefined") {
@@ -120,7 +118,7 @@ const LeafletMap = ({
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* {geoJSON && (
+        {geoJSON && (
           <GeoJSON
             data={geoJSON}
             style={function (feature) {
@@ -128,8 +126,8 @@ const LeafletMap = ({
                 color: feature.properties.stroke,
               }
             }}
-          ></GeoJSON>
-        )} */}
+          />
+        )}
 
         {endFerrataLocation && (
           <Marker position={endFerrataLocation} icon={markerIcon()}>

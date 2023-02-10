@@ -48,7 +48,7 @@ export const query = graphql`
       }
 
       images {
-        gatsbyImageData(width: 1000, placeholder: BLURRED)
+        gatsbyImageData(width: 800, placeholder: BLURRED)
         title
       }
       describePlace {

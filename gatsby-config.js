@@ -23,7 +23,7 @@ module.exports = {
         // other options
       },
     },
-
+    `gatsby-plugin-material-ui`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     {
