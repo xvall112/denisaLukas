@@ -6,10 +6,6 @@ import LayoutPlaces from "../layouts/Place/Place"
 const Countries = () => {
   return (
     <>
-      <SEO
-        title="Countries"
-        description="Všechny státy které můžete objevovat"
-      />
       <LayoutPlaces>
         <IndexCountries />
       </LayoutPlaces>

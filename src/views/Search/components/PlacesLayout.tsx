@@ -71,7 +71,7 @@ const PlacesLayout = ({ data, slug, title }: Props): JSX.Element => {
       {
         breakpoint: xl,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 4.2,
         },
       },
     ],

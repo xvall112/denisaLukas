@@ -74,8 +74,8 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
   useEffect(() => {
     var options = {
       root: null,
-      rootMargin: "500px",
-      threshold: 1.0,
+      rootMargin: "0px",
+      threshold: 0,
     }
     const observer = new IntersectionObserver(handleObserver, options)
     if (loadRef.current) {
@@ -113,7 +113,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
           <Container maxWidth="xl">
             <div className={classes.root}>
               <Grid container direction="row" spacing={3}>
-                {data.map((item: any, index: number) => {
+                {list.map((item: any, index: number) => {
                   return (
                     <Grid item xs={12} sm={6} md={3} lg={3} xl={2} key={index}>
                       <Card item={item} />

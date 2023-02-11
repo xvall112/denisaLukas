@@ -6,10 +6,6 @@ import Main from "../layouts/Main/Main"
 const ViaFerrata = () => {
   return (
     <>
-      <SEO
-        title="viaFerrata"
-        description="Via Ferraty které můžete objevovat"
-      />
       <Main>
         <IndexViaFerrata />
       </Main>

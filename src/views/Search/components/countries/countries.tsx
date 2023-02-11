@@ -112,7 +112,7 @@ const Countries = () => {
   const settings = {
     infinite: false,
 
-    slidesToShow: 6,
+    slidesToShow: 6.5,
     swipeToSlide: true,
     speed: 300,
     rows: 1,
@@ -122,6 +122,24 @@ const Countries = () => {
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
     responsive: [
+      {
+        breakpoint: md,
+        settings: {
+          arrows: true,
+          slidesToShow: 3.5,
+          slidesToScroll: 3,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: xl,
+        settings: {
+          arrows: true,
+          slidesToShow: 4.5,
+          slidesToScroll: 6,
+          dots: true,
+        },
+      },
       {
         breakpoint: lg,
         settings: {
