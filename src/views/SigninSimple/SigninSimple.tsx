@@ -45,16 +45,6 @@ const SigninSimple = (): JSX.Element => {
       <div>
         <Section className={classes.section}>
           <>
-            <div>
-              <Button
-                color="primary"
-                startIcon={<ArrowBackIosIcon />}
-                onClick={() => navigate("/")}
-                style={{ marginTop: "10px" }}
-              >
-                Zpět
-              </Button>
-            </div>
             <div className={classes.formContainer}>
               <Link to="/">
                 <StaticImage

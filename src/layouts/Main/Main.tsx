@@ -4,13 +4,10 @@ import clsx from "clsx"
 //materialUI
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import { useMediaQuery, Hidden, AppBar, Container } from "@material-ui/core"
-import LinearProgress from "@material-ui/core/LinearProgress"
 
 //components
 import Topbar from "./components/TopBar/TopBar"
-import SideBar from "../SideBar/SideBar"
-import Section from "../../components/organisms/Section/Section"
-import Footer from "./components/Footer/Footer"
+
 import BottomNavigation from "../components/bottomNavigation"
 //context
 import { UserContext } from "../../providers/user/user.provider"
@@ -50,7 +47,7 @@ const Main = ({ children }: Props): JSX.Element => {
           <Topbar />
         </Container>
       </AppBar>
-      <SideBar variant="temporary" />
+
       <main>
         {/*  <Divider /> */}
 

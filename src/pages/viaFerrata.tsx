@@ -1,14 +1,11 @@
 import React from "react"
 import SEO from "../components/own/seo"
 import IndexViaFerrata from "../views/viaFerrata/IndexViaFerrata"
-import Main from "../layouts/Main/Main"
 
 const ViaFerrata = () => {
   return (
     <>
-      <Main>
-        <IndexViaFerrata />
-      </Main>
+      <IndexViaFerrata />
     </>
   )
 }

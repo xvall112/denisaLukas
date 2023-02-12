@@ -23,6 +23,12 @@ module.exports = {
         // other options
       },
     },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layouts/Index.tsx`),
+      },
+    },
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,

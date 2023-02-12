@@ -185,8 +185,6 @@ const Place = props => {
     viaFerrataInSurrounding,
   } = props.data
 
-  const { name, seoDescription, titleImage } = props.data.contentfulPlaces
-
   const { setTitle } = useContext(MenuContext)
 
   useEffect(() => {

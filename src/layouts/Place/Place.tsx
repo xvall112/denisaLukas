@@ -1,13 +1,12 @@
-import React, { useState } from "react"
+import React from "react"
 import clsx from "clsx"
 
 //materialUI
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useMediaQuery, Hidden, Box } from "@material-ui/core"
+import { Hidden, Box } from "@material-ui/core"
 
 //components
 import TopBar2 from "./components/TopBar2"
-import SideBar from "../SideBar/SideBar"
 import BottomNavigation from "../components/bottomNavigation"
 
 const useStyles = makeStyles(theme => ({
@@ -36,7 +35,7 @@ const Place = ({ children }: Props): JSX.Element => {
       })}
     >
       <TopBar2 />
-      <SideBar variant="temporary" />
+
       <main>{children}</main>
       <Hidden mdUp>
         <Box mt={10}>

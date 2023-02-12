@@ -1,10 +1,9 @@
 import React from "react"
-import { navigate, Link } from "gatsby"
+import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 //materialUI
-import { Button } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
+
 //components
 import { SectionHeader } from "components/molecules"
 import { Section } from "components/organisms"
@@ -42,15 +41,6 @@ const SignupSimple = (): JSX.Element => {
     <>
       <Section className={classes.section}>
         <>
-          <Button
-            color="primary"
-            startIcon={<ArrowBackIosIcon />}
-            onClick={() => navigate("/")}
-            style={{ marginTop: "10px" }}
-          >
-            Zpět
-          </Button>
-
           <div className={classes.formContainer}>
             <Link to="/">
               <StaticImage

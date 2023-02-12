@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 //components
 import PlaceLayout from "../components/own/PlacePageLayout/PlacesPageLayout copy"
 import SEO from "../components/own/seo"
-import Main from "../layouts/Main/Main"
 
 //materialUi
 
@@ -47,9 +46,7 @@ const TypeOfPlace = props => {
   const { nodes } = props.data.allContentfulPlaces
   return (
     <>
-      <Main>
-        <PlaceLayout data={nodes} />
-      </Main>
+      <PlaceLayout data={nodes} />
     </>
   )
 }

@@ -8,10 +8,11 @@ import SearchIcon from "@material-ui/icons/Search"
 import HomeIcon from "@material-ui/icons/Home"
 import { fade } from "@material-ui/core"
 import PersonIcon from "@material-ui/icons/Person"
+import Avatar from "@material-ui/core/Avatar"
 
 //context
 import { MenuContext } from "../../providers/menu/menu.providers"
-
+import { UserContext } from "../../providers/user/user.provider"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -48,6 +49,7 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
   const { valueBottomNavigation, handleBottomNavigation } = useContext(
     MenuContext
   )
+  const { currentUser } = useContext(UserContext)
 
   /* const { setOpenFullScreenMap } = useContext(MapContext)
   const { logout, currentUser } = useContext(UserContext) */
@@ -88,7 +90,13 @@ export default function LabelBottomNavigation({ map }: Props): JSX.Element {
       />
       <BottomNavigationAction
         value="profil"
-        icon={<PersonIcon fontSize="large" />}
+        icon={
+          currentUser ? (
+            <Avatar src={currentUser?.photoURL} />
+          ) : (
+            <PersonIcon fontSize="large" />
+          )
+        }
         onClick={() => navigate("/app/account") /* window.location.reload() */}
       />
 

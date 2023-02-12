@@ -35,10 +35,12 @@ module.exports.createPages = async ({ graphql, actions }) => {
     const previousPlaceId = index === 0 ? null : places[index - 1].id
     const nextPlaceId =
       index === places.length - 1 ? null : places[index + 1].id
+
     createPage({
       component: placeTemplate,
       path: `/${place.slug}`,
       context: {
+        layout: "place",
         slug: place.slug,
         maxLat: place.location.lat + 0.2,
         minLat: place.location.lat - 0.2,
@@ -69,6 +71,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       component: countryTemplate,
       path: `/${node.slug}`,
       context: {
+        layout: "place",
         slug: node.slug,
         country: node.name,
       },
@@ -105,6 +108,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       component: viaFerrataTemplate,
       path: `/${ferrata.slug}`,
       context: {
+        layout: "place",
         maxLat: ferrata.location.lat + 0.2,
         minLat: ferrata.location.lat - 0.2,
         maxLon: ferrata.location.lon + 0.2,

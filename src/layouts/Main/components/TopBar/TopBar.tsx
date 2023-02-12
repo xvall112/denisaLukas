@@ -1,19 +1,15 @@
 import React, { useContext } from "react"
 import { Link, navigate } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-
 //components
-import Algolia from "../../../../components/own/Algolia/Algolia"
 import Tabs from "./Tabs"
 import Search from "./Search"
 //context
-import { MenuContext } from "../../../../providers/menu/menu.providers"
 import { UserContext } from "../../../../providers/user/user.provider"
 //material UI
 import {
   useMediaQuery,
   Grid,
-  IconButton,
   Avatar,
   Menu,
   MenuItem,
@@ -25,9 +21,6 @@ import {
   Theme,
   makeStyles,
 } from "@material-ui/core/styles"
-import MenuIcon from "@material-ui/icons/Menu"
-import InstagramIcon from "@material-ui/icons/Instagram"
-import RefreshOutlinedIcon from "@material-ui/icons/RefreshOutlined"
 
 interface Props {}
 
@@ -142,7 +135,6 @@ const TopBar = ({}: Props): JSX.Element => {
                   <Box onClick={handleClick}>
                     <Avatar
                       src={currentUser?.photoURL}
-                      variant="rounded"
                       className={classes.avatar}
                     />
                   </Box>
