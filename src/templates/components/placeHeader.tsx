@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface Props {
-  kindPlace: string[]
+  kindPlace: any
   country: {
     name: string
     flagLink: string
@@ -86,10 +86,10 @@ const PlaceHeader = ({
               alignItems="center"
               spacing={2}
             >
-              {kindPlace.map((item, index) => {
+              {kindPlace?.map((item, index) => {
                 return (
                   <Box mr={1} key={index}>
-                    <Chip label={item} />
+                    <Chip label={item.name} />
                   </Box>
                 )
               })}

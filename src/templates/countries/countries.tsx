@@ -34,6 +34,9 @@ export const query = graphql`
         id
         slug
         name
+        type {
+          name
+        }
         adress
         kindPlace
         country {
@@ -66,6 +69,9 @@ export const query = graphql`
         slug
         name
         adress
+        type {
+          name
+        }
         kindPlace
         titleImage {
           gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 40)

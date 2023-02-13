@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { Box } from "@material-ui/core"
 //components
 import MainLayout from "./Main/Main"
 import PlaceLayout from "./Place/Place"
-
+//context
+import { MenuContext } from "../providers/menu/menu.providers"
 interface Props {
   children: React.ReactNode
   pageContext: React.ReactNode
@@ -11,7 +12,14 @@ interface Props {
 }
 
 const Index = ({ children, pageContext, location }: Props) => {
-  console.log("location:", location)
+  const { setTopTabsValue } = useContext(MenuContext)
+  useEffect(() => {
+    setTopTabsValue(location.pathname)
+    return () => {
+      setTopTabsValue("/")
+    }
+  }, [location.pathname])
+
   if (
     pageContext.layout === "place" ||
     [
@@ -21,6 +29,7 @@ const Index = ({ children, pageContext, location }: Props) => {
       "/app/account",
       "/app/login",
       "/signup",
+      "/places",
     ].find(item => item === location.pathname)
   ) {
     return <PlaceLayout>{children}</PlaceLayout>

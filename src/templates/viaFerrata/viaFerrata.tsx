@@ -66,6 +66,9 @@ export const query = graphql`
       seoDescription
       rating
       id
+      type {
+        name
+      }
       adress
       backWayTime
       country {

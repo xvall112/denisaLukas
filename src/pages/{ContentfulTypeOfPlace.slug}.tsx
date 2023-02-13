@@ -19,8 +19,11 @@ export const query = graphql`
         slug
         name
         rating
-        kindPlace
+
         adress
+        type {
+          name
+        }
         titleImage {
           gatsbyImageData(width: 250, placeholder: BLURRED)
           title

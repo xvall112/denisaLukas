@@ -190,10 +190,10 @@ const Card = ({ item }: ViewComponentProps): JSX.Element => {
               alignItems="center"
               spacing={1}
             >
-              {item.kindPlace.map((item, index) => {
+              {item?.type?.map((item, index) => {
                 return (
                   <Grid item xs="auto" key={index}>
-                    <Chip label={item} />
+                    <Chip label={item.name} />
                   </Grid>
                 )
               })}

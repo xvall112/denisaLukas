@@ -26,7 +26,9 @@ export const query = graphql`
         }
       }
       seoDescribe
-
+      type {
+        name
+      }
       rating
       id
       adress

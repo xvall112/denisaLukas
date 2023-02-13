@@ -77,23 +77,19 @@ function LinkTab(props) {
 }
 
 export default function ScrollableTabsButtonForce() {
-  const { topTabsValue, setTopTabsValue } = useContext(MenuContext)
+  const { topTabsValue } = useContext(MenuContext)
+  console.log("topTabsValue", topTabsValue)
   const data = useStaticQuery(query)
   const classes = useStyles()
   const theme = useTheme()
-  const [value, setValue] = React.useState(2)
   const isLg = useMediaQuery(theme.breakpoints.up("lg"), {
     defaultMatches: true,
   })
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setTopTabsValue(newValue)
-  }
 
   return (
     <div className={classes.root}>
       <AntTabs
         value={topTabsValue}
-        onChange={handleChange}
         variant="scrollable"
         scrollButtons={isLg ? "on" : "off"}
         indicatorColor="primary"
@@ -102,6 +98,7 @@ export default function ScrollableTabsButtonForce() {
       >
         <LinkTab
           label="Home"
+          value="/"
           to="/"
           /*    icon={
             <SvgIcon>
@@ -116,6 +113,7 @@ export default function ScrollableTabsButtonForce() {
         <LinkTab
           label="Ferraty"
           to="/viaFerrata"
+          value="/viaFerrata"
           /*    icon={
             <SvgIcon>
               <path d="M18.5,7.5v4.1a2.76,2.76,0,0,0-1.11-.23H14.64a2.87,2.87,0,0,0-1.14.24V7.5Z" />
@@ -131,6 +129,7 @@ export default function ScrollableTabsButtonForce() {
             <LinkTab
               label={tab.name}
               to={`/${tab.slug}`}
+              value={`/${tab.slug}`}
               /* icon={<FavoriteIcon />} */
               {...a11yProps(index + 2)}
               key={index}

@@ -169,7 +169,7 @@ const LayoutPlaces = ({
               <Container maxWidth="xl">
                 {/* komponenta header */}
                 <PlaceHeader
-                  kindPlace={[data.kindPlace]}
+                  kindPlace={data.type}
                   country={data.country}
                   name={data.name}
                   adress={data.adress}

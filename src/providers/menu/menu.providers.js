@@ -28,7 +28,7 @@ const MenuProvider = ({ children }) => {
   const [filterCountryZoom, setFilterCountryZoom] = useState(0)
   const [filterCountryLocation, setFilterCountryLocation] = useState([0, 0])
   const [themeMode, setTheme] = useState("light")
-  const [topTabsValue, setTopTabsValue] = useState(0)
+  const [topTabsValue, setTopTabsValue] = useState("/")
   const [openSidebar, setOpenSidebar] = useState(false)
   const [valueBottomNavigation, setValueBottomNavigation] = useState("home")
   const [titleTopBar, setTitleTopBar] = useState("")

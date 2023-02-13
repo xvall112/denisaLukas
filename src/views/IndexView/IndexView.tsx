@@ -18,6 +18,9 @@ const query = graphql`
         name
         slug
         rating
+        type {
+          name
+        }
         adress
         kindPlace
         titleImage {
@@ -49,6 +52,9 @@ const query = graphql`
         name
         slug
         rating
+        type {
+          name
+        }
         kindPlace
         adress
         titleImage {
