@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 
 //components
 import SEO from "../../components/own/seo"
-import LayoutPlaces from "../../layouts/Place/Place"
 import Hero from "../components/Hero"
 import Tab from "./Tab/Tab"
 
@@ -147,9 +146,7 @@ const Countries = props => {
 
   return (
     <>
-      <LayoutPlaces>
-        <Nevim />
-      </LayoutPlaces>
+      <Nevim />
     </>
   )
 }

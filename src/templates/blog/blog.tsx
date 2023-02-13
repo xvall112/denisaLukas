@@ -1,9 +1,8 @@
 import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
-import { MenuContext } from "../providers/menu/menu.providers"
+import { MenuContext } from "../../providers/menu/menu.providers"
 //components
-import SEO from "../components/own/seo"
-import Place from "../layouts/Place/Place"
+import SEO from "../../components/own/seo"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid } from "@material-ui/core"
 import { Section } from "components/organisms"
@@ -13,8 +12,8 @@ import {
   SidebarArticles,
   SidebarNewsletter,
   SimilarStories,
-} from "../views/BlogArticle/components"
-import { similarStories } from "../views/BlogArticle/data"
+} from "../../views/BlogArticle/components"
+import { similarStories } from "../../views/BlogArticle/data"
 
 export const query = graphql`
   query($slug: String!) {
@@ -144,34 +143,32 @@ const BlogArticle = props => {
   const classes = useStyles()
   return (
     <>
-      <Place>
-        <div className={classes.root}>
-          <Hero
-            cover={titleImage}
-            title={title}
-            subtitle={shortDescription}
-            author={author}
-            date={date}
-          />
-          <Section>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={8}>
-                <Content data={text} />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <SidebarArticles data={country.places} />
-                <SidebarNewsletter className={classes.sidebarNewsletter} />
-              </Grid>
+      <div className={classes.root}>
+        <Hero
+          cover={titleImage}
+          title={title}
+          subtitle={shortDescription}
+          author={author}
+          date={date}
+        />
+        <Section>
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={8}>
+              <Content data={text} />
             </Grid>
-          </Section>
-          <Section>
-            <SimilarStories data={similarStories} />
-          </Section>
-          {/*  <Section className={classes.footerNewsletterSection}>
+            <Grid item xs={12} md={4}>
+              <SidebarArticles data={country.places} />
+              <SidebarNewsletter className={classes.sidebarNewsletter} />
+            </Grid>
+          </Grid>
+        </Section>
+        <Section>
+          <SimilarStories data={similarStories} />
+        </Section>
+        {/*  <Section className={classes.footerNewsletterSection}>
           <FooterNewsletter />
         </Section> */}
-        </div>
-      </Place>
+      </div>
     </>
   )
 }

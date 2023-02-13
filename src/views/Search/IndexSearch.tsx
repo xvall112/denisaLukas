@@ -71,7 +71,7 @@ const IndexSearch = () => {
   const data = useStaticQuery(query)
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" style={{ marginTop: "60px" }}>
         {/*  <Section fullWidth className={classes.sectionNoPaddingTop}>
           <Title title={"Hledat"} link={"/search"} />
         </Section> */}

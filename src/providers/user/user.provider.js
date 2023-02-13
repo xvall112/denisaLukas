@@ -49,6 +49,7 @@ export const UserContext = createContext({
   addNewsletter: email => {},
   updateAccount: name => {},
   SignInByGoogle: () => {},
+  updatePassword: value => {},
 })
 
 const UserProvider = ({ children }) => {
@@ -89,6 +90,21 @@ const UserProvider = ({ children }) => {
     const userAuth = await getCurrentUser()
     if (!userAuth) return
     setCurrentUser(userAuth)
+  }
+  const updatePassword = value => {
+    const user = firebase.auth().currentUser
+    const newPassword = value
+    setLoading(true)
+    user
+      .updatePassword(newPassword)
+      .then(() => {
+        setLoading(false)
+        setSnackbarMessage("Heslo změněno")
+        setIsUserSnackbarOpen(true)
+      })
+      .catch(error => {
+        setError(error)
+      })
   }
 
   const updateAccount = async name => {
@@ -340,6 +356,7 @@ const UserProvider = ({ children }) => {
         addNewsletter,
         updateAccount,
         SignInByGoogle,
+        updatePassword,
       }}
     >
       {children}

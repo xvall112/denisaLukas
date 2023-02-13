@@ -78,6 +78,28 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  //create page for Blog
+  const blogTemplate = path.resolve("./src/templates/blog/blog.tsx")
+  const resBlog = await graphql(`
+    query MyQuery {
+      allContentfulBlog {
+        nodes {
+          slug
+        }
+      }
+    }
+  `)
+  resBlog.data.allContentfulBlog.nodes.forEach(node => {
+    createPage({
+      component: blogTemplate,
+      path: `/${node.slug}`,
+      context: {
+        layout: "place",
+        slug: node.slug,
+      },
+    })
+  })
+
   //create page for viaFerrata
   const viaFerrataTemplate = path.resolve(
     "./src/templates/viaFerrata/viaFerrata.tsx"

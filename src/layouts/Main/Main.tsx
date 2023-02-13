@@ -42,17 +42,13 @@ const Main = ({ children }: Props): JSX.Element => {
       })}
     >
       {/* {loading && <LinearProgress />} */}
-      <AppBar position="sticky" color="inherit">
+      <AppBar position="fixed" color="inherit">
         <Container maxWidth="xl">
           <Topbar />
         </Container>
       </AppBar>
 
-      <main>
-        {/*  <Divider /> */}
-
-        {children}
-      </main>
+      <main>{children}</main>
       <Hidden lgUp>
         <BottomNavigation map={true} />
       </Hidden>

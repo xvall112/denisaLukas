@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import SEO from "../../components/own/seo"
-import MenuLayout from "../../layouts/Menu/MenuLayout"
 import { navigate } from "gatsby"
 import { parse } from "query-string"
 import { makeStyles } from "@material-ui/core/styles"
@@ -14,7 +13,7 @@ import {
 } from "@material-ui/core"
 import { CardBase } from "components/organisms"
 import { Hero, General, Security } from "./components"
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
+
 //components
 import ThemeModeToggler from "../../components/own/ThemeModeToggler"
 //context
@@ -24,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: "100%",
     width: "100%",
-    marginTop: "10px",
+    marginTop: "80px",
   },
   section: {
     "& .section-alternate__content": {
@@ -43,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   menu: {
     height: "auto",
     backgroundColor: theme.palette.background.level2,
-    [theme.breakpoints.up("md")]: { position: "sticky", top: 30 },
+    [theme.breakpoints.up("md")]: { position: "sticky", top: "80px" },
   },
   list: {
     display: "inline-flex",
@@ -100,7 +99,6 @@ const TabPanel = ({
 
 const Account = (): JSX.Element => {
   const classes = useStyles()
-  let pageId = parse(window.location.search).pid || "general"
   const { currentUser, logout } = useContext(UserContext)
 
   return (
@@ -108,25 +106,6 @@ const Account = (): JSX.Element => {
       {/* <Hero /> */}
       <Container maxWidth="xl" className={classes.section}>
         <Grid container spacing={2}>
-          {/* <Hidden smDown>
-            <Grid item xs={12}>
-              <Button
-                color="primary"
-                startIcon={<ArrowBackIosIcon />}
-                onClick={() => navigate(-1)}
-              >
-                Zpět
-              </Button>
-
-              <Box mt={2}>
-                <Grid container direction="row">
-                  <ArrowBackIosIcon color="primary" />
-                  <Typography color="primary">Zpět</Typography>
-                </Grid>
-              </Box> 
-            </Grid>
-          </Hidden> */}
-
           <Grid item xs={12} md={4}>
             <CardBase withShadow align="left" className={classes.menu}>
               <Grid
@@ -203,9 +182,8 @@ const AccounSettings = (): JSX.Element => {
   return (
     <>
       <SEO title="nastaveni" />
-      <MenuLayout>
-        <Account />
-      </MenuLayout>
+
+      <Account />
     </>
   )
 }

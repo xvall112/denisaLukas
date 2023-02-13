@@ -199,7 +199,8 @@ const Result = ({
             xs={12}
             sm={6}
             md={4}
-            xl={2}
+            lg={3}
+            xl={3}
             key={index}
             data-aos="fade-up"
           >

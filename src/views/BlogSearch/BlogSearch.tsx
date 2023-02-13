@@ -49,7 +49,7 @@ const BlogSearch = (): JSX.Element => {
   const data = useStaticQuery(query)
   const blog = data.allContentfulBlog.nodes
   const classes = useStyles()
-  const { filterCountry, setTitle } = useContext(MenuContext)
+  const { setTitle } = useContext(MenuContext)
   useEffect(() => {
     setTitle("Blog")
     return () => {
