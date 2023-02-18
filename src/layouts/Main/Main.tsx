@@ -1,16 +1,14 @@
-import React, { useContext } from "react"
+import React from "react"
 import clsx from "clsx"
 
 //materialUI
 import { makeStyles, useTheme } from "@material-ui/core/styles"
-import { useMediaQuery, Hidden, AppBar, Container } from "@material-ui/core"
+import { Hidden, AppBar, Container } from "@material-ui/core"
 
 //components
 import Topbar from "./components/TopBar/TopBar"
 
 import BottomNavigation from "../components/bottomNavigation"
-//context
-import { UserContext } from "../../providers/user/user.provider"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,9 +29,6 @@ const Main = ({ children }: Props): JSX.Element => {
   const classes = useStyles()
 
   const theme = useTheme()
-  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
-    defaultMatches: true,
-  })
 
   return (
     <div

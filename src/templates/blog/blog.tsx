@@ -4,7 +4,7 @@ import { MenuContext } from "../../providers/menu/menu.providers"
 //components
 import SEO from "../../components/own/seo"
 import { makeStyles } from "@material-ui/core/styles"
-import { Grid } from "@material-ui/core"
+import { Grid, Container } from "@material-ui/core"
 import { Section } from "components/organisms"
 import {
   Content,
@@ -13,7 +13,6 @@ import {
   SidebarNewsletter,
   SimilarStories,
 } from "../../views/BlogArticle/components"
-import { similarStories } from "../../views/BlogArticle/data"
 
 export const query = graphql`
   query($slug: String!) {
@@ -151,19 +150,21 @@ const BlogArticle = props => {
           author={author}
           date={date}
         />
-        <Section>
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={8}>
-              <Content data={text} />
+        <Container maxWidth="lg">
+          <Section>
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={8}>
+                <Content data={text} />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <SidebarArticles data={country.places} />
+                <SidebarNewsletter className={classes.sidebarNewsletter} />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <SidebarArticles data={country.places} />
-              <SidebarNewsletter className={classes.sidebarNewsletter} />
-            </Grid>
-          </Grid>
-        </Section>
+          </Section>
+        </Container>
         <Section>
-          <SimilarStories data={similarStories} />
+          <SimilarStories />
         </Section>
         {/*  <Section className={classes.footerNewsletterSection}>
           <FooterNewsletter />

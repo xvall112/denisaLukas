@@ -34,6 +34,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     color: theme.palette.primary.main,
   },
+
   img: {
     borderRadius: "10px 0 0 10px",
     WebkitBorderRadius: "10px",
@@ -169,6 +170,10 @@ const options = {
                       style={{
                         width: "100%",
                         height: "100%",
+                      }}
+                      imgStyle={{
+                        borderRadius: "10px 0 0 10px",
+                        WebkitBorderRadius: "10px 0 0 10px",
                       }}
                     />
                   </Grid>

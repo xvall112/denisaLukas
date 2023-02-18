@@ -78,7 +78,7 @@ function LinkTab(props) {
 
 export default function ScrollableTabsButtonForce() {
   const { topTabsValue } = useContext(MenuContext)
-  console.log("topTabsValue", topTabsValue)
+
   const data = useStaticQuery(query)
   const classes = useStyles()
   const theme = useTheme()

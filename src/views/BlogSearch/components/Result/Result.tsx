@@ -2,6 +2,8 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
+import Section from "../../../../components/organisms/Section"
+import Icon from "../../../../components/atoms/Icon"
 import {
   useMediaQuery,
   Container,
@@ -9,7 +11,12 @@ import {
   Typography,
   Grid,
   Divider,
+  FormControl,
+  OutlinedInput,
+  InputAdornment,
+  Button,
 } from "@material-ui/core"
+import { blueGrey } from "@material-ui/core/colors"
 
 import { CardProduct } from "components/organisms"
 
@@ -86,6 +93,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     height: "100%",
+    width: "100%",
   },
   list: {
     display: "flex",
@@ -161,7 +169,7 @@ const Result = ({
 
   return (
     <div className={classes.root} {...rest}>
-      {/* <Section className={classes.pagePaddingTop}>
+      <Section className={classes.pagePaddingTop}>
         <div className={classes.searchInputContainer} data-aos="fade-up">
           <FormControl fullWidth variant="outlined">
             <OutlinedInput
@@ -169,11 +177,11 @@ const Result = ({
                 <InputAdornment position="start">
                   <Icon
                     fontIconClass="fas fa-search"
-                    fontIconColor={colors.blueGrey[900]}
+                    fontIconColor={blueGrey[900]}
                   />
                 </InputAdornment>
               }
-              placeholder="Search for the blog"
+              placeholder="Vyhledat"
             />
           </FormControl>
           <Button
@@ -185,7 +193,7 @@ const Result = ({
             Vyhledat
           </Button>
         </div>
-      </Section> */}
+      </Section>
 
       <Grid container spacing={isMd ? 4 : 2}>
         {/* <Grid item xs={12} container>
@@ -200,7 +208,7 @@ const Result = ({
             sm={6}
             md={4}
             lg={3}
-            xl={3}
+            xl={2}
             key={index}
             data-aos="fade-up"
           >

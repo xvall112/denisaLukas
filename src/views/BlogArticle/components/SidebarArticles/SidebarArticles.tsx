@@ -144,6 +144,10 @@ const SidebarArticles = ({
                       alt={item.titleImage.title}
                       formats={["auto", "webp", "avif"]}
                       style={{ height: "100%" }}
+                      imgStyle={{
+                        borderRadius: "10px",
+                        WebkitBorderRadius: "10px",
+                      }}
                     />
                   }
                   cardContent={

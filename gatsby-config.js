@@ -29,7 +29,13 @@ module.exports = {
         component: require.resolve(`./src/layouts/Index.tsx`),
       },
     },
-    `gatsby-plugin-material-ui`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        disableAutoprefixing: true,
+        disableMinification: true,
+      },
+    },
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     {
