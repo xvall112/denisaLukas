@@ -174,6 +174,10 @@ const SimilarStories = ({
                     alt={item.titleImage.title}
                     formats={["auto", "webp", "avif"]}
                     style={{ height: "100%", width: "100%" }}
+                    imgStyle={{
+                      borderRadius: "10px 10px 0px 0px",
+                      WebkitBorderRadius: "10px 10px 0px 0px",
+                    }}
                   />
                 }
                 cardContent={

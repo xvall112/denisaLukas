@@ -151,17 +151,15 @@ const BlogArticle = props => {
           date={date}
         />
         <Container maxWidth="lg">
-          <Section>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={8}>
-                <Content data={text} />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <SidebarArticles data={country.places} />
-                <SidebarNewsletter className={classes.sidebarNewsletter} />
-              </Grid>
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={8}>
+              <Content data={text} />
             </Grid>
-          </Section>
+            <Grid item xs={12} md={4}>
+              <SidebarArticles data={country.places} />
+              <SidebarNewsletter className={classes.sidebarNewsletter} />
+            </Grid>
+          </Grid>
         </Container>
         <Section>
           <SimilarStories />

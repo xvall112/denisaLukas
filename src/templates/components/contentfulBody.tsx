@@ -63,7 +63,11 @@ const options = {
 
   renderNode: {
     [INLINES.HYPERLINK]: ({ data }, children) => (
-      <a style={{ textDecoration: "none", color: "gold" }} href={data.uri}>
+      <a
+        style={{ textDecoration: "none", color: "gold" }}
+        target="_blank"
+        href={data.uri}
+      >
         {children}
       </a>
     ),
