@@ -14,6 +14,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-fontawesome-css`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
