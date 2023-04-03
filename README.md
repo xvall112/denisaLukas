@@ -1,4 +1,4 @@
-# Denisa & Lukas - Faith in Travel, blog and places album
+# [Denisa & Lukas - Faith in Travel, blog and places album](https://faithintravel.cz)
 This project is a web application for sharing our travel experiences with other travelers. It includes a blog where we post about our adventures, as well as a places that we visited with pictures, locations and usefull information.
 
 - Travel blog with articles about our trips and experiences.
