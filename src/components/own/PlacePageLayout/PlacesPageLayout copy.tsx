@@ -113,7 +113,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
           <Container maxWidth="xl">
             <div className={classes.root}>
               <Grid container direction="row" spacing={3}>
-                {list.map((item: any, index: number) => {
+                {data.map((item: any, index: number) => {
                   return (
                     <Grid item xs={12} sm={6} md={3} lg={3} xl={2} key={index}>
                       <Card item={item} />
@@ -121,7 +121,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
                   )
                 })}
 
-                {hasMore && (
+                {/* {hasMore && (
                   <Grid item xs={12} sm={6} md={3} lg={3} xl={2} ref={loadRef}>
                     <Skeleton
                       animation="wave"
@@ -142,7 +142,7 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
                       height="50px"
                     />
                   </Grid>
-                )}
+                )} */}
               </Grid>
             </div>
             {/* {hasMore ? (

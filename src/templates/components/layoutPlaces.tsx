@@ -181,7 +181,7 @@ const LayoutPlaces = ({
                 {/* komponenta body */}
                 {children}
 
-                <NextPrevious next={next} previous={previous} />
+                {/*  <NextPrevious next={next} previous={previous} /> */}
               </Container>
             </Box>
           </Grid>

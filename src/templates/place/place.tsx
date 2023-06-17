@@ -127,13 +127,13 @@ export const query = graphql`
         type
       }
     }
-    next: contentfulPlaces(id: { eq: $nextPlaceId }) {
-      slug
+    nextPlace: contentfulPlaces(id: { eq: $nextPlaceId }) {
       name
+      slug
     }
-    previous: contentfulPlaces(id: { eq: $previousPlaceId }) {
-      slug
+    previousPlace: contentfulPlaces(id: { eq: $previousPlaceId }) {
       name
+      slug
     }
     placeInSurrounding: allContentfulPlaces(
       filter: {
@@ -180,8 +180,8 @@ export const query = graphql`
 
 const Place = props => {
   const {
-    previous,
-    next,
+    previousPlace,
+    nextPlace,
     placeInSurrounding,
     contentfulPlaces,
     viaFerrataInSurrounding,
@@ -190,6 +190,7 @@ const Place = props => {
   const { setTitle } = useContext(MenuContext)
 
   useEffect(() => {
+    console.log(nextPlace)
     setTitle(contentfulPlaces.name)
     return () => {
       setTitle("")
@@ -202,8 +203,8 @@ const Place = props => {
       <LayoutPlaces
         data={contentfulPlaces}
         slug="places"
-        next={next}
-        previous={previous}
+        next={nextPlace}
+        previous={previousPlace}
       >
         <LayoutDescribePlace title="Popis" icon="fas fa-info">
           <ContentfulBody body={contentfulPlaces.describePlace} />
