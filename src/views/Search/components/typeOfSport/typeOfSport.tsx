@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery, Link } from "gatsby"
 
 //components
-import { CardBase } from "components/organisms"
+import { CardBase } from "../../../../components/organisms"
 
 //materialUi
 import { Grid, Box, Typography } from "@material-ui/core"

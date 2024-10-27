@@ -19,12 +19,13 @@ import "@fontsource/roboto/400.css"
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 
+
 export const wrapRootElement = ({ element }) => {
   return (
     <TopLayout>
       {element}
       <Script
-        src="https://kit.fontawesome.com/4c273e6d43.js"
+        src="https://kit.fontawesome.com/9fcc36107c.js"
         crossOrigin="anonymous"
       ></Script>
     </TopLayout>
