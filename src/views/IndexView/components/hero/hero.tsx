@@ -11,7 +11,6 @@ import { FastRewindTwoTone } from "@material-ui/icons"
 
 //components
 import HeroCardPlace from "./components/heroCardPlace"
-
 const query = graphql`
   {
     allContentfulLandingPage(
