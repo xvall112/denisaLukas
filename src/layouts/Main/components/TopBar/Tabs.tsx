@@ -78,7 +78,7 @@ function LinkTab(props) {
 
 export default function ScrollableTabsButtonForce() {
   const { topTabsValue } = useContext(MenuContext)
-
+  console.log("topTabsValue", topTabsValue)
   const data = useStaticQuery(query)
   const classes = useStyles()
   const theme = useTheme()
@@ -89,7 +89,7 @@ export default function ScrollableTabsButtonForce() {
   return (
     <div className={classes.root}>
       <AntTabs
-        value={topTabsValue}
+        value={topTabsValue || "/"}
         variant="scrollable"
         scrollButtons={isLg ? "on" : "off"}
         indicatorColor="primary"
@@ -124,18 +124,20 @@ export default function ScrollableTabsButtonForce() {
           } */
           {...a11yProps(1)}
         />
-        {data.allContentfulTypeOfPlace.nodes.map((tab, index) => {
-          return (
-            <LinkTab
-              label={tab.name}
-              to={`/${tab.slug}`}
-              value={`/${tab.slug}`}
-              /* icon={<FavoriteIcon />} */
-              {...a11yProps(index + 2)}
-              key={index}
-            />
-          )
-        })}
+        {data.allContentfulTypeOfPlace.nodes
+          .filter(tab => tab.slug !== "ferrata")
+          .map((tab, index) => {
+            return (
+              <LinkTab
+                label={tab.name}
+                to={`/${tab.slug}`}
+                value={`/${tab.slug}`}
+                /* icon={<FavoriteIcon />} */
+                {...a11yProps(index + 2)}
+                key={index}
+              />
+            )
+          })}
       </AntTabs>
     </div>
   )

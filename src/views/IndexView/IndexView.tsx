@@ -102,7 +102,7 @@ const IndexPage = () => {
   const data = useStaticQuery(query)
   const { setCloseFullScreenMap } = useContext(MapContext)
   const { places, viaFerrata } = data
-  const all = [...places.nodes, ...viaFerrata.nodes].slice(0, 40)
+  const all = [...places.nodes, ...viaFerrata.nodes]
   const classes = useStyles()
   const { setTopTabsValue, handleBottomNavigation } = useContext(MenuContext)
   useEffect(() => {

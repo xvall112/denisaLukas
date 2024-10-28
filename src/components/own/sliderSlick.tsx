@@ -78,10 +78,22 @@ const SliderSlick = ({
 
   return (
     <div className={classes.root}>
-      <Slider {...settings}>
-        {/*  slider pro obrazky */}
-        {img &&
-          img.map((item, index) => {
+      {img.length === 1 ? (
+        <div className={classes.img}>
+          <GatsbyImage
+            image={img[0].gatsbyImageData}
+            alt={img[0].title}
+            style={{
+              height: heightImg,
+              width: widthImg,
+            }}
+            formats={["auto", "webp", "avif"]}
+          />
+        </div>
+      ) : (
+        <Slider {...settings}>
+          {/*  slider pro obrazky */}
+          {img?.map((item, index) => {
             return (
               <div className={classes.img} key={index}>
                 <GatsbyImage
@@ -96,7 +108,8 @@ const SliderSlick = ({
               </div>
             )
           })}
-      </Slider>
+        </Slider>
+      )}
     </div>
   )
 }

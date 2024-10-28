@@ -14,7 +14,7 @@ interface Props {
 const Index = ({ children, pageContext, location }: Props) => {
   const { setTopTabsValue } = useContext(MenuContext)
   useEffect(() => {
-    setTopTabsValue(location.pathname)
+    setTopTabsValue(location.pathname.slice(0, -1))
     return () => {
       setTopTabsValue("/")
     }
@@ -23,13 +23,13 @@ const Index = ({ children, pageContext, location }: Props) => {
   if (
     pageContext.layout === "place" ||
     [
-      "/search",
-      "/Blog",
-      "/app/favourite",
-      "/app/account",
-      "/app/login",
-      "/signup",
-      "/places",
+      "/search/",
+      "/Blog/",
+      "/app/favourite/",
+      "/app/account/",
+      "/app/login/",
+      "/signup/",
+      "/places/",
     ].find(item => item === location.pathname)
   ) {
     return <PlaceLayout>{children}</PlaceLayout>

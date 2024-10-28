@@ -115,14 +115,14 @@ const IndexPlaces = ({ data }: Props): JSX.Element => {
               <Grid container direction="row" spacing={3}>
                 {list.map((item: any, index: number) => {
                   return (
-                    <Grid item xs={12} sm={6} md={3} lg={3} xl={2} key={index}>
+                    <Grid item xs={12} sm={6} md={3} lg={3} xl={3} key={index}>
                       <Card item={item} />
                     </Grid>
                   )
                 })}
 
                 {hasMore && (
-                  <Grid item xs={12} sm={6} md={3} lg={3} xl={2} ref={loadRef}>
+                  <Grid item xs={12} sm={6} md={3} lg={3} xl={3} ref={loadRef}>
                     <Skeleton
                       animation="wave"
                       variant="rect"
